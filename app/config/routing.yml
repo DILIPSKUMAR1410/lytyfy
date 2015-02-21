@@ -1,3 +1,7 @@
+deviab_app:
+    resource: "@DeviabAppBundle/Resources/config/routing.php"
+    prefix:   /
+
 app:
     resource: @AppBundle/Controller/
     type:     annotation
