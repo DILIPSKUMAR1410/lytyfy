@@ -5,12 +5,12 @@ namespace Deviab\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Loan_Purpose
+ * LoanPurpose
  *
- * @ORM\Table(name="Loan_Purposes")
- * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\Loan_PurposeRepository")
+ * @ORM\Table(name="loan_purposes")
+ * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\LoanPurposeRepository")
  */
-class Loan_Purpose extends BaseEntity
+class LoanPurpose extends BaseEntity
 {
     /**
      * @var integer
@@ -43,7 +43,7 @@ class Loan_Purpose extends BaseEntity
      * Set story
      *
      * @param string $story
-     * @return Loan_Purpose
+     * @return LoanPurpose
      */
     public function setStory($story)
     {

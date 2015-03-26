@@ -5,12 +5,12 @@ namespace Deviab\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Borrower_Fin_Detail
+ * BorrowerFinancialDetail
  *
- * @ORM\Table(name="Borrower_Fin_Details")
- * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\Borrower_Fin_DetailRepository")
+ * @ORM\Table(name="borrower_financial_details")
+ * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\BorrowerFinancialDetailRepository")
  */
-class Borrower_Fin_Detail extends BaseEntity
+class BorrowerFinancialDetail extends BaseEntity
 {
     /**
      * @var integer
@@ -71,7 +71,7 @@ class Borrower_Fin_Detail extends BaseEntity
      * Set amountNeeded
      *
      * @param integer $amountNeeded
-     * @return Borrower_Fin_Detail
+     * @return BorrowerFinancialDetail
      */
     public function setAmountNeeded($amountNeeded)
     {
@@ -94,7 +94,7 @@ class Borrower_Fin_Detail extends BaseEntity
      * Set amountRaised
      *
      * @param integer $amountRaised
-     * @return Borrower_Fin_Detail
+     * @return BorrowerFinancialDetail
      */
     public function setAmountRaised($amountRaised)
     {
@@ -117,7 +117,7 @@ class Borrower_Fin_Detail extends BaseEntity
      * Set tenure
      *
      * @param integer $tenure
-     * @return Borrower_Fin_Detail
+     * @return BorrowerFinancialDetail
      */
     public function setTenure($tenure)
     {
@@ -140,7 +140,7 @@ class Borrower_Fin_Detail extends BaseEntity
      * Set interest
      *
      * @param integer $interest
-     * @return Borrower_Fin_Detail
+     * @return BorrowerFinancialDetail
      */
     public function setInterest($interest)
     {
@@ -163,7 +163,7 @@ class Borrower_Fin_Detail extends BaseEntity
      * Set emi
      *
      * @param integer $emi
-     * @return Borrower_Fin_Detail
+     * @return BorrowerFinancialDetail
      */
     public function setEmi($emi)
     {

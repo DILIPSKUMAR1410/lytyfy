@@ -5,12 +5,12 @@ namespace Deviab\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Lending_detail
+ * LendingDetail
  *
- * @ORM\Table(name="Lending_details")
- * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\Lending_detailRepository")
+ * @ORM\Table(name="lending_details")
+ * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\LendingDetailRepository")
  */
-class Lending_detail extends BaseEntity
+class LendingDetail extends BaseEntity
 {
     /**
      * @var integer
@@ -57,7 +57,7 @@ class Lending_detail extends BaseEntity
      * Set invested
      *
      * @param integer $invested
-     * @return Lending_detail
+     * @return LendingDetail
      */
     public function setInvested($invested)
     {
@@ -80,7 +80,7 @@ class Lending_detail extends BaseEntity
      * Set dateInvested
      *
      * @param \DateTime $dateInvested
-     * @return Lending_detail
+     * @return LendingDetail
      */
     public function setDateInvested($dateInvested)
     {
@@ -103,7 +103,7 @@ class Lending_detail extends BaseEntity
      * Set transactionId
      *
      * @param integer $transactionId
-     * @return Lending_detail
+     * @return LendingDetail
      */
     public function setTransactionId($transactionId)
     {
