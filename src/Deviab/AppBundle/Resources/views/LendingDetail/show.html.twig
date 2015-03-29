@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>LendingDetail</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Invested</th>
+                <td>{{ entity.invested }}</td>
+            </tr>
+            <tr>
+                <th>Dateinvested</th>
+                <td>{{ entity.dateInvested|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Transactionid</th>
+                <td>{{ entity.transactionId }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Modifiedat</th>
+                <td>{{ entity.modifiedAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Modifiedby</th>
+                <td>{{ entity.modifiedBy }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('lendingdetail') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('lendingdetail_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
