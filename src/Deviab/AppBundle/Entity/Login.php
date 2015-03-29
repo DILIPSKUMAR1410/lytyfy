@@ -15,7 +15,7 @@ class Login extends BaseEntity
     /**
      * @var User
      *
-     * @ORM\OneToOne(targetEntity="User",MappedBy="id")
+     * @ORM\OneToOne(targetEntity="User",mappedBy="id")
      * 
      */
     private $user;
