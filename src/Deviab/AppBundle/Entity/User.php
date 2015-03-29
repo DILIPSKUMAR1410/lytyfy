@@ -14,12 +14,18 @@ class User extends BaseEntity
 {
     /**
      * @var integer
-     * @ORM\OneToOne(targetEntity="Login",inversedBy="user")
+     * @ORM\OneToOne(targetEntity="Login",mappedBy="user")
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var integer
+     * @ORM\OneToOne(targetEntity="LendingDetail",mappedBy="lender")
+     */
+    protected $lendDetails;
 
     /**
      * @var string
@@ -63,6 +69,13 @@ class User extends BaseEntity
      */
     private $password;
 
+    /**
+    *
+    */
+    public function __construct()
+    {
+        $this->lendDetails = new ArrayCollection();
+    }
 
     /**
      * Get id

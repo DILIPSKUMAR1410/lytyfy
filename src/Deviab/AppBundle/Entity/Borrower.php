@@ -16,12 +16,18 @@ class Borrower extends BaseEntity
    
     /**
      * @var integer
-     * @ORM\OneToOne(targetEntity="BorrowerFinancialDetails",MappedBy="borrower")
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
      protected $id;
+
+     /**
+     * @var integer
+     * @ORM\OneToMany(targetEntity="LendingDetail",MappedBy="borrower")
+     *
+     **/
+     private $borrowDetails;
 
     /**
      * @var string
@@ -86,10 +92,11 @@ class Borrower extends BaseEntity
      */
     private $borrowerDob;
 
-
+    public function __construct()
+    {
+        $this->borrowDetails = new ArrayCollection();
+    }
     
-    
-
     /**
      * Get id
      *

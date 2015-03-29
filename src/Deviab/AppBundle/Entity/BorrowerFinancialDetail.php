@@ -13,16 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class BorrowerFinancialDetail extends BaseEntity
 {
     /**
-     *
-     * @var Borrower
-     * 
-     * @ORM\OneToOne(targetEntity="Borrower",inversedBy="id")
-     * 
-     *
-     * 
-     */
-    private $borrower;
-    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -30,6 +20,16 @@ class BorrowerFinancialDetail extends BaseEntity
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     *
+     * @var Borrower
+     * 
+     * @ORM\OneToOne(targetEntity="Borrower",inversedBy="id")
+     * @ORM\Column(name="borrower_id", type="integer")
+     *
+     */
+    private $borrower;
 
     /**
      * @var integer
@@ -66,6 +66,12 @@ class BorrowerFinancialDetail extends BaseEntity
      */
     private $emi;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="story", type="text")
+     */
+    private $story;
 
     /**
      * Get id
@@ -190,5 +196,28 @@ class BorrowerFinancialDetail extends BaseEntity
     public function getEmi()
     {
         return $this->emi;
+    }
+
+    /**
+     * Set story
+     *
+     * @param string $story
+     * @return BorrowerFinancialDetail
+     */
+    public function setStory($story)
+    {
+        $this->story = $story;
+
+        return $this;
+    }
+
+    /**
+     * Get story
+     *
+     * @return string 
+     */
+    public function getStory()
+    {
+        return $this->story;
     }
 }

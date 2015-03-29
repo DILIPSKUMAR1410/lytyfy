@@ -24,6 +24,24 @@ class LendingDetail extends BaseEntity
     /**
      * @var integer
      *
+     * @ORM\ManyToOne(targetEntity="Borrower", inversedBy="borrowDetails")
+     * @ORM\Column(name="borrower_id", type="integer")
+     *
+     */
+     protected $borrower;
+
+    /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="lendDetails")
+     * @ORM\Column(name="lender_id", type="integer")
+     *
+     */
+     protected $lender;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="invested", type="integer")
      */
     private $invested;
