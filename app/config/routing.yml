@@ -3,5 +3,6 @@ deviab_app:
     prefix:   /
 
 app:
-    resource: @AppBundle/Controller/
+    resource: "@DeviabAppBundle/Controller/"
     type:     annotation
+    
