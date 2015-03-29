@@ -6,15 +6,17 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Borrower
- *
- * @ORM\Table(name="Borrowers")
+ *@ORM\M
+ * @ORM\Table(name="borrowers")
  * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\BorrowerRepository")
  */
 class Borrower extends BaseEntity
 {
+    
+   
     /**
      * @var integer
-     *
+     * @ORM\OneToOne(targetEntity="BorrowerFinancialDetails",MappedBy="borrower")
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -84,6 +86,9 @@ class Borrower extends BaseEntity
      */
     private $borrowerDob;
 
+
+    
+    
 
     /**
      * Get id
