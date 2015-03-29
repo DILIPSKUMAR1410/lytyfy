@@ -7,14 +7,20 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Login
  *
- * @ORM\Table(name="Logins")
+ * @ORM\Table(name="logins")
  * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\LoginRepository")
  */
 class Login extends BaseEntity
 {
     /**
-     * @var integer
+     * @var User
      *
+     * @ORM\OneToOne(targetEntity="User",MappedBy="id")
+     * 
+     */
+    private $user;
+    /**
+     * @var integer
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -59,6 +65,10 @@ class Login extends BaseEntity
         return $this;
     }
 
+    public function __construct() {
+        
+        
+    }
     /**
      * Get username
      *

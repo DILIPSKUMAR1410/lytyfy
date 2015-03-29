@@ -1,7 +1,7 @@
 <?php
 
 namespace Deviab\AppBundle\Entity;
-
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,6 +12,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class BorrowerFinancialDetail extends BaseEntity
 {
+    /**
+     *
+     * @var Borrower
+     * 
+     * @ORM\OneToOne(targetEntity="Borrower",inversedBy="id")
+     * 
+     *
+     * 
+     */
+    private $borrower;
     /**
      * @var integer
      *
