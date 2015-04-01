@@ -1,6 +1,10 @@
 body {
 background-color: rgb(247,247,247);
 }
+@font-face {
+ font-family: 'neuropol';
+  src: url(NEUROPOL.ttf);
+}
 .logo {
     font-family: neuropol !important;
     font-size: 25px !important;
