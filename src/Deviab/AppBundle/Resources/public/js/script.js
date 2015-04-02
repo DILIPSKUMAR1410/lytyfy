@@ -3,12 +3,14 @@ $(function() {
 	// run the currently selected effect
 	function hideSocialPlugin() {
 		// run the effect
-		$("#social-icons").hide("slide",'percent: 0',2000,showShowButton);
+		var options = {};
+		$("#social-icons").hide("slide",options,1000,showShowButton);
 	};
 
 	function hideShowButton() {
 		// run the effect
-		$("#show-social-plugin").hide("slide",'percent: 0',2000,showSocialPlugin);
+		showSocialPlugin();
+		$("#show-social-plugin").hide();//"size",'percent: 0',2000,showSocialPlugin);
 	};
 
 	// callback function to bring a hidden box back
