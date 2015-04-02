@@ -4,10 +4,13 @@
 		<title>DEVIAB</title>
 		<meta name="description" content="">
         <meta name="author" content="">
+        <meta charset="utf-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- CSS -->
         {# <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">'' #}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
 
         <!-- link -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -20,12 +23,20 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-		<meta charset="utf-8">
-	  	<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 	  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	
+
+	  	<!-- jquery hide -->
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+<style>
+#social-icons {  padding: 0.4em; position: relative;  }
+</style>
+
 
 
         <link rel="stylesheet" href="assets/css/style.css">
@@ -73,22 +84,22 @@
 				    <ul class="nav navbar-nav navbar-right">
 				        <li><a href="#">Sign In</a></li>
 				        <li><a href="#">Join Us</a></li>
-				        {# <li class="dropdown">
-				        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-				          	<ul class="dropdown-menu" role="menu">
-				            	<li><a href="#">Action</a></li>
-				            	<li><a href="#">Another action</a></li>
-				            	<li><a href="#">Something else here</a></li>
-				            	<li class="divider"></li>
-				            	<li><a href="#">Separated link</a></li>
-				          </ul>
-				        </li> #}
 				    </ul>
 			    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>
 		<div class="coming-soon">
-	        <div class="inner-bg">   
+	        <div class="inner-bg">  
+	        	<div class="row pull-left  social">
+	        		<button id="show-social-plugin" type="button" class="btn btn-primary show-plugi"><span class="social-text">Social-Plugin</span></button> 
+			    	<div id="social-icons">
+			    		<button id="hide-social-plugin" type="button" class="btn btn-primary" width"10px" height="200px">close</button> 
+				        <a href="" class="facebook" data-original-title="Facebook" data-placement="top" rel="tooltip"></a>
+				        <a href="" class="googleplus" rel="tooltip" data-placement="top" data-original-title="Google Plus"></a>
+				        <a href="" class="twitter" data-original-title="Twitter" data-placement="top" rel="tooltip"></a>
+				        <a href="" class="dribbble" data-original-title="Linkedin" data-placement="top" rel="tooltip"></a>
+				    </div>
+				</div> 
 	        	<div class="banner-text">
 			        <h2>Power to Everyone Everywhere</h2>
 			        <button type="button" class="btn btn-primary">Start Now</button>  
@@ -102,60 +113,22 @@
 				million of them live in rural areas of India. In India per capita consumption in rural
 				households is only 8 units per month as compared to 24 units in urban households. The 
 				reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.               
-            </p>
+            </p>   
             <p class="text-justify">
-	            &nbsp &nbsp &nbsp &nbsp Energy is one of the basic necessities of life and lack of energy services impact upon all aspects of people's lives and livelihoods. Deviab is a social venture trying to bridge the gap between energy supply and demand in the country especially in rural India. Our mission is to provide complete energy solutions to rural india while contributing to a cleaner and greener planet.
-	        </p>
-	        <p class="text-justify">
             	Currently around 1.4 billion people in the world still have no access to power and 400
 				million of them live in rural areas of India. In India per capita consumption in rural
 				households is only 8 units per month as compared to 24 units in urban households. The 
 				reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.               
-            </p>
-            <p class="text-justify">
-	            &nbsp &nbsp &nbsp &nbsp Energy is one of the basic necessities of life and lack of energy services impact upon all aspects of people's lives and livelihoods. Deviab is a social venture trying to bridge the gap between energy supply and demand in the country especially in rural India. Our mission is to provide complete energy solutions to rural india while contributing to a cleaner and greener planet.
-	        </p>
-	        <p class="text-justify">
-            	Currently around 1.4 billion people in the world still have no access to power and 400
-				million of them live in rural areas of India. In India per capita consumption in rural
-				households is only 8 units per month as compared to 24 units in urban households. The 
-				reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.               
-            </p>
-            <p class="text-justify">
-	            &nbsp &nbsp &nbsp &nbsp Energy is one of the basic necessities of life and lack of energy services impact upon all aspects of people's lives and livelihoods. Deviab is a social venture trying to bridge the gap between energy supply and demand in the country especially in rural India. Our mission is to provide complete energy solutions to rural india while contributing to a cleaner and greener planet.
-	        </p>
-	        <p class="text-justify">
-            	Currently around 1.4 billion people in the world still have no access to power and 400
-				million of them live in rural areas of India. In India per capita consumption in rural
-				households is only 8 units per month as compared to 24 units in urban households. The 
-				reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.               
-            </p>
-            <p class="text-justify">
-	            &nbsp &nbsp &nbsp &nbsp Energy is one of the basic necessities of life and lack of energy services impact upon all aspects of people's lives and livelihoods. Deviab is a social venture trying to bridge the gap between energy supply and demand in the country especially in rural India. Our mission is to provide complete energy solutions to rural india while contributing to a cleaner and greener planet.
-	        </p>
-	        <p class="text-justify">
-            	Currently around 1.4 billion people in the world still have no access to power and 400
-				million of them live in rural areas of India. In India per capita consumption in rural
-				households is only 8 units per month as compared to 24 units in urban households. The 
-				reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.               
-            </p>
-            <p class="text-justify">
-	            &nbsp &nbsp &nbsp &nbsp Energy is one of the basic necessities of life and lack of energy services impact upon all aspects of people's lives and livelihoods. Deviab is a social venture trying to bridge the gap between energy supply and demand in the country especially in rural India. Our mission is to provide complete energy solutions to rural india while contributing to a cleaner and greener planet.
-	        </p>
-	        <p class="text-justify">
-            	Currently around 1.4 billion people in the world still have no access to power and 400
-				million of them live in rural areas of India. In India per capita consumption in rural
-				households is only 8 units per month as compared to 24 units in urban households. The 
-				reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.               
-            </p>
-            <p class="text-justify">
-	            &nbsp &nbsp &nbsp &nbsp Energy is one of the basic necessities of life and lack of energy services impact upon all aspects of people's lives and livelihoods. Deviab is a social venture trying to bridge the gap between energy supply and demand in the country especially in rural India. Our mission is to provide complete energy solutions to rural india while contributing to a cleaner and greener planet.
-	        </p>
+            </p>            
     	</div>
+    	
+
+
 
 		<!-- Javascript -->
         <script src="/bundles/deviabapp/js/jquery.backstretch.min.js"></script>
         <script src="/bundles/deviabapp/js/scripts.js"></script>
+        <script src="/bundles/deviabapp/js/script.js"></script> <!-- social-icon hide show -->
 
 	</body>
 </html>

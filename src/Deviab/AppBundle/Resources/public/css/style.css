@@ -56,7 +56,6 @@ z-index: 55;
 .inner-bg {
     height:500px;
     padding: 55px 0 60px 0;
-    background: url(../img/pattern-3.png);
     -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
     -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
     box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
@@ -95,4 +94,48 @@ z-index: 55;
     z-index: 50 !important;
     position: relative;
     background-color: #FFF;
+}
+
+.social a {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    margin: 3px;
+    padding-top: 20px;
+}
+.social {
+    text-align: center;
+    padding-left:12px;
+    width:65px;
+    height:auto;
+    margin-top:80px;
+}
+.facebook {
+    background: url(../images/social-icons/facebook.png);
+    background-repeat: none;
+}
+.googleplus {
+    background: url(../images/social-icons/gplus.png);
+    background-repeat: none;
+}
+.twitter {
+    background: url(../images/social-icons/twitter.png);
+    background-repeat: none;
+}
+
+.dribbble {
+    background: url(../images/social-icons/linkedin.png);
+    background-repeat: none;
+}
+#show-social-plugin {
+    display: none;
+}
+#social-icons {position: relative;  }
+#show-social-plugin {position: absolute;margin-left:-20px !important; 
+
+
+}
+.social-text {
+ display: inline-block ; vertical-align: middle;
+
 }
