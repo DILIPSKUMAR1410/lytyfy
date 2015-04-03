@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="Users")
+ * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\UserRepository")
  */
 class User extends BaseEntity

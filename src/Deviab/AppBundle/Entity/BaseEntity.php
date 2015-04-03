@@ -7,8 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * BaseEntity
  *
- * 
- * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\BaseEntityRepository")
  */
 class BaseEntity
 {

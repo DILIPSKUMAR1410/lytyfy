@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Session
  *
- * @ORM\Table(name="Sessions")
+ * @ORM\Table(name="sessions")
  * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\SessionRepository")
  */
 class Session extends BaseEntity

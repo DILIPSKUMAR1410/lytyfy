@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Borrower
- *@ORM\M
  * @ORM\Table(name="borrowers")
  * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\BorrowerRepository")
  */
@@ -24,7 +23,7 @@ class Borrower extends BaseEntity
 
      /**
      * @var integer
-     * @ORM\OneToMany(targetEntity="LendingDetail",MappedBy="borrower")
+     * @ORM\OneToMany(targetEntity="LendingDetail",mappedBy="borrower")
      *
      **/
      private $borrowDetails;
