@@ -4,7 +4,7 @@ $(function() {
 	function hideSocialPlugin() {
 		// run the effect
 		var options = {};
-		$("#social-icons").hide("slide",options,1000,showShowButton);
+		$("#social-icons").hide("size",options,1000,showShowButton);
 	};
 
 	function hideShowButton() {

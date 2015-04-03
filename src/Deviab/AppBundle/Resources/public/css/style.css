@@ -66,14 +66,14 @@ z-index: 55;
     font-weight: 700;
     padding-top: 300px;
     text-transform: uppercase;
-    text-shadow: 0 1px 7px rgba(0,0,0,.2);
+    text-shadow: 0 1px 7px rgba(0,0,0,1);
 }
 
 .coming-soon p {
     margin-top: 20px;
     font-size: 18px;
     line-height: 36px;
-    text-shadow: 0 1px 7px rgba(0,0,0,.2);
+    text-shadow: 0 1px 7px rgba(0,0,0,1);
 }
 
 /*<div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 500px; width: 1288px; position: fixed;"></div>*/
@@ -83,7 +83,7 @@ z-index: 55;
 }
 
 .banner-text {
-    margin-top: 200px;
+    margin-top: 170px;
 }
 .width {
 	width:57% !important;
@@ -109,28 +109,34 @@ z-index: 55;
 }
 .social {
     text-align: center;
-    padding-left:12px;
-    width:65px;
+    padding-left:0px;
+    width:55px;
     height:auto;
     margin-top:150px;
+    margin-right: 12px;
+
 }
 .facebook {
     background: url(../images/social-icons/facebook.png);
     background-repeat: none;
     margin-top: 5px;
+   
 }
 .googleplus {
     background: url(../images/social-icons/gplus.png);
     background-repeat: none;
+    
 }
 .twitter {
     background: url(../images/social-icons/twitter.png);
     background-repeat: none;
+    
 }
 
 .dribbble {
     background: url(../images/social-icons/linkedin.png);
     background-repeat: none;
+    
 }
 #show-social-plugin {
     display: none;
@@ -143,9 +149,10 @@ z-index: 55;
     
 }
 #hide-social-plugin {color:#FF0000;background-color:#FFF;margin-bottom: 2px; }
-#social-icons {position: relative;  }
+#social-icons {position: relative; margin-left:-20px; }
 #show-social-plugin {
-    padding-left:0px; 
+    padding-left:10px; 
+    margin-left: 12px;
     margin-bottom: 0px;
     position: absolute;
     transform: rotate(90deg);
@@ -155,9 +162,9 @@ z-index: 55;
      
     height:25px;
     padding: 0px !important;
-  background-color: #0070B9!important; 
-    color: #FFF !important;
-    border: 1px solid #0F0F0F !important
+  background-color: #FFF!important; 
+    color: #0070B9 !important;
+    border: 1px solid #0070B9 !important
 }
 /*.vertical-text {
     transform: rotate(90deg);
