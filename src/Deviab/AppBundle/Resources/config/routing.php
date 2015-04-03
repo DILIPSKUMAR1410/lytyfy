@@ -9,4 +9,9 @@
      '_controller' => 'DeviabAppBundle:Default:index',
  )));
 
+  $collection->add('deviab_app_linsting', new Route('/listing', array(
+     '_controller' => 'DeviabAppBundle:Listing:index',
+ )));
+
+
  return $collection;

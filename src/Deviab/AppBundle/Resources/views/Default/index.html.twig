@@ -4,10 +4,13 @@
 		<title>DEVIAB</title>
 		<meta name="description" content="">
         <meta name="author" content="">
+        <meta charset="utf-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- CSS -->
         {# <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">'' #}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
 
         <!-- link -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -21,18 +24,18 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-		<meta charset="utf-8">
-	  	<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 	  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	  	<!-- jquery hide -->
 		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-		
+
 	  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-	  	
-
+	  	<!-- jquery hide -->
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <style>
 #social-icons {  padding: 0.4em; position: relative;  }
@@ -45,24 +48,25 @@
 
 	<body ng-app="myApp">
 		<nav class="navbar navbar-default" >
-		  	<div class="container-fluid">
+		  	<div class="container-fluide">
 		    	<!-- Brand and toggle get grouped for better mobile display -->
-			    <div class="navbar-header col-lg-4 col-md-3 col-sm-12">
+			    <div class="navbar-header col-lg-5 col-md-3 col-sm-1">
 			      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				        <span class="sr-only">Toggle navigation</span>
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 			      	</button>
-			      	<a class="navbar-brand logo" href="#">deviab</a>
+			      	<a class="navbar-brand logo pull-left" href="#">deviab</a>
 		    	</div>
 
 			    <!-- Collect the nav links, forms, and other content for toggling -->
-			    <div class="collapse navbar-collapse col-lg-8 col-md-9 col-sm-12" id="bs-example-navbar-collapse-1">
+
+			    <div class="container-fluid pull-right collapse navbar-collapse col-lg-7 col-md-9 col-sm-11" id="bs-example-navbar-collapse-1 navbar-right">
 			      	<ul class="nav navbar-nav ">
 				        <li {# class="active" #}><a href="#">Home <span class="sr-only">(current)</span></a></li>
 				        <li class="dropdown">
-				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">About US <span class="caret"></span></a>
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">About Us <span class="caret"></span></a>
 				          <ul class="dropdown-menu" role="menu">
 				        	<li><a href="#"></a></li>
 				            <li><a href="#">About Deviab</a></li>
@@ -75,98 +79,54 @@
 				        </li>
 				        <li><a href="#">Others</a></li>
 			      	</ul>
-			      	<form class="navbar-form navbar-left col-sm-1"  role="search">
+			      	<ul class="nav navbar-nav ">
+				        <li><a href="#">Sign In</a></li>
+				        <li><a href="#">Join Us</a></li>
+				    </ul>
+				    <form class="navbar-form navbar-right "  role="search">
 				        <div class="form-group ">
 				          <input type="text" class="form-control" placeholder="Search">
 				        </div>
-			        	<button type="submit" class="btn btn-default">Submit</button>
+			        	
 			      	</form>
-				    <ul class="nav navbar-nav navbar-right">
-				        <li><a href="#">Sign In</a></li>
-				        <li><a href="#">Join Us</a></li>
-				        {# <li class="dropdown">
-				        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-				          	<ul class="dropdown-menu" role="menu">
-				            	<li><a href="#">Action</a></li>
-				            	<li><a href="#">Another action</a></li>
-				            	<li><a href="#">Something else here</a></li>
-				            	<li class="divider"></li>
-				            	<li><a href="#">Separated link</a></li>
-				          </ul>
-				        </li> #}
-				    </ul>
 			    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>
 		<div class="coming-soon">
-	        <div class="inner-bg">   
+	        <div class="inner-bg">  
+	        	<div class="row pull-right  social">
+	        		<button id="show-social-plugin" type="button" class="close">Social-Plugin</button> 
+			    	
+			    	<div id="social-icons">
+			    		<div class="cross"><button class="close pull-right cross"><span id="hide-social-plugin"  class="glyphicon glyphicon-remove"></span></button></div>
+				        <a href="" class="facebook" data-original-title="Facebook" data-placement="top" rel="tooltip"></a>
+				        <a href="" class="googleplus" rel="tooltip" data-placement="top" data-original-title="Google Plus"></a>
+				        <a href="" class="twitter" data-original-title="Twitter" data-placement="top" rel="tooltip"></a>
+				        <a href="" class="dribbble" data-original-title="Linkedin" data-placement="top" rel="tooltip"></a>
+				    </div>
+				</div> 
 	        	<div class="banner-text">
 			        <h2>Power to Everyone Everywhere</h2>
-			        <button type="button" class="btn btn-primary">Start Now</button>  
+			        <button type="button" class="btn btn-primary">Help Now</button>  
 			    </div>        
 	        </div>
     	</div>
     	<div class="container-fluid aboutus">
     		<p class="header01">About Us</p>
     		<p class="text-justify">
-            	Currently around 1.4 billion people in the world still have no access to power and 400
+            	&nbsp &nbsp  Currently around 1.4 billion people in the world still have no access to power and 400
 				million of them live in rural areas of India. In India per capita consumption in rural
 				households is only 8 units per month as compared to 24 units in urban households. The 
 				reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.               
-            </p>
+            </p>   
             <p class="text-justify">
-	            &nbsp &nbsp &nbsp &nbsp Energy is one of the basic necessities of life and lack of energy services impact upon all aspects of people's lives and livelihoods. Deviab is a social venture trying to bridge the gap between energy supply and demand in the country especially in rural India. Our mission is to provide complete energy solutions to rural india while contributing to a cleaner and greener planet.
-	        </p>
-	        <p class="text-justify">
-            	Currently around 1.4 billion people in the world still have no access to power and 400
-				million of them live in rural areas of India. In India per capita consumption in rural
-				households is only 8 units per month as compared to 24 units in urban households. The 
-				reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.               
-            </p>
-            <p class="text-justify">
-	            &nbsp &nbsp &nbsp &nbsp Energy is one of the basic necessities of life and lack of energy services impact upon all aspects of people's lives and livelihoods. Deviab is a social venture trying to bridge the gap between energy supply and demand in the country especially in rural India. Our mission is to provide complete energy solutions to rural india while contributing to a cleaner and greener planet.
-	        </p>
-	        <p class="text-justify">
-            	Currently around 1.4 billion people in the world still have no access to power and 400
-				million of them live in rural areas of India. In India per capita consumption in rural
-				households is only 8 units per month as compared to 24 units in urban households. The 
-				reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.               
-            </p>
-            <p class="text-justify">
-	            &nbsp &nbsp &nbsp &nbsp Energy is one of the basic necessities of life and lack of energy services impact upon all aspects of people's lives and livelihoods. Deviab is a social venture trying to bridge the gap between energy supply and demand in the country especially in rural India. Our mission is to provide complete energy solutions to rural india while contributing to a cleaner and greener planet.
-	        </p>
-	        <p class="text-justify">
-            	Currently around 1.4 billion people in the world still have no access to power and 400
-				million of them live in rural areas of India. In India per capita consumption in rural
-				households is only 8 units per month as compared to 24 units in urban households. The 
-				reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.               
-            </p>
-            <p class="text-justify">
-	            &nbsp &nbsp &nbsp &nbsp Energy is one of the basic necessities of life and lack of energy services impact upon all aspects of people's lives and livelihoods. Deviab is a social venture trying to bridge the gap between energy supply and demand in the country especially in rural India. Our mission is to provide complete energy solutions to rural india while contributing to a cleaner and greener planet.
-	        </p>
-	        <p class="text-justify">
-            	Currently around 1.4 billion people in the world still have no access to power and 400
-				million of them live in rural areas of India. In India per capita consumption in rural
-				households is only 8 units per month as compared to 24 units in urban households. The 
-				reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.               
-            </p>
-            <p class="text-justify">
-	            &nbsp &nbsp &nbsp &nbsp Energy is one of the basic necessities of life and lack of energy services impact upon all aspects of people's lives and livelihoods. Deviab is a social venture trying to bridge the gap between energy supply and demand in the country especially in rural India. Our mission is to provide complete energy solutions to rural india while contributing to a cleaner and greener planet.
-	        </p>
-	        <p class="text-justify">
-            	Currently around 1.4 billion people in the world still have no access to power and 400
-				million of them live in rural areas of India. In India per capita consumption in rural
-				households is only 8 units per month as compared to 24 units in urban households. The 
-				reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.               
-            </p>
-            <p class="text-justify">
-	            &nbsp &nbsp &nbsp &nbsp Energy is one of the basic necessities of life and lack of energy services impact upon all aspects of people's lives and livelihoods. Deviab is a social venture trying to bridge the gap between energy supply and demand in the country especially in rural India. Our mission is to provide complete energy solutions to rural india while contributing to a cleaner and greener planet.
-	        </p>
+            	&nbsp &nbsp Conventional perception is that people in rural areas cannot afford progressive and modern energy technologies but our experience of working in rural areas has made us believe that most of them are willing to pay for a reliable source of energy provided the product and service is customized as per their need and cash flow. A simple and customised solar energy system can meet basic energy needs of a rural household and reduce the problem of energy poverty plaguing more than 40% of our country living in rural areas. Electricity is one of the basic necessities of life and lack of energy services impact upon all aspects of people’s lives and livelihoods. The introduction of even a limited source of electrical power can have immediate and significant economic, health and communication benefits for the people suffering from energy poverty. This shows the scale of the problem under consideration and its underlying potential for an enterprise based model.
+            </p>           
     	</div>
-
-		<!-- Javascript -->
+    	<-- Javascript -->
         <script src="/bundles/deviabapp/js/jquery.backstretch.min.js"></script>
         <script src="/bundles/deviabapp/js/scripts.js"></script>
+        <script src="/bundles/deviabapp/js/script.js"></script> <!-- social-icon hide show -->
 
 	</body>
 </html>
