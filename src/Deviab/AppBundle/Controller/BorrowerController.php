@@ -7,45 +7,44 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Deviab\AppBundle\Entity\Login;
-use Deviab\AppBundle\Form\LoginType;
+use Deviab\AppBundle\Entity\Borrower;
+use Deviab\AppBundle\Form\BorrowerType;
 
 /**
- * Login controller.
+ * Borrower controller.
  *
- * @Route("/login")
+ * @Route("/borrower")
  */
-class LoginController extends Controller
+class BorrowerController extends Controller
 {
 
     /**
-     * Lists all Login entities.
+     * Lists all Borrower entities.
      *
-     * @Route("/", name="login")
+     * @Route("/", name="borrower")
      * @Method("GET")
      * @Template()
      */
     public function indexAction()
     {
-        var_dump("we are here in index action login controller");die;
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('DeviabAppBundle:Login')->findAll();
+        $entities = $em->getRepository('DeviabAppBundle:Borrower')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Login entity.
+     * Creates a new Borrower entity.
      *
-     * @Route("/", name="login_create")
+     * @Route("/", name="borrower_create")
      * @Method("POST")
-     * @Template("DeviabAppBundle:Login:new.html.twig")
+     * @Template("DeviabAppBundle:Borrower:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Login();
+        $entity = new Borrower();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -54,7 +53,7 @@ class LoginController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('login_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('borrower_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -64,16 +63,16 @@ class LoginController extends Controller
     }
 
     /**
-     * Creates a form to create a Login entity.
+     * Creates a form to create a Borrower entity.
      *
-     * @param Login $entity The entity
+     * @param Borrower $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Login $entity)
+    private function createCreateForm(Borrower $entity)
     {
-        $form = $this->createForm(new LoginType(), $entity, array(
-            'action' => $this->generateUrl('login_create'),
+        $form = $this->createForm(new BorrowerType(), $entity, array(
+            'action' => $this->generateUrl('borrower_create'),
             'method' => 'POST',
         ));
 
@@ -83,15 +82,15 @@ class LoginController extends Controller
     }
 
     /**
-     * Displays a form to create a new Login entity.
+     * Displays a form to create a new Borrower entity.
      *
-     * @Route("/new", name="login_new")
+     * @Route("/new", name="borrower_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Login();
+        $entity = new Borrower();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -101,9 +100,9 @@ class LoginController extends Controller
     }
 
     /**
-     * Finds and displays a Login entity.
+     * Finds and displays a Borrower entity.
      *
-     * @Route("/{id}", name="login_show")
+     * @Route("/{id}", name="borrower_show")
      * @Method("GET")
      * @Template()
      */
@@ -111,10 +110,10 @@ class LoginController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('DeviabAppBundle:Login')->find($id);
+        $entity = $em->getRepository('DeviabAppBundle:Borrower')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Login entity.');
+            throw $this->createNotFoundException('Unable to find Borrower entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -126,9 +125,9 @@ class LoginController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Login entity.
+     * Displays a form to edit an existing Borrower entity.
      *
-     * @Route("/{id}/edit", name="login_edit")
+     * @Route("/{id}/edit", name="borrower_edit")
      * @Method("GET")
      * @Template()
      */
@@ -136,10 +135,10 @@ class LoginController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('DeviabAppBundle:Login')->find($id);
+        $entity = $em->getRepository('DeviabAppBundle:Borrower')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Login entity.');
+            throw $this->createNotFoundException('Unable to find Borrower entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -153,16 +152,16 @@ class LoginController extends Controller
     }
 
     /**
-    * Creates a form to edit a Login entity.
+    * Creates a form to edit a Borrower entity.
     *
-    * @param Login $entity The entity
+    * @param Borrower $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Login $entity)
+    private function createEditForm(Borrower $entity)
     {
-        $form = $this->createForm(new LoginType(), $entity, array(
-            'action' => $this->generateUrl('login_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new BorrowerType(), $entity, array(
+            'action' => $this->generateUrl('borrower_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -171,20 +170,20 @@ class LoginController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Login entity.
+     * Edits an existing Borrower entity.
      *
-     * @Route("/{id}", name="login_update")
+     * @Route("/{id}", name="borrower_update")
      * @Method("PUT")
-     * @Template("DeviabAppBundle:Login:edit.html.twig")
+     * @Template("DeviabAppBundle:Borrower:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('DeviabAppBundle:Login')->find($id);
+        $entity = $em->getRepository('DeviabAppBundle:Borrower')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Login entity.');
+            throw $this->createNotFoundException('Unable to find Borrower entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -194,7 +193,7 @@ class LoginController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('login_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('borrower_edit', array('id' => $id)));
         }
 
         return array(
@@ -204,9 +203,9 @@ class LoginController extends Controller
         );
     }
     /**
-     * Deletes a Login entity.
+     * Deletes a Borrower entity.
      *
-     * @Route("/{id}", name="login_delete")
+     * @Route("/{id}", name="borrower_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -216,21 +215,21 @@ class LoginController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('DeviabAppBundle:Login')->find($id);
+            $entity = $em->getRepository('DeviabAppBundle:Borrower')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Login entity.');
+                throw $this->createNotFoundException('Unable to find Borrower entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('login'));
+        return $this->redirect($this->generateUrl('borrower'));
     }
 
     /**
-     * Creates a form to delete a Login entity by id.
+     * Creates a form to delete a Borrower entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -239,7 +238,7 @@ class LoginController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('login_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('borrower_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
