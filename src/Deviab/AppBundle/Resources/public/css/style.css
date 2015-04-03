@@ -1,0 +1,98 @@
+body {
+background-color: rgb(247,247,247);
+}
+@font-face {
+ font-family: 'neuropol';
+  src: url(NEUROPOL.ttf);
+}
+.logo {
+    font-family: neuropol !important;
+    font-size: 25px !important;
+    color: #FFF !important;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #FFF !important;
+}
+.navbar-default {
+    background-color: #0070B9 !important;
+    border-color: #0070B9 !important;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #0070B9 !important;
+    background-color: #FFF !important;
+}
+.navbar {
+    
+    min-height: 43px;
+    margin-bottom: 0px !important;
+    border: 1px solid transparent;
+}
+
+.navbar-nav>li>a {
+padding-top: 10px;
+padding-bottom: 15px;
+color: rgb(247,247,247) !important;
+font-weight: bold;
+
+}
+.nav>li>a:focus, .nav>li>a:hover {
+text-decoration: none;
+background-color: rgb(247,247,247);
+color: rgb(0, 112, 185) !important;
+}
+.navbar {
+position: fixed !important; 
+width: 100%; 
+z-index: 55;
+}
+/***** Coming Soon *****/
+
+.coming-soon {
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+}
+
+.inner-bg {
+    height:500px;
+    padding: 55px 0 60px 0;
+    background: url(../img/pattern-3.png);
+    -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
+    -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
+}
+
+.coming-soon h2 {
+    font-size: 40px;
+    font-weight: 700;
+    padding-top: 300px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 7px rgba(0,0,0,.2);
+}
+
+.coming-soon p {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 36px;
+    text-shadow: 0 1px 7px rgba(0,0,0,.2);
+}
+
+/*<div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 500px; width: 1288px; position: fixed;"></div>*/
+.backstretch {
+    position: fixed !important;
+    z-index: 0;
+}
+.width {
+	width:57% !important;
+}
+.header01{
+    color:#0070B9;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.aboutus {
+    z-index: 50 !important;
+    position: relative;
+    background-color: #FFF;
+}
