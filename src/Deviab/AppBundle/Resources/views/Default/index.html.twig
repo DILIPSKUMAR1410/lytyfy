@@ -49,24 +49,25 @@
 
 	<body ng-app="myApp">
 		<nav class="navbar navbar-default" >
-		  	<div class="container-fluid">
+		  	<div class="container-fluide">
 		    	<!-- Brand and toggle get grouped for better mobile display -->
-			    <div class="navbar-header col-lg-4 col-md-3 col-sm-12">
+			    <div class="navbar-header col-lg-5 col-md-3 col-sm-2">
 			      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				        <span class="sr-only">Toggle navigation</span>
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 			      	</button>
-			      	<a class="navbar-brand logo" href="#">deviab</a>
+			      	<a class="navbar-brand logo pull-left" href="#">deviab</a>
 		    	</div>
 
 			    <!-- Collect the nav links, forms, and other content for toggling -->
-			    <div class="collapse navbar-collapse col-lg-8 col-md-9 col-sm-12" id="bs-example-navbar-collapse-1">
+
+			    <div class="container-fluid pull-right collapse navbar-collapse col-lg-7 col-md-9 col-sm-10" id="bs-example-navbar-collapse-1 navbar-right">
 			      	<ul class="nav navbar-nav ">
 				        <li {# class="active" #}><a href="#">Home <span class="sr-only">(current)</span></a></li>
 				        <li class="dropdown">
-				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">About Us <span class="caret"></span></a>
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">About Us <span class="caret"></span></a>
 				          <ul class="dropdown-menu" role="menu">
 				        	<li><a href="#"></a></li>
 				            <li><a href="#">About Deviab</a></li>
@@ -79,16 +80,16 @@
 				        </li>
 				        <li><a href="#">Others</a></li>
 			      	</ul>
-			      	<form class="navbar-form navbar-left col-sm-1"  role="search">
-				        <div class="form-group ">
-				          <input type="text" class="form-control" placeholder="Search">
-				        </div>
-			        	<button type="submit" class="btn btn-default">Submit</button>
-			      	</form>
-				    <ul class="nav navbar-nav navbar-right">
+			      	<ul class="nav navbar-nav ">
 				        <li><a href="#">Sign In</a></li>
 				        <li><a href="#">Join Us</a></li>
 				    </ul>
+				    <form class="navbar-form navbar-right "  role="search">
+				        <div class="form-group ">
+				          <input type="text" class="form-control" placeholder="Search">
+				        </div>
+			        	
+			      	</form>
 			    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>

@@ -17,9 +17,14 @@ background-color: rgb(247,247,247);
     background-color: #0070B9 !important;
     border-color: #0070B9 !important;
 }
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+.navbar-default .navbar-nav > li > a:focus {
     color: #0070B9 !important;
-    background-color: #FFF !important;
+    background-color:#FFF !important;
+}
+.navbar-default .navbar-nav > li > a:hover {
+    color: #FFF !important;
+    background-color: #1346B2 !important;
+    
 }
 .navbar {
     
@@ -35,11 +40,11 @@ color: rgb(247,247,247) !important;
 font-weight: bold;
 
 }
-.nav>li>a:focus, .nav>li>a:hover {
+/*.nav>li>a:focus, .nav>li>a:hover {
 text-decoration: none;
-background-color: rgb(247,247,247);
+background-color: #0000cc !important;
 color: rgb(0, 112, 185) !important;
-}
+}*/
 .navbar {
 position: fixed !important; 
 width: 100%; 
