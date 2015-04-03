@@ -54,7 +54,7 @@ z-index: 55;
 }
 
 .inner-bg {
-    height:500px;
+    height:700px;
     padding: 55px 0 60px 0;
     -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
     -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
@@ -80,6 +80,10 @@ z-index: 55;
 .backstretch {
     position: fixed !important;
     z-index: 0;
+}
+
+.banner-text {
+    margin-top: 200px;
 }
 .width {
 	width:57% !important;
@@ -108,7 +112,7 @@ z-index: 55;
     padding-left:12px;
     width:65px;
     height:auto;
-    margin-top:80px;
+    margin-top:150px;
 }
 .facebook {
     background: url(../images/social-icons/facebook.png);
