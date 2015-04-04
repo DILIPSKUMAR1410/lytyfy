@@ -1,7 +1,6 @@
-deviab_app:
-    resource: "@DeviabAppBundle/Resources/config/routing.php"
+deviab_user:
+    resource: "@DeviabUserBundle/Resources/config/routing.yml"
     prefix:   /
 
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

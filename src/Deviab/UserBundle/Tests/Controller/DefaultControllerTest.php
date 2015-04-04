@@ -1,6 +1,6 @@
 <?php
 
-namespace Deviab\AppBundle\Tests\Controller;
+namespace Deviab\UserBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
