@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 
 /**
- * @Route("/borrower")
+ * @Route("/borrowers")
  */
 class ListingController extends Controller
 {
@@ -27,8 +27,19 @@ class ListingController extends Controller
             ->getRepository('DeviabAppBundle:Borrower')
             ->findAll();
 
-    	return new Response(json_encode(array('hello' => 'hi')));
+        return $this->render('DeviabAppBundle:Borrower:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+	}
 
+   /**
+	* @Route("/listing")
+	* @Method({"GET"})
+	*/
+	public function borrowerListingAction()
+	{
+		return $this->render('', array());
 	}
 
 }
