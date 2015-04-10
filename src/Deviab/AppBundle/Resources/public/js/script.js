@@ -30,5 +30,21 @@ $(function() {
 	$( "#show-social-plugin" ).click(function() {
 	hideShowButton();
 	});
+	var stateHide=true;
+	$(document).ready(function(){
+	    $("#state").click(function(){
+	    	stateHide = stateHide ? false : true;
+	        $("#stateToggle").toggle("fast","swing");
+	        if(stateHide) {
+	        	$("#state+-").text("+");}
+	        else
+	        	$("#state+-").text("-");
+	        
+	    });
+	});
+
 	
 });
+
+
+

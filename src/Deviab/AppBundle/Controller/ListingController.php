@@ -39,7 +39,7 @@ class ListingController extends Controller
 	*/
 	public function borrowerListingAction()
 	{
-		return $this->render('', array());
+		return $this->render('DeviabAppBundle:Listings:listings.html.twig', array());
 	}
 
 }
