@@ -55,4 +55,8 @@ a {
 }
 a:hover {
 	cursor: pointer;
-};
+}
+.img {
+	background: url(../images/listings/listingTest.png);
+	height:200px;
+}
