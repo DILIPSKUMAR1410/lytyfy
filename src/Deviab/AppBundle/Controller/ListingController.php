@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use JMS\Serializer\SerializerBuilder;
 
 
 /**
@@ -19,6 +20,7 @@ class ListingController extends Controller
 	* @Route("/search")
 	* @Method({"POST"})
 	*
+	* @return array
 	*/
     public function borrowerSearchAction()
     {
@@ -27,10 +29,15 @@ class ListingController extends Controller
             ->getRepository('DeviabAppBundle:Borrower')
             ->findAll();
 
-        return $this->render('DeviabAppBundle:Borrower:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        $response = new Response();
+
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($borrowers, 'json');
+
+        $response->setContent($jsonContent);
+        $response->headers->set('Content-Type', 'application/json');
+        
+        return $response;
 	}
 
    /**

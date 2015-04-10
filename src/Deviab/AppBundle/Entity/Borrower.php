@@ -3,6 +3,7 @@
 namespace Deviab\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -31,64 +32,64 @@ class Borrower extends BaseEntity
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
     private $name;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="gender", type="string", length=255)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="gender", type="string", length=255, nullable=false)
      */
     private $gender;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="state", type="string", length=255)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="state", type="string", length=255, nullable=false)
      */
     private $state;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="phone", type="string", length=255, nullable=false)
      */
     private $phone;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="address", type="string", length=255)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="address", type="string", length=255, nullable=false)
      */
     private $address;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="locality", type="string", length=255)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="locality", type="string", length=255, nullable=false)
      */
     private $locality;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="city", type="string", length=255, nullable=false)
      */
     private $city;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="borrower_img", type="string", length=255)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="borrower_img", type="string", length=255, nullable=false)
      */
     private $borrowerImg;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="borrower_dob", type="date")
+     * @Assert\NotBlank()
+     * @ORM\Column(name="borrower_dob", type="date", nullable=false)
      */
     private $borrowerDob;
 

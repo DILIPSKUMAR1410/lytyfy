@@ -25,7 +25,7 @@ class LendingDetail extends BaseEntity
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Borrower", inversedBy="borrowDetails")
-     * @ORM\Column(name="borrower_id", type="integer")
+     * @ORM\JoinColumn(name="borrower_id", referencedColumnName="id")
      *
      */
      protected $borrower;

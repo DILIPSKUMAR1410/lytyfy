@@ -10,26 +10,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Exception\ValidatorException;
 use Deviab\AppBundle\Entity\Borrower;
+use JMS\Serializer\SerializerBuilder;
 use \DateTime;
 
 /**
  * Borrower controller
  * @Route("/borrower")
- *
  */
 class BorrowerController extends Controller
 {
-
     /**
-     * Lists all Borrower entities.
-     * @Route("/")
-     *
+     * Add new Borrowers
+     * @Route("")
+     * @Method({"POST"})
      */
     public function postBorrowerAction()
     {
         $requestParams = $this->get('request')->request->all();
         $response = new Response();
         $borrower = new Borrower();
+        $borrower->setCreatedAt(new DateTime('now'));
         try {
             $this->updateFields($borrower, $requestParams);
         } catch (ValidatorException $e) {
@@ -39,7 +39,10 @@ class BorrowerController extends Controller
         $em->persist($borrower);
         $em->flush();
 
-        $response->setContent(json_encode($this->serialize($borrower)));
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($borrower, 'json');
+
+        $response->setContent($jsonContent);
         $response->headers->set('Content-Type', 'application/json');
         
         return $response;
@@ -88,7 +91,7 @@ class BorrowerController extends Controller
             unset($requestParams['borrower_image']);
         }
         if (array_key_exists('borrower_dob', $requestParams)) {
-            $borrower->setBorrowerDob($requestParams['borrower_dob']);
+            $borrower->setBorrowerDob(new DateTime('now'));
             unset($requestParams['borrower_dob']);
         }
         $borrower->setModifiedBy('');
