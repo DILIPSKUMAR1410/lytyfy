@@ -7,12 +7,13 @@
         <meta charset="utf-8">
 	  	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- CSS -->
+       
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 
-        <!-- link -->
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
@@ -22,37 +23,43 @@
 		<link rel="stylesheet" href="/bundles/deviabapp/css/navigation.css"/>
 		<link rel="stylesheet" href="/bundles/deviabapp/css/style.css"/>
 		<link rel="stylesheet" href="/bundles/deviabapp/css/listing.css"/>
-		<link rel="stylesheet" href="/bundles/deviabapp/js/app/app.js"/>
+		<script src="/bundles/deviabapp/js/app/checklist-model.js" type="text/javascript"></script>>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 		
 	  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	  	<!-- jquery hide -->
+	
 		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 	  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-	  	<!-- jquery hide -->
+	  
 		<script src="//code.jquery.com/jquery-1.10.2.js"> </script>
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
+	
+		<script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+		 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+		 <script src="/bundles/deviabapp/js/app/app.js"></script>
+		
 
-
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
         <link rel="stylesheet" href="assets/css/style.css">
-        <!-- {# <link href="app.js"> '' #}   -->
+       
+        
 
        
 
 	</head>
 
-	<body ng-app="myApp">
+	<body ng-app="listingsModule" ng-controller="filterController">
 		<nav class="navbar navbar-default" >
 		  	<div class="container-fluid">
-		    	<!-- Brand and toggle get grouped for better mobile display -->
+		    	
 			    <div class="navbar-header col-lg-5 col-md-3 col-sm-1">
 			      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				        <span class="sr-only">Toggle navigation</span>
@@ -63,7 +70,7 @@
 			      	<a class="navbar-brand logo pull-left" href="#">deviab</a>
 		    	</div>
 
-			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    
 
 			    <div class="container-fluid collapse navbar-collapse col-lg-7 col-md-9 col-sm-11" id="bs-example-navbar-collapse-1">
 			      	<ul class="nav navbar-nav ">
@@ -92,183 +99,185 @@
 				        </div>
 			        	
 			      	</form>
-			    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
+			    </div>
+		  </div>
 		</nav>
-		{# <div> class="container-fluid listing-container" #}
+		
 			<div class="container main-container">
 				<div class="container-fluid">
 					<h3 class="border-bottom">Now Lets Start with us....</h3>
 				</div>			
 				<div class="col-lg-3 col-md-2 col-sm-4 col-xs-12 filer-container">
-					<div class="state-container">
-						<div id="state" class="state-head"><a id="filter-type"> States <span class="pull-right" id="state+-">-</span> </a></div>
-						<div id="stateToggle" class="container-fluid">					
-							<div>
-	    						<label>
-						    		<input type="textbox" id="search-state" placeholder="Search State" class="col-lg-12">
-	      							
-	    						</label>
-	    					</div>
-	  						<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxWarning" value="cg">
-	      							Chhatisgarh
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="ka">
-	      							Karnatka
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="mp">
-	      							Madhya-Pradesh
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="bh">
-	      							Bihar
-	    						</label>
-	    					</div>
-		  				</div>
-					</div>
+					<form>
+						<div class="state-container">
+							<div id="state" class="state-head"><a id="filter-type"> States <span class="pull-right" id="state+-">-</span> </a></div>
+							<div id="stateToggle" class="container-fluid filter-group">					
+								<div>
+		    						<label>
+							    		<input type="textbox" id="search-state" placeholder="Search State" class="col-lg-12">
+		      							
+		    						</label>
+		    					</div>
+		  						 <div class="checkbox">
+		    						<label  ng-repeat="state in states">
+							    		 <input type="checkbox" checklist-model="filterData.state" checklist-value="state"> {[{state}]}<br/>
+		    						</label>
+		    					</div>
+		    					{#<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxWarning" name="state" ng-model="filterData.state.ka">
+		      							Karnatka
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxWarning" name="state" ng-model="filterData.state.mp" ng-true-value="Madhya-Pradesh," ng-false-value="">
+		      							Madhya-Pradesh
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxPrimary" name="state" ng-model="filterData.state.br">
+		      							Bihar
+		    						</label>
+		    					</div> #}
+			  				</div>
+						</div>
 
-					<div class="border"> </div>
+						<div class="border"> </div>
 
-					<div class="amount-container">
-						<div class="state-head"><a id="filter-type"> Amount Needed <span class="pull-right" id="amount+-">-</span> </a></div>
+						<div class="amount-container">
+							<div class="state-head"><a id="filter-type"> Amount Needed <span class="pull-right" id="amount+-">-</span> </a></div>
 
-						<div id="amountToggle" class="container-fluid">					
-	  						<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxWarning" value="1">
-	      							100-500
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="2">
-	      							501-1000
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="3">
-	      							1001-2500
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="bh">
-	      							2501-5000
-	    						</label>
-	    					</div>
-	  					</div>
-					</div>
+							<div id="amountToggle" class="container-fluid  filter-group">					
+		  						<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxWarning" name="amount" ng-model="filterData.amount.1">
+		      							100-500
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxPrimary" name="amount" ng-model="filterData.amount.2">
+		      							501-1000
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxPrimary" name="amount" ng-model="filterData.amount.3">
+		      							1001-2500
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxPrimary" name="amount" ng-model="filterData.amount.4">
+		      							2501-5000
+		    						</label>
+		    					</div>
+		  					</div>
+						</div>
 
-					<div class="border"> </div>
+						<div class="border"> </div>
 
-					<div class="gender-container">
-						<div class="state-head"><a id="filter-type"> Gender <span class="pull-right" id="gender+-">-</span> </a></div>
-						<div id="genderToggle" class="container-fluid">
-	  						<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxWarning" value="1">
-	      							Female
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="2">
-	      							Male
-	    						</label>
-	    					</div>
-	    				</div>
-					</div>
+						<div class="gender-container">
+							<div class="state-head"><a id="filter-type"> Gender <span class="pull-right" id="gender+-">-</span> </a></div>
+							<div id="genderToggle" class="container-fluid filter-group">
+		  						<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxWarning" name="gender" ng-model="filterData.gender.female">
+		      							Female
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxPrimary" name="gender" ng-model="filterData.gender.male">
+		      							Male
+		    						</label>
+		    					</div>
+		    				</div>
+						</div>
 
-					<div class="border"> </div>
+						<div class="border"> </div>
 
-					<div class="age-container">
-						<div class="state-head"><a id="filter-type"> Age <span class="pull-right" id="age+-">-</span> </a></div>
-						<div id="ageToggle" class="container-fluid">
-	  						<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxWarning" value="1">
-	      							&lt18
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="2">
-	      							18-25
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="3" />
-	      							26-35
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="bh">
-	      							35-55
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="bh">
-	      							>55
-	    						</label>
-	    					</div>
-	  					</div>
-					</div>
+						<div class="age-container">
+							<div class="state-head"><a id="filter-type"> Age <span class="pull-right" id="age+-">-</span> </a></div>
+							<div id="ageToggle" class="container-fluid filter-group">
+		  						<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxWarning" name="age" ng-model="filterData.age.1">
+		      							t18
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxPrimary" name="age" ng-model="filterData.age.2">
+		      							18-25
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxPrimary" name="age" ng-model="filterData.age.3" />
+		      							26-35
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxPrimary" name="age" ng-model="filterData.age.4">
+		      							35-55
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxPrimary" name="age" ng-model="filterData.age.5">
+		      							>55
+		    						</label>
+		    					</div>
+		  					</div>
+						</div>
 
-					<div class="border"></div>
+						<div class="border"></div>
 
-					<div class="education-container">
-						<div class="state-head"><a id="filter-type"> Education <span class="pull-right" id="education+-">-</span> </a></div>
-						<div id="educationToggle" class="container-fluid">
-	  						<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxWarning" value="1">
-	      							ABCD
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="2">
-	      							EFGH
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="3">
-	      							IJKL
-	    						</label>
-	    					</div>
-	    					<div class="checkbox">
-	    						<label>
-						    		<input type="checkbox" id="checkboxPrimary" value="bh">
-	      							MNOP
-	    						</label>
-	    					</div>
-	  					</div>
-					</div>
+						<div class="education-container">
+							<div class="state-head"><a id="filter-type"> Education <span class="pull-right" id="education+-">-</span> </a></div>
+							<div id="educationToggle" class="container-fluid filter-group">
+		  						<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxWarning" name="education" ng-model="filterData.education.1">
+		      							ABCD
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxPrimary" name="education" ng-model="filterData.education.2">
+		      							EFGH
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxPrimary" name="education" ng-model="filterData.education.3">
+		      							IJKL
+		    						</label>
+		    					</div>
+		    					<div class="checkbox">
+		    						<label>
+							    		<input type="checkbox" id="checkboxPrimary" name="education" ng-model="filterData.education.4">
+		      							MNOP
+		    						</label>
+		    					</div>
+		  					</div>
+						</div>
+					</form>
 				</div>
 				<div class="col-lg-9 col-md-10 col-sm-8 col-xs-12">
 					<div class="row containet-fluid">
-						<div class="img col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>					
+						<pre>
+							{[{ filterData.state }]}
+						</pre>				
 					</div>				
 				</div>
-			</div>	
-		<script src="/bundles/deviabapp/js/script.js"></script> <!-- social-icon hide show -->
+			</div>
+		<script src="/bundles/deviabapp/js/script.js"></script> 
+
 
 	</body>
 </html>

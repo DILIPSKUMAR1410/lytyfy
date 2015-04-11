@@ -1,15 +1,5 @@
-var app = angular.module('listingModule', ['ngRoute']);
+    var listingsModule = angular.module('listingsModule', ['ngRoute']);
 
-app.config(function($routeProvider, $interpolateProvider){
-	$interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-	$routeProvider.
-		when('/index', {
-			templateUrl: '/bundles/busapp/js/app/templates/index.html',
-			controller: 'IndexController'
-		}).
-	
-		otherwise({
-			templateUrl: '/bundles/busapp/js/app/templates/index.html',
-			controller: 'IndexController'
-		});		
-});
+    listingsModule.config(function($routeProvider, $interpolateProvider) {
+        $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+    });
