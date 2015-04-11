@@ -3,8 +3,6 @@ app.config(function($routeProvider, $interpolateProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
 });
 
-
-
 app.controller('filterController', function($scope) {
     $scope.states = [
         'cg',
