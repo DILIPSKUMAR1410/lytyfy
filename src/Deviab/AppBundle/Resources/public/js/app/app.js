@@ -1,24 +1,25 @@
-var listingsModule = angular.module('listingsModule', ['ngRoute']);
-
-listingsModule.config(function($routeProvider, $interpolateProvider) {
+var app = angular.module("app", ["checklist-model", "ngRoute"]);
+app.config(function($routeProvider, $interpolateProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
 });
-listingsModule.controller('filterController', function($scope) {
+
+
+
+app.controller('filterController', function($scope) {
     $scope.states = [
-        'guest',
-        'user',
-        'customer',
-        'admin'
+        'cg',
+        'tn',
+        'kr',
+        'mh'
     ];
     $scope.filterData = {
-        state: []
+        selectedStates: ['cg']
     };
     $scope.checkAll = function() {
-        $scope.filterData.states = angular.copy($scope.states);
+        $scope.filterData.selectedStates = angular.copy($scope.states);
     };
     $scope.uncheckAll = function() {
-        $scope.filterData.states = [];
+        $scope.filterData.selectedStates = [];
     };
-
 
 });
