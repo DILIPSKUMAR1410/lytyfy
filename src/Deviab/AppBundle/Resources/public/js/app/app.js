@@ -16,11 +16,11 @@ app.controller('filterController', function($http) {
 
     };
 
-    var res = $http.post('/search', dataObj);
-        res.success(function(data, status, headers, config) {
-            $scope.message = data;
+     $http.post('http://127.0.0.1:8080/borrowers/listing/search', this.filterData).then(function(response) {
+            this.borrowerList = response.data;
+           console.log(response);
         });
-        res
+        
     
     this.states = [
         'cg',
