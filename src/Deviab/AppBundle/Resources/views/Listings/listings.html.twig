@@ -103,31 +103,12 @@
 						<div class="amount-container">
 							<div class="state-head"><a id="filter-type"> Amount Needed <span class="pull-right" id="amount+-">-</span> </a></div>
 
-							<div id="amountToggle" class="container-fluid  filter-group">					
-		  						<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxWarning" name="amount" ng-model="filterData.amount.1">
-		      							100-500
-		    						</label>
-		    					</div>
-		    					<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxPrimary" name="amount" ng-model="filterData.amount.2">
-		      							501-1000
-		    						</label>
-		    					</div>
-		    					<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxPrimary" name="amount" ng-model="filterData.amount.3">
-		      							1001-2500
-		    						</label>
-		    					</div>
-		    					<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxPrimary" name="amount" ng-model="filterData.amount.4">
-		      							2501-5000
-		    						</label>
-		    					</div>
+							<div id="amountToggle" class="container-fluid  filter-group">		<div ng-repeat="amountneeded in filterCtrl.amountneeded" class="checkbox">
+									<label >
+										<input type="checkbox" checklist-model="filterCtrl.filterData.selectedAmountneeded" checklist-value="amountneeded"> {[{amountneeded}]}</label>									
+								  </div>
+								  <button ng-click="checkAll()">check all</button>
+										<button ng-click="uncheckAll()">uncheck all</button>
 		  					</div>
 						</div>
 
@@ -136,18 +117,12 @@
 						<div class="gender-container">
 							<div class="state-head"><a id="filter-type"> Gender <span class="pull-right" id="gender+-">-</span> </a></div>
 							<div id="genderToggle" class="container-fluid filter-group">
-		  						<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxWarning" name="gender" ng-model="filterData.gender.female">
-		      							Female
-		    						</label>
-		    					</div>
-		    					<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxPrimary" name="gender" ng-model="filterData.gender.male">
-		      							Male
-		    						</label>
-		    					</div>
+		  						<div ng-repeat="gender in filterCtrl.gender" class="checkbox">
+									<label >
+										<input type="checkbox" checklist-model="filterCtrl.filterData.selectedGender" checklist-value="gender"> {[{gender}]}</label>									
+								  </div>
+								  <button ng-click="checkAll()">check all</button>
+										<button ng-click="uncheckAll()">uncheck all</button>
 		    				</div>
 						</div>
 
@@ -156,36 +131,12 @@
 						<div class="age-container">
 							<div class="state-head"><a id="filter-type"> Age <span class="pull-right" id="age+-">-</span> </a></div>
 							<div id="ageToggle" class="container-fluid filter-group">
-		  						<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxWarning" name="age" ng-model="filterData.age.1">
-		      							t18
-		    						</label>
-		    					</div>
-		    					<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxPrimary" name="age" ng-model="filterData.age.2">
-		      							18-25
-		    						</label>
-		    					</div>
-		    					<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxPrimary" name="age" ng-model="filterData.age.3" />
-		      							26-35
-		    						</label>
-		    					</div>
-		    					<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxPrimary" name="age" ng-model="filterData.age.4">
-		      							35-55
-		    						</label>
-		    					</div>
-		    					<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxPrimary" name="age" ng-model="filterData.age.5">
-		      							>55
-		    						</label>
-		    					</div>
+		  						<div ng-repeat="age in filterCtrl.age" class="checkbox">
+									<label >
+										<input type="checkbox" checklist-model="filterCtrl.filterData.selectedAge" checklist-value="age"> {[{age}]}</label>									
+								  </div>
+								  <button ng-click="checkAll()">check all</button>
+										<button ng-click="uncheckAll()">uncheck all</button>
 		  					</div>
 						</div>
 
@@ -194,30 +145,12 @@
 						<div class="education-container">
 							<div class="state-head"><a id="filter-type"> Education <span class="pull-right" id="education+-">-</span> </a></div>
 							<div id="educationToggle" class="container-fluid filter-group">
-		  						<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxWarning" name="education" ng-model="filterData.education.1">
-		      							ABCD
-		    						</label>
-		    					</div>
-		    					<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxPrimary" name="education" ng-model="filterData.education.2">
-		      							EFGH
-		    						</label>
-		    					</div>
-		    					<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxPrimary" name="education" ng-model="filterData.education.3">
-		      							IJKL
-		    						</label>
-		    					</div>
-		    					<div class="checkbox">
-		    						<label>
-							    		<input type="checkbox" id="checkboxPrimary" name="education" ng-model="filterData.education.4">
-		      							MNOP
-		    						</label>
-		    					</div>
+		  						<div ng-repeat="education in filterCtrl.education" class="checkbox">
+									<label >
+										<input type="checkbox" checklist-model="filterCtrl.filterData.selectedEducation" checklist-value="education"> {[{education}]}</label>									
+								  </div>
+								  <button ng-click="checkAll()">check all</button>
+										<button ng-click="uncheckAll()">uncheck all</button>
 		  					</div>
 						</div>
 					</form>

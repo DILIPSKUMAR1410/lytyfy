@@ -16,7 +16,7 @@ angular.module('checklist-model', [])
     return false;
   }
 
-  / / add
+  // add
 
 function add(arr, item, comparator) {
     arr = angular.isArray(arr) ? arr : [];
@@ -113,4 +113,4 @@ return {
         return postLinkFn;
     }
 };
-}]);
+]);

@@ -18,48 +18,49 @@ app.controller('filterController', function() {
         'kr',
         'mh'
     ];
-    this.amountNeeded = [
-        'cg',
-        'tn',
-        'kr',
-        'mh'
+    this.amountneeded = [
+        '100-500',
+        '501-1000',
+        '1001-5000',
+        '>5000'
     ];
     this.gender = [
-        'cg',
-        'tn',
-        'kr',
-        'mh'
-    ];
+        'Male',
+        'Female',
+            ];
     this.age = [
-        'cg',
-        'tn',
-        'kr',
-        'mh'
+        '<18',
+        '18-25',
+        '26-35',
+        '35-50',
+        '>50'
+        
     ];
     this.education= [
-        'cg',
-        'tn',
-        'kr',
-        'mh'
+        'Illiterate',
+        'Metric',
+        'Graduated',
+        'Postgraduated'
     ];
 
 
 
     this.filterData = {
-        selectedStates: ['cg'],
-        selectedAmountNeeded: ['cg'],
-        selectedGender: ['cg'],
-        selectedEducation: ['cg'],
-        selectedAge: ['cg'],
+        selectedGender: [],
+        selectedStates: [],
+        selectedAmountneeded: [],
+        selectedGender: [],
+        selectedEducation: [],
+        selectedAge: []
 
     };
 
 
     this.checkAll = function() {
-        this.filterData.selectedStates = angular.copy(this.states);
+        this.filterData.selectedstates = angular.copy(this.states);
             };
    this.uncheckAll = function() {
-        this.filterData.selectedStates = [];
+        this.filterData.selectedstates = [];
     };
 
 });
