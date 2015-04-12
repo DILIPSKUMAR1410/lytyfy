@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 	<head>
 		<title>DEVIAB</title>
 		<meta name="description" content=""/>
@@ -26,7 +26,7 @@
         <script src= "http://vitalets.github.io/checklist-model/checklist-model.js"></script>
 	</head>
 
-	
+	<body ng-app="app" ng-controller="filterController as filterCtrl">
 		<nav class="navbar navbar-default" >
 
 		  	<div class="container-fluid">
@@ -89,14 +89,12 @@
 		      							
 		    						</label>
 		    					</div>
-		    					<div>
-									<label ng-repeat="state in states">
-										<input type="checkbox" checklist-model="filterData.selectedStates" checklist-value="state"> {[{state}]}</label>  <br>
-										<button ng-click="checkAll()">check all</button>
-										<button ng-click="uncheckAll()">uncheck all</button>
-										<br><br>
-										
+		    					<div ng-repeat="state in filterCtrl.states" class="checkbox">
+									<label >
+										<input type="checkbox" checklist-model="filterCtrl.filterData.selectedStates" checklist-value="state"> {[{state}]}</label>									
 								  </div>
+								  <button ng-click="checkAll()">check all</button>
+										<button ng-click="uncheckAll()">uncheck all</button>
 							</div>
 						</div>
 
@@ -227,8 +225,8 @@
 				<div class="col-lg-9 col-md-10 col-sm-8 col-xs-12">
 					<div class="row containet-fluid">
 						<pre>
-						filterData : {[{ filterData | json}]}
-						response : {[{borrowersList  }]}
+						filterData : {[{ filterCtrl.filterData | json}]}
+						
 
 						</pre>				
 					</div>				
@@ -240,4 +238,4 @@
 	</body>
 </html>
 </div>
-	<body ng-app="app" ng-controller="filterController">
+	

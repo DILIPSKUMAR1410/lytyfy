@@ -1,6 +1,6 @@
-* *
+/**
     * Checklist - model * AngularJS directive
-for list of checkboxes * /
+for list of checkboxes */
 
 angular.module('checklist-model', [])
 .directive('checklistModel', ['$parse', '$compile', function($parse, $compile) {
