@@ -3,13 +3,25 @@ app.config(function($routeProvider, $interpolateProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
 });
 
-app.controller('filterController', function() {
+app.controller('filterController',['$http',function($http) {
 
+    var borrowerList=this;
+    var filterData = this;
+    filterData= {
+        
+        selectedGender: [],
+        selectedStates: [],
+        selectedAmountneeded: [],
+        selectedGender: [],
+        selectedEducation: [],
+        selectedAge: []
 
-     // $http.post('http://127.0.0.1:8080/borrowers/listing/search', this.filterData).then(function(response) {
-     //        this.borrowerList = response.data;
-     //       console.log(response);
-     //    });
+    };
+
+     $http.post('http://127.0.0.1:8080/borrowers/listing/search',filterData).success(function(response) {
+           borrowerList = response.data;
+           console.log(response.data);
+        });
         
     
     this.states = [
@@ -45,15 +57,7 @@ app.controller('filterController', function() {
 
 
 
-    this.filterData = {
-        selectedGender: [],
-        selectedStates: [],
-        selectedAmountneeded: [],
-        selectedGender: [],
-        selectedEducation: [],
-        selectedAge: []
-
-    };
+   
 
 
     this.checkAll = function() {
@@ -63,4 +67,5 @@ app.controller('filterController', function() {
         this.filterData.selectedstates = [];
     };
 
-});
+}
+]);
