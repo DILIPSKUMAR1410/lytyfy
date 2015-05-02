@@ -5,8 +5,6 @@ body {
  font-family: 'neuropol';
   src: url(NEUROPOL.ttf);
 }
-
-
 .inner-bg {
     height:700px;
     padding: 55px 0 60px 0;
@@ -24,7 +22,7 @@ body {
 }
 
 .coming-soon p {
-    margin-top: 20px;
+    margin-top: 70px;
     font-size: 18px;
     line-height: 36px;
     text-shadow: 0 1px 7px rgba(0,0,0,1);
@@ -32,7 +30,7 @@ body {
 
 /*<div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 500px; width: 1288px; position: fixed;"></div>*/
 .backstretch {
-    position: fixed !important;
+   /* position: fixed !important;*/
     z-index: 0;
 }
 
@@ -48,89 +46,22 @@ body {
     font-weight: bold;
 }
 
-.aboutus {
+.about {
     z-index: 50 !important;
     position: relative;
     background-color: #FFF;
 }
-
-.social a {
-    display: inline-block;
-    width: 48px;
-    height: 48px;
-    margin: 3px;
-    padding-top: 20px;
+#solutions-img {
+    background-image: url(../images/index/solution.gif);    
+    height: 200px;
 }
-.social {
+.link {
     text-align: center;
-    padding-left:0px;
-    width:55px;
-    height:auto;
-    margin-top:150px;
-    margin-right: 12px;
-
+    font-size: 25px;
 }
-.facebook {
-    background: url(../images/social-icons/facebook.png);
-    background-repeat: none;
-    margin-top: 5px;
-   
+.navbar {
+  border-radius: 0px ;
 }
-.googleplus {
-    background: url(../images/social-icons/gplus.png);
-    background-repeat: none;
-    
+.navbar-nav>li>a {
+  padding-top: 15px!important;
 }
-.twitter {
-    background: url(../images/social-icons/twitter.png);
-    background-repeat: none;
-    
-}
-
-.dribbble {
-    background: url(../images/social-icons/linkedin.png);
-    background-repeat: none;
-    
-}
-#show-social-plugin {
-    display: none;
-}
-.cross{
-    
-}
-.close {
-    color:green !important;
-    
-}
-#hide-social-plugin {color:#FF0000;background-color:#FFF;margin-bottom: 2px; }
-#social-icons {position: relative; margin-left:-20px; }
-#show-social-plugin {
-    padding-left:10px; 
-    margin-left: 12px;
-    margin-bottom: 0px;
-    position: absolute;
-    transform: rotate(90deg);
-    transform-origin: left top 0px;
-    width: 250px;
-    /*margin-top: 30px*/;
-     
-    height:25px;
-    padding: 0px !important;
-  background-color: #FFF!important; 
-    color: #0070B9 !important;
-    border: 1px solid #0070B9 !important
-}
-/*.vertical-text {
-    transform: rotate(90deg);
-    transform-origin: left top 0px;
-    background: none repeat scroll 0% 0% #E23737;
-    color: #FFF;
-    margin-left: 40px;
-    padding: 10px;
-    text-transform: uppercase;
-    border: 1px solid #B52C2C;
-    box-shadow: 2px -2px 0px rgba(0, 0, 0, 0.1);
-    float: left;
-    width:50px;
-    height:200px;
-}*/
