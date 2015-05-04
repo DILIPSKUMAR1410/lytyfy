@@ -4,3 +4,12 @@ deviab_user:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
+
+deviab_app:
+    resource: @DeviabAppBundle/Controller/
+    type:     annotation
+

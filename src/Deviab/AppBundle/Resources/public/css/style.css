@@ -1,0 +1,67 @@
+body {
+    background-color: rgb(247,247,247);
+}
+@font-face {
+ font-family: 'neuropol';
+  src: url(NEUROPOL.ttf);
+}
+.inner-bg {
+    height:700px;
+    padding: 55px 0 60px 0;
+    -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
+    -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
+}
+
+.coming-soon h2 {
+    font-size: 40px;
+    font-weight: 700;
+    padding-top: 300px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 7px rgba(0,0,0,1);
+}
+
+.coming-soon p {
+    margin-top: 70px;
+    font-size: 18px;
+    line-height: 36px;
+    text-shadow: 0 1px 7px rgba(0,0,0,1);
+}
+
+/*<div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 500px; width: 1288px; position: fixed;"></div>*/
+.backstretch {
+   /* position: fixed !important;*/
+    z-index: 0;
+}
+
+.banner-text {
+    margin-top: 170px;
+}
+.width {
+	width:57% !important;
+}
+.header01{
+    color:#0070B9;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.about {
+    z-index: 50 !important;
+    position: relative;
+    background-color: #FFF;
+}
+#solutions-img {
+    background-image: url(../images/index/solution.gif);    
+    height: 200px;
+}
+.link {
+    text-align: center;
+    font-size: 25px;
+}
+.navbar {
+  border-radius: 0px ;
+}
+.navbar-nav>li>a {
+  padding-top: 15px!important;
+} 

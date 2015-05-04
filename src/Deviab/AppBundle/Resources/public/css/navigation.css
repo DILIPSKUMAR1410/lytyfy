@@ -1,0 +1,48 @@
+.logo {
+    font-family: neuropol !important;
+    font-size: 25px !important;
+    color: #FFF !important;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #FFF !important;
+}
+.navbar-default {
+    background-color: #0070B9 !important;
+    border-color: #0070B9 !important;
+}
+.navbar-default .navbar-nav > li > a:focus,.navbar-default .navbar-nav > li > a:hover {
+    color: #0070B9 !important;
+    background-color:#FFF !important;
+}
+
+.navbar {
+    
+    min-height: 43px;
+    margin-bottom: 0px !important;
+    border: 1px solid transparent;
+}
+
+.navbar-nav>li>a {
+padding-top: 10px;
+padding-bottom: 15px;
+color: rgb(247,247,247) !important;
+font-weight: bold;
+
+}
+/*.nav>li>a:focus, .nav>li>a:hover {
+text-decoration: none;
+background-color: #0000cc !important;
+color: rgb(0, 112, 185) !important;
+}*/
+.navbar {
+/*position: fixed !important; */
+width: 100%; 
+z-index: 55;
+}
+/***** Coming Soon *****/
+
+.coming-soon {
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+}

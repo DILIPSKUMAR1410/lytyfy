@@ -1,1 +1,255 @@
-Hello {{ name }}!
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DEVIAB</title>
+		<meta name="description" content="">
+        <meta name="author" content="">
+        <meta charset="utf-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<link rel="stylesheet" href="/bundles/deviabapp/css/style.css"/>
+		<link rel="stylesheet" href="/bundles/deviabapp/css/navigation.css"/>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>	
+		<!-- Load ScrollTo -->
+		<script src="http://flesler-plugins.googlecode.com/files/jquery.scrollTo-1.4.2-min.js"></script>
+		<!-- Load LocalScroll -->
+		<script src="http://flesler-plugins.googlecode.com/files/jquery.localscroll-1.2.7-min.js"></script>
+	<style>	
+	.box {
+		
+		height: 300px;
+		
+		color: #fff;
+		/*padding: 10px;
+		
+		margin: 100px 0 0 0;*/
+	}
+	
+	#box1 {
+		/*margin: 300px 0 0 0;*/
+		background: #C0C0C0;
+	}
+	
+	#box2 {
+		background: #C0C0C0;
+		/*padding-top: 20px;*/
+	}
+	
+	#box3 {
+		background: #C0C0C0;
+	}
+	
+
+	
+	/* CSS for the small boxes that will scroll inside a div */
+	
+	#small-box-container {
+		/*border: 1px solid black;*/
+		/*padding: 20px;*/
+		
+		height: 200px;
+		
+		overflow: scroll;
+		overflow-x: hidden;
+		overflow-y: hidden;
+	}
+	
+	.small-box {
+		
+		color: #fff;
+		/*padding: 10px;*/
+		
+		
+		
+		margin: 0 0 50px 0;
+	}
+	
+	#small-box1 {
+		background: #C0C0C0;
+	}
+	
+	#small-box2 {
+		background: #C0C0C0;
+	}
+	
+	#small-box3 {
+		background: #C0C0C0;
+	}
+	.anav {
+		position:fixed;
+	}
+	.navfix {
+		
+		z-index: 100;
+		background-color: #FFF;
+
+		
+	}
+	.abs {
+		position: absolute;
+		z-index: 100;
+	}
+	#solutions-container {
+		border: 1px solid black;
+		/*padding: 20px;*/
+		
+		height: 200px;
+		
+		overflow: scroll;
+		overflow-x: hidden;
+		overflow-y: hidden;
+	}
+	#careers-container {
+		border: 1px solid black;
+		/*padding: 20px;*/
+		
+		height: 200px;
+		
+		overflow: scroll;
+		overflow-x: hidden;
+		overflow-y: hidden;
+	}
+	
+	</style>
+	
+	<!-- javascript that will initiate jQuery and the LocalScroll plugin -->
+	<script>	
+		// When the document is loaded...
+	    $(document).ready(function()
+		{
+			var h=$( window ).height();
+			$(".box").css({'height':h+'px'});
+			$("#small-box-container").css({'height':h-200+'px'});
+			$("#solutions-container").css({'height':h-200+'px'});
+			$("#careers-container").css({'height':h-200+'px'});
+			$("#careers-link").css({'height':h-200+'px'});
+			$(".small-box").css({'height':h+'px'});
+			$(".sl-box1").css({'height':h+'px'});
+			$(".sl-box2").css({'height':h+'px'});
+			$(".link").css({'height':((h-200)/3)+'px','padding-top':((h-200)/6)+'px'});
+			// Scroll the whole document 
+			$('nav').localScroll({
+			   target:'body'
+			});		
+			// Scroll the content inside the #scroll-container div
+			$('#about-links').localScroll({
+			   target:'#small-box-container'
+			});	
+			$('#solutions-links').localScroll({
+			   target:'#solutions-container'
+			});		
+			$('#careers-links').localScroll({
+			   target:'#careers-container'
+			});	
+			
+		});
+		
+    </script>
+	</head>
+	<body ng-app="myApp">
+
+		<nav class="navbar navbar-default" >
+		  	<div class="container-fluide">
+		    	<!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header col-lg-5 col-md-3 col-sm-1">
+			      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+			      	</button>
+			      	<a class="navbar-brand logo pull-left" href="#">deviab</a>
+		    	</div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+
+			    <div class="container-fluid pull-right collapse navbar-collapse col-lg-7 col-md-9 col-sm-11" id="bs-example-navbar-collapse-1 navbar-right">
+			      	<ul class="nav navbar-nav ">
+				        <li><a href="">Home <span class="sr-only">(current)</span></a></li>
+				        <li class="dropdown">
+				          <a href="#box1">About</span></a>
+				        </li>
+				        <li><a href="#box2">Solutions</a></li>
+				         <li><a href="#careers-container">Careers</a></li>
+			      	</ul>
+			      	<ul class="nav navbar-nav ">
+				        <li><a href="#">Sign In</a></li>
+				        <li><a href="#">Join Us</a></li>
+				    </ul>
+				    <form class="navbar-form navbar-right "  role="search">
+				        <div class="form-group ">
+				          <input type="text" class="form-control" placeholder="Search">
+				        </div>
+			        	
+			      	</form>
+			    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+		<div class="coming-soon">
+	        <div class="inner-bg">
+	        	<div class="banner-text">
+			        <h2>Power to Everyone Everywhere</h2>
+			        <button type="button" class="btn btn-primary">Help Now</button>  
+			    </div>        
+	        </div>
+		</div>
+		<div class="abs">
+			<div id="box1" class="box">
+				<div id="solutions-img"></div>
+				<div id="about-links" class="col-lg-4">
+					<div class="link"></li><a href="#about-energy">Deviab Energy</a></div>
+					<div class="link"><a href="#about-team">Team</a><br></div>
+					<div class="link"><a href="#about-mentors">Mentors</a></div>
+				</div>
+				<div id="small-box-container" class="col-lg-8">
+					<div id="about-energy" class="small-box">
+						Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack f distribution network for renewable and clean energy technologies.
+					</div>
+					<div id="about-team" class="small-box">Small-Box #2</div>
+					<div id="about-mentors" class="small-box">Small-Box #3</div>
+				</div>
+			</div>
+			<div id="box2" class="box">
+				<div id="solutions-img"></div>
+				<div id="solutions-links" class="col-lg-4">
+					<div class="link"><a href="#solar-solution">Off-grid solar solutions</a></div>
+					<div class="link"><a href="#consulting-solution">Consulting</a></div>
+					<div class="link"><a href="#csr-solution">CSR projects</a></div>
+				</div>
+				<div id="solutions-container" class="col-lg-8">
+					<div id="solar-solution" class="sl-box1">
+						Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack f distribution network for renewable and clean energy technologies.
+						Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack f distribution network for renewable and clean energy technologies.
+						########################################
+					</div>
+					<div id="consulting-solution" class="sl-box1">Small-Box #2</div>
+					<div id="csr-solution" class="sl-box1">Small-Box #3</div>
+				</div>
+			</div>
+			<div id="box2" class="box">
+				<div id="solutions-img"></div>
+				<div id="careers-links" class="col-lg-4">
+					<div class="link"><a href="#joinus">Careers</a></div>
+					<div class="link"><a href="#volunteers">Volunteers</a></div>
+				</div>
+				<div id="careers-container" class="col-lg-8">
+					<div id="joinus" class="sl-box1">
+						Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack f distribution network for renewable and clean energy technologies.
+						Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack f distribution network for renewable and clean energy technologies.
+						########################################
+					</div>
+					<div id="volunteers" class="sl-box1">Small-Box #2</div>
+				</div>
+			</div>
+			
+		</div>
+
+        <script src="/bundles/deviabapp/js/jquery.backstretch.min.js"></script>
+        <script src="/bundles/deviabapp/js/scripts.js"></script>
+	</body>
+</html> 
+
