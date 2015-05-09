@@ -1,12 +1,13 @@
 body {
     background-color: rgb(247,247,247);
+    /*overflow: hidden;*/
 }
 @font-face {
  font-family: 'neuropol';
   src: url(NEUROPOL.ttf);
 }
 .inner-bg {
-    height:700px;
+    height:650px;
     padding: 55px 0 60px 0;
     -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
     -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
@@ -48,11 +49,15 @@ body {
 
 .about {
     z-index: 50 !important;
-    position: relative;
+/*    position: relative;*/
     background-color: #FFF;
 }
 #solutions-img {
     background-image: url(../images/index/solution.gif);    
+    height: 200px;
+}
+#about-img {
+    background-image: url(../images/index/about.jpeg);    
     height: 200px;
 }
 .link {
@@ -65,3 +70,134 @@ body {
 .navbar-nav>li>a {
   padding-top: 15px!important;
 } 
+
+.box {
+    
+    height: 300px;
+    
+    color: #fff;
+    /*padding: 10px;
+    
+    margin: 100px 0 0 0;*/
+}
+
+#box1 {
+    /*margin: 300px 0 0 0;*/
+    background: #C0C0C0;
+}
+
+#box2 {
+    background: #C0C0C0;
+    /*padding-top: 20px;*/
+}
+
+#box3 {
+    background: #C0C0C0;
+}
+
+
+
+/* CSS for the small boxes that will scroll inside a div */
+
+#small-box-container {
+    /*border: 1px solid black;*/
+    /*padding: 20px;*/
+    
+    height: 200px;
+    
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.small-box {
+    
+    color: #fff;
+    /*padding: 10px;*/
+    
+    
+    
+    margin: 0 0 50px 0;
+}
+
+#small-box1 {
+    background: #C0C0C0;
+}
+
+#small-box2 {
+    background: #C0C0C0;
+}
+
+#small-box3 {
+    background: #C0C0C0;
+}
+.anav {
+    /*position:fixed;*/
+}
+.navfix {
+    
+    z-index: 100;
+    background-color: #FFF;
+
+    
+}
+.abs {
+    /*position: absolute;*/
+    z-index: 100;
+}
+#member-img {
+    margin-top: 30px;
+}
+/*#member-desc {
+    padding-top:20px;
+}*/
+#designation {
+    font-size: 10px;
+}
+#solutions-container {
+    border: 1px solid black;
+    /*padding: 20px;*/
+    
+    height: 200px;
+    
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+#careers-container {
+    border: 1px solid black;
+    /*padding: 20px;*/
+    
+    height: 200px;
+    
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+#deepak-img,#vishnu-img {
+    height: 150px;
+}
+#footer {
+    background: #C0C0C0;
+    height:250px;
+    /*position:relative;*/
+}
+
+#graph {
+    height:250px;
+    background-image: url(../images/index/chart.jpg);   
+    background-repeat: no-repeat; 
+}
+#twitter {
+    height:250px;
+    background: #C0C0C0;
+}
+#contactus {
+    height:250px;
+    background: #C0C0C0;
+}
+.border-bottom {
+    border-bottom: 1px solid black;
+    margin: 20px 5px;
+    
+    }

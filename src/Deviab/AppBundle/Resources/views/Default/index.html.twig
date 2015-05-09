@@ -18,137 +18,77 @@
 		<script src="http://flesler-plugins.googlecode.com/files/jquery.scrollTo-1.4.2-min.js"></script>
 		<!-- Load LocalScroll -->
 		<script src="http://flesler-plugins.googlecode.com/files/jquery.localscroll-1.2.7-min.js"></script>
-	<style>	
-	.box {
-		
-		height: 300px;
-		
-		color: #fff;
-		/*padding: 10px;
-		
-		margin: 100px 0 0 0;*/
-	}
-	
-	#box1 {
-		/*margin: 300px 0 0 0;*/
-		background: #C0C0C0;
-	}
-	
-	#box2 {
-		background: #C0C0C0;
-		/*padding-top: 20px;*/
-	}
-	
-	#box3 {
-		background: #C0C0C0;
-	}
-	
+		<script>
+			var scrollCount =0;
+$(document).ready(function()
+{
+	var h=$( window ).height();
+	$(".inner-bg").css({'height':h-55+'px'});
+	$(".box").css({'height':h+'px'});
+	$("#small-box-container").css({'height':h-200+'px'});
+	$("#solutions-container").css({'height':h-200+'px'});
+	$("#careers-container").css({'height':h-200+'px'});
+	$("#careers-link").css({'height':h-200+'px'});
+	$(".small-box").css({'height':h+'px'});
+	$(".sl-box1").css({'height':h+'px'});
+	$(".sl-box2").css({'height':h+'px'});
+	$(".link").css({'height':((h-200)/3)+'px','padding-top':((h-200)/6)+'px'});
+	// Scroll the whole document 
+	$('nav').localScroll({
+	   target:'body'
+	});		
+	// Scroll the content inside the #scroll-container div
+	$('#about-links').localScroll({
+	   target:'#small-box-container'
+	});	
+	$('#solutions-links').localScroll({
+	   target:'#solutions-container'
+	});		
+	$('#careers-links').localScroll({
+	   target:'#careers-container'
+	});	
+	$("body").keydown(function(ev){
+        if(ev.which == 40 ) {
+        	if(scrollCount == 0) {
+        		scrollCount++;
+           		$("html, body").animate({ scrollTop: h+"px" });
+           	}
+           	else if(scrollCount == 1) {
+           		scrollCount++;
+           		$("html, body").animate({ scrollTop: h*2+"px" });
+           	} else if (scrollCount == 2) {
+           		scrollCount++;
+           		$("html, body").animate({ scrollTop: h*3+"px" });
+           	}
+           	else if (scrollCount == 3) {
+           		scrollCount++;
+           		$("html, body").animate({ scrollTop: h*4+"px" });
+           	}
+        }
+        if(ev.which == 38 ) {
+        	if(scrollCount == 1) {
+        		scrollCount--;
+           		$("html, body").animate({ scrollTop: "0px" });
+           	}
+           	else if(scrollCount == 2) {
+           		scrollCount--;
+           		$("html, body").animate({ scrollTop: h+"px" });
+           	} else if (scrollCount == 3) {
+           		scrollCount--;
+           		$("html, body").animate({ scrollTop: h*2+"px" });
+           	}
+           	else if (scrollCount == 4) {
+           		scrollCount--;
+           		$("html, body").animate({ scrollTop: h*3+"px" });
+           	}
+        }
+	});			
+});
 
-	
-	/* CSS for the small boxes that will scroll inside a div */
-	
-	#small-box-container {
-		/*border: 1px solid black;*/
-		/*padding: 20px;*/
-		
-		height: 200px;
-		
-		overflow: scroll;
-		overflow-x: hidden;
-		overflow-y: hidden;
-	}
-	
-	.small-box {
-		
-		color: #fff;
-		/*padding: 10px;*/
-		
-		
-		
-		margin: 0 0 50px 0;
-	}
-	
-	#small-box1 {
-		background: #C0C0C0;
-	}
-	
-	#small-box2 {
-		background: #C0C0C0;
-	}
-	
-	#small-box3 {
-		background: #C0C0C0;
-	}
-	.anav {
-		position:fixed;
-	}
-	.navfix {
-		
-		z-index: 100;
-		background-color: #FFF;
-
-		
-	}
-	.abs {
-		position: absolute;
-		z-index: 100;
-	}
-	#solutions-container {
-		border: 1px solid black;
-		/*padding: 20px;*/
-		
-		height: 200px;
-		
-		overflow: scroll;
-		overflow-x: hidden;
-		overflow-y: hidden;
-	}
-	#careers-container {
-		border: 1px solid black;
-		/*padding: 20px;*/
-		
-		height: 200px;
-		
-		overflow: scroll;
-		overflow-x: hidden;
-		overflow-y: hidden;
-	}
-	
-	</style>
+		</script>
 	
 	<!-- javascript that will initiate jQuery and the LocalScroll plugin -->
-	<script>	
-		// When the document is loaded...
-	    $(document).ready(function()
-		{
-			var h=$( window ).height();
-			$(".box").css({'height':h+'px'});
-			$("#small-box-container").css({'height':h-200+'px'});
-			$("#solutions-container").css({'height':h-200+'px'});
-			$("#careers-container").css({'height':h-200+'px'});
-			$("#careers-link").css({'height':h-200+'px'});
-			$(".small-box").css({'height':h+'px'});
-			$(".sl-box1").css({'height':h+'px'});
-			$(".sl-box2").css({'height':h+'px'});
-			$(".link").css({'height':((h-200)/3)+'px','padding-top':((h-200)/6)+'px'});
-			// Scroll the whole document 
-			$('nav').localScroll({
-			   target:'body'
-			});		
-			// Scroll the content inside the #scroll-container div
-			$('#about-links').localScroll({
-			   target:'#small-box-container'
-			});	
-			$('#solutions-links').localScroll({
-			   target:'#solutions-container'
-			});		
-			$('#careers-links').localScroll({
-			   target:'#careers-container'
-			});	
-			
-		});
-		
-    </script>
+	
 	</head>
 	<body ng-app="myApp">
 
@@ -171,10 +111,10 @@
 			      	<ul class="nav navbar-nav ">
 				        <li><a href="">Home <span class="sr-only">(current)</span></a></li>
 				        <li class="dropdown">
-				          <a href="#box1">About</span></a>
+				          <a id="aa" href="#box1">About</span></a>
 				        </li>
 				        <li><a href="#box2">Solutions</a></li>
-				         <li><a href="#careers-container">Careers</a></li>
+				         <li><a href="#box3">Careers</a></li>
 			      	</ul>
 			      	<ul class="nav navbar-nav ">
 				        <li><a href="#">Sign In</a></li>
@@ -199,7 +139,7 @@
 		</div>
 		<div class="abs">
 			<div id="box1" class="box">
-				<div id="solutions-img"></div>
+				<div id="about-img"></div>
 				<div id="about-links" class="col-lg-4">
 					<div class="link"></li><a href="#about-energy">Deviab Energy</a></div>
 					<div class="link"><a href="#about-team">Team</a><br></div>
@@ -207,9 +147,33 @@
 				</div>
 				<div id="small-box-container" class="col-lg-8">
 					<div id="about-energy" class="small-box">
-						Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack f distribution network for renewable and clean energy technologies.
+						Deviab Energy is a social enterprise which aims to promote adoption of clean energy solutions in rural areas which are deprived of affordable and reliable power. We help our customers understand and adopt clean energy technologies by creating a favourable ecosystem based on the local factors.
 					</div>
-					<div id="about-team" class="small-box">Small-Box #2</div>
+					<div id="about-team" class="small-box col-lg-12 col-sm-12 col-md-12">
+						<div class="col-lg-12 col-sm-12 col-md-12"> 
+							<div id="member-img" class="col-lg-3 col-sm-3 col-md-3">
+								<img id="deepak-img" src="/bundles/deviabapp/images/team/sdeepak-img.jpg" alt="S. Deepak Kumar" class="img-circle">
+							</div>
+							<div class="col-lg-9">
+								<h4> S Deepak Kumar: Cofounder and Team Lead- Operations</h4>				
+							</div>
+							<div id="member-desc" class="col-lg-9 col-sm-9 col-md-9">						
+								Deepak has been working in the rural areas of Bihar for more than 3 years in various capacities. He has created a robust supply chain in rural areas which has led to installation of more than 10,000 Solar Home Lighting Systems. He has extensive experience in establishing supply chain of solar based products using community platforms. He holds a Masters degree in Environmental Management from IIFM and a Bachelor’s degree in Mechanical Engineering from NIT, Raipur. He has been selected as an Acumen India Fellow for the 2015 Cohort.
+							</div>							 
+						</div>
+						<div class="border-bottom col-lg-12 col-sm-12 col-md-12"></div>
+						<div class="col-lg-12 col-sm-12 col-md-12"> 
+							<div id="member-img" class="col-lg-3 col-sm-3 col-md-3">
+								<img id="vishnu-img" src="/bundles/deviabapp/images/team/vishnu-img.jpg" alt="S. Deepak Kumar" class="img-circle">
+							</div>
+							<div class="col-lg-9">
+								<h4> Vishnu Raghunathan: Cofounder and Team Lead- Business Development</h4>	
+							</div>
+							<div id="member-desc" class="col-lg-9 col-sm-9 col-md-9">						
+								Vishnu has spent more than 3 years in rural areas where he has implemented many community driven projects. He has worked with farmer collectives, women shg groups and their federations, govt departments, producer companies, etc to implement projects related to microfinance, renewable energy and has also provided market linkages for agricultural produce. He has done his post graduate diploma in rural management from IRMA and Bachelor’s degree in Electrical and Electronics Engineering from Sastra University, Thanjavur.ur. He has been selected as an Acumen India Fellow for the 2015 Cohort.
+							</div>							 
+						</div>
+					</div>
 					<div id="about-mentors" class="small-box">Small-Box #3</div>
 				</div>
 			</div>
@@ -230,7 +194,7 @@
 					<div id="csr-solution" class="sl-box1">Small-Box #3</div>
 				</div>
 			</div>
-			<div id="box2" class="box">
+			<div id="box3" class="box">
 				<div id="solutions-img"></div>
 				<div id="careers-links" class="col-lg-4">
 					<div class="link"><a href="#joinus">Careers</a></div>
@@ -244,12 +208,27 @@
 					</div>
 					<div id="volunteers" class="sl-box1">Small-Box #2</div>
 				</div>
-			</div>
-			
+			</div>			
 		</div>
+		<div id="footer">
+			<div id="graph" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+				abcd
+			</div>
+			<div id="twitter" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">klfdnsfklsajdfhksdjfdkjsa
+			</div>
+			<div id="contactus" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+				<div>Contact us</div>
+				<div>Adress : Raipur </div>
+				<div>Contact No : +91 98 7654 3210 </div>
+				<div>Email : connect@deviab.com</div>
+
+			</div>
+		</div>
+		
 
         <script src="/bundles/deviabapp/js/jquery.backstretch.min.js"></script>
         <script src="/bundles/deviabapp/js/scripts.js"></script>
+        <script src="/bundles/deviabapp/js/scroll.js"></script>
 	</body>
 </html> 
 
