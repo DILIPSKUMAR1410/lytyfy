@@ -10,133 +10,124 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="lending_details")
  * @ORM\Entity(repositoryClass="Deviab\AppBundle\Entity\LendingDetailRepository")
  */
-class LendingDetail extends BaseEntity
-{
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-     protected $id;
+class LendingDetail extends BaseEntity {
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	protected $id;
 
-    /**
-     * @var integer
-     *
-     * @ORM\ManyToOne(targetEntity="Borrower", inversedBy="borrowDetails")
-     * @ORM\JoinColumn(name="borrower_id", referencedColumnName="id")
-     *
-     */
-     protected $borrower;
+	/**
+	 * @var integer
+	 *
+	 * @ORM\ManyToOne(targetEntity="Borrower", inversedBy="borrowerDetails")
+	 * @ORM\JoinColumn(name="borrower_id", referencedColumnName="id")
+	 *
+	 */
+	protected $borrower;
 
-    /**
-     * @var integer
-     *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="lendDetails")
-     * @ORM\Column(name="lender_id", type="integer")
-     *
-     */
-     protected $lender;
+	/**
+	 * @var integer
+	 *
+	 * @ORM\ManyToOne(targetEntity="User", inversedBy="lendDetails")
+	 * @ORM\Column(name="lender_id", type="integer")
+	 *
+	 */
+	protected $lender;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="invested", type="integer")
-     */
-    private $invested;
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="invested", type="integer")
+	 */
+	private $invested;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_invested", type="date")
-     */
-    private $dateInvested;
+	/**
+	 * @var \DateTime
+	 *
+	 * @ORM\Column(name="date_invested", type="date")
+	 */
+	private $dateInvested;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="transaction_id", type="integer")
-     */
-    private $transactionId;
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="transaction_id", type="integer")
+	 */
+	private $transactionId;
 
+	/**
+	 * Get id
+	 *
+	 * @return integer
+	 */
+	public function getId() {
+		return $this->id;
+	}
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	/**
+	 * Set invested
+	 *
+	 * @param integer $invested
+	 * @return LendingDetail
+	 */
+	public function setInvested($invested) {
+		$this->invested = $invested;
 
-    /**
-     * Set invested
-     *
-     * @param integer $invested
-     * @return LendingDetail
-     */
-    public function setInvested($invested)
-    {
-        $this->invested = $invested;
+		return $this;
+	}
 
-        return $this;
-    }
+	/**
+	 * Get invested
+	 *
+	 * @return integer
+	 */
+	public function getInvested() {
+		return $this->invested;
+	}
 
-    /**
-     * Get invested
-     *
-     * @return integer 
-     */
-    public function getInvested()
-    {
-        return $this->invested;
-    }
+	/**
+	 * Set dateInvested
+	 *
+	 * @param \DateTime $dateInvested
+	 * @return LendingDetail
+	 */
+	public function setDateInvested($dateInvested) {
+		$this->dateInvested = $dateInvested;
 
-    /**
-     * Set dateInvested
-     *
-     * @param \DateTime $dateInvested
-     * @return LendingDetail
-     */
-    public function setDateInvested($dateInvested)
-    {
-        $this->dateInvested = $dateInvested;
+		return $this;
+	}
 
-        return $this;
-    }
+	/**
+	 * Get dateInvested
+	 *
+	 * @return \DateTime
+	 */
+	public function getDateInvested() {
+		return $this->dateInvested;
+	}
 
-    /**
-     * Get dateInvested
-     *
-     * @return \DateTime 
-     */
-    public function getDateInvested()
-    {
-        return $this->dateInvested;
-    }
+	/**
+	 * Set transactionId
+	 *
+	 * @param integer $transactionId
+	 * @return LendingDetail
+	 */
+	public function setTransactionId($transactionId) {
+		$this->transactionId = $transactionId;
 
-    /**
-     * Set transactionId
-     *
-     * @param integer $transactionId
-     * @return LendingDetail
-     */
-    public function setTransactionId($transactionId)
-    {
-        $this->transactionId = $transactionId;
+		return $this;
+	}
 
-        return $this;
-    }
-
-    /**
-     * Get transactionId
-     *
-     * @return integer 
-     */
-    public function getTransactionId()
-    {
-        return $this->transactionId;
-    }
+	/**
+	 * Get transactionId
+	 *
+	 * @return integer
+	 */
+	public function getTransactionId() {
+		return $this->transactionId;
+	}
 }
