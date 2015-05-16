@@ -20,13 +20,7 @@ use \DateTime;
  */
 class BorrowerController extends Controller
 {
-    private $dm;
-
-    public function __construct()
-    {
-        $this->dm = $this->getDoctrine()->getManager();
-    }
-
+ 
     /**
      * Add new Borrowers
      * @Route("")
@@ -66,11 +60,10 @@ class BorrowerController extends Controller
         $requestParams = $this->get('request')->query->all();
         $response = new Response();
         try {
-            $borrower = $this->getDoctrine()->getManager()->getRepository('DeviabAppBundle:Borrower')->findOneById($borrowerId);
+            $borrower = $this->getDoctrine()->getRepository('DeviabAppBundle:Borrower')->findOneById($borrowerId);
         } catch (EntityNotFoundException $e) {
             $response->setStatusCode(Response::HTTP_NOT_FOUND);
-            $response->setContent(json_encode(array('error' => $e->getMessage())));
-            return $response;
+            return $response->setContent(json_encode(array('error' => $e->getMessage())));
         }
         $serializer = SerializerBuilder::create()->build();
         $jsonContent = $serializer->serialize($borrower, 'json');
