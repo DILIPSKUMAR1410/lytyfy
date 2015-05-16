@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Exception\ValidatorException;
 use Deviab\AppBundle\Entity\Borrower;
 use JMS\Serializer\SerializerBuilder;
+use Doctrine\ORM\EntityNotFoundException;
 use \DateTime;
 
 /**
@@ -19,6 +20,13 @@ use \DateTime;
  */
 class BorrowerController extends Controller
 {
+    private $dm;
+
+    public function __construct()
+    {
+        $this->dm = $this->getDoctrine()->getManager();
+    }
+
     /**
      * Add new Borrowers
      * @Route("")
@@ -39,6 +47,31 @@ class BorrowerController extends Controller
         $em->persist($borrower);
         $em->flush();
 
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($borrower, 'json');
+
+        $response->setContent($jsonContent);
+        $response->headers->set('Content-Type', 'application/json');
+        
+        return $response;
+    }
+
+    /**
+     * Add new Borrowers
+     * @Route("/{borrowerId}")
+     * @Method({"GET"})
+     */
+    public function getBorrowerAction($borrowerId)
+    {
+        $requestParams = $this->get('request')->query->all();
+        $response = new Response();
+        try {
+            $borrower = $this->getDoctrine()->getManager()->getRepository('DeviabAppBundle:Borrower')->findOneById($borrowerId);
+        } catch (EntityNotFoundException $e) {
+            $response->setStatusCode(Response::HTTP_NOT_FOUND);
+            $response->setContent(json_encode(array('error' => $e->getMessage())));
+            return $response;
+        }
         $serializer = SerializerBuilder::create()->build();
         $jsonContent = $serializer->serialize($borrower, 'json');
 
