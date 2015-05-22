@@ -60,10 +60,7 @@ $(document).ready(function()
            		scrollCount++;
            		$("html, body").animate({ scrollTop: h*3+"px" });
            	}
-           	else if (scrollCount == 3) {
-           		scrollCount++;
-           		$("html, body").animate({ scrollTop: h*4+"px" });
-           	}
+           	
         }
         if(ev.which == 38 ) {
         	if(scrollCount == 1) {
@@ -77,10 +74,7 @@ $(document).ready(function()
            		scrollCount--;
            		$("html, body").animate({ scrollTop: h*2+"px" });
            	}
-           	else if (scrollCount == 4) {
-           		scrollCount--;
-           		$("html, body").animate({ scrollTop: h*3+"px" });
-           	}
+           	
         }
 	});			
 });
@@ -138,16 +132,21 @@ $(document).ready(function()
 	        </div>
 		</div>
 		<div class="abs">
-			<div id="box1" class="box">
+			<div id="box1" class="box container-fluid">
 				<div id="about-img"></div>
-				<div id="about-links" class="col-lg-4">
-					<div class="link"></li><a href="#about-energy">Deviab Energy</a></div>
-					<div class="link"><a href="#about-team">Team</a><br></div>
-					<div class="link"><a href="#about-mentors">Mentors</a></div>
+				<div id="about-links" class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+					<div class="link"></li><a class="ae" style="color:#3B78E7" href="#about-energy">Deviab Energy</a></div>
+					<div class="link"><a class="tm" style="color:#929292" href="#about-team">Team</a><br></div>
+					<div class="link"><a class="am" style="color:#929292" href="#about-mentors">Mentors</a></div>
 				</div>
-				<div id="small-box-container" class="col-lg-8">
+				<div id="small-box-container" class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
 					<div id="about-energy" class="small-box">
-						Deviab Energy is a social enterprise which aims to promote adoption of clean energy solutions in rural areas which are deprived of affordable and reliable power. We help our customers understand and adopt clean energy technologies by creating a favourable ecosystem based on the local factors.
+						Deviab Energy is a social enterprise which aims to promote adoption of clean energy solutions in rural areas which are deprived of affordable and reliable power. We help our customers understand and adopt clean energy technologies by creating a favourable ecosystem based on the local factors.<br><br>
+						&nbsp &nbsp Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies. <br><br>
+						&nbsp &nbspConventional perception is that people in rural areas cannot afford progressive and modern energy technologies but our experience of working in rural areas has made us believe that most of them are willing to pay for a reliable source of energy provided the product and service is customized as per their need and cash flow. A simple and customised solar energy system can meet basic energy needs of a rural household and reduce the problem of energy 
+						poverty plaguing more than 40% of our country living in rural areas. <br><br>
+						&nbsp &nbsp Electricity is one of the	basic necessities of life and lack of energy services impact upon all aspects of people’s lives and livelihoods. The introduction of even a limited source of electrical power can have immediate and significant economic, health and communication benefits for the people 
+						suffering from energy poverty. This shows the scale of the problem under consideration and its underlying potential for an enterprise based model.
 					</div>
 					<div id="about-team" class="small-box col-lg-12 col-sm-12 col-md-12">
 						<div class="col-lg-12 col-sm-12 col-md-12"> 
@@ -155,7 +154,7 @@ $(document).ready(function()
 								<img id="deepak-img" src="/bundles/deviabapp/images/team/sdeepak-img.jpg" alt="S. Deepak Kumar" class="img-circle">
 							</div>
 							<div class="col-lg-9">
-								<h4> S Deepak Kumar: Cofounder and Team Lead- Operations</h4>				
+								<h4 id="nm"> S Deepak Kumar: Cofounder and Team Lead- Operations</h4>				
 							</div>
 							<div id="member-desc" class="col-lg-9 col-sm-9 col-md-9">						
 								Deepak has been working in the rural areas of Bihar for more than 3 years in various capacities. He has created a robust supply chain in rural areas which has led to installation of more than 10,000 Solar Home Lighting Systems. He has extensive experience in establishing supply chain of solar based products using community platforms. He holds a Masters degree in Environmental Management from IIFM and a Bachelor’s degree in Mechanical Engineering from NIT, Raipur. He has been selected as an Acumen India Fellow for the 2015 Cohort.
@@ -167,7 +166,7 @@ $(document).ready(function()
 								<img id="vishnu-img" src="/bundles/deviabapp/images/team/vishnu-img.jpg" alt="S. Deepak Kumar" class="img-circle">
 							</div>
 							<div class="col-lg-9">
-								<h4> Vishnu Raghunathan: Cofounder and Team Lead- Business Development</h4>	
+								<h4 id="nm"> Vishnu Raghunathan: Cofounder and Team Lead- Business Development</h4>	
 							</div>
 							<div id="member-desc" class="col-lg-9 col-sm-9 col-md-9">						
 								Vishnu has spent more than 3 years in rural areas where he has implemented many community driven projects. He has worked with farmer collectives, women shg groups and their federations, govt departments, producer companies, etc to implement projects related to microfinance, renewable energy and has also provided market linkages for agricultural produce. He has done his post graduate diploma in rural management from IRMA and Bachelor’s degree in Electrical and Electronics Engineering from Sastra University, Thanjavur.ur. He has been selected as an Acumen India Fellow for the 2015 Cohort.
@@ -179,28 +178,34 @@ $(document).ready(function()
 			</div>
 			<div id="box2" class="box">
 				<div id="solutions-img"></div>
-				<div id="solutions-links" class="col-lg-4">
-					<div class="link"><a href="#solar-solution">Off-grid solar solutions</a></div>
-					<div class="link"><a href="#consulting-solution">Consulting</a></div>
-					<div class="link"><a href="#csr-solution">CSR projects</a></div>
+				<div id="solutions-links" class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+					<div class="link" ><a class="ofg" href="#solar-solution">Off-grid solar solutions</a></div>
+					<div class="link"><a class="cs" href="#consulting-solution">Consulting</a></div>
+					<div class="link"><a class="csn" style="color:#929292" href="#csr-solution">CSR projects</a></div>
 				</div>
-				<div id="solutions-container" class="col-lg-8">
+				<div id="solutions-container" class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
 					<div id="solar-solution" class="sl-box1">
-						Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack f distribution network for renewable and clean energy technologies.
-						Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack f distribution network for renewable and clean energy technologies.
-						########################################
+						<br> <br>
+						&nbsp Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack f distribution network for renewable and clean energy technologies.
+						<br><br>
+						&nbsp Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.
+						&nbsp &nbspConventional perception is that people in rural areas cannot afford progressive and modern energy technologies but our experience of working in rural areas has made us believe that most of them are willing to pay for a reliable source of energy provided the product and service is customized as per their need and cash flow. A simple and customised solar energy system can meet basic energy needs of a rural household and reduce the problem of energy 
+						poverty plaguing more than 40% of our country living in rural areas. <br><br>
+						&nbsp &nbsp Electricity is one of the	basic necessities of life and lack of energy services impact upon all aspects of people’s lives and livelihoods. The introduction of even a limited source of electrical power can have immediate and significant economic, health and communication benefits for the people 
+						suffering from energy poverty. This shows the scale of the problem under consideration and its underlying potential for an enterprise based model.
+						
 					</div>
 					<div id="consulting-solution" class="sl-box1">Small-Box #2</div>
 					<div id="csr-solution" class="sl-box1">Small-Box #3</div>
 				</div>
 			</div>
-			<div id="box3" class="box">
+			{# <div id="box3" class="box">
 				<div id="solutions-img"></div>
-				<div id="careers-links" class="col-lg-4">
+				<div id="careers-links" class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
 					<div class="link"><a href="#joinus">Careers</a></div>
 					<div class="link"><a href="#volunteers">Volunteers</a></div>
 				</div>
-				<div id="careers-container" class="col-lg-8">
+				<div id="careers-container" class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
 					<div id="joinus" class="sl-box1">
 						Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack f distribution network for renewable and clean energy technologies.
 						Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack f distribution network for renewable and clean energy technologies.
@@ -208,17 +213,16 @@ $(document).ready(function()
 					</div>
 					<div id="volunteers" class="sl-box1">Small-Box #2</div>
 				</div>
-			</div>			
+			</div>	 #}		
 		</div>
 		<div id="footer">
-			<div id="graph" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-				abcd
+			{# <div id="graph" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 			</div>
-			<div id="twitter" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">klfdnsfklsajdfhksdjfdkjsa
-			</div>
-			<div id="contactus" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+			<div id="twitter" class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
+			</div> #}
+			<div id="contactus" class="col-lg-12 col-md-4 col-sm-12 col-xs-12">
 				<div>Contact us</div>
-				<div>Adress : Raipur </div>
+				<div>Adress : Near Katora Talab  Raipur 492001 </div>
 				<div>Contact No : +91 98 7654 3210 </div>
 				<div>Email : connect@deviab.com</div>
 
@@ -230,5 +234,11 @@ $(document).ready(function()
         <script src="/bundles/deviabapp/js/scripts.js"></script>
         <script src="/bundles/deviabapp/js/scroll.js"></script>
 	</body>
+	<script type="text/javascript">
+	$(".abs a").click( function() {
+		$(".abs a").css({'color':'#929292'});
+    $(this).css({'color':'#3B78E7'});
+  });
+	</script>
 </html> 
 

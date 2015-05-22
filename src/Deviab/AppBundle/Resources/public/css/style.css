@@ -52,12 +52,27 @@ body {
 /*    position: relative;*/
     background-color: #FFF;
 }
+#about-energy {
+    color: black;
+    font-family: Snippet;
+    
+font-style: oblique;
+font-size: 16px;
+text-align: justify;
+    
+    padding-top: 50px;
+    text-align: justify;
+}
+#about-links, #solution-linkes, #career-links {
+    border-right:4px solid #0070B9 !important;
+
+}
 #solutions-img {
-    background-image: url(../images/index/solution.gif);    
+    background-image: url(../images/index/solution.jpg);    
     height: 200px;
 }
 #about-img {
-    background-image: url(../images/index/about.jpeg);    
+    background-image: url(../images/index/about.jpg);    
     height: 200px;
 }
 .link {
@@ -74,8 +89,9 @@ body {
 .box {
     
     height: 300px;
+
     
-    color: #fff;
+    color:#929292;
     /*padding: 10px;
     
     margin: 100px 0 0 0;*/
@@ -83,16 +99,17 @@ body {
 
 #box1 {
     /*margin: 300px 0 0 0;*/
-    background: #C0C0C0;
+
+    background: #FFF;
 }
 
 #box2 {
-    background: #C0C0C0;
+    background: #FFF;
     /*padding-top: 20px;*/
 }
 
 #box3 {
-    background: #C0C0C0;
+    background: #FFF;
 }
 
 
@@ -102,7 +119,7 @@ body {
 #small-box-container {
     /*border: 1px solid black;*/
     /*padding: 20px;*/
-    
+    color: black;
     height: 200px;
     
     overflow: scroll;
@@ -134,12 +151,24 @@ body {
 .anav {
     /*position:fixed;*/
 }
+
 .navfix {
     
     z-index: 100;
-    background-color: #FFF;
-
-    
+    background-color: #FFF;    
+}
+.tm,.am,.cs,.cns, {
+    color: #929292 ;
+}
+.abs a:hover {
+    color: #0070B9 ;
+}
+.abs a:active {
+    color: #0070B9 ;
+}
+a {
+    cursor: pointer;
+    font-weight: bold;
 }
 .abs {
     /*position: absolute;*/
@@ -148,14 +177,19 @@ body {
 #member-img {
     margin-top: 30px;
 }
-/*#member-desc {
-    padding-top:20px;
-}*/
+#member-desc {
+    color: black;
+font-family: Snippet;
+    
+font-style: oblique;
+font-size: 16px;
+text-align: justify;
+}
 #designation {
     font-size: 10px;
 }
 #solutions-container {
-    border: 1px solid black;
+    border-left: 4px solid #0070B9;
     /*padding: 20px;*/
     
     height: 200px;
@@ -165,7 +199,7 @@ body {
     overflow-y: hidden;
 }
 #careers-container {
-    border: 1px solid black;
+    border-left: 4px solid #0070B9;
     /*padding: 20px;*/
     
     height: 200px;
@@ -178,7 +212,7 @@ body {
     height: 150px;
 }
 #footer {
-    background: #C0C0C0;
+    background: #3B78E7;
     height:250px;
     /*position:relative;*/
 }
@@ -191,13 +225,27 @@ body {
 #twitter {
     height:250px;
     background: #C0C0C0;
+
 }
 #contactus {
-    height:250px;
-    background: #C0C0C0;
+    padding-top: 100px;
+    height:150px;
+    text-align: center;
+    font-size: 24px;
+    background: #3B78E7;
+    color: #FFF;
 }
 .border-bottom {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #0070B9;
     margin: 20px 5px;
+}    
     
+    
+    #nm {
+        color:#3B78E7;
+        font-weight: bold;
     }
+.ofg {
+color:#3B78E7 !important;
+
+}

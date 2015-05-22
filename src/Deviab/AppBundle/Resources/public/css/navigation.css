@@ -7,11 +7,11 @@
     color: #FFF !important;
 }
 .navbar-default {
-    background-color: #0070B9 !important;
-    border-color: #0070B9 !important;
+    background-color: #3B78E7 !important;
+    border-color: #3B78E7 !important;
 }
 .navbar-default .navbar-nav > li > a:focus,.navbar-default .navbar-nav > li > a:hover {
-    color: #0070B9 !important;
+    color: #3B78E7 !important;
     background-color:#FFF !important;
 }
 
