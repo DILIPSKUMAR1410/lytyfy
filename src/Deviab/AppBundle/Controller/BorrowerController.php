@@ -15,22 +15,56 @@ use \DateTime;
  * Borrower controller
  * @Route("/borrower")
  */
-class BorrowerController extends Controller {
-	/**
-	 * Add new Borrowers
-	 * @Route("/create")
-	 */
-	public function createBorrowerAction() {
-		$requestData = $this->getRequest()->getContent();
-		$serializer = SerializerBuilder::create()->build();
+class BorrowerController extends Controller
+{
+ 
+    /**
+     * Add new Borrowers
+     * @Route("")
+     * @Method({"POST"})
+     */
+    public function postBorrowerAction()
+    {
+        $requestParams = $this->get('request')->request->all();
+        $response = new Response();
+        $borrower = new Borrower();
+        $borrower->setCreatedAt(new DateTime('now'));
+        try {
+            $this->updateFields($borrower, $requestParams);
+        } catch (ValidatorException $e) {
+            return $response->setContent(json_encode(array('error' => $e->getMessage())));
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($borrower);
+        $em->flush();
 
-		$borrower = $serializer->deserialize($requestData, 'Deviab\AppBundle\Entity\Borrower', 'json');
-
-		$em = $this->getDoctrine()->getManager();
-		$em->persist($borrower);
-		$em->flush();
-
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($borrower, 'json');
 	}
+
+    /**
+     * Add new Borrowers
+     * @Route("/{borrowerId}")
+     * @Method({"GET"})
+     */
+    public function getBorrowerAction($borrowerId)
+    {
+        $requestParams = $this->get('request')->query->all();
+        $response = new Response();
+        try {
+            $borrower = $this->getDoctrine()->getRepository('DeviabAppBundle:Borrower')->findOneById($borrowerId);
+        } catch (EntityNotFoundException $e) {
+            $response->setStatusCode(Response::HTTP_NOT_FOUND);
+            return $response->setContent(json_encode(array('error' => $e->getMessage())));
+        }
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($borrower, 'json');
+
+        $response->setContent($jsonContent);
+        $response->headers->set('Content-Type', 'application/json');
+        
+        return $response;
+    }
 
 	/**
 	 * Update fields
