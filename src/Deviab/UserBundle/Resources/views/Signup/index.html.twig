@@ -21,7 +21,8 @@
 		<script>
 			var scrollCount =0;
 $(document).ready(function()
-{
+{	
+
 	var h=$( window ).height();
 	$(".inner-bg").css({'height':h-55+'px'});
 	$(".box").css({'height':h+'px'});
@@ -47,34 +48,85 @@ $(document).ready(function()
 	$('#careers-links').localScroll({
 	   target:'#careers-container'
 	});	
+	$('.ae').trigger('click');
+	$('.ofg').trigger('click');
+	$('#cr').trigger('click');
+
 	$("body").keydown(function(ev){
         if(ev.which == 40 ) {
         	if(scrollCount == 0) {
         		scrollCount++;
            		$("html, body").animate({ scrollTop: h+"px" });
-           	}
-           	else if(scrollCount == 1) {
+           	} else if(scrollCount == 1) {
+           		$('.tm').trigger('click');
+           		$("html, body").animate({ scrollTop: h+"px" });
+           		scrollCount++;
+           	} else if (scrollCount == 2) {
+           		scrollCount++;
+           		$('.am').trigger('click');
+           		$("html, body").animate({ scrollTop: h+"px" });
+           	} else if (scrollCount == 3) {
            		scrollCount++;
            		$("html, body").animate({ scrollTop: h*2+"px" });
-           	} else if (scrollCount == 2) {
+           	} else if (scrollCount == 4) {
+           		scrollCount++
+           		$('.cs').trigger('click');
+           		$("html, body").animate({ scrollTop: h*2+"px" });
+           	} else if (scrollCount == 5) {
+           		scrollCount++;
+           		$('.csn').trigger('click');
+           		$("html, body").animate({ scrollTop: h*2+"px" });
+           	} 	else if (scrollCount == 6) {
            		scrollCount++;
            		$("html, body").animate({ scrollTop: h*3+"px" });
            	}
-           	
+           	else if (scrollCount == 7) {
+           		scrollCount++;
+           		$('.vol').trigger('click');
+           		$("html, body").animate({ scrollTop: h*3+"px" });
+           	} 
+           	else if (scrollCount == 8) {
+           		scrollCount++;
+           		$("html, body").animate({ scrollTop: h*4+"px" });
+           	}           	
         }
         if(ev.which == 38 ) {
-        	if(scrollCount == 1) {
-        		scrollCount--;
-           		$("html, body").animate({ scrollTop: "0px" });
-           	}
-           	else if(scrollCount == 2) {
+        	if(scrollCount == 9) {
+        		scrollCount=7;
+        		$('#careers').trigger('click');
+           		$("html, body").animate({ scrollTop: h*3+"px" });
+           	} else if(scrollCount == 8) {
            		scrollCount--;
+           		$('#careers').trigger('click');
+           		$("html, body").animate({ scrollTop: h*3+"px" });
+           	} else if(scrollCount == 7) {
+           		scrollCount=4;
+           		$('.ofg').trigger('click');
+           		$("html, body").animate({ scrollTop: h*2+"px" });
+           	} else if(scrollCount == 5) {
+           		scrollCount--;
+           		$('.ofg').trigger('click');
+           		$("html, body").animate({ scrollTop: h*2+"px" });
+           	} else if(scrollCount == 6) {
+           		scrollCount=4;
+           		$('.ofg').trigger('click');
+           		$("html, body").animate({ scrollTop: h*2+"px" });
+           	} else if (scrollCount == 4) {
+           		scrollCount=1;
+           		$('.ae').trigger('click');
+           		$("html, body").animate({ scrollTop: h+"px" });
+           	} else if (scrollCount == 2) {
+           		scrollCount--;
+           		$('.ae').trigger('click');
            		$("html, body").animate({ scrollTop: h+"px" });
            	} else if (scrollCount == 3) {
            		scrollCount--;
-           		$("html, body").animate({ scrollTop: h*2+"px" });
-           	}
-           	
+           		$('.tm').trigger('click');
+           		$("html, body").animate({ scrollTop: h+"px" });
+           	} else if (scrollCount == 1) {
+           		scrollCount=0;
+           		$("html, body").animate({ scrollTop: "0px" });
+           	} 
         }
 	});			
 });
@@ -87,7 +139,7 @@ $(document).ready(function()
 	<body ng-app="myApp">
 
 		<nav class="navbar navbar-default" >
-		  	<div class="container-fluide">
+		  	<div id="navigation" class="container-fluide">
 		    	<!-- Brand and toggle get grouped for better mobile display -->
 			    <div class="navbar-header col-lg-5 col-md-3 col-sm-1">
 			      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -103,12 +155,12 @@ $(document).ready(function()
 
 			    <div class="container-fluid pull-right collapse navbar-collapse col-lg-7 col-md-9 col-sm-11" id="bs-example-navbar-collapse-1 navbar-right">
 			      	<ul class="nav navbar-nav ">
-				        <li><a href="">Home <span class="sr-only">(current)</span></a></li>
+				        <li><a id="home" href="">Home <span class="sr-only">(current)</span></a></li>
 				        <li class="dropdown">
-				          <a id="aa" href="#box1">About</span></a>
+				          <a id="about" href="#box1">About</a>
 				        </li>
-				        <li><a href="#box2">Solutions</a></li>
-				         <li><a href="#box3">Careers</a></li>
+				        <li><a id="solutions" href="#box2">Solutions</a></li>
+				         <li><a id="careers" href="#box3">Careers</a></li>
 			      	</ul>
 			      	<ul class="nav navbar-nav ">
 				        <li><a href="#">Sign In</a></li>
@@ -133,16 +185,16 @@ $(document).ready(function()
 		</div>
 		<div class="abs">
 			<div id="box1" class="box container-fluid">
-				<div id="about-img"></div>
+				<div id="about-img"> </div>
 				<div id="about-links" class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
-					<div class="link"></li><a class="ae" style="color:#3B78E7" href="#about-energy">Deviab Energy</a></div>
+					<div class="link"><a class="ae" style="color:#3B78E7" href="#about-energy">Deviab Energy</a></div>
 					<div class="link"><a class="tm" style="color:#929292" href="#about-team">Team</a><br></div>
 					<div class="link"><a class="am" style="color:#929292" href="#about-mentors">Mentors</a></div>
 				</div>
 				<div id="small-box-container" class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
 					<div id="about-energy" class="small-box">
-						Deviab Energy is a social enterprise which aims to promote adoption of clean energy solutions in rural areas which are deprived of affordable and reliable power. We help our customers understand and adopt clean energy technologies by creating a favourable ecosystem based on the local factors.<br><br>
-						&nbsp &nbsp Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies. <br><br>
+						Deviab Energy is a social enterprise which aims to promote adoption of clean energy solutions in rural areas which are deprived of affordable and reliable power. We help our customers understand and adopt clean energy technologies by creating a favourable ecosystem based on the local factors.<br> <br>
+						&nbsp &nbsp Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies. <br> <br>
 						&nbsp &nbspConventional perception is that people in rural areas cannot afford progressive and modern energy technologies but our experience of working in rural areas has made us believe that most of them are willing to pay for a reliable source of energy provided the product and service is customized as per their need and cash flow. A simple and customised solar energy system can meet basic energy needs of a rural household and reduce the problem of energy 
 						poverty plaguing more than 40% of our country living in rural areas. <br><br>
 						&nbsp &nbsp Electricity is one of the	basic necessities of life and lack of energy services impact upon all aspects of people’s lives and livelihoods. The introduction of even a limited source of electrical power can have immediate and significant economic, health and communication benefits for the people 
@@ -173,7 +225,9 @@ $(document).ready(function()
 							</div>							 
 						</div>
 					</div>
-					<div id="about-mentors" class="small-box">Small-Box #3</div>
+					<div id="about-mentors" class="small-box  col-lg-12 col-sm-12 col-md-12">
+						about-mentors
+					</div>
 				</div>
 			</div>
 			<div id="box2" class="box">
@@ -185,25 +239,24 @@ $(document).ready(function()
 				</div>
 				<div id="solutions-container" class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
 					<div id="solar-solution" class="sl-box1">
-						<br> <br>
+						<br>
 						&nbsp Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack f distribution network for renewable and clean energy technologies.
-						<br><br>
+						<br>
 						&nbsp Currently around 1.4 billion people in the world still have no access to power and 400 million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies.
 						&nbsp &nbspConventional perception is that people in rural areas cannot afford progressive and modern energy technologies but our experience of working in rural areas has made us believe that most of them are willing to pay for a reliable source of energy provided the product and service is customized as per their need and cash flow. A simple and customised solar energy system can meet basic energy needs of a rural household and reduce the problem of energy 
-						poverty plaguing more than 40% of our country living in rural areas. <br><br>
+						poverty plaguing more than 40% of our country living in rural areas. <br>
 						&nbsp &nbsp Electricity is one of the	basic necessities of life and lack of energy services impact upon all aspects of people’s lives and livelihoods. The introduction of even a limited source of electrical power can have immediate and significant economic, health and communication benefits for the people 
 						suffering from energy poverty. This shows the scale of the problem under consideration and its underlying potential for an enterprise based model.
-						
 					</div>
 					<div id="consulting-solution" class="sl-box1">Small-Box #2</div>
 					<div id="csr-solution" class="sl-box1">Small-Box #3</div>
 				</div>
 			</div>
-			{# <div id="box3" class="box">
+			<div id="box3" class="box">
 				<div id="solutions-img"></div>
 				<div id="careers-links" class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
-					<div class="link"><a href="#joinus">Careers</a></div>
-					<div class="link"><a href="#volunteers">Volunteers</a></div>
+					<div class="link"><a id="cr" href="#joinus">Careers</a></div>
+					<div class="link"><a class="vol" href="#volunteers">Volunteers</a></div>
 				</div>
 				<div id="careers-container" class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
 					<div id="joinus" class="sl-box1">
@@ -213,7 +266,7 @@ $(document).ready(function()
 					</div>
 					<div id="volunteers" class="sl-box1">Small-Box #2</div>
 				</div>
-			</div>	 #}		
+			</div>			
 		</div>
 		<div id="footer">
 			{# <div id="graph" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -237,8 +290,22 @@ $(document).ready(function()
 	<script type="text/javascript">
 	$(".abs a").click( function() {
 		$(".abs a").css({'color':'#929292'});
-    $(this).css({'color':'#3B78E7'});
-  });
+    	$(this).css({'color':'#3B78E7'});
+ 	});
+ 	$("#navigation a").click( function() {		
+    	var link = $(this).attr('id');
+    	if(link == 'about') {
+    		scrollCount =1;
+    	} else if(link == 'solutions') {
+    		scrollCount = 4;
+    		$("html, body").animate({ scrollTop: h*2+"px" });
+    	} else if(link == 'careers') {
+    		scrollCount = 7;
+           	$("html, body").animate({ scrollTop: h*3+"px" });
+    	}
+
+
+  	});
 	</script>
 </html> 
 

@@ -1,7 +1,9 @@
 .logo {
     font-family: neuropol !important;
     font-size: 25px !important;
-    color: #FFF !important;
+    color: #3B78E7 !important;
+   /* background-color: #FFF;*/
+   text-shadow: 0 1px 7px rgba(247,247,247,1);
 }
 .navbar-default .navbar-nav > li > a {
     color: #FFF !important;
@@ -9,6 +11,9 @@
 .navbar-default {
     background-color: #3B78E7 !important;
     border-color: #3B78E7 !important;
+    -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
+    -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
 }
 .navbar-default .navbar-nav > li > a:focus,.navbar-default .navbar-nav > li > a:hover {
     color: #3B78E7 !important;

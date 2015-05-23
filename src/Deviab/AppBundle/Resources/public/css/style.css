@@ -60,7 +60,7 @@ font-style: oblique;
 font-size: 16px;
 text-align: justify;
     
-    padding-top: 50px;
+    padding-top: 5px;
     text-align: justify;
 }
 #about-links, #solution-linkes, #career-links {
@@ -173,6 +173,15 @@ a {
 .abs {
     /*position: absolute;*/
     z-index: 100;
+    color: black;
+font-family: Snippet;
+    
+font-style: oblique;
+font-size: 16px;
+text-align: justify;
+}
+#solar-solution, #joinus{
+    color: black;
 }
 #member-img {
     margin-top: 30px;
