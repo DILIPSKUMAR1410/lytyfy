@@ -9,3 +9,5 @@ deviab_app:
     resource: @DeviabAppBundle/Controller/
     type:     annotation
 
+logout:
+    path:    /logout
