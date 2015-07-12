@@ -63,7 +63,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="solutions-outer-container" class="container-fluid page-height">
+	<div id="solutions-outer-container" class="container page-height">
 		<div id="solutions-container" class="row">
 			<div class=" container col-lg-4 col-md-4 col-sm-4">
 				<div id="solution-img" class="graphics"></div>
@@ -140,20 +140,20 @@
 			        solutionsDist = (solutionsOffset - scrollTop);
 			        contactOffset = $('#footer').offset().top,
 			        contactDist = (contactOffset - scrollTop);
-			    if (aboutDist >= 90 && aboutDist <= h-nav_height) {
-			    	$(".nav-link").css("color","#909090");  
-			     	$("#about").css("color","#0070B9");   
-			    } else if (solutionsDist >= 90 && solutionsDist <= h-nav_height) {
-			    	$(".nav-link").css("color","#909090"); 
-			     	$("#solutions").css("color","#0070B9");   
-			    }else if (contactDist >= 90 && contactDist <= h-nav_height) {			    	
-			    	$(".nav-link").css("color","#909090"); 
-			     	$("#contact").css("color","#0070B9");     
-			    }else if(homeDist <90 ) {
+			    if(homeDist <90 ) {
 			    	$(".nav-link").css("color","#909090");  
 			     	$("#home").css("color","#0070B9"); 
-			    } 
+			    } if (aboutDist >= 90 && aboutDist <= h-nav_height) {
+			    	$(".nav-link").css("color","#909090");  
+			     	$("#about").css("color","#0070B9");   
+			    } if (solutionsDist >= 90 && solutionsDist <= h-nav_height) {
+			    	$(".nav-link").css("color","#909090"); 
+			     	$("#solutions").css("color","#0070B9");   
+			    } if (contactDist >= 90 && contactDist <= h-nav_height) {			    	
+			    	$(".nav-link").css("color","#909090"); 
+			     	$("#contact").css("color","#0070B9");     
+			    }  
 			});
 	</script>
 </body>
-</html> 
+</html>
