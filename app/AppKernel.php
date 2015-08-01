@@ -17,6 +17,10 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Deviab\AppBundle\DeviabAppBundle(),
+            new Deviab\BorrowerBundle\DeviabBorrowerBundle(),
+            new Deviab\DatabaseBundle\DeviabDatabaseBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -32,5 +36,10 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+    }
+
+    public function init()
+    {
+        date_default_timezone_set( 'Europe/Paris' );
     }
 }

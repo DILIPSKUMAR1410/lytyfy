@@ -1,3 +1,8 @@
+deviab_borrower:
+    type:   rest
+    resource: Deviab\BorrowerBundle\Controller\BorrowerController
+    prefix:   /
+
 deviab_app:
     resource: "@DeviabAppBundle/Resources/config/routing.php"
     prefix:   /
