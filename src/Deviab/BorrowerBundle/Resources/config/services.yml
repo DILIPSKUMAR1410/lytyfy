@@ -1,0 +1,5 @@
+services:
+  borrower_service:
+        class: Deviab\BorrowerBundle\Services\BorrowerService
+        arguments: [@doctrine]
+

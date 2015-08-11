@@ -1,0 +1,14 @@
+get_borrower:
+    pattern:  /{borrowerId}
+    defaults: { _controller: DeviabBorrowerBundle:Borrower:getBorrower}
+    requirements:
+        _method: GET
+        borrowerId: "\d+"
+
+new_borrower:
+    pattern:  /new
+    defaults: { _controller: DeviabBorrowerBundle:Borrower:newBorrower}
+    requirements:
+        _method: POST
+
+

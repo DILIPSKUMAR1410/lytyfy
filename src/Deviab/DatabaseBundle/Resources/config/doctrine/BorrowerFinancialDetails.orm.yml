@@ -1,0 +1,55 @@
+Deviab\DatabaseBundle\Entity\BorrowerFinancialDetails:
+    type: entity
+    table: borrower_financial_details
+    indexes:
+        borrower_id_idx:
+            columns:
+                - borrower_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        bankId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: bank_id
+        accountName:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: account_name
+        accountNumber:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: account_number
+        borrowerFinancialDetailscol:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: borrower_financial_detailscol
+    manyToOne:
+        borrower:
+            targetEntity: BorrowerDetails
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                borrower_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
