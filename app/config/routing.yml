@@ -1,3 +1,7 @@
+fabric:
+    resource: "@FabricBundle/Resources/config/routing.yml"
+    prefix:   /
+
 deviab_borrower:
     resource: "@DeviabBorrowerBundle/Resources/config/routing.yml"
     prefix:    /borrowers
