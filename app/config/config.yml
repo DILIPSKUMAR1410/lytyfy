@@ -80,7 +80,8 @@ fos_user:
         mailer: fos_user.mailer.twig_swift
     registration:
         confirmation:
-            enabled: true
+            enabled:  true
+            template: email/confirmation.email.twig
             from_email:
                 address:        no-reply@deviab.com
                 sender_name:    Registration Confirmation
@@ -89,3 +90,4 @@ fos_user:
             from_email:
                 address:        no-reply@deviab.com
                 sender_name:    Forgot Password
+            template: email/password_resetting.email.twig
