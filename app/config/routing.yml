@@ -7,6 +7,10 @@ deviab_borrower:
     prefix:    /borrowers
     type:      rest
 
+deviab_transaction:
+    resource: "@DeviabTransactionBundle/Resources/config/routing.yml"
+    prefix:   /
+
 deviab_app:
     resource: "@DeviabAppBundle/Resources/config/routing.php"
     prefix:   /
