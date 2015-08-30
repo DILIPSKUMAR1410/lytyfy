@@ -11,4 +11,79 @@ new_borrower:
     requirements:
         _method: POST
 
+search_borrowers:
+    pattern:  /search
+    defaults: { _controller: DeviabBorrowerBundle:Borrower:searchBorrowers}
+    requirements:
+        _method: GET
+
+add_family:
+    pattern:  /{borrowerId}/add-relative
+    defaults: { _controller: DeviabBorrowerBundle:Borrower:addRelative}
+    requirements:
+        _method: POST
+        borrowerId: "\d+"
+
+get_borrower_relatives:
+    pattern:  /{borrowerId}/relatives
+    defaults: { _controller: DeviabBorrowerBundle:Borrower:getRelatives}
+    requirements:
+        _method: GET
+        borrowerId: "\d+"
+
+update_borrower:
+    pattern:  /{borrowerId}/update
+    defaults: { _controller: DeviabBorrowerBundle:Borrower:updateBorrower}
+    requirements:
+        _method: POST
+        borrowerId: "\d+"
+
+update_family:
+    pattern:  /{borrowerId}/update-relative
+    defaults: { _controller: DeviabBorrowerBundle:Borrower:updateRelative}
+    requirements:
+        _method: POST
+        borrowerId: "\d+"
+
+add_borrower_financial:
+    pattern:  /{borrowerId}/add-financial
+    defaults: { _controller: DeviabBorrowerBundle:Borrower:addBorrowerFinancialDetails}
+    requirements:
+        _method: POST
+        borrowerId: "\d+"
+
+update_borrower_financial:
+    pattern:  /{borrowerId}/update-financial
+    defaults: { _controller: DeviabBorrowerBundle:Borrower:updateBorrowerFinancialDetails}
+    requirements:
+        _method: POST
+        borrowerId: "\d+"
+
+get_borrower_financial:
+     pattern:  /{borrowerId}/financial
+     defaults: { _controller: DeviabBorrowerBundle:Borrower:getBorrowerFinancialDetails}
+     requirements:
+        _method: GET
+        borrowerId: "\d+"
+
+add_borrower_loan:
+    pattern:  /{borrowerId}/add-loan
+    defaults: { _controller: DeviabBorrowerBundle:Borrower:addBorrowerLoanDetails}
+    requirements:
+        _method: POST
+        borrowerId: "\d+"
+
+update_borrower_loan:
+    pattern:  /{borrowerId}/update-loan
+    defaults: { _controller: DeviabBorrowerBundle:Borrower:updateBorrowerLoanDetails}
+    requirements:
+        _method: POST
+        borrowerId: "\d+"
+
+get_borrower_loan:
+     pattern:  /{borrowerId}/loan
+     defaults: { _controller: DeviabBorrowerBundle:Borrower:getBorrowerLoanDetails}
+     requirements:
+        _method: GET
+        borrowerId: "\d+"
 

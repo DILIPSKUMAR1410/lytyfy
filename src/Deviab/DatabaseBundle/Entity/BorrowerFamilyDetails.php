@@ -2,6 +2,7 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
+use Deviab\DatabaseBundle\Entity\BorrowerDetails;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -50,7 +51,7 @@ class BorrowerFamilyDetails
     private $gender;
 
     /**
-     * @var \Deviab\DatabaseBundle\Entity\BorrowerDetails
+     * @var BorrowerDetails
      *
      * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails")
      * @ORM\JoinColumns({
@@ -165,7 +166,7 @@ class BorrowerFamilyDetails
     /**
      * Get borrower
      *
-     * @return \Deviab\DatabaseBundle\Entity\BorrowerDetails
+     * @return BorrowerDetails
      */
     public function getBorrower()
     {
@@ -175,10 +176,10 @@ class BorrowerFamilyDetails
     /**
      * Set borrower
      *
-     * @param \Deviab\DatabaseBundle\Entity\BorrowerDetails $borrower
+     * @param BorrowerDetails $borrower
      * @return BorrowerFamilyDetails
      */
-    public function setBorrower(\Deviab\DatabaseBundle\Entity\BorrowerDetails $borrower = null)
+    public function setBorrower(BorrowerDetails $borrower)
     {
         $this->borrower = $borrower;
 

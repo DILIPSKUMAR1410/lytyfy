@@ -21,7 +21,8 @@ class AppKernel extends Kernel
             new Deviab\DatabaseBundle\DeviabDatabaseBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            new Deviab\FabricBundle\FabricBundle(),
+            new Deviab\FabricBundle\FabricBundle()
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -3,3 +3,7 @@ services:
         class: Deviab\BorrowerBundle\Services\BorrowerService
         arguments: [@doctrine]
 
+  ops_strategy_service:
+        class: Deviab\BorrowerBundle\Services\OpsStrategyService
+        arguments: [@doctrine]
+
