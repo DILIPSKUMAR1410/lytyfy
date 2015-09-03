@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * LenderDeviabTransaction
  *
- * @ORM\Table()
+ * @ORM\Table(name="lender_deviab_transactions")
  * @ORM\Entity
  */
 class LenderDeviabTransaction
@@ -22,12 +22,14 @@ class LenderDeviabTransaction
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Lender", inversedBy="lenderDeviabTransactions")
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="lenderDeviabTransactions")
+     * @ORM\JoinColumn(name="lender_id", referencedColumnName="id")
      */
     private $lender;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Borrower", inversedBy="toDeviabTransactions")
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails", inversedBy="toDeviabTransactions")
+     * @ORM\JoinColumn(name="borrower_id", referencedColumnName="id")
      */
     private $borrower;
     /**
