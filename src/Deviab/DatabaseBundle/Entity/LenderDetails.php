@@ -3,6 +3,9 @@
 namespace Deviab\DatabaseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Deviab\TransactionBundle\Entity\LenderBorrowerTransaction;
+use Deviab\TransactionBundle\Entity\DeviabLenderTransaction;
+use Deviab\TransactionBundle\Entity\BorrowerDeviabTransaction;
 
 /**
  * LenderDetails
@@ -83,6 +86,21 @@ class LenderDetails
      * @ORM\Column(name="facebook_id", type="string", length=45, nullable=true)
      */
     private $facebookId;
+
+    /**
+     * @ORM\OneToMany(targetEntity="LenderBorrowerTransaction", mappedBy="lender")
+     */
+    private $lenderDeviabTransactions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="LenderBorrowerTransaction", mappedBy="lender")
+     */
+    private $toDeviabTransactions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BorrowerDeviabTransaction", mappedBy="lender")
+     */
+    private $borrowerDeviabTransactions;
 
 
     /**

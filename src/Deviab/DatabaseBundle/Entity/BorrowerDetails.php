@@ -5,6 +5,9 @@ namespace Deviab\DatabaseBundle\Entity;
 use Deviab\DatabaseBundle\Entity\MasterVillages;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
+use Deviab\TransactionBundle\Entity\LenderBorrowerTransaction;
+use Deviab\TransactionBundle\Entity\DeviabLenderTransaction;
+use Deviab\TransactionBundle\Entity\BorrowerDeviabTransaction;
 
 /**
  * BorrowerDetails
@@ -102,6 +105,21 @@ class BorrowerDetails
      * })
      */
     private $village;
+
+    /**
+     * @ORM\OneToMany(targetEntity="DeviabLenderTransaction", mappedBy="borrower")
+     */
+    private $deviabBorrowerTransactions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="LenderDeviabTransaction", mappedBy="borrower")
+     */
+    private $toDeviabTransactions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BorrowerDeviabTransaction", mappedBy="borrower")
+     */
+    private $borrowerLenderTransactions;
 
 
     /**
