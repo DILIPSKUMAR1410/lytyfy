@@ -2,6 +2,7 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
+use JMS\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,7 +24,7 @@ class MasterStates
 
     /**
      * @var string
-     *
+     * @Groups({"borrower_portfolio"})
      * @ORM\Column(name="state_name", type="string", length=45, nullable=false)
      */
     private $stateName;

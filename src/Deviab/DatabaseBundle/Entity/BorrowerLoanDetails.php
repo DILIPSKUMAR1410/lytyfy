@@ -2,6 +2,8 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
+use Deviab\DatabaseBundle\Entity\BorrowerDetails;
+use Deviab\DatabaseBundle\Entity\LoanOperationalStrategies;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 
@@ -25,13 +27,13 @@ class BorrowerLoanDetails
 
     /**
      * @var string
-     * @Groups({"borrower_portfolio"})
+     * `
      * @ORM\Column(name="user_story", type="text", nullable=true)
      */
     private $userStory;
 
     /**
-     * @var \Deviab\DatabaseBundle\Entity\BorrowerDetails
+     * @var BorrowerDetails
      *
      * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails")
      * @ORM\JoinColumns({
@@ -41,7 +43,7 @@ class BorrowerLoanDetails
     private $borrower;
 
     /**
-     * @var \Deviab\DatabaseBundle\Entity\LoanOperationalStrategies
+     * @var LoanOperationalStrategies
      * @Groups({"borrower_portfolio"})
      * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\LoanOperationalStrategies")
      * @ORM\JoinColumns({
@@ -49,6 +51,50 @@ class BorrowerLoanDetails
      * })
      */
     private $operationalStrategy;
+
+    /**
+     * @ORM\Column(name="amount_raised", type="double", nullable=true)
+     * @Groups({"borrower_portfolio"})
+     */
+    private $amountRaised;
+
+    /**
+     * @ORM\Column(name="dmi", type="double", nullable=true)
+     * @Groups({"borrower_portfolio"})
+     */
+    private $dmi;
+
+    /**
+     * @return mixed
+     */
+    public function getDmi()
+    {
+        return $this->dmi;
+    }
+
+    /**
+     * @param mixed $dmi
+     */
+    public function setDmi($dmi)
+    {
+        $this->dmi = $dmi;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAmountRaised()
+    {
+        return $this->amountRaised;
+    }
+
+    /**
+     * @param mixed $amountRaised
+     */
+    public function setAmountRaised($amountRaised)
+    {
+        $this->amountRaised = $amountRaised;
+    }
 
 
     /**
@@ -87,7 +133,7 @@ class BorrowerLoanDetails
     /**
      * Get borrower
      *
-     * @return \Deviab\DatabaseBundle\Entity\BorrowerDetails
+     * @return BorrowerDetails
      */
     public function getBorrower()
     {
@@ -97,10 +143,10 @@ class BorrowerLoanDetails
     /**
      * Set borrower
      *
-     * @param \Deviab\DatabaseBundle\Entity\BorrowerDetails $borrower
+     * @param BorrowerDetails $borrower
      * @return BorrowerLoanDetails
      */
-    public function setBorrower(\Deviab\DatabaseBundle\Entity\BorrowerDetails $borrower = null)
+    public function setBorrower(BorrowerDetails $borrower = null)
     {
         $this->borrower = $borrower;
 
@@ -110,7 +156,7 @@ class BorrowerLoanDetails
     /**
      * Get operationalStrategy
      *
-     * @return \Deviab\DatabaseBundle\Entity\LoanOperationalStrategies
+     * @return LoanOperationalStrategies
      */
     public function getOperationalStrategy()
     {
@@ -120,10 +166,10 @@ class BorrowerLoanDetails
     /**
      * Set operationalStrategy
      *
-     * @param \Deviab\DatabaseBundle\Entity\LoanOperationalStrategies $operationalStrategy
+     * @param LoanOperationalStrategies $operationalStrategy
      * @return BorrowerLoanDetails
      */
-    public function setOperationalStrategy(\Deviab\DatabaseBundle\Entity\LoanOperationalStrategies $operationalStrategy = null)
+    public function setOperationalStrategy(LoanOperationalStrategies $operationalStrategy = null)
     {
         $this->operationalStrategy = $operationalStrategy;
 

@@ -1,3 +1,0 @@
-deviab_transaction_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: DeviabTransactionBundle:Default:index }

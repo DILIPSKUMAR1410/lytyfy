@@ -2,6 +2,7 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
+use JMS\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,7 +31,7 @@ class MasterBlock
 
     /**
      * @var \Deviab\DatabaseBundle\Entity\MasterDistrict
-     *
+     * @Groups({"borrower_portfolio"})
      * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\MasterDistrict")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="district_id", referencedColumnName="id")

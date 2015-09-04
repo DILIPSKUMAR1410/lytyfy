@@ -2,6 +2,7 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
+use JMS\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,14 +24,14 @@ class MasterVillages
 
     /**
      * @var string
-     *
+     * @Groups({"borrower_portfolio"})
      * @ORM\Column(name="village_name", type="string", length=45, nullable=true)
      */
     private $villageName;
 
     /**
+     * @Groups({"borrower_portfolio"})
      * @var \Deviab\DatabaseBundle\Entity\MasterPanchayat
-     *
      * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\MasterPanchayat")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="panchayat_id", referencedColumnName="id")

@@ -2,6 +2,7 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
+use JMS\Serializer\Annotation\MaxDepth;
 use Deviab\DatabaseBundle\Entity\MasterVillages;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
@@ -98,6 +99,7 @@ class BorrowerDetails
 
     /**
      * @Groups({"borrower_portfolio"})
+     * @MaxDepth(5)
      * @var MasterVillages
      * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\MasterVillages")
      * @ORM\JoinColumns({
