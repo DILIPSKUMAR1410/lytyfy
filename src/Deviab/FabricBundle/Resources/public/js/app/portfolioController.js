@@ -37,7 +37,7 @@ app.controller("addAreaController", function($scope,$http) {
         $scope.isCity = true;
       }
       $scope.checkParants();
-    }
+    };
     $scope.checkParants = function() {
       if($scope.isCity == false && $scope.isType == false && $scope.isResult == false) {
         if($scope.typeSelected.name == 'Zone') {
@@ -46,7 +46,7 @@ app.controller("addAreaController", function($scope,$http) {
           $scope.parents = parents;
         }
       }
-    }
+    };
     $scope.changedType = function(areaType) {
       if(areaType != null) {
         if(areaType.name == 'Zone' ){
@@ -65,7 +65,7 @@ app.controller("addAreaController", function($scope,$http) {
         $scope.isType = true;
       }
       $scope.checkParants();
-    }
+    };
 
     $scope.changedParent = function(parent) {    
       if(parent != null) {
@@ -75,12 +75,12 @@ app.controller("addAreaController", function($scope,$http) {
           $scope.parentId = null;
           $scope.isComplited = true;
       }
-    }
+    };
 
     $scope.getResult = function() {
       $scope.isResult = false;
       $scope.checkParants();
-    }
+    };
 
     $scope.submitAction=function() {
      var dataObj = {  

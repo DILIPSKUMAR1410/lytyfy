@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * LenderDeviabTransaction
  *
- * @ORM\Table(name="lender_deviab_transactions")
+ * @ORM\Table()
  * @ORM\Entity
  */
 class LenderDeviabTransaction
@@ -22,14 +22,12 @@ class LenderDeviabTransaction
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="lenderDeviabTransactions")
-     * @ORM\JoinColumn(name="lender_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Lender", inversedBy="lenderDeviabTransactions")
      */
     private $lender;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails", inversedBy="toDeviabTransactions")
-     * @ORM\JoinColumn(name="borrower_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Borrower", inversedBy="toDeviabTransactions")
      */
     private $borrower;
     /**
@@ -58,6 +56,16 @@ class LenderDeviabTransaction
     }
 
     /**
+     * Get timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
      * Set timestamp
      *
      * @param \DateTime $timestamp
@@ -71,13 +79,13 @@ class LenderDeviabTransaction
     }
 
     /**
-     * Get timestamp
+     * Get amount
      *
-     * @return \DateTime 
+     * @return float
      */
-    public function getTimestamp()
+    public function getAmount()
     {
-        return $this->timestamp;
+        return $this->amount;
     }
 
     /**
@@ -91,15 +99,5 @@ class LenderDeviabTransaction
         $this->amount = $amount;
 
         return $this;
-    }
-
-    /**
-     * Get amount
-     *
-     * @return float 
-     */
-    public function getAmount()
-    {
-        return $this->amount;
     }
 }
