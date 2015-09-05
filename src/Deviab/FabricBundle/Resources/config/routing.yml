@@ -1,5 +1,5 @@
 fabric_homepage:
-    path:     /hello/{name}
+    path:     /newhome
     defaults: { _controller: FabricBundle:Default:index }
 
 fabric_borrower_portfolio:

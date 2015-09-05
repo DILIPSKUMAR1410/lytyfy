@@ -8,6 +8,6 @@ class PortfolioController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('FabricBundle:Portfolio:borrower_portfolio.html.twig');
+        return $this->render('FabricBundle:Portfolio:portfolio.html.twig');
     }
 }

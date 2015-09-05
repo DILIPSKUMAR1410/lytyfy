@@ -46,6 +46,6 @@ class BorrowerController extends Controller
         $borrowerService = $this->container->get('borrower_service');
         $borrower = $borrowerService->getBorrowerById($borrowerId);
         $context = SerializationContext::create()->setGroups(array('borrower_portfolio'));
-        return View::create($borrower, Codes::HTTP_FOUND)->setSerializationContext($context);
+        return View::create($borrower, Codes::HTTP_OK)->setSerializationContext($context);
     }
 }
