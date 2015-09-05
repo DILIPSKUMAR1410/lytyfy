@@ -27,8 +27,7 @@ app.controller("addAreaController", function($scope,$http) {
     $scope.isComplited = true;
     $scope.parentId = null;
     $scope.localities = localities;
-
-    $scope.changedCity = function(getCity) {
+    $scope.changedCity = function (getCity) {
       
       if(getCity != null) {
         $scope.isCity = false;

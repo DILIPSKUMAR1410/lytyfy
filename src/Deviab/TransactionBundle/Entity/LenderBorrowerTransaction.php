@@ -100,4 +100,36 @@ class LenderDeviabTransaction
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLender()
+    {
+        return $this->lender;
+    }
+
+    /**
+     * @param mixed $lender
+     */
+    public function setLender($lender)
+    {
+        $this->lender = $lender;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBorrower()
+    {
+        return $this->borrower;
+    }
+
+    /**
+     * @param mixed $borrower
+     */
+    public function setBorrower($borrower)
+    {
+        $this->borrower = $borrower;
+    }
 }
