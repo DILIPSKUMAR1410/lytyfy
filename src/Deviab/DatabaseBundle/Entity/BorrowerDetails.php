@@ -121,6 +121,11 @@ class BorrowerDetails
      */
     private $borrowerLenderTransactions;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="borrowers")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
+     */
+    private $project;
 
     /**
      * Get id
