@@ -386,4 +386,52 @@ class BorrowerDetails
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDeviabBorrowerTransactions()
+    {
+        return $this->deviabBorrowerTransactions;
+    }
+
+    /**
+     * @param mixed $deviabBorrowerTransactions
+     */
+    public function setDeviabBorrowerTransactions($deviabBorrowerTransactions)
+    {
+        $this->deviabBorrowerTransactions = $deviabBorrowerTransactions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBorrowerLenderTransactions()
+    {
+        return $this->borrowerLenderTransactions;
+    }
+
+    /**
+     * @param mixed $borrowerLenderTransactions
+     */
+    public function setBorrowerLenderTransactions($borrowerLenderTransactions)
+    {
+        $this->borrowerLenderTransactions = $borrowerLenderTransactions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToDeviabTransactions()
+    {
+        return $this->toDeviabTransactions;
+    }
+
+    /**
+     * @param mixed $toDeviabTransactions
+     */
+    public function setToDeviabTransactions($toDeviabTransactions)
+    {
+        $this->toDeviabTransactions = $toDeviabTransactions;
+    }
 }
