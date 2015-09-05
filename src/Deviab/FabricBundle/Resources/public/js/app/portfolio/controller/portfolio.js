@@ -5,8 +5,8 @@ app.controller("portfolioController", function($scope,$http) {
       $scope.portfolioResponce = data;
       console.log(data);
   });
-  res.error(function(data, status, headers, config) {
-    alert( "failure message: " + JSON.stringify({data: data}));
-  });
+  // res.error(function(data, status, headers, config) {
+  //   alert( "failure message: " + JSON.stringify({data: data}));
+  // });
 });
 
