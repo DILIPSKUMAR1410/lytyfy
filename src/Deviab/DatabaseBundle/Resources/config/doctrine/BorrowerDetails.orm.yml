@@ -79,11 +79,6 @@ Deviab\DatabaseBundle\Entity\BorrowerDetails:
             scale: 0
             comment: ''
             column: annual_income
-        project:
-            type: integer
-            nullable: true
-            comment: ''
-            column: project_id
     manyToOne:
         village:
             targetEntity: MasterVillages
@@ -94,7 +89,6 @@ Deviab\DatabaseBundle\Entity\BorrowerDetails:
                 village_id:
                     referencedColumnName: id
             orphanRemoval: false
-    manyToOne:
         project:
             targetEntity: Project
             cascade: {  }
