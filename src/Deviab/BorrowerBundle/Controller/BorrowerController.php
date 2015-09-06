@@ -201,5 +201,18 @@ class BorrowerController extends Controller
         return View::create($borrowerLoanDetails, Codes::HTTP_OK);
     }
 
+    /**
+     * @param $projectId
+     * @return View
+     */
+    public function getBorrowersByProjectAction($projectId)
+    {
+        $borrowerService = $this->container->get('borrower_service');
+        $borrower = $borrowerService->getBorrowersByProject($projectId);
+        $context = SerializationContext::create()->setGroups(array("project_portfolio"))
+            ->enableMaxDepthChecks();
+        return View::create($borrower, Codes::HTTP_OK)->setSerializationContext($context);
+
+    }
 
 }

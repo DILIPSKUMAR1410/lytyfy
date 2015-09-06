@@ -30,13 +30,13 @@ class BorrowerDetails
     /**
      * @var string
      * @ORM\Column(name="fname", type="string", length=45, nullable=false)
-     * @Groups({"borrower_portfolio"})
+     * @Groups({"borrower_portfolio","project_portfolio"})
      */
     private $fname;
 
     /**
      * @var string
-     * @Groups({"borrower_portfolio"})
+     * @Groups({"borrower_portfolio","project_portfolio"})
      * @ORM\Column(name="lname", type="string", length=45, nullable=false)
      */
     private $lname;

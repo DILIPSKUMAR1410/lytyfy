@@ -295,4 +295,29 @@ class BorrowerService extends BaseService
 
     }
 
+    /**
+     * @param $projectId
+     * @return object
+     * @internal param $borrowerId
+     */
+    public function getBorrowersByProject($projectId)
+    {
+
+        $projectRepositry = $this->doctrine->getRepository('DeviabDatabaseBundle:ProjectDetails');
+        $borrowerImagesRepositry = $this->doctrine->getRepository('DeviabDatabaseBundle:BorrowerImages');
+        $borrowerLoanDetailsRepositry = $this->doctrine->getRepository('DeviabDatabaseBundle:BorrowerLoanDetails');
+
+        $borrower = $projectRepositry->find($projectId);
+        if ($borrower == null)
+            return "borrower not found";
+        $borrowerImage = $borrowerImagesRepositry->findOneBy(array('borrower' => $borrower));
+        if ($borrowerImage == null)
+            $borrowerImage = "image not found";
+        $borrowerLoanStory = $borrowerLoanDetailsRepositry->findOneBy(array('borrower' => $borrower));
+        if ($borrowerLoanStory == null)
+            $borrowerLoanStory = "loan story not found";
+
+        return array('borrower' => $borrower, 'borrowerImg' => $borrowerImage, 'borrowerStory' => $borrowerLoanStory);
+    }
+
 }

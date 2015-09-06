@@ -27,7 +27,7 @@ class BorrowerLoanDetails
 
     /**
      * @var string
-     * `
+     * @Groups({"project_portfolio"})
      * @ORM\Column(name="user_story", type="text", nullable=true)
      */
     private $userStory;

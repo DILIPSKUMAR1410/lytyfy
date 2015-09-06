@@ -87,3 +87,10 @@ get_borrower_loan:
         _method: GET
         borrowerId: "\d+"
 
+get_borrower_by_project:
+    pattern:  /{projectId}
+    defaults: { _controller: DeviabBorrowerBundle:Borrower:getBorrowersByProject}
+    requirements:
+       _method: GET
+       borrowerId: "\d+"
+

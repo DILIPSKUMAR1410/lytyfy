@@ -31,7 +31,7 @@ class BorrowerImages
 
     /**
      * @var string
-     * @Groups({"borrower_portfolio"})
+     * @Groups({"borrower_portfolio","project_portfolio"})
      * @ORM\Column(name="image_url", type="string", length=255, nullable=false)
      */
     private $imageUrl;
