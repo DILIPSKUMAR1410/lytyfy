@@ -5,6 +5,9 @@ Deviab\DatabaseBundle\Entity\BorrowerDetails:
         fk_village_id_idx:
             columns:
                 - village_id
+        fk_project_id_idx:
+            columns:
+                - project_id
     id:
         id:
             type: integer
@@ -84,6 +87,15 @@ Deviab\DatabaseBundle\Entity\BorrowerDetails:
             inversedBy: null
             joinColumns:
                 village_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        project:
+            targetEntity: Project
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                project_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }
