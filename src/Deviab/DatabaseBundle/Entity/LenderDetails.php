@@ -88,19 +88,14 @@ class LenderDetails
     private $facebookId;
 
     /**
-     * @ORM\OneToMany(targetEntity="LenderBorrowerTransaction", mappedBy="lender")
+     * @ORM\OneToMany(targetEntity="DeviabLenderTransaction", mappedBy="lender")
      */
-    private $lenderDeviabTransactions;
+    private $toLenderTransactions;
 
     /**
-     * @ORM\OneToMany(targetEntity="LenderBorrowerTransaction", mappedBy="lender")
+     * @ORM\OneToMany(targetEntity="LenderDeviabTransaction", mappedBy="lender")
      */
-    private $toDeviabTransactions;
-
-    /**
-     * @ORM\OneToMany(targetEntity="BorrowerDeviabTransaction", mappedBy="lender")
-     */
-    private $borrowerDeviabTransactions;
+    private $fromLenderTransactions;
 
 
     /**

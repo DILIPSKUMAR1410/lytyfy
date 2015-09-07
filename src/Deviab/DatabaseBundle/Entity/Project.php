@@ -24,6 +24,21 @@ class Project
     private $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="BorrowerDeviabTransaction", mappedBy="borrower")
+     */
+    private $toProjectBorrowerTransactions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="DeviabLenderTransaction", mappedBy="borrower")
+     */
+    private $fromProjectTransactions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="LenderDeviabTransaction", mappedBy="borrower")
+     */
+    private $toProjectDeviabTransactions;
+
+    /**
      * @ORM\OneToMany(targetEntity="BorrowerDetails", mappedBy="project")
      */
     private $borrowers;

@@ -22,16 +22,17 @@ class LenderDeviabTransaction
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="lenderDeviabTransactions")
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="fromlenderTransactions")
      * @ORM\JoinColumn(name="lender_id", referencedColumnName="id")
      */
     private $lender;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails", inversedBy="toDeviabTransactions")
-     * @ORM\JoinColumn(name="borrower_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="toProjectLenderTransactions")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
-    private $borrower;
+    private $project;
+
     /**
      * @var \DateTime
      *

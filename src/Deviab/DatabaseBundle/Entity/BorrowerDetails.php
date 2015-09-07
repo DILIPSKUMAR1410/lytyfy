@@ -109,19 +109,9 @@ class BorrowerDetails
     private $village;
 
     /**
-     * @ORM\OneToMany(targetEntity="DeviabLenderTransaction", mappedBy="borrower")
-     */
-    private $deviabBorrowerTransactions;
-
-    /**
-     * @ORM\OneToMany(targetEntity="LenderDeviabTransaction", mappedBy="borrower")
-     */
-    private $toDeviabTransactions;
-
-    /**
      * @ORM\OneToMany(targetEntity="BorrowerDeviabTransaction", mappedBy="borrower")
      */
-    private $borrowerLenderTransactions;
+    private $fromBorrowerTransactions;
 
     /**
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="borrowers")
