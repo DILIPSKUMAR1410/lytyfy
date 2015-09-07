@@ -1,0 +1,3 @@
+deviab_repayment_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: DeviabRepaymentBundle:Default:index }

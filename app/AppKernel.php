@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Deviab\FabricBundle\FabricBundle(),
             new Deviab\TransactionBundle\DeviabTransactionBundle(),
+            new Deviab\RepaymentBundle\DeviabRepaymentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
