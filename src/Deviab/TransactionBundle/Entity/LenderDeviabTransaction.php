@@ -15,124 +15,45 @@ class LenderDeviabTransaction
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="fromlenderTransactions")
-     * @ORM\JoinColumn(name="lender_id", referencedColumnName="id")
-     */
-    private $lender;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="toProjectLenderTransactions")
-     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
-     */
-    private $project;
-
-    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="timestamp", type="datetime")
+     * @ORM\Column(name="timestamp", type="datetime", precision=0, scale=0, nullable=false, unique=false)
      */
     private $timestamp;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="amount", type="float")
+     * @ORM\Column(name="amount", type="float", precision=0, scale=0, nullable=false, unique=false)
      */
     private $amount;
 
-
     /**
-     * Get id
+     * @var \Deviab\DatabaseBundle\Entity\LenderDetails
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="fromlenderTransactions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="lender_id", referencedColumnName="id", nullable=true)
+     * })
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $lender;
 
     /**
-     * Get timestamp
+     * @var \Deviab\DatabaseBundle\Entity\Project
      *
-     * @return \DateTime
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="toProjectLenderTransactions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="project_id", referencedColumnName="id", nullable=true)
+     * })
      */
-    public function getTimestamp()
-    {
-        return $this->timestamp;
-    }
+    private $project;
 
-    /**
-     * Set timestamp
-     *
-     * @param \DateTime $timestamp
-     * @return LenderDeviabTransaction
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->timestamp = $timestamp;
 
-        return $this;
-    }
-
-    /**
-     * Get amount
-     *
-     * @return float
-     */
-    public function getAmount()
-    {
-        return $this->amount;
-    }
-
-    /**
-     * Set amount
-     *
-     * @param float $amount
-     * @return LenderDeviabTransaction
-     */
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLender()
-    {
-        return $this->lender;
-    }
-
-    /**
-     * @param mixed $lender
-     */
-    public function setLender($lender)
-    {
-        $this->lender = $lender;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getBorrower()
-    {
-        return $this->borrower;
-    }
-
-    /**
-     * @param mixed $borrower
-     */
-    public function setBorrower($borrower)
-    {
-        $this->borrower = $borrower;
-    }
 }

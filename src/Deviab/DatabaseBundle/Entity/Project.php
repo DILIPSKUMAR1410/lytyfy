@@ -3,13 +3,11 @@
 namespace Deviab\DatabaseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Deviab\DatabaseBundle\Entity\BorrowerDetails;
 
 /**
  * Project
  *
- * @ORM\Table(name="projects")
+ * @ORM\Table(name="projects", indexes={@ORM\Index(name="fk_district_id_idx", columns={"district_id"})})
  * @ORM\Entity
  */
 class Project
@@ -24,34 +22,53 @@ class Project
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="BorrowerDeviabTransaction", mappedBy="borrower")
+     * @var string
+     *
+     * @ORM\Column(name="p_name", type="string", length=45, nullable=false)
      */
-    private $toProjectBorrowerTransactions;
+    private $pName;
 
     /**
-     * @ORM\OneToMany(targetEntity="DeviabLenderTransaction", mappedBy="borrower")
+     * @var integer
+     *
+     * @ORM\Column(name="amount_raised", type="integer", nullable=false)
      */
-    private $fromProjectTransactions;
+    private $amountRaised;
 
     /**
-     * @ORM\OneToMany(targetEntity="LenderDeviabTransaction", mappedBy="borrower")
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=100, nullable=true)
      */
-    private $toProjectDeviabTransactions;
+    private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="BorrowerDetails", mappedBy="project")
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails", mappedBy="projects")
      */
     private $borrowers;
 
+    /**
+     * @var \Deviab\DatabaseBundle\Entity\Masterdistrict
+     *
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Masterdistrict")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="district_id", referencedColumnName="id")
+     * })
+     */
+    private $district;
+
+    /**
+     * Constructor
+     */
     public function __construct()
     {
-        $this->borrowers = new ArrayCollection();
+        $this->borrowers = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
-     * Get id
-     *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -59,37 +76,92 @@ class Project
     }
 
     /**
-    *
-    * Get Borrowers
-    *
-    * @return ArrayCollection
-    */
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPName()
+    {
+        return $this->pName;
+    }
+
+    /**
+     * @param string $pName
+     */
+    public function setPName($pName)
+    {
+        $this->pName = $pName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAmountRaised()
+    {
+        return $this->amountRaised;
+    }
+
+    /**
+     * @param int $amountRaised
+     */
+    public function setAmountRaised($amountRaised)
+    {
+        $this->amountRaised = $amountRaised;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
     public function getBorrowers()
     {
         return $this->borrowers;
     }
 
     /**
-    * Add Borrower
-    *
-    * @param BorrowerDetails $borrower
-    */
-    public function addBorrower(BorrowerDetails $borrower)
+     * @param \Doctrine\Common\Collections\Collection $borrowers
+     */
+    public function setBorrowers($borrowers)
     {
-        $this->borrowers[] = $borrower;
+        $this->borrowers = $borrowers;
     }
-
 
     /**
-     * Remove Borrower
-     *
-     * @param BorrowerDetails $borrower
+     * @return Masterdistrict
      */
-    public function removeBorrower(BorrowerDetails $borrower)
+    public function getDistrict()
     {
-        $this->borrowers->removeElement($borrower);
+        return $this->district;
     }
 
+    /**
+     * @param Masterdistrict $district
+     */
+    public function setDistrict($district)
+    {
+        $this->district = $district;
+    }
 
 
 

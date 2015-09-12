@@ -1,6 +1,10 @@
 Deviab\DatabaseBundle\Entity\Project:
     type: entity
     table: projects
+    indexes:
+        fk_district_id_idx:
+            columns:
+                - district_id
     id:
         id:
             type: integer
@@ -11,3 +15,42 @@ Deviab\DatabaseBundle\Entity\Project:
             generator:
                 strategy: IDENTITY
     lifecycleCallbacks: {  }
+    fields:
+        pName:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: p_name
+
+        amountRaised:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: amount_raised
+        description:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+
+    manyToOne:
+        district:
+            targetEntity: Masterdistrict
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                district_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        borrowers:
+          targetEntity: BorrowerDetails
+          mappedBy: projects
+
+
+

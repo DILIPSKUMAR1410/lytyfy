@@ -2,7 +2,6 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
-use Deviab\DatabaseBundle\Entity\BorrowerDetails;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,7 +50,7 @@ class BorrowerFamilyDetails
     private $gender;
 
     /**
-     * @var BorrowerDetails
+     * @var \Deviab\DatabaseBundle\Entity\BorrowerDetails
      *
      * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails")
      * @ORM\JoinColumns({
@@ -61,128 +60,4 @@ class BorrowerFamilyDetails
     private $borrower;
 
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get relation
-     *
-     * @return string
-     */
-    public function getRelation()
-    {
-        return $this->relation;
-    }
-
-    /**
-     * Set relation
-     *
-     * @param string $relation
-     * @return BorrowerFamilyDetails
-     */
-    public function setRelation($relation)
-    {
-        $this->relation = $relation;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return BorrowerFamilyDetails
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get dob
-     *
-     * @return \DateTime
-     */
-    public function getDob()
-    {
-        return $this->dob;
-    }
-
-    /**
-     * Set dob
-     *
-     * @param \DateTime $dob
-     * @return BorrowerFamilyDetails
-     */
-    public function setDob($dob)
-    {
-        $this->dob = $dob;
-
-        return $this;
-    }
-
-    /**
-     * Get gender
-     *
-     * @return string
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
-     * Set gender
-     *
-     * @param string $gender
-     * @return BorrowerFamilyDetails
-     */
-    public function setGender($gender)
-    {
-        $this->gender = $gender;
-
-        return $this;
-    }
-
-    /**
-     * Get borrower
-     *
-     * @return BorrowerDetails
-     */
-    public function getBorrower()
-    {
-        return $this->borrower;
-    }
-
-    /**
-     * Set borrower
-     *
-     * @param BorrowerDetails $borrower
-     * @return BorrowerFamilyDetails
-     */
-    public function setBorrower(BorrowerDetails $borrower)
-    {
-        $this->borrower = $borrower;
-
-        return $this;
-    }
 }

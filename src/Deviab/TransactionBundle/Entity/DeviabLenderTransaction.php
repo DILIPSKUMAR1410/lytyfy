@@ -15,92 +15,45 @@ class DeviabLenderTransaction
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="fromProjectTransactions")
-     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
-     */
-    private $project;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="toLenderTransactions")
-     * @ORM\JoinColumn(name="lender_id", referencedColumnName="id")
-     */
-    private $lender;
-
-    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="timestamp", type="datetime")
+     * @ORM\Column(name="timestamp", type="datetime", precision=0, scale=0, nullable=false, unique=false)
      */
     private $timestamp;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="amount", type="float")
+     * @ORM\Column(name="amount", type="float", precision=0, scale=0, nullable=false, unique=false)
      */
     private $amount;
 
+    /**
+     * @var \Deviab\DatabaseBundle\Entity\Project
+     *
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="fromProjectTransactions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="project_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $project;
 
     /**
-     * Get id
+     * @var \Deviab\DatabaseBundle\Entity\LenderDetails
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="toLenderTransactions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="lender_id", referencedColumnName="id", nullable=true)
+     * })
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $lender;
 
-    /**
-     * Get timestamp
-     *
-     * @return \DateTime
-     */
-    public function getTimestamp()
-    {
-        return $this->timestamp;
-    }
 
-    /**
-     * Set timestamp
-     *
-     * @param \DateTime $timestamp
-     * @return DeviabLenderTransaction
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->timestamp = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Get amount
-     *
-     * @return float
-     */
-    public function getAmount()
-    {
-        return $this->amount;
-    }
-
-    /**
-     * Set amount
-     *
-     * @param float $amount
-     * @return DeviabLenderTransaction
-     */
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
-
-        return $this;
-    }
 }

@@ -2,7 +2,6 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
-use Deviab\DatabaseBundle\Entity\BorrowerDetails;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,7 +29,7 @@ class BorrowerContactNumbers
     private $contactNumber;
 
     /**
-     * @var BorrowerDetails
+     * @var \Deviab\DatabaseBundle\Entity\BorrowerDetails
      *
      * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails")
      * @ORM\JoinColumns({
@@ -40,59 +39,4 @@ class BorrowerContactNumbers
     private $borrower;
 
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get contactNumber
-     *
-     * @return string
-     */
-    public function getContactNumber()
-    {
-        return $this->contactNumber;
-    }
-
-    /**
-     * Set contactNumber
-     *
-     * @param string $contactNumber
-     * @return BorrowerContactNumbers
-     */
-    public function setContactNumber($contactNumber)
-    {
-        $this->contactNumber = $contactNumber;
-
-        return $this;
-    }
-
-    /**
-     * Get borrower
-     *
-     * @return BorrowerDetails
-     */
-    public function getBorrower()
-    {
-        return $this->borrower;
-    }
-
-    /**
-     * Set borrower
-     *
-     * @param BorrowerDetails $borrower
-     * @return BorrowerContactNumbers
-     */
-    public function setBorrower(BorrowerDetails $borrower = null)
-    {
-        $this->borrower = $borrower;
-
-        return $this;
-    }
 }

@@ -2,15 +2,16 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * BorrowerDetails
+ * FieldRepresentative
  *
- * @ORM\Table(name="borrower_details", indexes={@ORM\Index(name="fk_village_id_idx", columns={"village_id"}), @ORM\Index(name="fk_project_id_idx", columns={"project_id"})})
+ * @ORM\Table(name="field_representative", indexes={@ORM\Index(name="fk_village_id_idx", columns={"village_id"}), @ORM\Index(name="fk_project_id_idx", columns={"project_id"})})
  * @ORM\Entity
  */
-class BorrowerDetails
+class FieldRepresentative
 {
     /**
      * @var integer
@@ -85,11 +86,11 @@ class BorrowerDetails
     private $occupation;
 
     /**
-     * @var float
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\Column(name="annual_income", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\OneToMany(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails", mappedBy="fieldRepresentative")
      */
-    private $annualIncome;
+    private $borrowers;
 
     /**
      * @var \Deviab\DatabaseBundle\Entity\MasterVillages
@@ -112,14 +113,12 @@ class BorrowerDetails
     private $project;
 
     /**
-     * @var \Deviab\DatabaseBundle\Entity\FieldRepresentative
-     *
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\FieldRepresentative", inversedBy="borrowers")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="fieldRepresentative_id", referencedColumnName="id")
-     * })
+     * Constructor
      */
-    private $fieldRepresentative;
+    public function __construct()
+    {
+        $this->borrowers = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -282,19 +281,19 @@ class BorrowerDetails
     }
 
     /**
-     * @return float
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAnnualIncome()
+    public function getBorrowers()
     {
-        return $this->annualIncome;
+        return $this->borrowers;
     }
 
     /**
-     * @param float $annualIncome
+     * @param \Doctrine\Common\Collections\Collection $borrowers
      */
-    public function setAnnualIncome($annualIncome)
+    public function setBorrowers($borrowers)
     {
-        $this->annualIncome = $annualIncome;
+        $this->borrowers = $borrowers;
     }
 
     /**
@@ -327,22 +326,6 @@ class BorrowerDetails
     public function setProject($project)
     {
         $this->project = $project;
-    }
-
-    /**
-     * @return FieldRepresentative
-     */
-    public function getFieldRepresentative()
-    {
-        return $this->fieldRepresentative;
-    }
-
-    /**
-     * @param FieldRepresentative $fieldRepresentative
-     */
-    public function setFieldRepresentative($fieldRepresentative)
-    {
-        $this->fieldRepresentative = $fieldRepresentative;
     }
 
 
