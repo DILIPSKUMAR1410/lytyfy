@@ -11,3 +11,4 @@ class DefaultController extends Controller
         return $this->render('FabricBundle:Default:index.html.twig');
     }
 }
+

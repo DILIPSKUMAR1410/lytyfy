@@ -2,6 +2,10 @@ fabric_homepage:
     path:     /newhome
     defaults: { _controller: FabricBundle:Default:index }
 
+fabric_project:
+    path:     /project
+    defaults: { _controller: FabricBundle:Project:project }
+
 fabric_borrower_portfolio:
     path:     /borrower_portfolio
     defaults: { _controller: FabricBundle:Portfolio:index }

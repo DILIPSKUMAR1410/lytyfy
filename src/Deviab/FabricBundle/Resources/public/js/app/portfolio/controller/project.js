@@ -1,5 +1,5 @@
-app.controller("PortfolioController", function($scope,$http) {
-    $scope.jsonResponce = "Raghav";
+app.controller("ProjectController", function($scope,$http) {
+    $scope.amounts = amounts;
     alert("hello");
     var res = $http.get('/borrowers/2.json');
     res.success(function(data, status, headers, config) {
@@ -10,3 +10,21 @@ app.controller("PortfolioController", function($scope,$http) {
     alert( "failure message: " + JSON.stringify({data: data}));
   });
 });
+var amounts = [
+    {
+      id : 1,
+      value: 500      
+    },
+    {
+      id : 2,
+      value: 1000      
+    },
+    {
+      id : 3,
+      value: 1500     
+    },
+    {
+      id : 4,
+      value: 2000
+    }
+];

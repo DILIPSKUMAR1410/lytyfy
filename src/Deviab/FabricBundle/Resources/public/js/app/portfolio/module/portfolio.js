@@ -3,7 +3,11 @@ app.config(function($routeProvider,$interpolateProvider){
  	$interpolateProvider.startSymbol('{[{').endSymbol('}]}');
 	$routeProvider.
 		when('/', {
-			templateUrl: '/bundles/fabric/js/app/templates/map.html',
-			controller: 'portfolioController'
+			templateUrl: '/bundles/fabric/js/app/templates/project.html',
+			controller: 'ProjectController'
+		}).
+		otherwise({
+			templateUrl: '/bundles/fabric/js/app/templates/project.html',
+			controller: 'ProjectController'
 		});
 });

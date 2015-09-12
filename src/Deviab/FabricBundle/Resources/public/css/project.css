@@ -1,0 +1,128 @@
+#project-details {
+	border: 1px solid #ccc;
+	padding-top:25px;
+}
+#borrower_img {
+	max-width: 100%;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+    /*margin:5px 0px;*/
+}
+#arrow {
+	margin-top: 35px;
+
+}
+#arrow1 {
+	margin-top: 35px;
+	padding-left: 60px;
+}
+#arrow:hover, #arrow1:hover {
+	cursor: pointer;
+	color:#0070B9;
+}
+.borrower:hover {
+	cursor: pointer;
+	-webkit-box-shadow: 5px 2px 44px -8px rgba(0,0,0,0.75) inset;
+	-moz-box-shadow: 5px 2px 44px -8px rgba(0,0,0,0.75) inset;
+	box-shadow: 5px 2px 44px -8px rgba(0,0,0,0.75) inset;
+}
+#borrow_amount_details{
+	margin-top: 105px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+#left-side-borrower-img-container {
+	/*margin: 5px;*/
+	margin-top: 50px;
+	padding-left: 20px;
+	border-right: 1px solid #ccc;
+}
+#right-side-borrower-img-container {
+	/*margin: 5px;*/
+	margin-top: 50px;
+	padding-right: 20px;
+	border-left: 1px solid #ccc;
+}
+#side-borrower-img {
+	padding: 4px;
+	border: 1px solid #ccc;
+	padding-top: 10px;
+}
+
+.border-radius {
+	border-radius: 20px;
+}
+
+/*image slider*/
+/*************************************
+ * generic styling for ALS elements
+ ************************************/
+
+.als-container {
+	position: relative;
+	width: 100%;
+	margin: 0px auto;
+	z-index: 0;
+}
+
+.als-viewport {
+	position: relative;
+	overflow: hidden;
+	margin: 0px auto;
+}
+
+.als-wrapper {
+	position: relative;
+	list-style: none;
+}
+
+.als-item {
+	position: relative;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+	float: left;
+}
+
+.als-prev, .als-next {
+	position: absolute;
+	cursor: pointer;
+	clear: both;
+}
+
+/*************************************
+ * specific styling for #demo1
+ ************************************/
+
+#demo1 {
+	margin: 40px auto;
+}
+
+#demo1 .als-item {
+	margin: 0px 5px;
+	padding: 4px 0px;
+	min-height: 120px;
+	min-width: 100px;
+	text-align: center;
+}
+
+#demo1 .als-item img {
+	display: block;
+	margin: 0 auto;
+	vertical-align: middle;
+}
+
+#demo1 .als-prev, #demo1 .als-next {
+	top: 40px;
+}
+
+#demo1 .als-prev {
+	left: 200px;
+}
+
+#demo1 .als-next {
+	right: 200px;
+}
+
