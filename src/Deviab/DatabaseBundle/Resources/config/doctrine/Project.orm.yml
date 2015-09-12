@@ -30,6 +30,18 @@ Deviab\DatabaseBundle\Entity\Project:
             unsigned: false
             comment: ''
             column: amount_raised
+        capitalAmount:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: capital_amount
+        returnedAmount:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: returned_amount
         description:
             type: string
             nullable: true
@@ -39,7 +51,7 @@ Deviab\DatabaseBundle\Entity\Project:
 
     manyToOne:
         district:
-            targetEntity: Masterdistrict
+            targetEntity: MasterDistrict
             cascade: {  }
             mappedBy: null
             inversedBy: null
@@ -49,8 +61,8 @@ Deviab\DatabaseBundle\Entity\Project:
             orphanRemoval: false
     oneToMany:
         borrowers:
-          targetEntity: BorrowerDetails
-          mappedBy: projects
+            targetEntity: BorrowerDetails
+            mappedBy: project
 
 
 

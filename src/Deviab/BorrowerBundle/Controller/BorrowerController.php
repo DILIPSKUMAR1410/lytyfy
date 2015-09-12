@@ -10,6 +10,7 @@ namespace Deviab\BorrowerBundle\Controller;
 
 use Deviab\DatabaseBundle\Entity\BorrowerContactNumbers;
 use Deviab\DatabaseBundle\Entity\BorrowerFamilyDetails;
+use Deviab\DatabaseBundle\Entity\BorrowerFinancialDetails;
 use Deviab\DatabaseBundle\Entity\BorrowerLoanDetails;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Util\Codes;

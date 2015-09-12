@@ -36,6 +36,20 @@ class Project
     private $amountRaised;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="capital_amount", type="integer", nullable=false)
+     */
+    private $capitalAmount;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="returned_amount", type="integer", nullable=false)
+     */
+    private $returnedAmount;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=100, nullable=true)
@@ -45,14 +59,14 @@ class Project
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails", mappedBy="projects")
+     * @ORM\OneToMany(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails", mappedBy="project")
      */
     private $borrowers;
 
     /**
-     * @var \Deviab\DatabaseBundle\Entity\Masterdistrict
+     * @var \Deviab\DatabaseBundle\Entity\MasterDistrict
      *
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Masterdistrict")
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\MasterDistrict")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="district_id", referencedColumnName="id")
      * })
@@ -66,103 +80,5 @@ class Project
     {
         $this->borrowers = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPName()
-    {
-        return $this->pName;
-    }
-
-    /**
-     * @param string $pName
-     */
-    public function setPName($pName)
-    {
-        $this->pName = $pName;
-    }
-
-    /**
-     * @return int
-     */
-    public function getAmountRaised()
-    {
-        return $this->amountRaised;
-    }
-
-    /**
-     * @param int $amountRaised
-     */
-    public function setAmountRaised($amountRaised)
-    {
-        $this->amountRaised = $amountRaised;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getBorrowers()
-    {
-        return $this->borrowers;
-    }
-
-    /**
-     * @param \Doctrine\Common\Collections\Collection $borrowers
-     */
-    public function setBorrowers($borrowers)
-    {
-        $this->borrowers = $borrowers;
-    }
-
-    /**
-     * @return Masterdistrict
-     */
-    public function getDistrict()
-    {
-        return $this->district;
-    }
-
-    /**
-     * @param Masterdistrict $district
-     */
-    public function setDistrict($district)
-    {
-        $this->district = $district;
-    }
-
-
 
 }

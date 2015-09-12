@@ -30,7 +30,8 @@ class LenderInvestmentService extends BaseService
             $this->em->flush();
 
             $lenderDeviabTransaction->getProject()->getAmountRaised()+$lenderDeviabTransaction->getAmount();
-            return $lenderDeviabTransaction;
+
+        return $lenderDeviabTransaction;
     }
 
 }
