@@ -10,16 +10,20 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="/bundles/fabric/js/ng-route.js"></script>    
     <script src="/bundles/fabric/js/app/portfolio/module/portfolio.js"></script>
+    <script src="/bundles/fabric/js/app/portfolio/controller/project.js"></script>
     <script src="/bundles/fabric/js/app/portfolio/controller/portfolio.js"></script>
    	<link rel="stylesheet" type="text/css" href="/bundles/fabric/css/fabric_style.css">
    	<link rel="stylesheet" href="/bundles/deviabapp/css/style.css"/>
 	<link rel="stylesheet" href="/bundles/deviabapp/css/navigation.css"/>
 	<link rel="stylesheet" href="/bundles/deviabapp/css/common.css"/>
+	<link rel="stylesheet" href="/bundles/deviabapp/css/newhome.css"/>
+	<link rel="stylesheet" href="/bundles/fabric/css/project.css"/>
+	<script src="/bundles/fabric/js/jquery-2.1.1.min.js"></script>
+	<script src="/bundles/fabric/js/jquery.als-1.7.min.js"></script>
 </head>
 <body ng-app="myApp">
 	<nav class="navbar navbar-default fixed-nav-bar">
 	  	<div class="container-fluid">
-	    	<!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header col-lg-5 col-md-3 col-sm-1">
 		      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-show-hide">
 			        <span class="sr-only">Toggle navigation</span>
@@ -29,7 +33,7 @@
 		      	</button>
 		      	<div class="container-fluid row col-xs-10">
 		      	<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
-		      		<a class="navbar-brand logo pull-left" href="#">deviab</a>
+		      		<a class="navbar-brand logo pull-left" href="#">Lytyfy</a>
 	    		</div>
 	    		<div id="sub" class="col-lg-12 col-sm-12 col-xs-12 col-md-12">Power to Everyone, Everywhere
 	    		</div>
@@ -39,17 +43,30 @@
 		      	<ul class="nav navbar-nav ">
 			        <li><a id="home" href="#home-container" class="nav-link">HOME <span class="sr-only">(current)</span></a></li>
 			        <li><a id="about" href="#about-outer-container" class="nav-link">ABOUT</a></li>
-			        <li><a id="solutions" href="#solutions-outer-container" class="nav-link">SOLUTIONS</a></li>
-			        <li><a id="careers" href="#footer" class="nav-link">CAREERS</a></li>
 		      		<li><a id="contact" href="#footer" class="nav-link">CONTACT</a></li>
+		      		<li><a id="contact" href="#footer" class="nav-link">LOGIN / SIGNUP</a></li>
 			    </ul>			    
-		    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
+		    </div>
+	  	</div>
 	</nav>
 	<div id="overlay"></div>
-	<div>
-		<div ng-view></div>
+	<br>
+	<div ng-view> </div>
+	<br><br>
+	<div id="footer" class="container-fluid col-lg-12">
+	<div id="social-icons-container">
+		<ul id="social-icon-container">        
+			<li id="fb"><a href="https://www.facebook.com/pages/Deviab/1675668492652876?__mref=message_bubble" target="_blank"><img src="/bundles/deviabapp/images/index/fb.png"></a></li>
+			<li id="tw"><a href="https://twitter.com/@deviab_energy" target="_blank"><img src="/bundles/deviabapp/images/index/tw.png"></a></li>
+			<li id="in"><a href="#"><img src="/bundles/deviabapp/images/index/in.png"></a></li>
+		</ul>			
 	</div>
+
+	<div id="footer-text" >
+		<div id="email">info@deviab.com</div>
+		<div id="copy-right">Copyright &copy Deviab Research and Implementation Pvt Ltd 2015</div>
+	</div>
+</div>
 
 </body>
 <script type="text/javascript">
