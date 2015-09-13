@@ -9,10 +9,12 @@
 namespace Deviab\TransactionBundle\Services;
 use Deviab\TransactionBundle\Entity\LenderDeviabTransaction;
 use Doctrine\Bundle\DoctrineBundle\Registry as Doctrine;
+use FOS\RestBundle\View\View;
+use FOS\RestBundle\Util\Codes;
 use Deviab\DatabaseBundle\Entity\Project;
 
 
-class LenderInvestmentService extends BaseService
+class InvestmentService extends BaseService
 {
     /**
      * @param Doctrine $doctrine
@@ -39,7 +41,7 @@ class LenderInvestmentService extends BaseService
         $this->em->persist($lenderDeviabTransaction);
         $this->em->flush();
 
-        return $lenderDeviabTransaction;
+        return View::create($lenderDeviabTransaction, Codes::HTTP_OK);
     }
 
 
