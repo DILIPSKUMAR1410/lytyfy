@@ -38,5 +38,54 @@ class MasterBlock
      */
     private $district;
 
+    /**
+     * @return string
+     */
+    public function getBlockName()
+    {
+        return $this->blockName;
+    }
+
+    /**
+     * @param string $blockName
+     */
+    public function setBlockName($blockName)
+    {
+        $this->blockName = $blockName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return MasterDistrict
+     */
+    public function getDistrict()
+    {
+        return $this->district;
+    }
+
+    /**
+     * @param MasterDistrict $district
+     */
+    public function setDistrict($district)
+    {
+        $this->district = $district;
+    }
+
+
 
 }

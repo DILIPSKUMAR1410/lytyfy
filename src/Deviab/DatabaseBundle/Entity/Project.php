@@ -2,6 +2,7 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -74,11 +75,225 @@ class Project
     private $district;
 
     /**
+     * @ORM\OneToMany(targetEntity="BorrowerDeviabTransaction", mappedBy="borrower")
+     */
+    private $toProjectBorrowerTransactions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="DeviabLenderTransaction", mappedBy="borrower")
+     */
+    private $fromProjectTransactions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="LenderDeviabTransaction", mappedBy="borrower")
+     */
+    private $toProjectDeviabTransactions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CurrentStatus", mappedBy="project")
+     */
+    private $projectBorrowerCurrentStatus;
+
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->borrowers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->borrowers = new ArrayCollection();
     }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPName()
+    {
+        return $this->pName;
+    }
+
+    /**
+     * @param string $pName
+     */
+    public function setPName($pName)
+    {
+        $this->pName = $pName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAmountRaised()
+    {
+        return $this->amountRaised;
+    }
+
+    /**
+     * @param int $amountRaised
+     */
+    public function setAmountRaised($amountRaised)
+    {
+        $this->amountRaised = $amountRaised;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCapitalAmount()
+    {
+        return $this->capitalAmount;
+    }
+
+    /**
+     * @param int $capitalAmount
+     */
+    public function setCapitalAmount($capitalAmount)
+    {
+        $this->capitalAmount = $capitalAmount;
+    }
+
+    /**
+     * @return int
+     */
+    public function getReturnedAmount()
+    {
+        return $this->returnedAmount;
+    }
+
+    /**
+     * @param int $returnedAmount
+     */
+    public function setReturnedAmount($returnedAmount)
+    {
+        $this->returnedAmount = $returnedAmount;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBorrowers()
+    {
+        return $this->borrowers;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $borrowers
+     */
+    public function setBorrowers($borrowers)
+    {
+        $this->borrowers = $borrowers;
+    }
+
+    /**
+     * @return MasterDistrict
+     */
+    public function getDistrict()
+    {
+        return $this->district;
+    }
+
+    /**
+     * @param MasterDistrict $district
+     */
+    public function setDistrict($district)
+    {
+        $this->district = $district;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToProjectBorrowerTransactions()
+    {
+        return $this->toProjectBorrowerTransactions;
+    }
+
+    /**
+     * @param mixed $toProjectBorrowerTransactions
+     */
+    public function setToProjectBorrowerTransactions($toProjectBorrowerTransactions)
+    {
+        $this->toProjectBorrowerTransactions = $toProjectBorrowerTransactions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFromProjectTransactions()
+    {
+        return $this->fromProjectTransactions;
+    }
+
+    /**
+     * @param mixed $fromProjectTransactions
+     */
+    public function setFromProjectTransactions($fromProjectTransactions)
+    {
+        $this->fromProjectTransactions = $fromProjectTransactions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToProjectDeviabTransactions()
+    {
+        return $this->toProjectDeviabTransactions;
+    }
+
+    /**
+     * @param mixed $toProjectDeviabTransactions
+     */
+    public function setToProjectDeviabTransactions($toProjectDeviabTransactions)
+    {
+        $this->toProjectDeviabTransactions = $toProjectDeviabTransactions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProjectBorrowerCurrentStatus()
+    {
+        return $this->projectBorrowerCurrentStatus;
+    }
+
+    /**
+     * @param mixed $projectBorrowerCurrentStatus
+     */
+    public function setProjectBorrowerCurrentStatus($projectBorrowerCurrentStatus)
+    {
+        $this->projectBorrowerCurrentStatus = $projectBorrowerCurrentStatus;
+    }
+
 
 }

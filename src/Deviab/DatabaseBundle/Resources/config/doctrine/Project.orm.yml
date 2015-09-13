@@ -23,7 +23,6 @@ Deviab\DatabaseBundle\Entity\Project:
             fixed: false
             comment: ''
             column: p_name
-
         amountRaised:
             type: integer
             nullable: false

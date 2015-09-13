@@ -3,6 +3,9 @@
 namespace Deviab\DatabaseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Deviab\TransactionBundle\Entity\LenderBorrowerTransaction;
+use Deviab\TransactionBundle\Entity\DeviabLenderTransaction;
+use Deviab\TransactionBundle\Entity\BorrowerDeviabTransaction;
 
 /**
  * LenderDetails
@@ -84,5 +87,231 @@ class LenderDetails
      */
     private $facebookId;
 
+    /**
+     * @ORM\OneToMany(targetEntity="DeviabLenderTransaction", mappedBy="lender")
+     */
+    private $toLenderTransactions;
 
+    /**
+     * @ORM\OneToMany(targetEntity="LenderDeviabTransaction", mappedBy="lender")
+     */
+    private $fromLenderTransactions;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get fname
+     *
+     * @return string
+     */
+    public function getFname()
+    {
+        return $this->fname;
+    }
+
+    /**
+     * Set fname
+     *
+     * @param string $fname
+     * @return LenderDetails
+     */
+    public function setFname($fname)
+    {
+        $this->fname = $fname;
+
+        return $this;
+    }
+
+    /**
+     * Get lname
+     *
+     * @return string
+     */
+    public function getLname()
+    {
+        return $this->lname;
+    }
+
+    /**
+     * Set lname
+     *
+     * @param string $lname
+     * @return LenderDetails
+     */
+    public function setLname($lname)
+    {
+        $this->lname = $lname;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     * @return LenderDetails
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     * @return LenderDetails
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get dob
+     *
+     * @return \DateTime
+     */
+    public function getDob()
+    {
+        return $this->dob;
+    }
+
+    /**
+     * Set dob
+     *
+     * @param \DateTime $dob
+     * @return LenderDetails
+     */
+    public function setDob($dob)
+    {
+        $this->dob = $dob;
+
+        return $this;
+    }
+
+    /**
+     * Get primaryMobileNumber
+     *
+     * @return string
+     */
+    public function getPrimaryMobileNumber()
+    {
+        return $this->primaryMobileNumber;
+    }
+
+    /**
+     * Set primaryMobileNumber
+     *
+     * @param string $primaryMobileNumber
+     * @return LenderDetails
+     */
+    public function setPrimaryMobileNumber($primaryMobileNumber)
+    {
+        $this->primaryMobileNumber = $primaryMobileNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get profilePic
+     *
+     * @return string
+     */
+    public function getProfilePic()
+    {
+        return $this->profilePic;
+    }
+
+    /**
+     * Set profilePic
+     *
+     * @param string $profilePic
+     * @return LenderDetails
+     */
+    public function setProfilePic($profilePic)
+    {
+        $this->profilePic = $profilePic;
+
+        return $this;
+    }
+
+    /**
+     * Get googleId
+     *
+     * @return string
+     */
+    public function getGoogleId()
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * Set googleId
+     *
+     * @param string $googleId
+     * @return LenderDetails
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     * @return LenderDetails
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
 }

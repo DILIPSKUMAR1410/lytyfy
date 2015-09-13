@@ -55,5 +55,85 @@ class BorrowerDeviabTransaction
      */
     private $project;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * @param \DateTime $timestamp
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+    }
+
+    /**
+     * @return float
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param float $amount
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+    }
+
+    /**
+     * @return \Deviab\DatabaseBundle\Entity\BorrowerDetails
+     */
+    public function getBorrower()
+    {
+        return $this->borrower;
+    }
+
+    /**
+     * @param \Deviab\DatabaseBundle\Entity\BorrowerDetails $borrower
+     */
+    public function setBorrower($borrower)
+    {
+        $this->borrower = $borrower;
+    }
+
+    /**
+     * @return \Deviab\DatabaseBundle\Entity\Project
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * @param \Deviab\DatabaseBundle\Entity\Project $project
+     */
+    public function setProject($project)
+    {
+        $this->project = $project;
+    }
+
 
 }

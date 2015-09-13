@@ -38,5 +38,53 @@ class MasterVillages
      */
     private $panchayat;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVillageName()
+    {
+        return $this->villageName;
+    }
+
+    /**
+     * @param string $villageName
+     */
+    public function setVillageName($villageName)
+    {
+        $this->villageName = $villageName;
+    }
+
+    /**
+     * @return MasterPanchayat
+     */
+    public function getPanchayat()
+    {
+        return $this->panchayat;
+    }
+
+    /**
+     * @param MasterPanchayat $panchayat
+     */
+    public function setPanchayat($panchayat)
+    {
+        $this->panchayat = $panchayat;
+    }
+
 
 }

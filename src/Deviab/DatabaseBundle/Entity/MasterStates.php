@@ -28,5 +28,38 @@ class MasterStates
      */
     private $stateName;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStateName()
+    {
+        return $this->stateName;
+    }
+
+    /**
+     * @param string $stateName
+     */
+    public function setStateName($stateName)
+    {
+        $this->stateName = $stateName;
+    }
+
+
 
 }

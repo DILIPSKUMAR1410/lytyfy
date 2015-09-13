@@ -101,4 +101,5 @@ Deviab\DatabaseBundle\Entity\BorrowerDetails:
             joinColumn:
                 name: fieldRepresentative_id
                 referencedColumnName: id
+
     lifecycleCallbacks: {  }

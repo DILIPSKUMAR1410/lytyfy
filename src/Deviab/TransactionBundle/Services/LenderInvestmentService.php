@@ -9,6 +9,7 @@
 namespace Deviab\TransactionBundle\Services;
 use Deviab\TransactionBundle\Entity\LenderDeviabTransaction;
 use Doctrine\Bundle\DoctrineBundle\Registry as Doctrine;
+use Deviab\DatabaseBundle\Entity\Project;
 
 
 class LenderInvestmentService extends BaseService
@@ -23,15 +24,23 @@ class LenderInvestmentService extends BaseService
         $this->doctrine = $doctrine;
     }
 
+    /**
+     * @param LenderDeviabTransaction $lenderDeviabTransaction
+     * @return LenderDeviabTransaction
+     */
     public function newTransaction(LenderDeviabTransaction $lenderDeviabTransaction)
     {
+        $amountRaised = $lenderDeviabTransaction->getProject()->getAmountRaised();
+        $investedAmount = $lenderDeviabTransaction->getAmount();
+        $lenderDeviabTransaction->getProject()->setAmountRaised($amountRaised + $investedAmount);
+        $currentCapital = $lenderDeviabTransaction->getProject()->getCapitalAmount();
+        $lenderDeviabTransaction->getProject()->setCapitalAmount($currentCapital + $investedAmount);
 
-            $this->em->persist($lenderDeviabTransaction);
-            $this->em->flush();
-
-            $lenderDeviabTransaction->getProject()->getAmountRaised()+$lenderDeviabTransaction->getAmount();
+        $this->em->persist($lenderDeviabTransaction);
+        $this->em->flush();
 
         return $lenderDeviabTransaction;
     }
+
 
 }
