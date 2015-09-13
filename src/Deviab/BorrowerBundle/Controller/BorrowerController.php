@@ -72,7 +72,7 @@ class BorrowerController extends Controller
         $borrowers = $borrowerService->searchBorrowers($searchCriteria, $limit, $offset);
         $context = SerializationContext::create()->setGroups(array('search_borrowers'))
             ->enableMaxDepthChecks();
-        return View::create($borrowers, Codes::HTTP_OK);
+        return View::create($borrowers, Codes::HTTP_OK)->setSerializationContext($context);
     }
 
     /**
