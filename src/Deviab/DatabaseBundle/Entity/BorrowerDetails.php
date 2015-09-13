@@ -6,7 +6,6 @@ use JMS\Serializer\Annotation\MaxDepth;
 use Deviab\DatabaseBundle\Entity\MasterVillages;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
-use Deviab\TransactionBundle\Entity\LenderBorrowerTransaction;
 use Deviab\TransactionBundle\Entity\DeviabLenderTransaction;
 use Deviab\TransactionBundle\Entity\BorrowerDeviabTransaction;
 
@@ -135,10 +134,44 @@ class BorrowerDetails
     private $fieldRepresentative;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CurrentStatus", inversedBy="borrowers")
+     * @ORM\OneToOne(targetEntity="CurrentStatus", inversedBy="borrower")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     private $currentStatus;
+
+    /**
+     * @return mixed
+     */
+    public function getToBorrowerTransactions()
+    {
+        return $this->toBorrowerTransactions;
+    }
+
+    /**
+     * @param mixed $toBorrowerTransactions
+     */
+    public function setToBorrowerTransactions($toBorrowerTransactions)
+    {
+        $this->toBorrowerTransactions = $toBorrowerTransactions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentStatus()
+    {
+        return $this->currentStatus;
+    }
+
+    /**
+     * @param mixed $currentStatus
+     */
+    public function setCurrentStatus($currentStatus)
+    {
+        $this->currentStatus = $currentStatus;
+    }
+
+
 
     /**
      * @return int

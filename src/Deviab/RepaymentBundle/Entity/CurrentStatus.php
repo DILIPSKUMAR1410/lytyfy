@@ -55,7 +55,7 @@ class CurrentStatus
     /**
      * @var \Deviab\DatabaseBundle\Entity\BorrowerDetails
      *
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails", inversedBy="currentStatus")
+     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\BorrowerDetails", inversedBy="currentStatus")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="borrower_id", referencedColumnName="id", nullable=true)
      * })
