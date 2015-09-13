@@ -16,7 +16,7 @@ class Project
 {
     /**
      * @var integer
-     *
+     * @Groups({"borrower_portfolio","project_portfolio","search_borrowers"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")

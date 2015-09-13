@@ -23,6 +23,7 @@ class BorrowerDetails
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups({"borrower_portfolio","project_portfolio","search_borrowers"})
      */
     private $id;
 

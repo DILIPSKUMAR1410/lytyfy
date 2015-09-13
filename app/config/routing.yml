@@ -1,6 +1,7 @@
 deviab_repayment:
     resource: "@DeviabRepaymentBundle/Resources/config/routing.yml"
     prefix:    api/v1/{authToken}/repayment
+    type:      rest
 
 fabric:
     resource: "@FabricBundle/Resources/config/routing.yml"
@@ -23,3 +24,4 @@ deviab_borrower:
 deviab_transaction:
     resource: "@DeviabTransactionBundle/Resources/config/routing.yml"
     prefix:   api/v1/{authToken}/transaction
+    type:      rest
