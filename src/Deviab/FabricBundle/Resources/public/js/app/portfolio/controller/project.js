@@ -1,6 +1,6 @@
 app.controller("ProjectController", function($scope,$http) {
     $scope.amounts = amounts;
-    var res = $http.get('/borrowers/2.json');
+    var res = $http.get('/api/v1/borrowers/2.json');
     res.success(function(data, status, headers, config) {
       $scope.portfolioResponce = data;
       console.log(data);
