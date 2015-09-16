@@ -31,7 +31,7 @@ class InvestmentReturnsService extends BaseService
     public function calculateEMRByLenderId($lenderId)
     {
         $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
-        $lender = $lenderRepository->find(1);
+        $lender = $lenderRepository->find($lenderId);
         $lenderCurrentStatus = $lender->getCurrentStatus();
 
         return View::create($lenderCurrentStatus, Codes::HTTP_OK);
