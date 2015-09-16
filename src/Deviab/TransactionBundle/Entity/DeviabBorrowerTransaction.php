@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dk-jarvis
- * Date: 13/09/15
- * Time: 12:27 PM
- */
 
 namespace Deviab\TransactionBundle\Entity;
 
@@ -15,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="deviab_borrower_transaction")
  * @ORM\Entity
- **/
+ */
 class DeviabBorrowerTransaction
 {
     /**
@@ -26,6 +20,42 @@ class DeviabBorrowerTransaction
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="requested_amount", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $requestedAmount;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="due_diligence", type="boolean", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $dueDiligence;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="approved_amount", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $approvedAmount;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="timestamp", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $approvedDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="approved_by", type="string", precision=0, scale=0, nullable=true, unique=false)
+     */
+    private $approvedBy;
+
     /**
      * @var \Deviab\DatabaseBundle\Entity\BorrowerDetails
      *
@@ -35,41 +65,16 @@ class DeviabBorrowerTransaction
      * })
      */
     private $borrower;
-    /**
-     * @var integer
-     * @ORM\Column(name="requested_amount",type="integer",nullable=false,)
-     */
-    private $requestedAmount;
-    /**
-     * @var boolean
-     * @ORM\Column(name="due_diligence",type="boolean",nullable=false,)
-     */
-    private $dueDiligence;
+
     /**
      * @var \Deviab\DatabaseBundle\Entity\FieldRepresentative
      *
      * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\FieldRepresentative", inversedBy="fromBorrowerCollections")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="fieldRepresentative_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="fieldRepresentative_id", referencedColumnName="id", nullable=true)
      * })
      */
     private $fieldRepresentative;
-    /**
-     * @var integer
-     * @ORM\Column(name="approved_amount",type="integer",nullable=false,)
-     */
-    private $approvedAmount;
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="timestamp", type="datetime", precision=0, scale=0, nullable=false, unique=false)
-     */
-    private $approvedDate;
-    /**
-     * @var
-     * @ORM\Column(name="approved_by", type="string",nullable=true)
-     */
-    private $approvedBy;
 
     /**
      * @return int
@@ -85,22 +90,6 @@ class DeviabBorrowerTransaction
     public function setId($id)
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return \Deviab\DatabaseBundle\Entity\BorrowerDetails
-     */
-    public function getBorrower()
-    {
-        return $this->borrower;
-    }
-
-    /**
-     * @param \Deviab\DatabaseBundle\Entity\BorrowerDetails $borrower
-     */
-    public function setBorrower($borrower)
-    {
-        $this->borrower = $borrower;
     }
 
     /**
@@ -136,22 +125,6 @@ class DeviabBorrowerTransaction
     }
 
     /**
-     * @return \Deviab\DatabaseBundle\Entity\FieldRepresentative
-     */
-    public function getFieldRepresentative()
-    {
-        return $this->fieldRepresentative;
-    }
-
-    /**
-     * @param \Deviab\DatabaseBundle\Entity\FieldRepresentative $fieldRepresentative
-     */
-    public function setFieldRepresentative($fieldRepresentative)
-    {
-        $this->fieldRepresentative = $fieldRepresentative;
-    }
-
-    /**
      * @return int
      */
     public function getApprovedAmount()
@@ -184,7 +157,7 @@ class DeviabBorrowerTransaction
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getApprovedBy()
     {
@@ -192,12 +165,46 @@ class DeviabBorrowerTransaction
     }
 
     /**
-     * @param mixed $approvedBy
+     * @param string $approvedBy
      */
     public function setApprovedBy($approvedBy)
     {
         $this->approvedBy = $approvedBy;
     }
+
+    /**
+     * @return \Deviab\DatabaseBundle\Entity\BorrowerDetails
+     */
+    public function getBorrower()
+    {
+        return $this->borrower;
+    }
+
+    /**
+     * @param \Deviab\DatabaseBundle\Entity\BorrowerDetails $borrower
+     */
+    public function setBorrower($borrower)
+    {
+        $this->borrower = $borrower;
+    }
+
+    /**
+     * @return \Deviab\DatabaseBundle\Entity\FieldRepresentative
+     */
+    public function getFieldRepresentative()
+    {
+        return $this->fieldRepresentative;
+    }
+
+    /**
+     * @param \Deviab\DatabaseBundle\Entity\FieldRepresentative $fieldRepresentative
+     */
+    public function setFieldRepresentative($fieldRepresentative)
+    {
+        $this->fieldRepresentative = $fieldRepresentative;
+    }
+
+
 
 
 }

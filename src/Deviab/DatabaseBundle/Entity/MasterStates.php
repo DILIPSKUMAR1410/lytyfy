@@ -2,8 +2,6 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
-use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\MaxDepth;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,43 +23,10 @@ class MasterStates
 
     /**
      * @var string
-     * @Groups({"borrower_portfolio","project_portfolio","search_borrowers"})
+     *
      * @ORM\Column(name="state_name", type="string", length=45, nullable=false)
      */
     private $stateName;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStateName()
-    {
-        return $this->stateName;
-    }
-
-    /**
-     * @param string $stateName
-     */
-    public function setStateName($stateName)
-    {
-        $this->stateName = $stateName;
-    }
-
 
 
 }

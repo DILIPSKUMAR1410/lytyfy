@@ -1,6 +1,5 @@
 capture_transaction:
-    pattern:  /{lenderId}
-    defaults: { _controller: DeviabBorrowerBundle:Borrower:getBorrower}
+    pattern:  /{projectId}/payu
+    defaults: { _controller: DeviabTransactionBundle:Transaction:captureTransaction}
     requirements:
-        _method: GET
-        borrowerId: "\d+"
+        _method: POST

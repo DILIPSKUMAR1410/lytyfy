@@ -2,8 +2,6 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
-use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\MaxDepth;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,55 +37,6 @@ class MasterDistrict
      * })
      */
     private $state;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDistrictName()
-    {
-        return $this->districtName;
-    }
-
-    /**
-     * @param string $districtName
-     */
-    public function setDistrictName($districtName)
-    {
-        $this->districtName = $districtName;
-    }
-
-    /**
-     * @return MasterStates
-     */
-    public function getState()
-    {
-        return $this->state;
-    }
-
-    /**
-     * @param MasterStates $state
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
-    }
-
 
 
 }

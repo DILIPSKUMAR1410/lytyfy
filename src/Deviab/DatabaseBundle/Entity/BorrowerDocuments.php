@@ -38,54 +38,5 @@ class BorrowerDocuments
      */
     private $borrower;
 
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDocUrl()
-    {
-        return $this->docUrl;
-    }
-
-    /**
-     * @param string $docUrl
-     */
-    public function setDocUrl($docUrl)
-    {
-        $this->docUrl = $docUrl;
-    }
-
-    /**
-     * @return BorrowerDetails
-     */
-    public function getBorrower()
-    {
-        return $this->borrower;
-    }
-
-    /**
-     * @param BorrowerDetails $borrower
-     */
-    public function setBorrower($borrower)
-    {
-        $this->borrower = $borrower;
-    }
-
-
 
 }

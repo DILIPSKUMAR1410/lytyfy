@@ -6,7 +6,8 @@
  * Time: 6:57 PM
  */
 
-namespace Deviab\TransactionBundle;
+namespace Deviab\TransactionBundle\Controller;
+;
 
 use Deviab\TransactionBundle\Entity\LenderDeviabTransaction;
 use JMS\Serializer\SerializationContext;
@@ -17,11 +18,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class TransactionController extends Controller
 {
-    public function newTransactionAction(LenderDeviabTransaction $request)
+    /**
+     * @ParamConverter("request", converter="fos_rest.request_body")
+     * @param LenderDeviabTransaction $request
+     * @return mixed
+     */
+    public function captureTransactionAction($projectId, LenderDeviabTransaction $request)
     {
-
         $investmentService = $this->container->get('investment_service');
-        $response = $investmentService->newTransaction($request);
+        $response = $investmentService->captureTransaction($projectId, $request);
         return $response;
 
     }

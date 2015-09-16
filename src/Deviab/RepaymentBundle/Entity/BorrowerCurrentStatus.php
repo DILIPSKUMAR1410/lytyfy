@@ -11,12 +11,12 @@ namespace Deviab\TransactionBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CurrentStatus
+ * BorrowerCurrentStatus
  *
- * @ORM\Table(name="current_status")
+ * @ORM\Table(name="borrower_current_status")
  * @ORM\Entity
  */
-class CurrentStatus
+class BorrowerCurrentStatus
 {
     /**
      * @var integer
@@ -63,7 +63,7 @@ class CurrentStatus
     private $borrower;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="projectBorrowerCurrentStatus")
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="borrowerCurrentStatus")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     private $project;
