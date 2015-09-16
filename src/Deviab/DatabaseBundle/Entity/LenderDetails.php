@@ -86,7 +86,7 @@ class LenderDetails
     private $facebookId;
 
     /**
-     * @ORM\OneToOne(targetEntity="Deviab\RepaymentBundle\Entity\LenderCurrentStatus", inversedBy="lender")
+     * @ORM\OneToOne(targetEntity="Deviab\RepaymentBundle\Entity\LenderCurrentStatus", mappedBy="lender")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="lender_currrent_status_id", referencedColumnName="id", unique=true)
      * })

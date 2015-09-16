@@ -121,6 +121,230 @@ class BorrowerDetails
      */
     private $fieldRepresentative;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFname()
+    {
+        return $this->fname;
+    }
+
+    /**
+     * @param string $fname
+     */
+    public function setFname($fname)
+    {
+        $this->fname = $fname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLname()
+    {
+        return $this->lname;
+    }
+
+    /**
+     * @param string $lname
+     */
+    public function setLname($lname)
+    {
+        $this->lname = $lname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTolla()
+    {
+        return $this->tolla;
+    }
+
+    /**
+     * @param string $tolla
+     */
+    public function setTolla($tolla)
+    {
+        $this->tolla = $tolla;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param string $gender
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDob()
+    {
+        return $this->dob;
+    }
+
+    /**
+     * @param \DateTime $dob
+     */
+    public function setDob($dob)
+    {
+        $this->dob = $dob;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHighestEducation()
+    {
+        return $this->highestEducation;
+    }
+
+    /**
+     * @param string $highestEducation
+     */
+    public function setHighestEducation($highestEducation)
+    {
+        $this->highestEducation = $highestEducation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrimaryMobileNumber()
+    {
+        return $this->primaryMobileNumber;
+    }
+
+    /**
+     * @param string $primaryMobileNumber
+     */
+    public function setPrimaryMobileNumber($primaryMobileNumber)
+    {
+        $this->primaryMobileNumber = $primaryMobileNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOccupation()
+    {
+        return $this->occupation;
+    }
+
+    /**
+     * @param string $occupation
+     */
+    public function setOccupation($occupation)
+    {
+        $this->occupation = $occupation;
+    }
+
+    /**
+     * @return float
+     */
+    public function getAnnualIncome()
+    {
+        return $this->annualIncome;
+    }
+
+    /**
+     * @param float $annualIncome
+     */
+    public function setAnnualIncome($annualIncome)
+    {
+        $this->annualIncome = $annualIncome;
+    }
+
+    /**
+     * @return MasterVillages
+     */
+    public function getVillage()
+    {
+        return $this->village;
+    }
+
+    /**
+     * @param MasterVillages $village
+     */
+    public function setVillage($village)
+    {
+        $this->village = $village;
+    }
+
+    /**
+     * @return Project
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * @param Project $project
+     */
+    public function setProject($project)
+    {
+        $this->project = $project;
+    }
+
+    /**
+     * @return FieldRepresentative
+     */
+    public function getFieldRepresentative()
+    {
+        return $this->fieldRepresentative;
+    }
+
+    /**
+     * @param FieldRepresentative $fieldRepresentative
+     */
+    public function setFieldRepresentative($fieldRepresentative)
+    {
+        $this->fieldRepresentative = $fieldRepresentative;
+    }
+
 
 
 }
