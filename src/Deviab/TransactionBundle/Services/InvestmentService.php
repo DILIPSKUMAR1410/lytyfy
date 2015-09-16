@@ -7,6 +7,8 @@
  */
 
 namespace Deviab\TransactionBundle\Services;
+
+use Deviab\DatabaseBundle\Entity\LenderDetails;
 use Deviab\TransactionBundle\Entity\LenderDeviabTransaction;
 use Doctrine\Bundle\DoctrineBundle\Registry as Doctrine;
 use FOS\RestBundle\View\View;
@@ -30,18 +32,26 @@ class InvestmentService extends BaseService
      * @param LenderDeviabTransaction $lenderDeviabTransaction
      * @return LenderDeviabTransaction
      */
-    public function newTransaction(LenderDeviabTransaction $lenderDeviabTransaction)
+    public function captureTransaction($projectId, LenderDeviabTransaction $lenderDeviabTransaction)
     {
-        $amountRaised = $lenderDeviabTransaction->getProject()->getAmountRaised();
-        $investedAmount = $lenderDeviabTransaction->getAmount();
-        $lenderDeviabTransaction->getProject()->setAmountRaised($amountRaised + $investedAmount);
-        $currentCapital = $lenderDeviabTransaction->getProject()->getCapitalAmount();
-        $lenderDeviabTransaction->getProject()->setCapitalAmount($currentCapital + $investedAmount);
 
+        $investedAmount = $lenderDeviabTransaction->getAmount();
+        $projectRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:Project');
+        $project = $projectRepository->find($projectId);
+        $amountRaised = $project->getAmountRaised();
+        $currentCapital = $project->getCapitalAmount();
+
+        $project->setAmountRaised($amountRaised + $investedAmount);
+        $project->setCapitalAmount($currentCapital + $investedAmount);
+
+        $this->em->persist($project);
         $this->em->persist($lenderDeviabTransaction);
         $this->em->flush();
+        $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
+        $lender = $lenderRepository->find(1);
+        $lenderCurrentStatus = $lender->getCurrentStatus();
 
-        return View::create($lenderDeviabTransaction, Codes::HTTP_OK);
+        return View::create($lenderCurrentStatus, Codes::HTTP_OK);
     }
 
 

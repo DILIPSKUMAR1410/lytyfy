@@ -25,3 +25,8 @@ deviab_transaction:
     resource: "@DeviabTransactionBundle/Resources/config/routing.yml"
     prefix:   api/v1/{authToken}/transaction
     type:      rest
+
+deviab_project:
+    resource: "@DeviabBorrowerBundle/Resources/config/routing_project.yml"
+    prefix:    api/v1/projects
+    type:      rest

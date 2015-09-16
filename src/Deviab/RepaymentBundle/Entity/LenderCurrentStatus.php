@@ -1,16 +1,22 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: dk-jarvis
+ * Date: 13/09/15
+ * Time: 12:53 PM
+ */
 
-namespace Deviab\TransactionBundle\Entity;
+namespace Deviab\RepaymentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * LenderDeviabTransaction
+ * LenderCurrentStatus
  *
- * @ORM\Table(name="lender_deviab_transactions")
+ * @ORM\Table(name="lender_current_status")
  * @ORM\Entity
  */
-class LenderDeviabTransaction
+class LenderCurrentStatus
 {
     /**
      * @var integer
@@ -29,30 +35,27 @@ class LenderDeviabTransaction
     private $timestamp;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="amount", type="float", precision=0, scale=0, nullable=false, unique=false)
+     * @var integer
+     * @ORM\Column(name="pricipal_left",type="integer",nullable=false,)
      */
-    private $amount;
+    private $pricipalLeft;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="transactionid", type="string", length=45, precision=0, scale=0, nullable=false, unique=false)
+     * @var integer
+     * @ORM\Column(name="tenure_left",type="integer",nullable=false,)
      */
-    private $transactionid;
+    private $tenureLeft;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="remarks", type="string", length=300, precision=0, scale=0, nullable=true, unique=false)
+     * @var integer
+     * @ORM\Column(name="interest_left",type="integer",nullable=false,)
      */
-    private $remarks;
+    private $interestLeft;
 
     /**
      * @var \Deviab\DatabaseBundle\Entity\LenderDetails
      *
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="fromlenderTransactions")
+     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="currentStatus")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="lender_id", referencedColumnName="id", nullable=true)
      * })
@@ -60,12 +63,8 @@ class LenderDeviabTransaction
     private $lender;
 
     /**
-     * @var \Deviab\DatabaseBundle\Entity\Project
-     *
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="toProjectLenderTransactions")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="project_id", referencedColumnName="id", nullable=true)
-     * })
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="projectBorrowerCurrentStatus")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     private $project;
 
@@ -102,51 +101,51 @@ class LenderDeviabTransaction
     }
 
     /**
-     * @return float
+     * @return int
      */
-    public function getAmount()
+    public function getPricipalLeft()
     {
-        return $this->amount;
+        return $this->pricipalLeft;
     }
 
     /**
-     * @param float $amount
+     * @param int $pricipalLeft
      */
-    public function setAmount($amount)
+    public function setPricipalLeft($pricipalLeft)
     {
-        $this->amount = $amount;
+        $this->pricipalLeft = $pricipalLeft;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getTransactionid()
+    public function getTenureLeft()
     {
-        return $this->transactionid;
+        return $this->tenureLeft;
     }
 
     /**
-     * @param string $transactionid
+     * @param int $tenureLeft
      */
-    public function setTransactionid($transactionid)
+    public function setTenureLeft($tenureLeft)
     {
-        $this->transactionid = $transactionid;
+        $this->tenureLeft = $tenureLeft;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getRemarks()
+    public function getInterestLeft()
     {
-        return $this->remarks;
+        return $this->interestLeft;
     }
 
     /**
-     * @param string $remarks
+     * @param int $interestLeft
      */
-    public function setRemarks($remarks)
+    public function setInterestLeft($interestLeft)
     {
-        $this->remarks = $remarks;
+        $this->interestLeft = $interestLeft;
     }
 
     /**
@@ -166,7 +165,7 @@ class LenderDeviabTransaction
     }
 
     /**
-     * @return \Deviab\DatabaseBundle\Entity\Project
+     * @return mixed
      */
     public function getProject()
     {
@@ -174,7 +173,7 @@ class LenderDeviabTransaction
     }
 
     /**
-     * @param \Deviab\DatabaseBundle\Entity\Project $project
+     * @param mixed $project
      */
     public function setProject($project)
     {

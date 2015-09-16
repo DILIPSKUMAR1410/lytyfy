@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7b7a5f0944a033c7418ad2bbd22a319d",
+    "hash": "5f856b28ad285079b0278177e44a76d5",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1321,6 +1321,119 @@
                 "psr-3"
             ],
             "time": "2014-12-29 21:29:35"
+        },
+        {
+            "name": "paymentsuite/payment-core-bundle",
+            "version": "v1.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PaymentSuite/PaymentCoreBundle.git",
+                "reference": "f4f08066327e174e54d1213b044a906689b7f80e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PaymentSuite/PaymentCoreBundle/zipball/f4f08066327e174e54d1213b044a906689b7f80e",
+                "reference": "f4f08066327e174e54d1213b044a906689b7f80e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "psr/log": "~1.0",
+                "symfony/config": ">=2.2",
+                "symfony/dependency-injection": ">=2.2",
+                "symfony/event-dispatcher": ">=2.2",
+                "symfony/http-kernel": ">=2.2"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PaymentSuite\\PaymentCoreBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Morera",
+                    "email": "yuhu@mmoreram.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/PaymentSuite/paymentsuite/contributors"
+                }
+            ],
+            "description": "PaymentCore PaymentSuite Component",
+            "keywords": [
+                "ecommerce",
+                "payment",
+                "paymentsuite"
+            ],
+            "time": "2015-03-16 15:18:19"
+        },
+        {
+            "name": "paymentsuite/payu-bundle",
+            "version": "v1.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PaymentSuite/PayUBundle.git",
+                "reference": "e30b2c423972a556a82b853241492591cc5d6c16"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PaymentSuite/PayUBundle/zipball/e30b2c423972a556a82b853241492591cc5d6c16",
+                "reference": "e30b2c423972a556a82b853241492591cc5d6c16",
+                "shasum": ""
+            },
+            "require": {
+                "paymentsuite/payment-core-bundle": "~1.1",
+                "php": ">=5.3.3",
+                "symfony/config": ">=2.2.3",
+                "symfony/dependency-injection": ">=2.2.3",
+                "symfony/event-dispatcher": ">=2.2.3",
+                "symfony/form": ">=2.2.3",
+                "symfony/framework-bundle": ">=2.2.3",
+                "symfony/http-kernel": ">=2.2.3",
+                "twig/twig": "~1.11"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PaymentSuite\\PayUBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Morera",
+                    "email": "yuhu@mmoreram.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/PaymentSuite/paymentsuite/contributors"
+                }
+            ],
+            "description": "PayU PaymentSuite Component",
+            "keywords": [
+                "ecommerce",
+                "payment",
+                "payu"
+            ],
+            "time": "2015-04-23 09:07:44"
         },
         {
             "name": "phpcollection/phpcollection",

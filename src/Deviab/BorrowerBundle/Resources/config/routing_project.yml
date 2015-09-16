@@ -1,0 +1,6 @@
+get_project:
+    pattern:  /{projectId}
+    defaults: { _controller: DeviabBorrowerBundle:Project:getProject}
+    requirements:
+        _method: GET
+        projectId: "\d+"
