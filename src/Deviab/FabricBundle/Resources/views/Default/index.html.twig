@@ -14,50 +14,166 @@
     <script src="/bundles/fabric/js/app/portfolio/module/portfolio.js"></script>
     <script src="/bundles/fabric/js/app/portfolio/controller/portfolio.js"></script>
     <script src="/bundles/fabric/js/app/portfolio/controller/project.js"></script>
+    <script src="/bundles/fabric/js/app/portfolio/controller/profile.js"></script>
    	<link rel="stylesheet" type="text/css" href="/bundles/fabric/css/fabric_style.css">
-   	<link rel="stylesheet" href="/bundles/deviabapp/css/style.css"/>
-	<link rel="stylesheet" href="/bundles/deviabapp/css/navigation.css"/>
-	<link rel="stylesheet" href="/bundles/deviabapp/css/common.css"/>
-	<link rel="stylesheet" href="/bundles/deviabapp/css/newhome.css"/>
+   	<link rel="stylesheet" type="text/css" href="/bundles/fabric/css/common.css">
+   	<link rel="stylesheet" href="/bundles/fabric/css/style.css"/>
+	<link rel="stylesheet" href="/bundles/fabric/css/navigation.css"/>
+	<link rel="stylesheet" href="/bundles/fabric/css/common.css"/>
+	<link rel="stylesheet" href="/bundles/fabric/css/newhome.css"/>
 
 </head>
 <body ng-app="myApp">
-	<nav class="navbar navbar-default fixed-nav-bar">
-	  	<div class="container-fluid">
-	    	<!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header col-lg-5 col-md-3 col-sm-1">
-		      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-show-hide">
-			        <span class="sr-only">Toggle navigation</span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-		      	</button>
-		      	<div class="container-fluid row col-xs-10">
-		      	<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
-		      		<a class="navbar-brand logo pull-left" href="#">Lytyfy</a>
-	    		</div>
-	    		<div id="sub" class="col-lg-12 col-sm-12 col-xs-12 col-md-12">Power to Everyone, Everywhere
-	    		</div>
-	    		</div>
-	    	</div>
-		    <div class="container-fluid pull-right collapse navbar-collapse col-lg-7 col-md-9 col-sm-10 col-xs-10" id="nav-show-hide">
-		      	<ul class="nav navbar-nav ">
-			        <li><a id="home" href="#home-container" class="nav-link">HOME <span class="sr-only">(current)</span></a></li>
-			        <li><a id="about" href="#about-outer-container" class="nav-link">ABOUT</a></li><li><a id="contact" href="#footer" class="nav-link">CONTACT</a></li>
-		      		<li><a id="contact" href="#footer" class="nav-link">LOGIN / SIGNUP</a></li>
-			    </ul>			    
-		    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
-	<div id="overlay"></div>
-	<div>
-		<div ng-view> </div>
-	</div>
+<nav class="navbar navbar-default fixed-nav-bar">
+  	<div class="container-fluid">
+    	<!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header col-lg-5 col-md-3 col-sm-1">
+	      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-show-hide">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	      	</button>
+	      	<div class="container-fluid row col-xs-10">
+	      	<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+	      		<a class="navbar-brand logo pull-left" href="#">Lytyfy</a>
+    		</div>
+    		<div id="sub" class="col-lg-12 col-sm-12 col-xs-12 col-md-12">Power to Everyone, Everywhere
+    		</div>
+    		</div>
+    	</div>
+	    <div class="container-fluid pull-right collapse navbar-collapse col-lg-7 col-md-9 col-sm-10 col-xs-10" id="nav-show-hide">
+	      	<ul class="nav navbar-nav ">
+		        <li><a id="home" href="#home-container" class="nav-link">HOME <span class="sr-only">(current)</span></a></li>
+		        <li><a id="about" href="#about-outer-container" class="nav-link">ABOUT</a></li><li><a id="contact" href="#footer" class="nav-link">CONTACT</a></li>
+	      		<li><a id="contact" class="nav-link" data-toggle="modal" data-target="#myModal">LOGIN</a></li>
+	      		
+		    </ul>			    
+	    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div id="overlay"></div>
+<div>
+	<div ng-view> </div>
+</div>
+<div class="container">
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      	<div id="signup" style="display:none">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Please Sign-up</h4>
+	        </div>
+	        <div class="container-fluid">
+				<form role="form">
+					<div class="form-group signup-link">
+						<label for="signup-name">Name:</label>
+						<input type="text" class="form-control" id="signup-name" placeholder="Name">
+					</div>
+					<div class="form-group">
+						<label for="signup-email">Email:</label>
+						<input type="email" class="form-control" id="signup-email" placeholder="Enter email">
+					</div>
+					<div class="form-group">
+						<label for="signup-password">Password:</label>
+						<input type="password" class="form-control" id="signup-password" placeholder="Enter password">
+					</div>
+					<div class="form-group signup-link">
+						<label for="signup-confirm-password">Confirm Password:</label>
+						<input type="password" class="form-control" id="signup-cnfrm-password" placeholder="Confirm Password">
+					</div>
+					<button id="signup-btn" class="btn btn-lg btn-primary btn-block">Sign up</button>
+				</form>
+				<div class="modal-footer">
+		        	<a id="signin-link" class="pull-right">Already have account</a>
+		        </div>
+			</div>
+		</div>
+		<div id="signin">
+			<div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Please Sign-in</h4>
+	        </div>
+			<div class="container-fluid">
+				<form role="form">
+					<div class="form-group">
+						<label for="signin-email">Email:</label>
+						<input type="email" class="form-control" id="signin-email" placeholder="Enter email">
+					</div>
+					<div class="form-group">
+						<label for="signin-password">Password:</label>
+						<input type="password" class="form-control" id="signin-password" placeholder="Enter password">
+					</div>
+					<div class="checkbox">
+						<label><input type="checkbox"> Remember me</label>
+					</div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+				</form>
+				<div class="modal-footer">
+					<button id="signup-link" class="btn btn-primary pull-left">Sign up</button>
+					<a id="forgot-password-link" class="pull-right">Forgot Password</a>
+				</div>
+			</div>
+		</div>
+		<div id="forgot-password" style="display:none">
+			<div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Please Enter your Register email</h4>
+	        </div>
+			<div class="container-fluid">
+				<form role="form">
+					<div class="form-group">
+						<label for="signin-email">Email:</label>
+						<input type="email" class="form-control" id="signin-email" placeholder="Enter email">
+					</div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+				</form>
+				<div class="modal-footer">
+					<button id="forgot-password-signin-link" class="btn btn-primary">Login</button>
+				</div>
+			</div>
+		</div>
+    </div>
+      
+    </div>
+  </div>
+</div>
 
 </body>
 <script type="text/javascript">
 	var nav_height = $("nav").height();
 	$("#overlay").css("height", nav_height);
+
+
+$("#signup-link").click(function() {
+  
+  $("#signin").toggle();
+  $("#signup").toggle();
+  $("#forgot-passord").toggle();
+});
+$("#signin-link").click(function() {
+  
+  $("#signup").toggle();
+  $("#signin").toggle();
+  $("#forgot-passord").toggle();
+});
+$("#forgot-password-link").click(function() {
+  $("#signin").toggle();
+  $("#forgot-password").toggle();
+
+});
+$("#signup-forgot-passord-link").click(function() {
+  $("#signin").toggle();
+  $("#signup").toggle();
+  $("#forgot-passord").toggle();
+});
+$("#forgot-password-signin-link").click(function() {
+  $("#signin").toggle();
+  $("#forgot-password").toggle();
+});
+
+
 </script>
 </html>
 

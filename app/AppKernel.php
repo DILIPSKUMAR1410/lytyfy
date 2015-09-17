@@ -16,7 +16,6 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Deviab\AppBundle\DeviabAppBundle(),
             new Deviab\BorrowerBundle\DeviabBorrowerBundle(),
             new Deviab\DatabaseBundle\DeviabDatabaseBundle(),
             new FOS\RestBundle\FOSRestBundle(),
