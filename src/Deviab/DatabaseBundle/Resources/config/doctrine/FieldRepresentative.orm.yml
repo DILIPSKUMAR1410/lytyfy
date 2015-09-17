@@ -1,6 +1,6 @@
-Deviab\DatabaseBundle\Entity\BorrowerDetails:
+Deviab\DatabaseBundle\Entity\FieldRepresentative:
     type: entity
-    table: borrower_details
+    table: field_representative
     indexes:
         fk_village_id_idx:
             columns:
@@ -72,13 +72,6 @@ Deviab\DatabaseBundle\Entity\BorrowerDetails:
             length: 45
             fixed: false
             comment: ''
-        annualIncome:
-            type: float
-            nullable: false
-            precision: 10
-            scale: 0
-            comment: ''
-            column: annual_income
     manyToOne:
         village:
             targetEntity: MasterVillages
@@ -91,23 +84,14 @@ Deviab\DatabaseBundle\Entity\BorrowerDetails:
             orphanRemoval: false
         project:
             targetEntity: Project
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                project_id:
-                    referencedColumnName: id
-            orphanRemoval: false
-        fieldRepesentative:
-            targetEntity: FieldRepresentative
-            cascade: {  }
             inversedBy: borrowers
-            joinColumns:
-                field_representative_id:
-                    referencedColumnName: id
-    oneToOne:
-        currentStatus:
-            targetEntity: Deviab\RepaymentBundle\Entity\BorrowerCurrentStatus
-            cascade: {  }
-            mappedBy: borrower
+            joinColumn:
+                name: project_id
+                referencedColumnName: id
+    oneToMany:
+        borrowers:
+            targetEntity: BorrowerDetails
+            mappedBy: fieldRepresentative
+
+
     lifecycleCallbacks: {  }

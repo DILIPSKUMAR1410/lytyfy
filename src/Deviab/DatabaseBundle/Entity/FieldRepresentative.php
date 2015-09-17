@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * FieldRepresentative
  *
- * @ORM\Table(name="field_representative", indexes={@ORM\Index(name="fk_village_id_idx", columns={"village_id"}), @ORM\Index(name="fk_project_id_idx", columns={"project_id"})})
+ * @ORM\Table(name="field_representatives", indexes={@ORM\Index(name="fk_village_id_idx", columns={"village_id"}), @ORM\Index(name="fk_project_id_idx", columns={"project_id"})})
  * @ORM\Entity
  */
 class FieldRepresentative

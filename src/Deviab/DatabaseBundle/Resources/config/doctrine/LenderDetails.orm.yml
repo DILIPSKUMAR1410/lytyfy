@@ -67,4 +67,13 @@ Deviab\DatabaseBundle\Entity\LenderDetails:
             fixed: false
             comment: ''
             column: facebook_id
+    oneToOne:
+        currentStatus:
+            targetEntity: Deviab\RepaymentBundle\Entity\LenderCurrentStatus
+            cascade: {  }
+            mappedBy: lender
+        wallet:
+            targetEntity: Deviab\RepaymentBundle\Entity\LenderWallet
+            cascade: {  }
+            mappedBy: lender
     lifecycleCallbacks: {  }
