@@ -6,10 +6,6 @@ fabric:
     resource: "@FabricBundle/Resources/config/routing.yml"
     prefix:   /
 
-deviab_app:
-    resource: "@DeviabAppBundle/Resources/config/routing.php"
-    prefix:   /
-
 deviab_admin:
     resource: "@DeviabBorrowerBundle/Resources/config/routing_admin.yml"
     prefix:    api/v1/{role}
