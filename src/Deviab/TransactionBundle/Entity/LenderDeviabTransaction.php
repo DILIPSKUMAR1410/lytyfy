@@ -135,4 +135,14 @@ class LenderDeviabTransaction
     {
         $this->borrower = $borrower;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+
 }

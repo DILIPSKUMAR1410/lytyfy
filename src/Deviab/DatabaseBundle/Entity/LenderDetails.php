@@ -2,6 +2,7 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Deviab\TransactionBundle\Entity\LenderBorrowerTransaction;
 use Deviab\TransactionBundle\Entity\DeviabLenderTransaction;
@@ -108,6 +109,12 @@ class LenderDetails
      * @ORM\OneToOne(targetEntity="LenderWallet", mappedBy="lender")
      */
     private $wallet;
+
+    public function __construct()
+    {
+        $this->fromLenderTransactions = new ArrayCollection();
+        $this->toLenderTransactions = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -335,7 +342,8 @@ class LenderDetails
     }
 
     /**
-     * @param LenderCurrentStatus
+     * @param LenderCurrentStatus $currentStatus
+     * @internal param $LenderCurrentStatus
      */
     public function setCurrentStatus(LenderCurrentStatus $currentStatus)
     {
@@ -364,4 +372,22 @@ class LenderDetails
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getToLenderTransactions()
+    {
+        return $this->toLenderTransactions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFromLenderTransactions()
+    {
+        return $this->fromLenderTransactions;
+    }
+
+
 }

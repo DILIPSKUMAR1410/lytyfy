@@ -1,3 +1,6 @@
-deviab_transaction_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: DeviabTransactionBundle:Default:index }
+get_lender_investment:
+    pattern:  lenders/{lenderId}
+    defaults: { _controller: DeviabTransactionBundle:Investment:getLenderInvestment}
+    requirements:
+        _method: GET
+        lenderId: "\d+"

@@ -86,5 +86,4 @@ class LenderWallet
         $this->lender = $lender;
     }
 
-
 }
