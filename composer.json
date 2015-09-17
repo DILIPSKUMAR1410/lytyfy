@@ -21,6 +21,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/rest-bundle": "@stable",
         "jms/serializer-bundle": "@stable"
+        "friendsofsymfony/user-bundle" : "~2.0@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

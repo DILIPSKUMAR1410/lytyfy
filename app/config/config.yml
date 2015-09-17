@@ -87,5 +87,22 @@ fos_rest :
             enabled: true
     param_fetcher_listener: true
 
-
-
+fos_user:
+    db_driver: "orm" # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Deviab\AppBundle\Entity\User
+    service:
+        mailer: fos_user.mailer.twig_swift
+    registration:
+        confirmation:
+            enabled:  true
+            template: email/confirmation.email.twig
+            from_email:
+                address:        no-reply@deviab.com
+                sender_name:    Registration Confirmation
+    resetting:
+        email:
+            from_email:
+                address:        no-reply@deviab.com
+                sender_name:    Forgot Password
+            template: email/password_resetting.email.twig
