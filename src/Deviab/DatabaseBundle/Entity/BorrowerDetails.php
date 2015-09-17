@@ -3,12 +3,14 @@
 namespace Deviab\DatabaseBundle\Entity;
 
 use JMS\Serializer\Annotation\MaxDepth;
-use Deviab\DatabaseBundle\Entity\MasterVillages;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use Deviab\TransactionBundle\Entity\LenderBorrowerTransaction;
 use Deviab\TransactionBundle\Entity\DeviabLenderTransaction;
 use Deviab\TransactionBundle\Entity\BorrowerDeviabTransaction;
+use Deviab\TransactionBundle\Entity\DeviabBorrowerTransaction;
+use Deviab\RepaymentBundle\Entity\BorrowerCurrentStatus;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * BorrowerDetails
@@ -114,10 +116,32 @@ class BorrowerDetails
     private $fromBorrowerTransactions;
 
     /**
+     * @ORM\OneToOne(targetEntity="BorrowerCurrentStatus", mappedBy="borrower")
+     */
+    private $currentStatus;
+
+    /**
+     * @ORM\OneToMany(targetEntity="DeviabBorrowerTransaction", mappedBy="borrower")
+     */
+    private $toBorrowerTransactions;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="borrowers")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     private $project;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="borrowers")
+     * @ORM\JoinColumn(name="field_representative_id", referencedColumnName="id")
+     */
+    private $fieldRepesentative;
+
+    public function __construct()
+    {
+        $this->fromBorrowerTransactions = new ArrayCollection();
+        $this->toBorrowerTransactions = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -428,5 +452,69 @@ class BorrowerDetails
     public function setToDeviabTransactions($toDeviabTransactions)
     {
         $this->toDeviabTransactions = $toDeviabTransactions;
+    }
+
+    /**
+     * @return BorrowerCurrentStatus
+     */
+    public function getCurrentStatus()
+    {
+        return $this->currentStatus;
+    }
+
+    /**
+     * @param BorrowerCurrentStatus
+     */
+    public function setCurrentStatus(BorrowerCurrentStatus $currentStatus)
+    {
+        return $this->currentStatus = $currentStatus;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getfromBorrowerTransactions()
+    {
+        return $this->fromBorrowerTransactions;
+    }
+
+    /**
+     * @param BorrowerDeviabTransaction
+     */
+    public function addFromBorrowerTransaction(BorrowerDeviabTransaction $fromBorrowerTransaction)
+    {
+        $this->fromBorrowerTransactions[] = $fromBorrowerTransaction;
+    }
+
+    /**
+     * @param BorrowerDeviabTransaction
+     */
+    public function removeFromBorrowerTransaction(BorrowerDeviabTransaction $fromBorrowerTransactions)
+    {
+        $this->fromBorrowerTransactions->removeElement($borrowerCurrentStatus);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getToBorrowerTransactions()
+    {
+        return $this->toBorrowerTransactions;
+    }
+
+    /**
+     * @param ToBorrowerTransaction
+     */
+    public function addCurrentStatus(DeviabBorrowerTransaction $toBorrowerTransaction)
+    {
+        $this->toBorrowerTransactions[] = $toBorrowerTransaction;
+    }
+
+    /**
+     * @param ToBorrowerTransaction
+     */
+    public function removeCurrentStatus(DeviabBorrowerTransaction $toBorrowerTransaction)
+    {
+        $this->toBorrowerTransactions->removeElement($toBorrowerTransaction);
     }
 }

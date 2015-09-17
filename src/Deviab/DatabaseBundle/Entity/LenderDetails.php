@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Deviab\TransactionBundle\Entity\LenderBorrowerTransaction;
 use Deviab\TransactionBundle\Entity\DeviabLenderTransaction;
 use Deviab\TransactionBundle\Entity\BorrowerDeviabTransaction;
+use Deviab\RepaymentBundle\Entity\LenderCurrentStatus;
+use Deviab\RepaymentBundle\Entity\LenderWallet;
 
 /**
  * LenderDetails
@@ -97,6 +99,15 @@ class LenderDetails
      */
     private $fromLenderTransactions;
 
+    /**
+     * @ORM\OneToMany(targetEntity="LenderCurrentStatus", mappedBy="lender")
+     */
+    private $currentStatus;
+
+    /**
+     * @ORM\OneToOne(targetEntity="LenderWallet", mappedBy="lender")
+     */
+    private $wallet;
 
     /**
      * Get id
@@ -311,6 +322,45 @@ class LenderDetails
     public function setFacebookId($facebookId)
     {
         $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * @return LenderCurrentStatus
+     */
+    public function getCurrentStatus()
+    {
+        return $this->currentStatus;
+    }
+
+    /**
+     * @param LenderCurrentStatus
+     */
+    public function setCurrentStatus(LenderCurrentStatus $currentStatus)
+    {
+        $this->currentStatus = $currentStatus;
+    }
+
+    /**
+     * Get wallet
+     *
+     * @return LenderWallet
+     */
+    public function getWallet()
+    {
+        return $this->wallet;
+    }
+
+    /**
+     * Set wallet
+     *
+     * @param LenderWallet $wallet
+     * @return LenderDetails
+     */
+    public function setWallet($wallet)
+    {
+        $this->wallet = $wallet;
 
         return $this;
     }
