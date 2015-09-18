@@ -123,22 +123,6 @@ class LenderDeviabTransaction
     /**
      * @return mixed
      */
-    public function getBorrower()
-    {
-        return $this->borrower;
-    }
-
-    /**
-     * @param mixed $borrower
-     */
-    public function setBorrower($borrower)
-    {
-        $this->borrower = $borrower;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getProject()
     {
         return $this->project;

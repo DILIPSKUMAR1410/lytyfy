@@ -389,5 +389,4 @@ class LenderDetails
         return $this->fromLenderTransactions;
     }
 
-
 }

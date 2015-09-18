@@ -86,4 +86,13 @@ class LenderWallet
         $this->lender = $lender;
     }
 
+    public function credit($amount)
+    {
+        $this->credits += $amount;
+    }
+
+    public function debit($amount)
+    {
+        $this->credits -= $amount;
+    }
 }

@@ -173,5 +173,30 @@ class BorrowerCurrentStatus
         $this->borrower = $borrower;
     }
 
+    public function creditPrincipalLeft($amount)
+    {
+        $this->pricipalLeft += $amount;
+    }
+
+    public function debitPrincipalLeft($amount)
+    {
+        $this->pricipalLeft -= $amount;
+    }
+
+    public function creditInterrestLeft($amount)
+    {
+        $this->interestLeft += $amount;
+    }
+
+    public function debitInterrestLeft($amount)
+    {
+        $this->interestLeft -= $amount;
+    }
+
+    public function decrementTenure()
+    {
+        $this->tenureLeft -= 1;
+    }
+
 
 }

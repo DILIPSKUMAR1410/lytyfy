@@ -463,7 +463,9 @@ class BorrowerDetails
     }
 
     /**
-     * @param BorrowerCurrentStatus
+     * @param BorrowerCurrentStatus $currentStatus
+     * @return BorrowerCurrentStatus
+     * @internal param $BorrowerCurrentStatus
      */
     public function setCurrentStatus(BorrowerCurrentStatus $currentStatus)
     {
@@ -479,7 +481,8 @@ class BorrowerDetails
     }
 
     /**
-     * @param BorrowerDeviabTransaction
+     * @param BorrowerDeviabTransaction $fromBorrowerTransaction
+     * @internal param $BorrowerDeviabTransaction
      */
     public function addFromBorrowerTransaction(BorrowerDeviabTransaction $fromBorrowerTransaction)
     {
@@ -487,11 +490,12 @@ class BorrowerDetails
     }
 
     /**
-     * @param BorrowerDeviabTransaction
+     * @param BorrowerDeviabTransaction $fromBorrowerTransactions
+     * @internal param $BorrowerDeviabTransaction
      */
     public function removeFromBorrowerTransaction(BorrowerDeviabTransaction $fromBorrowerTransactions)
     {
-        $this->fromBorrowerTransactions->removeElement($borrowerCurrentStatus);
+        $this->fromBorrowerTransactions->removeElement($fromBorrowerTransactions);
     }
 
     /**
@@ -503,7 +507,8 @@ class BorrowerDetails
     }
 
     /**
-     * @param ToBorrowerTransaction
+     * @param DeviabBorrowerTransaction $toBorrowerTransaction
+     * @internal param $ToBorrowerTransaction
      */
     public function addCurrentStatus(DeviabBorrowerTransaction $toBorrowerTransaction)
     {
@@ -511,10 +516,45 @@ class BorrowerDetails
     }
 
     /**
-     * @param ToBorrowerTransaction
+     * @param DeviabBorrowerTransaction $toBorrowerTransaction
+     * @internal param $ToBorrowerTransaction
      */
     public function removeCurrentStatus(DeviabBorrowerTransaction $toBorrowerTransaction)
     {
         $this->toBorrowerTransactions->removeElement($toBorrowerTransaction);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * @param mixed $project
+     */
+    public function setProject($project)
+    {
+        $this->project = $project;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFieldRepesentative()
+    {
+        return $this->fieldRepesentative;
+    }
+
+    /**
+     * @param mixed $fieldRepesentative
+     */
+    public function setFieldRepesentative($fieldRepesentative)
+    {
+        $this->fieldRepesentative = $fieldRepesentative;
+    }
+
+
 }

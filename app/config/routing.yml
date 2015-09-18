@@ -1,13 +1,9 @@
 deviab_repayment:
     resource: "@DeviabRepaymentBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /repayment
 
 fabric:
     resource: "@FabricBundle/Resources/config/routing.yml"
-    prefix:   /
-
-deviab_app:
-    resource: "@DeviabAppBundle/Resources/config/routing.php"
     prefix:   /
 
 deviab_admin:
