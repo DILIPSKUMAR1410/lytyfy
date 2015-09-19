@@ -1,0 +1,136 @@
+<div class="container" ng-controller="ProjectController as pc">
+	<div id="project-details" class="row border-radius">
+		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div id="borrower_img">
+						<img class="menu-type img-responsive" ng-src="/bundles/fabric/images/portfolio.jpg" alt="loding...." src="/bundles/fabric/images/portfolio.jpg">
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<table class="table table-bordered border-radius">
+					    <thead>
+					      <tr>
+					        <th colspan="3"><h3 class="text-center">Loan details</h3></th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr>
+					        <td>Loan Amount</td>
+					        <td>{[{portfolioResponce.borrowerStory.operational_strategy.principal_amount}]}</td>
+					      </tr>
+					      <tr>
+					        <td>tenure</td>
+					        <td>{[{portfolioResponce.borrowerStory.operational_strategy.tenure}]}</td>
+					      </tr>
+					      <tr>
+					        <td>Interest Rate</td>
+					        <td>{[{portfolioResponce.borrowerStory.operational_strategy.rate_of_interrest}]}</td>
+					      </tr>
+					    </tbody>
+					  </table>
+				</div>
+			</div>
+			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+				<h3> Bihar Solar Project </h3>
+				<div class="border">
+				</div> 
+				Currently around 1.4 billion people in the world still have no access to power and 400
+				million of them live in rural areas of India. In India per capita consumption in rural households is only 8 units per month as compared to 24 units in urban households. The reason for such low level of consumption is not low demand, but poor and unreliable supply of electricity. Poor access to energy facilities in rural areas is a result of poor grid connectivity and lack of distribution network for renewable and clean energy technologies. Conventional perception is that people in rural areas cannot afford progressive and modern energy technologies but our experience of working in rural areas has made us believe that most of them are willing to pay for a reliable source of energy provided the product and service is customized as per their need and cash flow.
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+			<div id="borrow_amount_details" class="container-fluid border-radius">
+				<h3> 40% raised </h3>
+				<div class="progress">
+				  <div class="progress-bar progress-bar-striped active" role="progressbar"
+				  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+				    40%
+				  </div>
+				</div>
+				<br>
+				<div class="form-inline">
+					<select class="form-control" ng-model="citySelected" ng-change="changedCity(citySelected)" 
+		            data-ng-options="amount as amount.value for amount in amounts">
+		            <option value="">Select Amount</option>
+		            </select>
+		        </div>
+		        <h5><button id="procced-button" type="button" class="btn btn-primary">Procced</button></h5>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-12 col-md-1 col-sm-12 col-xs-12">
+		<h3> Borrower </h3>
+		<div class="border"></div>
+		<div class="col-lg-12 border">
+			<div class="side-borrower-img col-lg-3">
+				<img class="menu-type img-responsive img-rounded" ng-src="/bundles/fabric/images/portfolio.jpg" alt="loding...." src="/bundles/fabric/images/portfolio.jpg">
+				<span> Borrower Name </span>
+			</div>
+			<div class="side-borrower-img col-lg-3">
+				<img class="menu-type img-responsive img-rounded" ng-src="/bundles/fabric/images/portfolio.jpg" alt="loding...." src="/bundles/fabric/images/portfolio.jpg">
+				<span> Borrower Name </span>
+			</div>
+			<div class="side-borrower-img col-lg-3">
+				<img class="menu-type img-responsive img-rounded" ng-src="/bundles/fabric/images/portfolio.jpg" alt="loding...." src="/bundles/fabric/images/portfolio.jpg">
+				<span> Borrower Name </span>
+			</div>
+			<div class="side-borrower-img col-lg-3">
+				<img class="menu-type img-responsive img-rounded" ng-src="/bundles/fabric/images/portfolio.jpg" alt="loding...." src="/bundles/fabric/images/portfolio.jpg">
+				<span> Borrower Name </span>
+			</div>
+		</div>
+		<br>
+		<h3> Lender </h3>
+		<div class="border"></div>		
+		<div class="col-lg-12">
+			<div class="side-borrower-img col-lg-3">
+				<img class="menu-type img-responsive img-rounded" ng-src="/bundles/fabric/images/portfolio.jpg" alt="loding...." src="/bundles/fabric/images/portfolio.jpg">
+				<span> Borrower Name </span>
+			</div>
+			<div class="side-borrower-img col-lg-3">
+				<img class="menu-type img-responsive img-rounded" ng-src="/bundles/fabric/images/portfolio.jpg" alt="loding...." src="/bundles/fabric/images/portfolio.jpg">
+				<span> Borrower Name </span>
+			</div>
+			<div class="side-borrower-img col-lg-3">
+				<img class="menu-type img-responsive img-rounded" ng-src="/bundles/fabric/images/portfolio.jpg" alt="loding...." src="/bundles/fabric/images/portfolio.jpg">
+				<span> Borrower Name </span>
+			</div>
+			<div class="side-borrower-img col-lg-3">
+				<img class="menu-type img-responsive img-rounded" ng-src="/bundles/fabric/images/portfolio.jpg" alt="loding...." src="/bundles/fabric/images/portfolio.jpg">
+				<span> Borrower Name </span>
+			</div>
+		</div>
+	</div>		
+</div>
+<div class="border container-fluid"></div>
+<!-- <div class="als-container" id="demo1">
+	<span class="als-prev"><img src="/bundles/fabric/images/left_arrow.png" alt="prev" title="previous" /></span>
+	<div class="als-viewport">
+		<ul class="als-wrapper">
+			  <li class="als-item"><img src="/bundles/fabric/images/arancio.png" alt="orange" title="orange" />orange</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/mela.png" alt="apple" title="apple" />apple</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/banana.png" alt="banana" title="banana" />banana</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/mirtillo.png" alt="blueberry" title="blueberry" />blueberry</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/anguria.png" alt="watermelon" title="watermelon" />watermelon</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/ciliegia.png" alt="cherry" title="cherry" />cherry</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/fragola.png" alt="strawberry" title="strawberry" />strawberry</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/avocado.png" alt="avocado" title="avocado" />avocado</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/pera.png" alt="pear" title="pear" />pear</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/ananas.png" alt="pineapple" title="pineapple" />pineapple</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/papaya.png" alt="papaya" title="papaya" />papaya</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/lampone.png" alt="raspberry" title="raspberry" />raspberry</li>
+		</ul>
+	</div>
+	<span class="als-next"><img src="/bundles/fabric/images/right_arrow.png" alt="next" title="next" /></span>
+</div> -->
+
+<script>
+	$("#demo1").als({
+		visible_items: 4,
+		scrolling_items: 3,
+		orientation: "horizontal",
+		circular: "no",
+		autoscroll: "no"
+	});
+</script>

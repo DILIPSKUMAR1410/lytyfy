@@ -1,0 +1,11 @@
+.grey-border {
+	margin-bottom: 10px;
+	margin-top: 10px;
+	border: 1px solid #ccc;
+}
+.border {
+	border-bottom: 1px solid #ccc;
+}
+.space {
+	height:50px;
+}
