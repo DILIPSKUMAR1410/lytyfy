@@ -2,6 +2,7 @@
 
 namespace Deviab\DatabaseBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -116,7 +117,8 @@ class FieldRepresentative
      */
     public function __construct()
     {
-        $this->borrowers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->borrowers = new
+        ArrayCollection();
     }
 
 }

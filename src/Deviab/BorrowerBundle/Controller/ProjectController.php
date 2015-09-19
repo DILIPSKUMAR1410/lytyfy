@@ -8,10 +8,11 @@
 
 namespace Deviab\BorrowerBundle\Controller;
 
-use JMS\Serializer\SerializationContext;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use JMS\Serializer\SerializationContext;
 
 class ProjectController extends Controller
 {
@@ -19,6 +20,21 @@ class ProjectController extends Controller
     {
         $projectService = $this->container->get('project_service');
         $projectStatus = $projectService->getProjectStatus($projectId);
-        return $projectStatus;
+        $context = SerializationContext::create()->setGroups(array('project_portfolio'))
+            ->enableMaxDepthChecks(3);
+        return $projectStatus->setSerializationContext($context);
+    }
+
+    /**
+     * @param $projectId
+     * @return mixed
+     */
+    public function getFeaturedProjectAction($projectId)
+    {
+        $projectService = $this->container->get('project_service');
+        $projectStatus = $projectService->getProjectStatus($projectId);
+        $context = SerializationContext::create()->setGroups(array('featured_project_portfolio'))
+            ->enableMaxDepthChecks(3);
+        return $projectStatus->setSerializationContext($context);
     }
 }

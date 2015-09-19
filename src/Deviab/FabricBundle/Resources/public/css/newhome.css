@@ -3,9 +3,9 @@
 }
 
 #light-a-life {
-	font-size:180%;
-	color:#0770B9;
-	height:32px;
+	font-size: 180%;
+	color: #0770B9;
+	height: 32px;
 	text-align: center;
 }
 .project-details {
@@ -16,7 +16,7 @@
 	margin-top: 25px;
 	padding-top: 15px;
 	border-radius: 35px;
-	width:218px;
+	width: 218px;
 	border: none;
 }
 
@@ -27,7 +27,7 @@
 	text-align: center;
 	margin-top: 65px;
 	border-radius: 35px;
-	width:218px;
+	width: 218px;
 	border: none;
 }
 #info-graphics-container {
@@ -52,8 +52,8 @@ a#register-btn:hover {
 	text-decoration: none;
 }
 
-div#learn-more:hover{
-    background-color: #9c9c9c;
+div#learn-more:hover {
+	background-color: #9c9c9c;
 }
 
 /***   Media Scrren CSS      ******/

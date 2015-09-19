@@ -28,12 +28,6 @@ class BorrowerDeviabTransaction
     private $borrower;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="toProjectBorrowerTransactions")
-     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
-     */
-    private $project;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="timestamp", type="datetime")
@@ -120,19 +114,4 @@ class BorrowerDeviabTransaction
         $this->borrower = $borrower;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getLender()
-    {
-        return $this->lender;
-    }
-
-    /**
-     * @param mixed $lender
-     */
-    public function setLender($lender)
-    {
-        $this->lender = $lender;
-    }
 }

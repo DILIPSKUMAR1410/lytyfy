@@ -21,7 +21,7 @@ class LenderDetails
 {
     /**
      * @var integer
-     *
+     * @Groups({"featured_project_portfolio"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
