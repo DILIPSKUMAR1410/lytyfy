@@ -4,3 +4,10 @@ get_project_status:
     requirements:
        _method: GET
        projectId: "\d+"
+
+get_featured_project:
+    pattern:  featured-project/{projectId}
+    defaults: { _controller: DeviabBorrowerBundle:Project:getFeaturedProject}
+    requirements:
+       _method: GET
+       projectId: "\d+"
