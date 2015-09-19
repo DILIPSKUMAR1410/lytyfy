@@ -11,6 +11,7 @@ namespace Deviab\BorrowerBundle\Services;
 use Doctrine\Bundle\DoctrineBundle\Registry as Doctrine;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Util\Codes;
+use JMS\Serializer\SerializationContext;
 
 class ProjectService extends BaseService
 {
@@ -33,8 +34,12 @@ class ProjectService extends BaseService
         $quantum = $project->getCapitalAmount();
         $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
         $lenders = $lenderRepository->findAll();
-        $response = array('lenders' => $lenders, 'quantum' => $quantum);
-        return View::create($response, Codes::HTTP_OK);
+        $borrowers = $project->getBorrowers();
+        $response = array('quantum' => $quantum, 'lenders' => $lenders, 'borrowers' => $borrowers);
+        $context = SerializationContext::create()->setGroups(array('project_portfolio'))
+            ->enableMaxDepthChecks(3);
+        return View::create($response, Codes::HTTP_OK)->setSerializationContext($context);
     }
+
 
 }

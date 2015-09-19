@@ -70,11 +70,11 @@ Deviab\DatabaseBundle\Entity\LenderDetails:
     oneToOne:
         currentStatus:
             targetEntity: Deviab\RepaymentBundle\Entity\LenderCurrentStatus
-            cascade: {  }
+            cascade: {}
             mappedBy: lender
         wallet:
             targetEntity: Deviab\RepaymentBundle\Entity\LenderWallet
-            cascade: {  }
+            cascade: {}
             mappedBy: lender
     oneToMany:
         fromLenderTransactions:

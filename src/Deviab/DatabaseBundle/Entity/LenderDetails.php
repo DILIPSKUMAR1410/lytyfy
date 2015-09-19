@@ -4,7 +4,8 @@ namespace Deviab\DatabaseBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Deviab\TransactionBundle\Entity\LenderBorrowerTransaction;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\MaxDepth;
 use Deviab\TransactionBundle\Entity\DeviabLenderTransaction;
 use Deviab\TransactionBundle\Entity\BorrowerDeviabTransaction;
 use Deviab\RepaymentBundle\Entity\LenderCurrentStatus;
@@ -29,35 +30,35 @@ class LenderDetails
 
     /**
      * @var string
-     *
+     * @Groups({"project_portfolio"})
      * @ORM\Column(name="fname", type="string", length=45, nullable=false)
      */
     private $fname;
 
     /**
      * @var string
-     *
+     * @Groups({"project_portfolio"})
      * @ORM\Column(name="lname", type="string", length=45, nullable=false)
      */
     private $lname;
 
     /**
      * @var string
-     *
+     * @Groups({"project_portfolio"})
      * @ORM\Column(name="address", type="string", length=45, nullable=true)
      */
     private $address;
 
     /**
      * @var string
-     *
+     * @Groups({"project_portfolio"})
      * @ORM\Column(name="gender", type="string", length=10, nullable=false)
      */
     private $gender;
 
     /**
      * @var \DateTime
-     *
+     * @Groups({"project_portfolio"})
      * @ORM\Column(name="dob", type="date", nullable=true)
      */
     private $dob;
@@ -71,21 +72,21 @@ class LenderDetails
 
     /**
      * @var string
-     *
+     * @Groups({"project_portfolio"})
      * @ORM\Column(name="profile_pic", type="string", length=255, nullable=false)
      */
     private $profilePic;
 
     /**
      * @var string
-     *
+     * @Groups({"project_portfolio"})
      * @ORM\Column(name="google_id", type="string", length=45, nullable=true)
      */
     private $googleId;
 
     /**
      * @var string
-     *
+     * @Groups({"project_portfolio"})
      * @ORM\Column(name="facebook_id", type="string", length=45, nullable=true)
      */
     private $facebookId;
@@ -101,7 +102,7 @@ class LenderDetails
     private $fromLenderTransactions;
 
     /**
-     * @ORM\OneToMany(targetEntity="LenderCurrentStatus", mappedBy="lender")
+     * @ORM\OneToOne(targetEntity="LenderCurrentStatus", mappedBy="lender")
      */
     private $currentStatus;
 

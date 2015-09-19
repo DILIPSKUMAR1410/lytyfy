@@ -44,9 +44,10 @@ class RepaymentService extends BaseService
                 $pl = $pl - $amountRecieved + $il;
                 $borrowerDeviabTransaction->getBorrower()->getCurrentStatus()->setPricipalLeft($pl);
             }
+
             $EMR = $this->getEMR($borrowerDeviabTransaction->getBorrower()->getCurrentStatus());
             $borrowerDeviabTransaction->getBorrower()->getCurrentStatus()->setExpectedMonthlyReturn($EMR);
-
+            $this->em->merge($borrowerDeviabTransaction->getBorrower()->getCurrentStatus());
             $this->em->persist($borrowerDeviabTransaction);
             $this->em->flush();
             return View::create("Repayment received and Borrower Current Status updated", Codes::HTTP_OK);
@@ -78,10 +79,12 @@ class RepaymentService extends BaseService
             $totalEMR += $lender->getCurrentStatus()->getExpectedMonthlyReturn();
         }
         foreach ($lenders as $lender) {
-            $EMR = $lenders->getCurrentStatus()->getExpectedMonthlyReturn();
+            $EMR = $lender->getCurrentStatus()->getExpectedMonthlyReturn();
             $AMR = $EMR * $TMR / $totalEMR;
             $project->debitCapitalRaised($AMR);
+            $this->em->merge($project);
             $lender->getWallet()->credit($AMR);
+            $this->em->merge($lender->getWallet());
             $pl = $lender->getCurrentStatus()->getPricipalLeft();
             $il = $lender->getCurrentStatus()->getInterestLeft();
             if ($AMR <= $il) {
@@ -94,10 +97,9 @@ class RepaymentService extends BaseService
             }
             $EMR = $this->getEMR($lender->getCurrentStatus());
             $lender->getCurrentStatus()->setExpectedMonthlyReturn($EMR);
-            $this->em->persist($lender);
-            $this->em->flush();
+            $this->em->merge($lender->getCurrentStatus());
+            $this->em->merge($lender);
         }
-        $this->em->persist($project);
         $this->em->flush();
         return View::create("Repaid AMR  and Lender Current Status updated", Codes::HTTP_OK);
 

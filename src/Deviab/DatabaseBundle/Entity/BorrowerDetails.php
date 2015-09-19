@@ -59,21 +59,21 @@ class BorrowerDetails
 
     /**
      * @var string
-     * @Groups({"borrower_portfolio"})
+     * @Groups({"borrower_portfolio","project_portfolio"})
      * @ORM\Column(name="gender", type="string", length=10, nullable=false)
      */
     private $gender;
 
     /**
      * @var \DateTime
-     * @Groups({"borrower_portfolio"})
+     * @Groups({"borrower_portfolio","project_portfolio"})
      * @ORM\Column(name="dob", type="date", nullable=false)
      */
     private $dob;
 
     /**
      * @var string
-     * @Groups({"borrower_portfolio"})
+     * @Groups({"borrower_portfolio","project_portfolio"})
      * @ORM\Column(name="highest_education", type="string", length=45, nullable=true)
      */
     private $highestEducation;
@@ -87,20 +87,20 @@ class BorrowerDetails
 
     /**
      * @var string
-     * @Groups({"borrower_portfolio"})
+     * @Groups({"borrower_portfolio","project_portfolio"})
      * @ORM\Column(name="occupation", type="string", length=45, nullable=true)
      */
     private $occupation;
 
     /**
      * @var float
-     * @Groups({"borrower_portfolio"})
+     * @Groups({"borrower_portfolio","project_portfolio"})
      * @ORM\Column(name="annual_income", type="float", precision=10, scale=0, nullable=false)
      */
     private $annualIncome;
 
     /**
-     * @Groups({"borrower_portfolio"})
+     * @Groups({"borrower_portfolio","project_portfolio"})
      * @MaxDepth(5)
      * @var MasterVillages
      * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\MasterVillages")
@@ -144,9 +144,7 @@ class BorrowerDetails
     }
 
     /**
-     * Get id
-     *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -154,8 +152,14 @@ class BorrowerDetails
     }
 
     /**
-     * Get fname
-     *
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return string
      */
     public function getFname()
@@ -164,21 +168,14 @@ class BorrowerDetails
     }
 
     /**
-     * Set fname
-     *
      * @param string $fname
-     * @return BorrowerDetails
      */
     public function setFname($fname)
     {
         $this->fname = $fname;
-
-        return $this;
     }
 
     /**
-     * Get lname
-     *
      * @return string
      */
     public function getLname()
@@ -187,21 +184,14 @@ class BorrowerDetails
     }
 
     /**
-     * Set lname
-     *
      * @param string $lname
-     * @return BorrowerDetails
      */
     public function setLname($lname)
     {
         $this->lname = $lname;
-
-        return $this;
     }
 
     /**
-     * Get address
-     *
      * @return string
      */
     public function getAddress()
@@ -210,21 +200,14 @@ class BorrowerDetails
     }
 
     /**
-     * Set address
-     *
      * @param string $address
-     * @return BorrowerDetails
      */
     public function setAddress($address)
     {
         $this->address = $address;
-
-        return $this;
     }
 
     /**
-     * Get tolla
-     *
      * @return string
      */
     public function getTolla()
@@ -233,21 +216,14 @@ class BorrowerDetails
     }
 
     /**
-     * Set tolla
-     *
      * @param string $tolla
-     * @return BorrowerDetails
      */
     public function setTolla($tolla)
     {
         $this->tolla = $tolla;
-
-        return $this;
     }
 
     /**
-     * Get gender
-     *
      * @return string
      */
     public function getGender()
@@ -256,21 +232,14 @@ class BorrowerDetails
     }
 
     /**
-     * Set gender
-     *
      * @param string $gender
-     * @return BorrowerDetails
      */
     public function setGender($gender)
     {
         $this->gender = $gender;
-
-        return $this;
     }
 
     /**
-     * Get dob
-     *
      * @return \DateTime
      */
     public function getDob()
@@ -279,21 +248,14 @@ class BorrowerDetails
     }
 
     /**
-     * Set dob
-     *
      * @param \DateTime $dob
-     * @return BorrowerDetails
      */
     public function setDob($dob)
     {
         $this->dob = $dob;
-
-        return $this;
     }
 
     /**
-     * Get highestEducation
-     *
      * @return string
      */
     public function getHighestEducation()
@@ -302,21 +264,14 @@ class BorrowerDetails
     }
 
     /**
-     * Set highestEducation
-     *
      * @param string $highestEducation
-     * @return BorrowerDetails
      */
     public function setHighestEducation($highestEducation)
     {
         $this->highestEducation = $highestEducation;
-
-        return $this;
     }
 
     /**
-     * Get primaryMobileNumber
-     *
      * @return string
      */
     public function getPrimaryMobileNumber()
@@ -325,21 +280,14 @@ class BorrowerDetails
     }
 
     /**
-     * Set primaryMobileNumber
-     *
      * @param string $primaryMobileNumber
-     * @return BorrowerDetails
      */
     public function setPrimaryMobileNumber($primaryMobileNumber)
     {
         $this->primaryMobileNumber = $primaryMobileNumber;
-
-        return $this;
     }
 
     /**
-     * Get occupation
-     *
      * @return string
      */
     public function getOccupation()
@@ -348,21 +296,14 @@ class BorrowerDetails
     }
 
     /**
-     * Set occupation
-     *
      * @param string $occupation
-     * @return BorrowerDetails
      */
     public function setOccupation($occupation)
     {
         $this->occupation = $occupation;
-
-        return $this;
     }
 
     /**
-     * Get annualIncome
-     *
      * @return float
      */
     public function getAnnualIncome()
@@ -371,21 +312,14 @@ class BorrowerDetails
     }
 
     /**
-     * Set annualIncome
-     *
      * @param float $annualIncome
-     * @return BorrowerDetails
      */
     public function setAnnualIncome($annualIncome)
     {
         $this->annualIncome = $annualIncome;
-
-        return $this;
     }
 
     /**
-     * Get village
-     *
      * @return MasterVillages
      */
     public function getVillage()
@@ -394,68 +328,31 @@ class BorrowerDetails
     }
 
     /**
-     * Set village
-     *
      * @param MasterVillages $village
-     * @return BorrowerDetails
      */
-    public function setVillage(MasterVillages $village = null)
+    public function setVillage($village)
     {
         $this->village = $village;
-
-        return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getDeviabBorrowerTransactions()
+    public function getFromBorrowerTransactions()
     {
-        return $this->deviabBorrowerTransactions;
+        return $this->fromBorrowerTransactions;
     }
 
     /**
-     * @param mixed $deviabBorrowerTransactions
+     * @param mixed $fromBorrowerTransactions
      */
-    public function setDeviabBorrowerTransactions($deviabBorrowerTransactions)
+    public function setFromBorrowerTransactions($fromBorrowerTransactions)
     {
-        $this->deviabBorrowerTransactions = $deviabBorrowerTransactions;
+        $this->fromBorrowerTransactions = $fromBorrowerTransactions;
     }
 
     /**
      * @return mixed
-     */
-    public function getBorrowerLenderTransactions()
-    {
-        return $this->borrowerLenderTransactions;
-    }
-
-    /**
-     * @param mixed $borrowerLenderTransactions
-     */
-    public function setBorrowerLenderTransactions($borrowerLenderTransactions)
-    {
-        $this->borrowerLenderTransactions = $borrowerLenderTransactions;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getToDeviabTransactions()
-    {
-        return $this->toDeviabTransactions;
-    }
-
-    /**
-     * @param mixed $toDeviabTransactions
-     */
-    public function setToDeviabTransactions($toDeviabTransactions)
-    {
-        $this->toDeviabTransactions = $toDeviabTransactions;
-    }
-
-    /**
-     * @return BorrowerCurrentStatus
      */
     public function getCurrentStatus()
     {
@@ -463,43 +360,15 @@ class BorrowerDetails
     }
 
     /**
-     * @param BorrowerCurrentStatus $currentStatus
-     * @return BorrowerCurrentStatus
-     * @internal param $BorrowerCurrentStatus
+     * @param mixed $currentStatus
      */
-    public function setCurrentStatus(BorrowerCurrentStatus $currentStatus)
+    public function setCurrentStatus($currentStatus)
     {
-        return $this->currentStatus = $currentStatus;
+        $this->currentStatus = $currentStatus;
     }
 
     /**
-     * @return ArrayCollection
-     */
-    public function getfromBorrowerTransactions()
-    {
-        return $this->fromBorrowerTransactions;
-    }
-
-    /**
-     * @param BorrowerDeviabTransaction $fromBorrowerTransaction
-     * @internal param $BorrowerDeviabTransaction
-     */
-    public function addFromBorrowerTransaction(BorrowerDeviabTransaction $fromBorrowerTransaction)
-    {
-        $this->fromBorrowerTransactions[] = $fromBorrowerTransaction;
-    }
-
-    /**
-     * @param BorrowerDeviabTransaction $fromBorrowerTransactions
-     * @internal param $BorrowerDeviabTransaction
-     */
-    public function removeFromBorrowerTransaction(BorrowerDeviabTransaction $fromBorrowerTransactions)
-    {
-        $this->fromBorrowerTransactions->removeElement($fromBorrowerTransactions);
-    }
-
-    /**
-     * @return ArrayCollection
+     * @return mixed
      */
     public function getToBorrowerTransactions()
     {
@@ -507,21 +376,11 @@ class BorrowerDetails
     }
 
     /**
-     * @param DeviabBorrowerTransaction $toBorrowerTransaction
-     * @internal param $ToBorrowerTransaction
+     * @param mixed $toBorrowerTransactions
      */
-    public function addCurrentStatus(DeviabBorrowerTransaction $toBorrowerTransaction)
+    public function setToBorrowerTransactions($toBorrowerTransactions)
     {
-        $this->toBorrowerTransactions[] = $toBorrowerTransaction;
-    }
-
-    /**
-     * @param DeviabBorrowerTransaction $toBorrowerTransaction
-     * @internal param $ToBorrowerTransaction
-     */
-    public function removeCurrentStatus(DeviabBorrowerTransaction $toBorrowerTransaction)
-    {
-        $this->toBorrowerTransactions->removeElement($toBorrowerTransaction);
+        $this->toBorrowerTransactions = $toBorrowerTransactions;
     }
 
     /**
@@ -555,6 +414,47 @@ class BorrowerDetails
     {
         $this->fieldRepesentative = $fieldRepesentative;
     }
+
+    /**
+     * @param BorrowerDeviabTransaction $fromBorrowerTransaction
+     * @internal param $BorrowerDeviabTransaction
+     */
+    public function addFromBorrowerTransaction(BorrowerDeviabTransaction $fromBorrowerTransaction)
+    {
+        $this->fromBorrowerTransactions[] = $fromBorrowerTransaction;
+    }
+
+    /**
+     * @param BorrowerDeviabTransaction $fromBorrowerTransactions
+     * @internal param $BorrowerDeviabTransaction
+     */
+    public function removeFromBorrowerTransaction(BorrowerDeviabTransaction $fromBorrowerTransactions)
+    {
+        $this->fromBorrowerTransactions->removeElement($fromBorrowerTransactions);
+    }
+
+
+    /**
+     * @param DeviabBorrowerTransaction $toBorrowerTransaction
+     * @internal param $ToBorrowerTransaction
+     */
+    public function addCurrentStatus(DeviabBorrowerTransaction $toBorrowerTransaction)
+    {
+        $this->toBorrowerTransactions[] = $toBorrowerTransaction;
+    }
+
+    /**
+     * @param DeviabBorrowerTransaction $toBorrowerTransaction
+     * @internal param $ToBorrowerTransaction
+     */
+    public function removeCurrentStatus(DeviabBorrowerTransaction $toBorrowerTransaction)
+    {
+        $this->toBorrowerTransactions->removeElement($toBorrowerTransaction);
+    }
+
+
+
+
 
 
 }

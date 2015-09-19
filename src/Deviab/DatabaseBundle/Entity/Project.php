@@ -5,7 +5,7 @@ namespace Deviab\DatabaseBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Deviab\DatabaseBundle\Entity\BorrowerDetails;
-
+use JMS\Serializer\Annotation\Groups;
 /**
  * Project
  *
@@ -48,6 +48,7 @@ class Project
      */
     private $amountRaised;
     /**
+     * @Groups({"project_portfolio"})
      * @ORM\Column(name="capital_amount", type="float")
      */
     private $capitalAmount;
