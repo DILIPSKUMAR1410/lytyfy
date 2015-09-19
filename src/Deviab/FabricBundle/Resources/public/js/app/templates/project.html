@@ -104,7 +104,7 @@
 	</div>		
 </div>
 <div class="border container-fluid"></div>
-<!-- <div class="als-container" id="demo1">
+<div class="row als-container" id="demo1">
 	<span class="als-prev"><img src="/bundles/fabric/images/left_arrow.png" alt="prev" title="previous" /></span>
 	<div class="als-viewport">
 		<ul class="als-wrapper">
@@ -123,10 +123,38 @@
 		</ul>
 	</div>
 	<span class="als-next"><img src="/bundles/fabric/images/right_arrow.png" alt="next" title="next" /></span>
-</div> -->
-
+</div>
+<div class="border container-fluid"></div>
+<div class="row als-container" id="demo2">
+	<span class="als-prev"><img src="/bundles/fabric/images/left_arrow.png" alt="prev" title="previous" /></span>
+	<div class="als-viewport">
+		<ul class="als-wrapper">
+			  <li class="als-item"><img src="/bundles/fabric/images/arancio.png" alt="orange" title="orange" />orange</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/mela.png" alt="apple" title="apple" />apple</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/banana.png" alt="banana" title="banana" />banana</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/mirtillo.png" alt="blueberry" title="blueberry" />blueberry</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/anguria.png" alt="watermelon" title="watermelon" />watermelon</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/ciliegia.png" alt="cherry" title="cherry" />cherry</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/fragola.png" alt="strawberry" title="strawberry" />strawberry</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/avocado.png" alt="avocado" title="avocado" />avocado</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/pera.png" alt="pear" title="pear" />pear</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/ananas.png" alt="pineapple" title="pineapple" />pineapple</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/papaya.png" alt="papaya" title="papaya" />papaya</li>
+			  <li class="als-item"><img src="/bundles/fabric/images/lampone.png" alt="raspberry" title="raspberry" />raspberry</li>
+		</ul>
+	</div>
+	<span class="als-next"><img src="/bundles/fabric/images/right_arrow.png" alt="next" title="next" /></span>
+</div>
+<div class="border container-fluid"></div>
 <script>
 	$("#demo1").als({
+		visible_items: 4,
+		scrolling_items: 3,
+		orientation: "horizontal",
+		circular: "no",
+		autoscroll: "no"
+	});
+	$("#demo2").als({
 		visible_items: 4,
 		scrolling_items: 3,
 		orientation: "horizontal",

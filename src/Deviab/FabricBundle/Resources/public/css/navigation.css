@@ -1,11 +1,19 @@
-.logo {
-    font-family: neuropol !important;
-    font-size: 58px !important;
+.navbar-collapse {
+    width: ff !important;
+}
+/*.logo {
+    font-family: menlo !important;
+    font-size: 38px !important;
     color: #0070B9 !important;
-    /*background-image: url(../images/newlogo.jpg);*/ 
-    /*width:200px;*/ 
+    background-image: url(../images/newlogo.jpg);
     background-repeat: no-repeat;
     margin-top: 17px;
+    font-weight: normal !important;
+}*/
+#login-btn-container {
+    position: absolute;
+    left: 90%;
+    top: 33%;
 }
 #sub {
     font-style: italic;

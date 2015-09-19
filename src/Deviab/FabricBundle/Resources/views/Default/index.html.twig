@@ -21,35 +21,36 @@
 	<link rel="stylesheet" href="/bundles/fabric/css/navigation.css"/>
 	<link rel="stylesheet" href="/bundles/fabric/css/common.css"/>
 	<link rel="stylesheet" href="/bundles/fabric/css/newhome.css"/>
+	<link rel="stylesheet" href="/bundles/fabric/css/project.css"/>
 
 </head>
 <body ng-app="myApp">
 <nav class="navbar navbar-default fixed-nav-bar">
   	<div class="container-fluid">
     	<!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header col-lg-5 col-md-3 col-sm-1">
+	    <div class="navbar-header col-lg-4 col-md-4 col-sm-4">
 	      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-show-hide">
 		        <span class="sr-only">Toggle navigation</span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 	      	</button>
-	      	<div class="container-fluid row col-xs-10">
-	      	<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
-	      		<a class="navbar-brand logo pull-left" href="#">Lytyfy</a>
-    		</div>
-    		<div id="sub" class="col-lg-12 col-sm-12 col-xs-12 col-md-12">Power to Everyone, Everywhere
-    		</div>
+	      	<div class="container-fluid row col-lg-12 col-md-12 col-sm-12 col-xs-6">
+		      		{# <a class="navbar-brand logo pull-left" href="#">lytyfy</a> #}
+		      		<a href="/#/"><img class="menu-type img-responsive img-rounded" ng-src="/bundles/fabric/images/lytyfy_logo2.png" alt="loding...."></a>
     		</div>
     	</div>
-	    <div class="container-fluid pull-right collapse navbar-collapse col-lg-7 col-md-9 col-sm-10 col-xs-10" id="nav-show-hide">
+	    <div class="row collapse navbar-collapse col-lg-12 col-md-12 col-sm-10 col-xs-10" id="nav-show-hide">
 	      	<ul class="nav navbar-nav ">
-		        <li><a id="home" href="#home-container" class="nav-link">HOME <span class="sr-only">(current)</span></a></li>
-		        <li><a id="about" href="#about-outer-container" class="nav-link">ABOUT</a></li><li><a id="contact" href="#footer" class="nav-link">CONTACT</a></li>
-	      		<li><a id="contact" class="nav-link" data-toggle="modal" data-target="#myModal">LOGIN</a></li>
-	      		
+		        <li><a id="home" href="#" class="nav-link">HOME <span class="sr-only">(current)</span></a></li>
+		        <li><a id="about" href="#about-outer-container" class="nav-link">ABOUT</a></li>
+		        <li><a id="contact" href="#" class="nav-link">HOW IT WORKS</a></li>
+		        <li><a id="contact" href="#" class="nav-link">FAQ</a></li>	      		
 		    </ul>			    
 	    </div><!-- /.navbar-collapse -->
+	    <div id="login-btn-container" class="col-lg-4 col-md-3 col-sm-3 hidden-xs">
+	    	<button  class="nav-link btn btn-primary pull-left" data-toggle="modal" data-target="#myModal">LOGIN</button>
+	    </div>
   </div><!-- /.container-fluid -->
 </nav>
 <div id="overlay"></div>
@@ -138,7 +139,7 @@
     </div>
   </div>
 </div>
-<div id="footer" class="container-fluid">
+{# <div id="footer" class="container-fluid">
 	<div id="social-icons-container">
 		<ul id="social-icon-container">        
 			<li id="fb"><a href="https://www.facebook.com/pages/Deviab/1675668492652876?__mref=message_bubble" target="_blank"><img src="/bundles/fabric/images/index/fb.png"></a></li>
@@ -150,11 +151,11 @@
 		<div id="email">info@deviab.com</div>
 		<div id="copy-right">Copyright &copy Deviab Research and Implementation Pvt Ltd 2015</div>
 	</div>
-</div>  
+</div>  #} 
 </body>
 <script type="text/javascript">
 	var nav_height = $("nav").height();
-	$("#overlay").css("height", nav_height);
+	$("#overlay").css("height", nav_height + 30);
 
 
 $("#signup-link").click(function() {
