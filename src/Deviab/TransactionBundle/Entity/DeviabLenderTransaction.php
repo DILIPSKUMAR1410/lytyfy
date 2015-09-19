@@ -22,7 +22,7 @@ class DeviabLenderTransaction
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="fromProjectTransactions")
+     * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="fromProjectLenderTransactions")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     private $project;
@@ -103,4 +103,37 @@ class DeviabLenderTransaction
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * @param mixed $project
+     */
+    public function setProject($project)
+    {
+        $this->project = $project;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLender()
+    {
+        return $this->lender;
+    }
+
+    /**
+     * @param mixed $lender
+     */
+    public function setLender($lender)
+    {
+        $this->lender = $lender;
+    }
+
 }

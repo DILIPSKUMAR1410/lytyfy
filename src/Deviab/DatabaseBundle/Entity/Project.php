@@ -24,29 +24,20 @@ class Project
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="BorrowerDeviabTransaction", mappedBy="borrower")
+     * @ORM\OneToMany(targetEntity="DeviabLenderTransaction", mappedBy="project")
      */
-    private $toProjectBorrowerTransactions;
+    private $fromProjectLenderTransactions;
 
     /**
-     * @ORM\OneToMany(targetEntity="DeviabLenderTransaction", mappedBy="borrower")
+     * @ORM\OneToMany(targetEntity="LenderDeviabTransaction", mappedBy="project")
      */
-    private $fromProjectTransactions;
-
-    /**
-     * @ORM\OneToMany(targetEntity="LenderDeviabTransaction", mappedBy="lender")
-     */
-    private $toProjectDeviabTransactions;
+    private $toProjectLenderTransactions;
 
     /**
      * @ORM\OneToMany(targetEntity="BorrowerDetails", mappedBy="project")
      */
     private $borrowers;
 
-    /**
-     * @ORM\Column(name="amount_raised", type="float")
-     */
-    private $amountRaised;
     /**
      * @Groups({"project_portfolio"})
      * @ORM\Column(name="capital_amount", type="float")
@@ -56,15 +47,12 @@ class Project
     public function __construct()
     {
         $this->borrowers = new ArrayCollection();
-        $this->toProjectBorrowerTransactions = new ArrayCollection();
-        $this->fromProjectTransactions = new ArrayCollection();
-        $this->toProjectDeviabTransactions = new ArrayCollection();
+        $this->fromProjectLenderTransactions = new ArrayCollection();
+        $this->toProjectLenderTransactions = new ArrayCollection();
     }
-    
+
     /**
-     * Get id
-     *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -72,21 +60,91 @@ class Project
     }
 
     /**
-    *
-    * Get Borrowers
-    *
-    * @return ArrayCollection
-    */
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFromProjectLenderTransactions()
+    {
+        return $this->fromProjectLenderTransactions;
+    }
+
+    /**
+     * @param mixed $fromProjectLenderTransactions
+     */
+    public function setFromProjectLenderTransactions($fromProjectLenderTransactions)
+    {
+        $this->fromProjectLenderTransactions = $fromProjectLenderTransactions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToProjectLenderTransactions()
+    {
+        return $this->toProjectLenderTransactions;
+    }
+
+    /**
+     * @param mixed $toProjectLenderTransactions
+     */
+    public function setToProjectLenderTransactions($toProjectLenderTransactions)
+    {
+        $this->toProjectLenderTransactions = $toProjectLenderTransactions;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getBorrowers()
     {
         return $this->borrowers;
     }
 
     /**
-    * Add Borrower
-    *
-    * @param BorrowerDetails $borrower
-    */
+     * @param mixed $borrowers
+     */
+    public function setBorrowers($borrowers)
+    {
+        $this->borrowers = $borrowers;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCapitalAmount()
+    {
+        return $this->capitalAmount;
+    }
+
+    /**
+     * @param $amount
+     */
+    public function creditCapitalAmount($amount)
+    {
+        $this->capitalAmount += $amount;
+    }
+
+    /**
+     * @param $amount
+     */
+    public function debitCapitalAmount($amount)
+    {
+        $this->capitalAmount -= $amount;
+    }
+
+
+    /**
+     * Add Borrower
+     *
+     * @param BorrowerDetails $borrower
+     */
     public function addBorrower(BorrowerDetails $borrower)
     {
         $this->borrowers[] = $borrower;
@@ -103,99 +161,5 @@ class Project
         $this->borrowers->removeElement($borrower);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getToProjectBorrowerTransactions()
-    {
-        return $this->toProjectBorrowerTransactions;
-    }
-
-    /**
-     * @param mixed $toProjectBorrowerTransactions
-     */
-    public function setToProjectBorrowerTransactions($toProjectBorrowerTransactions)
-    {
-        $this->toProjectBorrowerTransactions = $toProjectBorrowerTransactions;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFromProjectTransactions()
-    {
-        return $this->fromProjectTransactions;
-    }
-
-    /**
-     * @param mixed $fromProjectTransactions
-     */
-    public function setFromProjectTransactions($fromProjectTransactions)
-    {
-        $this->fromProjectTransactions = $fromProjectTransactions;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getToProjectDeviabTransactions()
-    {
-        return $this->toProjectDeviabTransactions;
-    }
-
-    /**
-     * @param mixed $toProjectDeviabTransactions
-     */
-    public function setToProjectDeviabTransactions($toProjectDeviabTransactions)
-    {
-        $this->toProjectDeviabTransactions = $toProjectDeviabTransactions;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAmountRaised()
-    {
-        return $this->amountRaised;
-    }
-
-    /**
-     * @param mixed $amountRaised
-     */
-    public function setAmountRaised($amountRaised)
-    {
-        $this->amountRaised = $amountRaised;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCapitalAmount()
-    {
-        return $this->capitalAmount;
-    }
-
-    /**
-     * @param mixed $capitalAmount
-     */
-    public function setCapitalAmount($capitalAmount)
-    {
-        $this->capitalAmount = $capitalAmount;
-    }
-
-    public function creditAmountRaised($amount)
-    {
-        $this->amountRaised += $amount;
-    }
-
-    public function creditCapitalRaised($amount)
-    {
-        $this->capitalAmount += $amount;
-    }
-
-    public function debitCapitalRaised($amount)
-    {
-        $this->capitalAmount -= $amount;
-    }
 
 }
