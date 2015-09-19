@@ -86,14 +86,19 @@ fos_rest :
     body_converter:
             enabled: true
     param_fetcher_listener: true
+    routing_loader:
+        default_format: json
 
 fos_user:
     db_driver: "orm" # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Deviab\AppBundle\Entity\User
+    user_class: Deviab\LoginBundle\Entity\User
     service:
         mailer: fos_user.mailer.twig_swift
     registration:
+        form:
+            type: deviab_user_registration
+            handler: deviab_user.registration.form.handler
         confirmation:
             enabled:  true
             template: email/confirmation.email.twig
