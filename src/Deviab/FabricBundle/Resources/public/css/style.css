@@ -1,97 +1,118 @@
 body {
-    font:14px/21px "Montserrat", sans-serif;
+    font: 14px/21px "Montserrat", sans-serif;
     font-size: 15px;
     text-align: justify;
     color: black;
     letter-spacing: 2px;
 }
+
 @font-face {
     font-family: 'neuropol';
     src: url(NEUROPOL.ttf);
 }
-#back-img {   
+
+#back-img {
     background-repeat: no-repeat;
-    margin:auto;
+    margin: auto;
 }
+
 #back-img img {
     max-width: 100%;
     width: auto;
     height: auto;
     vertical-align: middle;
-    margin:auto;
+    margin: auto;
 }
+
 #banner {
     text-align: center;
     font-size: 30px;
-    color:#777;
+    color: #777;
     font-family: fantasy;
     font-weight: bold;
     line-height: 1.5;
     margin-top: 18px;
 }
+
 .backstretch {
     z-index: 0;
 }
+
 .banner-text {
     margin-top: 170px;
 }
+
 .width {
-	width:57% !important;
+    width: 57% !important;
 }
-.header01{
-    color:#0070B9;
+
+.header01 {
+    color: #0070B9;
     font-size: 25px;
     font-weight: bold;
 }
+
 #about-container {
     color: black;
     text-align: justify;
 }
+
 #about-deviab {
     color: #464646;
 }
+
 .navbar {
-  border-radius: 0px ;
+    border-radius: 0px;
 }
-.navbar-nav>li>a {
-  padding-top: 15px!important;
+
+.navbar-nav > li > a {
+    padding-top: 15px !important;
 }
+
 .navfix {
     z-index: 100;
-    background-color: #FFF;    
+    background-color: #FFF;
 }
-.tm,.am,.cs,.cns, {
-    color: #929292 ;
+
+.tm, .am, .cs, .cns, {
+    color: #929292;
 }
+
 .abs a:hover {
-    color: #0070B9 ;
+    color: #0070B9;
 }
+
 .abs a:active {
-    color: #0070B9 ;
+    color: #0070B9;
 }
+
 a {
     cursor: pointer;
     font-weight: bold;
 }
+
 .abs {
     position: absolute;
     z-index: 100;
     color: black;
-    font-family: Snippet;        
+    font-family: Snippet;
     font-style: oblique;
     font-size: 16px;
     text-align: justify;
 }
-#solar-solution, #joinus{
+
+#solar-solution, #joinus {
     color: black;
 }
-#member-desc {   
+
+#member-desc {
 }
+
 #designation {
     font-size: 10px;
 }
 
-#solutions-container {    
+#solutions-container {
     line-height: 26px;
     text-align: center;
     font-size: 13px;
@@ -101,64 +122,75 @@ a {
     font-weight: 400px;
     /*background: green;*/
 }
+
 #careers-container {
-    height: 200px;    
+    height: 200px;
     overflow: scroll;
     overflow-x: hidden;
     overflow-y: hidden;
 }
-#deepak-img,#vishnu-img {
+
+#deepak-img, #vishnu-img {
     height: 150px;
 }
 
 #graph {
-    height:250px;
-    background-image: url(../images/index/chart.jpg);   
-    background-repeat: no-repeat; 
+    height: 250px;
+    background-image: url(../images/index/chart.jpg);
+    background-repeat: no-repeat;
 }
+
 #twitter {
-    height:250px;
+    height: 250px;
     background: #C0C0C0;
 }
+
 #contactus {
     padding-top: 100px;
-    height:150px;
+    height: 150px;
     text-align: center;
     font-size: 24px;
     background: #979797;
     color: #FFF;
 }
+
 .border-bottom {
     border-bottom: 1px solid #0070B9;
     margin: 20px 5px;
-}       
+}
+
 #nm {
-    color:#3B78E7;
+    color: #3B78E7;
     font-weight: bold;
 }
+
 .ofg {
-    color:#3B78E7;
+    color: #3B78E7;
 }
-.no-padd{
+
+.no-padd {
     padding-left: 0px;
     padding-right: 0px;
 }
-#about-energy-heading,#solution-heading,#solar-heading,#csr-heading {
+
+#about-energy-heading, #solution-heading, #solar-heading, #csr-heading {
     text-align: center;
     font-size: 25px;
 
 }
+
 #solution {
     color: black;
-    font-family: Snippet;        
+    font-family: Snippet;
     font-style: oblique;
     font-size: 16px;
     text-align: justify;
 }
+
 #member-img {
     display: block;
     margin-left: auto;
-    margin-right: auto 
+    margin-right: auto
 }
 
 .devider {
@@ -171,7 +203,8 @@ a {
 #about-energy-heading {
     font-family: neuropol !important;
 }
-.graphics {   
+
+.graphics {
     width: 130px;
     height: 100px;
     background-repeat: no-repeat;
@@ -179,17 +212,21 @@ a {
     margin: 12px auto 12px;
     margin-bottom: 55px;
 }
+
 #solution-img {
     background-image: url(../images/infographics/solution.png);
 }
+
 #consulting-img {
-    margin-top : 18px;
-    margin-bottom : 52px;
+    margin-top: 18px;
+    margin-bottom: 52px;
     background-image: url(../images/infographics/consulting.png);
 }
+
 #csr-img {
     background-image: url(../images/infographics/csr.png);
 }
+
 #about-container {
     /*background: red;*/
     margin-right: 20px !important;
@@ -211,10 +248,8 @@ a {
 
 #footer {
     background: #f8f8f8;
-    height:200px;
+    height: 200px;
 }
-
-
 
 ul {
     list-style: none;
@@ -232,27 +267,32 @@ ul {
 #in > a > img {
     padding-top: 7px;
 }
+
 #footer ul li {
 
     display: inline-block;
     width: 50px;
     height: 50px;
 }
+
 #social-icons-container {
     margin: auto;
     text-align: center;
-    margin-top:20px; 
+    margin-top: 20px;
 }
+
 #fb, #tw, #in {
     width: 60px;
-    height:60px;
+    height: 60px;
     margin-left: 25px;
     border-radius: 50%;
     background-color: #3C3C3C;
 }
+
 #social-icon-container li:hover {
     background-color: #0070B9;
 }
+
 #email, #copy-right {
     text-align: center;
     font-size: 14px;
@@ -263,13 +303,14 @@ ul {
     margin-left: 20px;
 }
 
-@media screen and (max-width: 750px) { 
-   #about-energy-desc {
-    margin-left: 0px;
-    margin-right: 0px;
-}
-#banner {
-    margin-left: 10px;
-    margin-right: 10px;
-}
+@media screen and (max-width: 750px) {
+    #about-energy-desc {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    #banner {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }
