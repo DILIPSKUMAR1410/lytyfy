@@ -74,8 +74,8 @@ class RepaymentService extends BaseService
         $lenders = $lenderRepository->findAll();
         $TMR = $project->getCapitalAmount();
         $totalEMR = 0;
-        foreach ($lenders->getCurrentStatus()->getExpectedMonthlyReturn() as $EMR) {
-            $totalEMR += $EMR;
+        foreach ($lenders as $lender) {
+            $totalEMR += $lender->getCurrentStatus()->getExpectedMonthlyReturn();
         }
         foreach ($lenders as $lender) {
             $EMR = $lenders->getCurrentStatus()->getExpectedMonthlyReturn();
@@ -102,4 +102,6 @@ class RepaymentService extends BaseService
         return View::create("Repaid AMR  and Lender Current Status updated", Codes::HTTP_OK);
 
     }
+
+
 }

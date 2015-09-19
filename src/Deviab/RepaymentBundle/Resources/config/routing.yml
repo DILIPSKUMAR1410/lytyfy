@@ -1,3 +1,6 @@
-deviab_repayment_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: DeviabRepaymentBundle:Default:index }
+repay_lenders:
+    pattern:     /{projectId}
+    defaults: { _controller: DeviabRepaymentBundle:Repayment:repayLender}
+    requirements:
+        _method: GET
+        projectId: "\d+"

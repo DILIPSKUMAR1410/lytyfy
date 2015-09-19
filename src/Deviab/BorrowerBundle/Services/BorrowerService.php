@@ -320,4 +320,16 @@ class BorrowerService extends BaseService
         return array('borrower' => $borrower, 'borrowerImg' => $borrowerImage, 'borrowerStory' => $borrowerLoanStory);
     }
 
+    public function getProjectStatus($projectId)
+    {
+        $projectRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:Project');
+        $project = $projectRepository->find($projectId);
+        if ($project == null)
+            return View::create("project not found", Codes::HTTP_BAD_REQUEST);
+        $quantum = $project->getCapitalAmount();
+        $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
+        $lenders = $lenderRepository->findAll();
+        $response = array('lenders' => $lenders, 'quantum' => $quantum);
+        return View::create($response, Codes::HTTP_OK);
+    }
 }

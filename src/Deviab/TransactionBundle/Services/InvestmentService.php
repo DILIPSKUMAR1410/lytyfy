@@ -111,8 +111,6 @@ class InvestmentService extends BaseService
             return View::create("Loan sanctioned", Codes::HTTP_OK);
         }
         return View::create("something went wrong dude", Codes::HTTP_BAD_REQUEST);
-
-
     }
 
 
