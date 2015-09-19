@@ -9,7 +9,10 @@ framework:
 
 web_profiler:
     toolbar: true
-    intercept_redirects: false
+    intercept_redirects: true
+
+swiftmailer:
+    delivery_address: nitinbhojwani1993@gmail.com
 
 monolog:
     handlers:
