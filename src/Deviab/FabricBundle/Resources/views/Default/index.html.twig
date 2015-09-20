@@ -26,7 +26,7 @@
 </head>
 <body ng-app="myApp">
 <nav class="navbar navbar-default fixed-nav-bar">
-  	<div class="container-fluid">
+  	<div class="container-fluid no-right-padd">
     	<!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header col-lg-4 col-md-4 col-sm-4">
 	      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-show-hide">
@@ -48,12 +48,20 @@
 		        <li><a id="contact" href="" class="nav-link">FAQ</a></li>	      		
 		    </ul>			    
 	    </div><!-- /.navbar-collapse -->
-	    <div id="login-btn-container" class="col-lg-4 col-md-3 col-sm-3 hidden-xs">
-	    	<button  class="nav-link btn btn-primary pull-left" data-toggle="modal" data-target="#myModal">LOGIN</button>
+	    <div id="" class="col-lg-4 col-md-3 col-sm-3 hidden-xs no-right-padd">
+	    	<div class="pull-right text-right">	
+			{% if username is defined %}
+				<span id="welcome-user">Welcome {{username}}</span><br>
+				<span  id="nav-profile-link" class="glyphicon glyphicon-cog"></span>
+				{% else %}
+				<button id="login-btn" class="nav-link btn btn-primary " data-toggle="modal" data-target="#myModal">LOGIN</button>
+			{% endif %}
+		</div>
 	    </div>
   </div><!-- /.container-fluid -->
 </nav>
 <div id="overlay"></div>
+
 <div>
 	<div ng-view></div>
 </div>
@@ -112,12 +120,13 @@
 							</div>
 							<button id="signin-btn" class="btn btn-lg btn-primary btn-block">Sign in</button>
 						</form>
+						<div id="signin-msg-container"><span id="signin-msg">ffff</span></div>
 						<div class="modal-footer">
 							<button id="signup-link" class="btn btn-primary pull-left">Sign up</button>
 							<a id="forgot-password-link" class="pull-right">Forgot Password</a>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
 				<div id="forgot-password" style="display:none">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -201,9 +210,12 @@
 			type: 'POST',
 			data: jsonData,
 			success: function(result){
+				$("#signin-msg").html("Successfuly logedin you will be redirect to home page");
+				location.reload();
         		alert('Logged In'+result);
     		},
     		error: function(errorMessage){
+    			$("#signin-msg").html("Wrong username or password!");
         		alert(errorMessage);
     		},
     	});
