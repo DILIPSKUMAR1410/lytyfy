@@ -453,8 +453,4 @@ class BorrowerDetails
     }
 
 
-
-
-
-
 }

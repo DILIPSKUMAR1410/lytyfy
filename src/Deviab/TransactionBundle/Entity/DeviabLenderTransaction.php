@@ -51,7 +51,7 @@ class DeviabLenderTransaction
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {

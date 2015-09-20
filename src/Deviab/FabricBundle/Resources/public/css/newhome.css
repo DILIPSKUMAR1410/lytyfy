@@ -1,41 +1,43 @@
 #project-details-container {
-	margin-top: 5%;
+    margin-top: 5%;
 }
 
 #light-a-life {
-	font-size: 180%;
-	color: #0770B9;
-	height: 32px;
-	text-align: center;
+    font-size: 180%;
+    color: #0770B9;
+    height: 32px;
+    text-align: center;
 }
+
 .project-details {
-	background-color: #9c9c9c;
-	color: #fff;
-	height: 55px;
-	text-align: center;
-	margin-top: 25px;
-	padding-top: 15px;
-	border-radius: 35px;
-	width: 218px;
-	border: none;
+    background-color: #9c9c9c;
+    color: #fff;
+    height: 55px;
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-radius: 35px;
+    width: 218px;
+    border: none;
 }
 
 #learn-more {
-	background-color: #0070B9;
-	color: #fff;
-	height: 55px;
-	text-align: center;
-	margin-top: 65px;
-	border-radius: 35px;
-	width: 218px;
-	border: none;
+    background-color: #0070B9;
+    color: #fff;
+    height: 55px;
+    text-align: center;
+    margin-top: 65px;
+    border-radius: 35px;
+    width: 218px;
+    border: none;
 }
+
 #info-graphics-container {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 #first-row {
-	display: flex;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -45,15 +47,16 @@
 #register-btn {
 
 }
+
 a#register-btn:hover {
-	cursor: pointer;
-	list-style: none;
-	color: red;
-	text-decoration: none;
+    cursor: pointer;
+    list-style: none;
+    color: red;
+    text-decoration: none;
 }
 
 div#learn-more:hover {
-	background-color: #9c9c9c;
+    background-color: #9c9c9c;
 }
 
 /***   Media Scrren CSS      ******/
