@@ -57,8 +57,8 @@ class LoginController extends Controller
         if (count(array_intersect(array_keys($requestParams), ['email', 'password'])) < 2) {
             return new Response(json_encode(['error'=>'Email & Password are mandatory']), Codes::HTTP_BAD_REQUEST);
         }
-        // $username = $requestParams['username'];
-        $username = $email = $requestParams['email'];
+        $username = $requestParams['username'];
+        $email = $requestParams['email'];
         $password = $requestParams['password'];
 
         $em = $this->container->get('doctrine')->getEntityManager();
@@ -108,7 +108,7 @@ class LoginController extends Controller
         $user->setLastLogin(new \DateTime());
 
         $this->container->get('fos_user.user_manager')->updateUser($user);
-        $response = new RedirectResponse($this->container->get('router')->generate('fos_user_registration_confirmed'));
+        $response = new Response(json_encode(['success'=>'Loggedin Now']), Codes::HTTP_OK);
         $this->authenticateUser($user, $response);
 
         return $response;

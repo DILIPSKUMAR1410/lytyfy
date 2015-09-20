@@ -67,24 +67,23 @@
 						<h4 class="modal-title">Please Sign-up</h4>
 					</div>
 					<div class="container-fluid">
-						<form role="form">
+						<form id="signup-form" role="form">
 							<div class="form-group signup-link">
 								<label for="signup-name">Name:</label>
-								<input type="text" class="form-control" id="signup-name" placeholder="Name">
+								<input type="text" class="form-control" id="signup-name" name="signup-name" placeholder="Name">
 					</div>
 							<div class="form-group">
 								<label for="signup-email">Email:</label>
-								<input type="email" class="form-control" id="signup-email" placeholder="Enter email">
+								<input type="email" class="form-control" id="signup-email" name="signup-email" placeholder="Enter email">
 					</div>
 							<div class="form-group">
 								<label for="signup-password">Password:</label>
 								<input type="password" class="form-control" id="signup-password"
-									   placeholder="Enter password">
+								name="signup-password" placeholder="Enter password">
 					</div>
 							<div class="form-group signup-link">
 								<label for="signup-confirm-password">Confirm Password:</label>
-								<input type="password" class="form-control" id="signup-cnfrm-password"
-									   placeholder="Confirm Password">
+								<input type="password" class="form-control" id="signup-cnfrm-password" name="signup-cnfrm-password"placeholder="Confirm Password">
 					</div>
 							<button id="signup-btn" class="btn btn-lg btn-primary btn-block">Sign up</button>
 						</form>
@@ -99,20 +98,19 @@
 						<h4 class="modal-title">Please Sign-in</h4>
 					</div>
 					<div class="container-fluid">
-						<form role="form">
+						<form id='signin-form' role="form">
 							<div class="form-group">
 								<label for="signin-email">Email:</label>
-								<input type="email" class="form-control" id="signin-email" placeholder="Enter email">
+								<input type="email" class="form-control" id="signin-email" name="signin-email" placeholder="Enter email">
 							</div>
 							<div class="form-group">
 								<label for="signin-password">Password:</label>
-								<input type="password" class="form-control" id="signin-password"
-									   placeholder="Enter password">
+								<input type="password" class="form-control" id="signin-password" name="signin-password" placeholder="Enter password">
 							</div>
 							<div class="checkbox">
 								<label><input type="checkbox"> Remember me</label>
 							</div>
-							<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+							<button id="signin-btn" class="btn btn-lg btn-primary btn-block">Sign in</button>
 						</form>
 						<div class="modal-footer">
 							<button id="signup-link" class="btn btn-primary pull-left">Sign up</button>
@@ -129,7 +127,7 @@
 						<form role="form">
 							<div class="form-group">
 								<label for="signin-email">Email:</label>
-								<input type="email" class="form-control" id="signin-email" placeholder="Enter email">
+								<input type="email" class="form-control" id="forgotpass-email" name="forgotpass-email" placeholder="Enter email">
 							</div>
 							<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 						</form>
@@ -188,7 +186,70 @@
 		$("#forgot-password").toggle();
 	});
 
-
+	$('#signin-btn').click(function () {
+		var result={};
+		$.each($('#signin-form').serializeArray(), function(index,element) {
+		    result[element.name] = element.value;
+		});
+		jsonData = {
+			email : result['signin-email'],
+			password : result['signin-password']
+		};
+		console.log(jsonData);
+		$.ajax({
+			url: "/login",
+			type: 'POST',
+			data: jsonData,
+			success: function(result){
+        		alert('Logged In'+result);
+    		},
+    		error: function(errorMessage){
+        		alert(errorMessage);
+    		},
+    	});
+	});
+	$('#signup-btn').click(function () {
+		var result={};
+		$.each($('#signup-form').serializeArray(), function(index,element) {
+		    result[element.name] = element.value;
+		});
+		jsonData = {
+			username: result['signup-name'],
+			email : result['signup-email'],
+			password : result['signup-password']
+		};
+		console.log(jsonData);
+		$.ajax({
+			url: "/signup",
+			type: 'POST',
+			data: jsonData,
+			success: function(result){
+        		alert('Logged In'+result);
+    		},
+    		error: function(errorMessage){
+        		alert(errorMessage);
+    		},
+    	});
+	});
+	// $('#signin-btn').click(function () {
+	// 	var data = $('#signin-form').serializeArray();
+	// 	jsonData = {
+	// 		'email' : data.signin-email,
+	// 		'password' : data.signin-password
+	// 	};
+	// 	$.ajax({
+	// 		url: "/login",
+	// 		type: 'POST',
+	// 		contentType: 'application/json',
+	// 		data: jsonData,
+	// 		success: function(result){
+ //        		alert('Logged In'+result);
+ //    		},
+ //    		error: function(errorMessage){
+ //        		alert(errorMessage);
+ //    		},
+ //    	});
+	// });
 </script>
 </html>
 
