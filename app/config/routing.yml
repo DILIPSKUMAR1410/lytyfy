@@ -1,3 +1,7 @@
+deviab_login:
+    resource: "@DeviabLoginBundle/Resources/config/routing.yml"
+    prefix:   /
+
 deviab_repayment:
     resource: "@DeviabRepaymentBundle/Resources/config/routing.yml"
     prefix:   api/v1/{role}/repayment

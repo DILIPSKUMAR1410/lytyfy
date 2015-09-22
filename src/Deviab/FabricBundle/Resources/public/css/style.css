@@ -303,6 +303,10 @@ ul {
     margin-left: 20px;
 }
 
+#signin-msg-container {
+    min-height: 25px;
+    color: red;
+}
 @media screen and (max-width: 750px) {
     #about-energy-desc {
         margin-left: 0px;

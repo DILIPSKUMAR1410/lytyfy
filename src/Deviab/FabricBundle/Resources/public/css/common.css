@@ -11,3 +11,13 @@
 .space {
     height: 50px;
 }
+.no-right-padd {
+	padding-right: 0px !important;
+}
+.no-left-padd {
+	padding-left: 0px !important;
+}
+.no-padd {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}

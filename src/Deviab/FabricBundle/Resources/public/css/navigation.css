@@ -11,10 +11,13 @@
     margin-top: 17px;
     font-weight: normal !important;
 }*/
-#login-btn-container {
+/*#login-btn-container {
     position: absolute;
     left: 90%;
     top: 33%;
+}*/
+#login-btn{
+    vertical-align: bottom;
 }
 
 #sub {
@@ -67,7 +70,10 @@ color: rgb(0, 112, 185) !important;
     width: 100%;
     z-index: 55;
 }
-
+#welcome-user, #nav-profile-link {
+    color: #0070B9;
+    font-weight: bold;
+}
 @media screen and (max-width: 550px) {
 
     .logo {
