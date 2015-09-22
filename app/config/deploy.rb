@@ -4,6 +4,7 @@ set :deploy_to,   "/var/www/deviab"
 set :app_path,    "app"
 
 set :repository,  "git@gitlab.com:rnd/deviab.git"
+set :branch, "login-txn"
 set :scm,         :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `subversion`, `mercurial`, `perforce`, or `none`
 
