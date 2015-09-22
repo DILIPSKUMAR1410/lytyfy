@@ -20,18 +20,18 @@ class User extends BaseUser
     protected $id;
 
     /**
-    * @Assert\NotBlank(groups={"Registration", "Profile"})
-    */
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
+     */
     // protected $username;
 
     /**
-    * @Assert\NotBlank(groups={"Registration", "Profile"})
-    */
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
+     */
     protected $email;
 
     /**
-    * @Assert\NotBlank(groups={"Registration", "Profile"})
-    */
+     * @Assert\NotBlank(groups={"Registration", "Profile"})
+     */
     protected $password;
 
     public function __construct()

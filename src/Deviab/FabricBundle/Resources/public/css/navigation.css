@@ -16,7 +16,7 @@
     left: 90%;
     top: 33%;
 }*/
-#login-btn{
+#login-btn {
     vertical-align: bottom;
 }
 
@@ -70,6 +70,7 @@ color: rgb(0, 112, 185) !important;
     width: 100%;
     z-index: 55;
 }
+
 #welcome-user, #nav-profile-link {
     color: #0070B9;
     font-weight: bold;
