@@ -34,17 +34,17 @@ class LoginController extends Controller
         $password = $requestParams['password'];
         $user_manager = $this->container->get('fos_user.user_manager');
         $em = $this->container->get('doctrine')->getEntityManager();
-        $factory = $this->container->get('security.encoder_factory');
         $user = $em->getRepository('DeviabLoginBundle:User')->findOneBy(['email' => $email, 'enabled' => true]);
         if (!$user) {
             return new Response(json_encode(['error'=>'Email is not registered']), Codes::HTTP_BAD_REQUEST);
-        } else if (!$user->getEnabled()) {
+        } else if (!$user->isEnabled()) {
             return new Response(json_encode(['error'=>'Email Confirmation Pending']), Codes::HTTP_BAD_REQUEST);
         }
+
+        $factory = $this->container->get('security.encoder_factory');
         $encoder = $factory->getEncoder($user);
 
-        $bool = ($encoder->isPasswordValid($user->getPassword(),$password,$user->getSalt())) ? "true" : "false";
-        if (!$bool) {
+        if (!$encoder->isPasswordValid($user->getPassword(),$password,$user->getSalt())) {
             return new Response(json_encode(['error'=>'Invalid Password']), Codes::HTTP_BAD_REQUEST);
         }
 
@@ -76,11 +76,10 @@ class LoginController extends Controller
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($email);
-        $user->setPassword($password);
+        $user->setPlainPassword($password);
         $user->setEnabled(!$confirmationEnabled);
-        $em = $this->container->get('doctrine')->getEntityManager();
-        $em->persist($user);
-        $em->flush();
+        $userManager = $this->container->get('fos_user.user_manager');
+        $userManager->updateUser($user);
         $form = $this->container->get('fos_user.registration.form');
         $formHandler = $this->container->get('fos_user.registration.form.handler');
 
