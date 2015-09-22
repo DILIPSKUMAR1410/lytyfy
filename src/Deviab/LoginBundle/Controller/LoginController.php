@@ -37,12 +37,17 @@ class LoginController extends Controller
         $factory = $this->container->get('security.encoder_factory');
         $user = $em->getRepository('DeviabLoginBundle:User')->findOneBy(['email' => $email, 'enabled' => true]);
         if (!$user) {
-            return new Response(json_encode(['error'=>'Invalid Username or Password']), Codes::HTTP_BAD_REQUEST);
+            return new Response(json_encode(['error'=>'Email is not registered']), Codes::HTTP_BAD_REQUEST);
+        } else if (!$user->getEnabled()) {
+            return new Response(json_encode(['error'=>'Email Confirmation Pending']), Codes::HTTP_BAD_REQUEST);
         }
-
         $encoder = $factory->getEncoder($user);
 
         $bool = ($encoder->isPasswordValid($user->getPassword(),$password,$user->getSalt())) ? "true" : "false";
+        if (!$bool) {
+            return new Response(json_encode(['error'=>'Invalid Password']), Codes::HTTP_BAD_REQUEST);
+        }
+
         $token = new UsernamePasswordToken($user, $user->getPassword(), 'main', $user->getRoles());
 
         $context = $this->container->get('security.context');
