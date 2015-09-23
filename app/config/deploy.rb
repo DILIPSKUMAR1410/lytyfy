@@ -1,5 +1,5 @@
 set :application, "deviab"
-set :domain,      "54.255.153.190"
+set :domain,      "54.254.197.214"
 set :deploy_to,   "/var/www/lytyfy.org"
 set :app_path,    "app"
 
