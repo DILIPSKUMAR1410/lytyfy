@@ -11,7 +11,6 @@
 	<script src="/bundles/fabric/js/ng-route.js"></script>
 	<script src="/bundles/fabric/js/jquery-2.1.1.min.js"></script>
 	<script src="/bundles/fabric/js/jquery.als-1.7.min.js"></script>
-	<script src="/bundles/fabric/js/sha512.js"></script>
 	<script src="/bundles/fabric/js/app/portfolio/module/portfolio.js"></script>
 	<script src="/bundles/fabric/js/app/portfolio/controller/portfolio.js"></script>
 	<script src="/bundles/fabric/js/app/portfolio/controller/project.js"></script>
@@ -72,93 +71,14 @@
 </nav>
 <div id="overlay"></div>
 
-<div>
-	<div ng-view></div>
+<div class="container-fluid" style"margin:100px">
+
+                <h3>Your order status is {{status}} </h3>
+                <h4>Your transaction id for this transaction is {{txnid}} You may try making the payment by clicking the link below.</h4>
+            
+
 </div>
-<div class="container">
-	<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div id="signup" style="display:none">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Please Sign-up</h4>
-					</div>
-					<div class="container-fluid">
-						<form id="signup-form" role="form">
-							<div class="form-group signup-link">
-								<label for="signup-name">Name:</label>
-								<input type="text" class="form-control" id="signup-name" name="signup-name" placeholder="Name">
-					</div>
-							<div class="form-group">
-								<label for="signup-email">Email:</label>
-								<input type="email" class="form-control" id="signup-email" name="signup-email" placeholder="Enter email">
-					</div>
-							<div class="form-group">
-								<label for="signup-password">Password:</label>
-								<input type="password" class="form-control" id="signup-password"
-								name="signup-password" placeholder="Enter password">
-					</div>
-							<div class="form-group signup-link">
-								<label for="signup-confirm-password">Confirm Password:</label>
-								<input type="password" class="form-control" id="signup-cnfrm-password" name="signup-cnfrm-password"placeholder="Confirm Password">
-					</div>
-							<button id="signup-btn" class="btn btn-lg btn-primary btn-block">Sign up</button>
-						</form>
-						<div class="modal-footer">
-							<a id="signin-link" class="pull-right">Already have account</a>
-						</div>
-					</div>
-				</div>
-				<div id="signin">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Please Sign-in</h4>
-					</div>
-					<div class="container-fluid">
-						<form id='signin-form' role="form">
-							<div class="form-group">
-								<label for="signin-email">Email:</label>
-								<input type="email" class="form-control" id="signin-email" name="signin-email" placeholder="Enter email">
-							</div>
-							<div class="form-group">
-								<label for="signin-password">Password:</label>
-								<input type="password" class="form-control" id="signin-password" name="signin-password" placeholder="Enter password">
-							</div>
-							<div class="checkbox">
-								<label><input type="checkbox"> Remember me</label>
-							</div>
-							<button id="signin-btn" class="btn btn-lg btn-primary btn-block">Sign in</button>
-						</form>
-						<div id="signin-msg-container"><span id="signin-msg"></span></div>
-						<div class="modal-footer">
-							<button id="signup-link" class="btn btn-primary pull-left">Sign up</button>
-							<a id="forgot-password-link" class="pull-right">Forgot Password</a>
-						</div>
-					</div>
-				</div>
-				<div id="forgot-password" style="display:none">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Please Enter your Register email</h4>
-					</div>
-					<div class="container-fluid">
-						<form role="form">
-							<div class="form-group">
-								<label for="signin-email">Email:</label>
-								<input type="email" class="form-control" id="forgotpass-email" name="forgotpass-email" placeholder="Enter email">
-							</div>
-							<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-						</form>
-						<div class="modal-footer">
-							<button id="forgot-password-signin-link" class="btn btn-primary">Login</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
 <div id="footer" class="container-fluid">
 	<div id="social-icons-container">
 		<ul id="social-icon-container">        
