@@ -75,6 +75,7 @@ color: rgb(0, 112, 185) !important;
     color: #0070B9;
     font-weight: bold;
 }
+
 @media screen and (max-width: 550px) {
 
     .logo {
