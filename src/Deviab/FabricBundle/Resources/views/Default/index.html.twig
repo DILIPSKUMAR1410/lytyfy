@@ -27,48 +27,54 @@
 </head>
 <body ng-app="myApp">
 <nav class="navbar navbar-default fixed-nav-bar">
-  	<div class="container-fluid no-right-padd">
-    	<!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header col-lg-4 col-md-4 col-sm-4 no-left-padd">
-	      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-show-hide">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-	      	</button>
-	      	<div class="container-fluid row col-lg-12 col-md-12 col-sm-12 col-xs-6">
-		      		{# <a class="navbar-brand logo pull-left" href="#">lytyfy</a> #}
-		      		<a href="/#/"><img class="menu-type img-responsive img-rounded" ng-src="/bundles/fabric/images/lytyfy_logo2.png" alt="loding...." style="margin-left: -20px;"></a>
-    		</div>
-    	</div>
-	    <div class="row collapse navbar-collapse col-lg-12 col-md-12 col-sm-10 col-xs-10" id="nav-show-hide">
-	      	<ul class="nav navbar-nav ">
-		        <li><a id="home" href="#/" class="nav-link">HOME <span class="sr-only">(current)</span></a></li>
-		        <li><a id="about" href="" class="nav-link">ABOUT</a></li>
-		        <li><a id="contact" href="" class="nav-link">HOW IT WORKS</a></li>
-		        <li><a id="contact" href="" class="nav-link">FAQ</a></li>	      		
-		    </ul>			    
-	    </div><!-- /.navbar-collapse -->
-	    <div id="welcome-login" class="col-lg-4 col-md-3 col-sm-3 hidden-xs pull-right">
-	    	<div class="pull-right text-right">	
-			{% if username is defined %}
-				<span id="welcome-user">Hi {{username}}</span><br>
-				<a id="nav-profile-link"><span  id="nav-profile-span" class="glyphicon glyphicon-cog"></span></a>
-				<ul id="vv" class="dropdown-menu" style="display:none">
-            <li><a href="/home"><i class="fa fa-list-alt"></i> Dashboard</a></li>
-<li><a href="/users/52391/edit"><i class="fa fa-pencil-square-o"></i> Edit Profile</a></li>
-<li><a href="/user/52391"><i class="fa fa-globe"></i> Public Profile</a></li>
-<li>
-  <a rel="nofollow" data-method="delete" href="https://milaap.org/users/sign-out">
-    <i class="fa fa-power-off"></i> Logout
-</a></li>
-          </ul>
-				{% else %}
-				<button id="login-btn" class="nav-link btn btn-primary " data-toggle="modal" data-target="#myModal">LOGIN</button>
-			{% endif %}
+	<div class="container-fluid no-right-padd">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header col-lg-4 col-md-4 col-sm-4 no-left-padd">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-show-hide">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<div class="container-fluid row col-lg-12 col-md-12 col-sm-12 col-xs-6">
+				{# <a class="navbar-brand logo pull-left" href="#">lytyfy</a> #}
+				<a href="/#/"><img class="menu-type img-responsive img-rounded"
+								   ng-src="/bundles/fabric/images/lytyfy_logo2.png" alt="loding...."
+								   style="margin-left: -20px;"></a>
+			</div>
 		</div>
-	    </div>
-  </div><!-- /.container-fluid -->
+		<div class="row collapse navbar-collapse col-lg-12 col-md-12 col-sm-10 col-xs-10" id="nav-show-hide">
+			<ul class="nav navbar-nav ">
+				<li><a id="home" href="#/" class="nav-link">HOME <span class="sr-only">(current)</span></a></li>
+				<li><a id="about" href="" class="nav-link">ABOUT</a></li>
+				<li><a id="contact" href="" class="nav-link">HOW IT WORKS</a></li>
+				<li><a id="contact" href="" class="nav-link">FAQ</a></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+		<div id="welcome-login" class="col-lg-4 col-md-3 col-sm-3 hidden-xs pull-right">
+			<div class="pull-right text-right">
+				{% if username is defined %}
+					<span id="welcome-user">Hi {{ username }}</span><br>
+					<a id="nav-profile-link"><span id="nav-profile-span" class="glyphicon glyphicon-cog"></span></a>
+					<ul id="vv" class="dropdown-menu" style="display:none">
+						<li><a href="/home"><i class="fa fa-list-alt"></i> Dashboard</a></li>
+						<li><a href="/users/52391/edit"><i class="fa fa-pencil-square-o"></i> Edit Profile</a></li>
+						<li><a href="/user/52391"><i class="fa fa-globe"></i> Public Profile</a></li>
+						<li>
+							<a rel="nofollow" data-method="delete" href="https://milaap.org/users/sign-out">
+								<i class="fa fa-power-off"></i> Logout
+							</a></li>
+					</ul>
+				{% else %}
+					<button id="login-btn" class="nav-link btn btn-primary " data-toggle="modal" data-target="#myModal">
+						LOGIN
+					</button>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<!-- /.container-fluid -->
 </nav>
 <div id="overlay"></div>
 
@@ -88,21 +94,24 @@
 						<form id="signup-form" role="form">
 							<div class="form-group signup-link">
 								<label for="signup-name">Name:</label>
-								<input type="text" class="form-control" id="signup-name" name="signup-name" placeholder="Name">
-					</div>
+								<input type="text" class="form-control" id="signup-name" name="signup-name"
+									   placeholder="Name">
+							</div>
 							<div class="form-group">
 								<label for="signup-email">Email:</label>
-								<input type="email" class="form-control" id="signup-email" name="signup-email" placeholder="Enter email">
-					</div>
+								<input type="email" class="form-control" id="signup-email" name="signup-email"
+									   placeholder="Enter email">
+							</div>
 							<div class="form-group">
 								<label for="signup-password">Password:</label>
 								<input type="password" class="form-control" id="signup-password"
-								name="signup-password" placeholder="Enter password">
-					</div>
+									   name="signup-password" placeholder="Enter password">
+							</div>
 							<div class="form-group signup-link">
 								<label for="signup-confirm-password">Confirm Password:</label>
-								<input type="password" class="form-control" id="signup-cnfrm-password" name="signup-cnfrm-password"placeholder="Confirm Password">
-					</div>
+								<input type="password" class="form-control" id="signup-cnfrm-password"
+									   name="signup-cnfrm-password" placeholder="Confirm Password">
+							</div>
 							<button id="signup-btn" class="btn btn-lg btn-primary btn-block">Sign up</button>
 						</form>
 						<div class="modal-footer">
@@ -119,11 +128,13 @@
 						<form id='signin-form' role="form">
 							<div class="form-group">
 								<label for="signin-email">Email:</label>
-								<input type="email" class="form-control" id="signin-email" name="signin-email" placeholder="Enter email">
+								<input type="email" class="form-control" id="signin-email" name="signin-email"
+									   placeholder="Enter email">
 							</div>
 							<div class="form-group">
 								<label for="signin-password">Password:</label>
-								<input type="password" class="form-control" id="signin-password" name="signin-password" placeholder="Enter password">
+								<input type="password" class="form-control" id="signin-password" name="signin-password"
+									   placeholder="Enter password">
 							</div>
 							<div class="checkbox">
 								<label><input type="checkbox"> Remember me</label>
@@ -146,7 +157,8 @@
 						<form role="form">
 							<div class="form-group">
 								<label for="signin-email">Email:</label>
-								<input type="email" class="form-control" id="forgotpass-email" name="forgotpass-email" placeholder="Enter email">
+								<input type="email" class="form-control" id="forgotpass-email" name="forgotpass-email"
+									   placeholder="Enter email">
 							</div>
 							<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 						</form>
@@ -161,31 +173,37 @@
 </div>
 <div id="footer" class="container-fluid">
 	<div id="social-icons-container">
-		<ul id="social-icon-container">        
-			<li id="fb"><a href="https://www.facebook.com/pages/Deviab/1675668492652876?__mref=message_bubble" target="_blank"><img src="/bundles/fabric/images/index/fb.png"></a></li>
-			<li id="tw"><a href="https://twitter.com/@deviab_energy" target="_blank"><img src="/bundles/fabric/images/index/tw.png"></a></li>
+		<ul id="social-icon-container">
+			<li id="fb"><a href="https://www.facebook.com/pages/Deviab/1675668492652876?__mref=message_bubble"
+						   target="_blank"><img src="/bundles/fabric/images/index/fb.png"></a></li>
+			<li id="tw"><a href="https://twitter.com/@deviab_energy" target="_blank"><img
+							src="/bundles/fabric/images/index/tw.png"></a></li>
 			<li id="in"><a href="#"><img src="/bundles/fabric/images/index/in.png"></a></li>
-		</ul>			
+		</ul>
 	</div>
 	<div id="footer-text">
 		<div id="email">info@deviab.com</div>
 		<div id="copy-right">Copyright &copy Deviab Research and Implementation Pvt Ltd 2015</div>
 	</div>
-</div>  
+</div>
 </body>
 <script type="text/javascript">
-	document.getElementById('nav-profile-link').onmouseover=function(){a();};
-		function a(){
-			$("#vv").css("display", "block");
-		
-		
+	document.getElementById('nav-profile-link').onmouseover = function () {
+		a();
+	};
+	function a() {
+		$("#vv").css("display", "block");
+
+
 	}
 
-	document.getElementById('nav-profile-link').onmouseout=function() {b();};
-		function b(){
-			$("#vv").css("display", "none");
-		
-		
+	document.getElementById('nav-profile-link').onmouseout = function () {
+		b();
+	};
+	function b() {
+		$("#vv").css("display", "none");
+
+
 	}
 
 	var nav_height = $("nav").height();
@@ -220,52 +238,52 @@
 	});
 
 	$('#signin-btn').click(function () {
-		var result={};
-		$.each($('#signin-form').serializeArray(), function(index,element) {
-		    result[element.name] = element.value;
+		var result = {};
+		$.each($('#signin-form').serializeArray(), function (index, element) {
+			result[element.name] = element.value;
 		});
 		jsonData = {
-			email : result['signin-email'],
-			password : result['signin-password']
+			email: result['signin-email'],
+			password: result['signin-password']
 		};
 		console.log(jsonData);
 		$.ajax({
 			url: "/login",
 			type: 'POST',
 			data: jsonData,
-			success: function(result){
+			success: function (result) {
 				$("#signin-msg").html("Successfuly logedin you will be redirect to home page");
 				location.reload();
-        		alert('Logged In'+result);
-    		},
-    		error: function(errorMessage){
-    			$("#signin-msg").html("Wrong username or password!");
-        		alert(errorMessage);
-    		},
-    	});
+				alert('Logged In' + result);
+			},
+			error: function (errorMessage) {
+				$("#signin-msg").html("Wrong username or password!");
+				alert(errorMessage);
+			},
+		});
 	});
 	$('#signup-btn').click(function () {
-		var result={};
-		$.each($('#signup-form').serializeArray(), function(index,element) {
-		    result[element.name] = element.value;
+		var result = {};
+		$.each($('#signup-form').serializeArray(), function (index, element) {
+			result[element.name] = element.value;
 		});
 		jsonData = {
 			username: result['signup-name'],
-			email : result['signup-email'],
-			password : result['signup-password']
+			email: result['signup-email'],
+			password: result['signup-password']
 		};
 		console.log(jsonData);
 		$.ajax({
 			url: "/signup",
 			type: 'POST',
 			data: jsonData,
-			success: function(result){
-        		alert('Logged In'+result);
-    		},
-    		error: function(errorMessage){
-        		alert(errorMessage);
-    		},
-    	});
+			success: function (result) {
+				alert('Logged In' + result);
+			},
+			error: function (errorMessage) {
+				alert(errorMessage);
+			},
+		});
 	});
 	// $('#signin-btn').click(function () {
 	// 	var data = $('#signin-form').serializeArray();
@@ -279,12 +297,12 @@
 	// 		contentType: 'application/json',
 	// 		data: jsonData,
 	// 		success: function(result){
- //        		alert('Logged In'+result);
- //    		},
- //    		error: function(errorMessage){
- //        		alert(errorMessage);
- //    		},
- //    	});
+	//        		alert('Logged In'+result);
+	//    		},
+	//    		error: function(errorMessage){
+	//        		alert(errorMessage);
+	//    		},
+	//    	});
 	// });
 </script>
 </html>
