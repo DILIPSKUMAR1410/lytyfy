@@ -16,10 +16,9 @@
     left: 90%;
     top: 33%;
 }*/
-#login-btn {
+#login-btn{
     vertical-align: bottom;
 }
-
 #sub {
     font-style: italic;
     color: #0070B9;
@@ -27,18 +26,15 @@
     letter-spacing: normal;
     text-align: right;
 }
-
 .navbar-default .navbar-nav > li > a {
     color: #909090;
     padding-top: 10px;
     padding-bottom: 15px;
     font-weight: bold;
 }
-
 .nav {
     margin-top: 26px;
 }
-
 .navbar-default {
     background-color: #F8F8F8 !important;
     border-bottom: 3px solid #F8F8F8 !important;
@@ -46,7 +42,6 @@
       -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;*/
 }
-
 .navbar-default .navbar-nav > li > a:hover {
     color: #0070B9 !important;
 }
@@ -60,6 +55,7 @@
 
 }
 
+
 /*.nav>li>a:focus, .nav>li>a:hover {
 text-decoration: none;
 background-color: #0000cc !important;
@@ -70,12 +66,16 @@ color: rgb(0, 112, 185) !important;
     width: 100%;
     z-index: 55;
 }
-
-#welcome-user, #nav-profile-link {
+#welcome-user, #nav-profile-span {
     color: #0070B9;
     font-weight: bold;
 }
-
+#welcome-login{
+    margin-top: 30px;
+}
+#nav-profile-link:hover {
+    
+}
 @media screen and (max-width: 550px) {
 
     .logo {
