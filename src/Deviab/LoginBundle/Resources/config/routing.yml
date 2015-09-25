@@ -30,3 +30,8 @@
 fos_user_register:
     resource: "@DeviabLoginBundle/Resources/config/routing.xml"
     prefix: /
+
+fos_user_lender:
+    resource: "@DeviabLoginBundle/Controller/LenderController.php"
+    prefix: /api/v1/
+    type: rest
