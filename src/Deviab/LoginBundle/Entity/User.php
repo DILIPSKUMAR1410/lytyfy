@@ -5,6 +5,7 @@ namespace Deviab\LoginBundle\Entity;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Deviab\DatabaseBundle\Entity\LenderDetails;
 
 /**
  * @ORM\Entity
@@ -34,9 +35,37 @@ class User extends BaseUser
      */
     protected $password;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", mappedBy="user")
+     */
+    private $lender;
+
     public function __construct()
     {
         parent::__construct();
         // your own logic
+    }
+
+    /**
+     * Get lender
+     *
+     * @return LenderDetails
+     */
+    public function getLender()
+    {
+        return $this->lender;
+    }
+
+    /**
+     * Set lender
+     *
+     * @param LenderDetails $lender
+     * @return User
+     */
+    public function setlender($lender)
+    {
+        $this->lender = $lender;
+
+        return $this;
     }
 }

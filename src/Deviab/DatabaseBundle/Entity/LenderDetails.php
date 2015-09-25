@@ -10,6 +10,7 @@ use Deviab\TransactionBundle\Entity\DeviabLenderTransaction;
 use Deviab\TransactionBundle\Entity\BorrowerDeviabTransaction;
 use Deviab\RepaymentBundle\Entity\LenderCurrentStatus;
 use Deviab\RepaymentBundle\Entity\LenderWallet;
+use Deviab\LoginBundle\Entity\User;
 
 /**
  * LenderDetails
@@ -110,6 +111,16 @@ class LenderDetails
      * @ORM\OneToOne(targetEntity="LenderWallet", mappedBy="lender")
      */
     private $wallet;
+
+    /**
+     * @var Deviab\LoginBundle\Entity\User
+     *
+     * @ORM\OneToOne(targetEntity="User", inversedBy="lender")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=true, nullable=false)
+     * })
+     */
+    private $user;
 
     public function __construct()
     {
@@ -388,6 +399,29 @@ class LenderDetails
     public function getFromLenderTransactions()
     {
         return $this->fromLenderTransactions;
+    }
+
+    /**
+     * Get user
+     *
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set user
+     *
+     * @param User $user
+     * @return LenderDetails
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
     }
 
 }
