@@ -76,6 +76,13 @@ Deviab\DatabaseBundle\Entity\LenderDetails:
             targetEntity: Deviab\RepaymentBundle\Entity\LenderWallet
             cascade: {}
             mappedBy: lender
+        user:
+            type: integer
+            nullable: false
+            targetEntity: Deviab\LoginBundle\Entity\User
+            cascade: {}
+            inversedBy: lender 
+            column: user_id
     oneToMany:
         fromLenderTransactions:
             targetEntity: Deviab\TransactionBundle\Entity\LenderDeviabTransaction
