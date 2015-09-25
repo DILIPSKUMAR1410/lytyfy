@@ -117,7 +117,7 @@
     margin: 0px 5px;
     padding: 4px 0px;
     height: 120px;
-    width: 200px;
+    width: 180px;
     text-align: center;
     border-radius: 50%;
 }
@@ -151,7 +151,7 @@
 #demo2 .als-item {
     margin: 0px 5px;
     padding: 4px 0px;
-    min-height: 120px;
+    height: 120px;
     width: 200px;
     text-align: center;
     border-radius: 50%;
@@ -174,3 +174,19 @@
 #demo2 .als-next {
     right: 10%;
 }
+
+@media screen and (max-width: 600px) {
+    #demo1 .als-item {
+        height: 100px;
+        width: 100px;
+        margin: 0px;
+        padding: 0px;
+    }
+    #demo2 .als-item {
+        height: 100px;
+        width: 100px;
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
