@@ -3,6 +3,10 @@
     padding-top: 25px;
 }
 
+#project-expl {
+    overflow-y : scroll;
+    max-height: 400px; 
+}
 #borrower_img {
     max-width: 100%;
     width: auto;

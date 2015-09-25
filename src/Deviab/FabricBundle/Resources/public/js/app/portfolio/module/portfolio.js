@@ -6,6 +6,10 @@ app.config(function ($routeProvider, $interpolateProvider) {
             templateUrl: '/bundles/fabric/js/app/templates/home.html',
             controller: 'ProjectController'
         }).
+        when('/project', {
+            templateUrl: '/bundles/fabric/js/app/templates/project.html',
+            controller: 'ProjectController'
+        }).
         when('/payu', {
             templateUrl: '/bundles/fabric/js/app/templates/payu.html',
             controller: 'ProjectController'
