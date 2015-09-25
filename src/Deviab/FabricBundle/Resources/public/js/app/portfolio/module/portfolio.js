@@ -10,16 +10,16 @@ app.config(function ($routeProvider, $interpolateProvider) {
             templateUrl: '/bundles/fabric/js/app/templates/payu.html',
             controller: 'ProjectController'
         }).
-        when('/newhome', {
-            templateUrl: '/bundles/fabric/js/app/templates/project.html',
+        when('/faqs', {
+            templateUrl: '/bundles/fabric/js/app/templates/faqs.html',
+            controller: 'ProjectController'
+        }).
+        when('/how_it_works', {
+            templateUrl: '/bundles/fabric/js/app/templates/how_it_works.html',
             controller: 'ProjectController'
         }).
         when('/profile', {
             templateUrl: '/bundles/fabric/js/app/templates/profile.html',
             controller: 'ProfileController'
-        }).
-        otherwise({
-            templateUrl: '/bundles/fabric/js/app/templates/project.html',
-            controller: 'ProjectController'
         });
 });

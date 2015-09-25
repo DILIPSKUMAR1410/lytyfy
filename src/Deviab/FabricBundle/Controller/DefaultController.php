@@ -11,7 +11,6 @@ class DefaultController extends Controller
     {
         $token = $this->get('security.context')->getToken();
         $user = $token->getUser();
-
         if ($user instanceof User) {
             $username = $user->getUsername();
             $email = $user->getEmail();

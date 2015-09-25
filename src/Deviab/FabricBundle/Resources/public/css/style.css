@@ -307,7 +307,13 @@ ul {
     min-height: 25px;
     color: red;
 }
-
+/**********   faqa      ***********/
+.question {
+    color: #0070b9;
+    margin-top: 20px;
+    font-weight: bold;
+}
+/**********   faqs      ***********/
 @media screen and (max-width: 750px) {
     #about-energy-desc {
         margin-left: 0px;

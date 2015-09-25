@@ -39,16 +39,16 @@
 			<div class="container-fluid row col-lg-12 col-md-12 col-sm-12 col-xs-6">
 				{# <a class="navbar-brand logo pull-left" href="#">lytyfy</a> #}
 				<a href="/#/"><img class="menu-type img-responsive img-rounded"
-								   ng-src="/bundles/fabric/images/lytyfy_logo2.png" alt="loding...."
-								   style="margin-left: -20px;"></a>
+								   ng-src="/bundles/fabric/images/lytyfy6.png" alt="loding...."
+								   ></a>
 			</div>
 		</div>
 		<div class="row collapse navbar-collapse col-lg-12 col-md-12 col-sm-10 col-xs-10" id="nav-show-hide">
 			<ul class="nav navbar-nav ">
 				<li><a id="home" href="#/" class="nav-link">HOME <span class="sr-only">(current)</span></a></li>
 				<li><a id="about" href="" class="nav-link">ABOUT</a></li>
-				<li><a id="contact" href="" class="nav-link">HOW IT WORKS</a></li>
-				<li><a id="contact" href="" class="nav-link">FAQ</a></li>
+				<li><a id="contact" href="#/how_it_works" class="nav-link">HOW IT WORKS</a></li>
+				<li><a id="contact" href="#/faqs" class="nav-link">FAQ</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -62,7 +62,7 @@
 						<li><a href="/users/52391/edit"><i class="fa fa-pencil-square-o"></i> Edit Profile</a></li>
 						<li><a href="/user/52391"><i class="fa fa-globe"></i> Public Profile</a></li>
 						<li>
-							<a rel="nofollow" data-method="delete" href="https://milaap.org/users/sign-out">
+							<a rel="nofollow" data-method="delete" href="">
 								<i class="fa fa-power-off"></i> Logout
 							</a></li>
 					</ul>
@@ -188,23 +188,23 @@
 </div>
 </body>
 <script type="text/javascript">
-	document.getElementById('nav-profile-link').onmouseover = function () {
-		a();
-	};
-	function a() {
-		$("#vv").css("display", "block");
+	// document.getElementById('nav-profile-link').onmouseover = function () {
+	// 	a();
+	// };
+	// function a() {
+	// 	$("#vv").css("display", "block");
 
 
-	}
+	// }
 
-	document.getElementById('nav-profile-link').onmouseout = function () {
-		b();
-	};
-	function b() {
-		$("#vv").css("display", "none");
+	// document.getElementById('nav-profile-link').onmouseout = function () {
+	// 	b();
+	// };
+	// function b() {
+	// 	$("#vv").css("display", "none");
 
 
-	}
+	// }
 
 	var nav_height = $("nav").height();
 	$("#overlay").css("height", nav_height + 30);
