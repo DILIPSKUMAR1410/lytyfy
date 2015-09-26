@@ -46,7 +46,7 @@ class LenderDetails
     /**
      * @var string
      * @Groups({"project_portfolio"})
-     * @ORM\Column(name="address", type="string", length=45, nullable=true)
+     * @ORM\Column(name="address", type="string", length=45, nullable=false)
      */
     private $address;
 
@@ -60,7 +60,7 @@ class LenderDetails
     /**
      * @var \DateTime
      * @Groups({"project_portfolio"})
-     * @ORM\Column(name="dob", type="date", nullable=true)
+     * @ORM\Column(name="dob", type="date", nullable=false)
      */
     private $dob;
 
@@ -81,14 +81,14 @@ class LenderDetails
     /**
      * @var string
      * @Groups({"project_portfolio"})
-     * @ORM\Column(name="google_id", type="string", length=45, nullable=true)
+     * @ORM\Column(name="google_id", type="string", length=45, nullable=false)
      */
     private $googleId;
 
     /**
      * @var string
      * @Groups({"project_portfolio"})
-     * @ORM\Column(name="facebook_id", type="string", length=45, nullable=true)
+     * @ORM\Column(name="facebook_id", type="string", length=45, nullable=false)
      */
     private $facebookId;
 
@@ -103,12 +103,12 @@ class LenderDetails
     private $fromLenderTransactions;
 
     /**
-     * @ORM\OneToOne(targetEntity="LenderCurrentStatus", mappedBy="lender")
+     * @ORM\OneToOne(targetEntity="LenderCurrentStatus", mappedBy="lender", cascade={"persist"})
      */
     private $currentStatus;
 
     /**
-     * @ORM\OneToOne(targetEntity="LenderWallet", mappedBy="lender")
+     * @ORM\OneToOne(targetEntity="LenderWallet", mappedBy="lender", cascade={"persist"})
      */
     private $wallet;
 
