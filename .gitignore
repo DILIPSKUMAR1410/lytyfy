@@ -10,6 +10,7 @@
 /build/
 /vendor/
 /.idea
+/app/parameters.yml
 
 
 # Elastic Beanstalk Files
