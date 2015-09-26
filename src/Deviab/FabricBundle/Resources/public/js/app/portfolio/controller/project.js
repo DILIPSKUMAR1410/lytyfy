@@ -1,5 +1,6 @@
 app.controller("ProjectController", function ($scope, $http) {
     $scope.raised = null;
+    $scope.projectResponce = null;
     var res = $http.get('/api/v1/projects/1.json');
     res.success(function (data, status, headers, config) {
         $scope.projectResponce = data;
