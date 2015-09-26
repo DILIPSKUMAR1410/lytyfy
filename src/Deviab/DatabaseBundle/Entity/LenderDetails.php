@@ -117,7 +117,7 @@ class LenderDetails
      *
      * @ORM\OneToOne(targetEntity="User", inversedBy="lender")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=true, nullable=false)
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=true, nullable=true)
      * })
      */
     private $user;

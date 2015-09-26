@@ -34,7 +34,7 @@ class LoginController extends Controller
         $password = $requestParams['password'];
         $user_manager = $this->container->get('fos_user.user_manager');
         $em = $this->container->get('doctrine')->getEntityManager();
-        $user = $em->getRepository('DeviabLoginBundle:User')->findOneBy(['email' => $email, 'enabled' => true]);
+        $user = $em->getRepository('DeviabLoginBundle:User')->findOneBy(['email' => $email]);
         if (!$user) {
             return new Response(json_encode(['error' => 'Email is not registered']), Codes::HTTP_BAD_REQUEST);
         } else if (!$user->isEnabled()) {

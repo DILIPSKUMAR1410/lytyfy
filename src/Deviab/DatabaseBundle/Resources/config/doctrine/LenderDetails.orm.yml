@@ -19,7 +19,7 @@ Deviab\DatabaseBundle\Entity\LenderDetails:
             comment: ''
         lname:
             type: string
-            nullable: false
+            nullable: true
             length: 45
             fixed: false
             comment: ''
@@ -31,7 +31,7 @@ Deviab\DatabaseBundle\Entity\LenderDetails:
             comment: ''
         gender:
             type: string
-            nullable: false
+            nullable: true
             length: 10
             fixed: false
             comment: ''
@@ -41,14 +41,14 @@ Deviab\DatabaseBundle\Entity\LenderDetails:
             comment: ''
         primaryMobileNumber:
             type: string
-            nullable: false
+            nullable: true
             length: 45
             fixed: false
             comment: ''
             column: primary_mobile_number
         profilePic:
             type: string
-            nullable: false
+            nullable: true
             length: 255
             fixed: false
             comment: ''
@@ -70,24 +70,26 @@ Deviab\DatabaseBundle\Entity\LenderDetails:
     oneToOne:
         currentStatus:
             targetEntity: Deviab\RepaymentBundle\Entity\LenderCurrentStatus
-            cascade: {persist}
+            cascade: ["persist"]
             mappedBy: lender
         wallet:
             targetEntity: Deviab\RepaymentBundle\Entity\LenderWallet
-            cascade: {persist}
+            cascade: ["persist"]
             mappedBy: lender
         user:
             type: integer
-            nullable: false
+            nullable: true
             targetEntity: Deviab\LoginBundle\Entity\User
-            cascade: {persist}
+            cascade: ["persist"]
             inversedBy: lender 
             column: user_id
     oneToMany:
         fromLenderTransactions:
             targetEntity: Deviab\TransactionBundle\Entity\LenderDeviabTransaction
+            cascade: ["persist"]
             mappedBy: lender
         toLenderTransactions:
             targetEntity: Deviab\TransactionBundle\Entity\DeviabLenderTransaction
+            cascade: ["persist"]
             mappedBy: lender
     lifecycleCallbacks: {  }
