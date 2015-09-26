@@ -70,17 +70,17 @@ Deviab\DatabaseBundle\Entity\LenderDetails:
     oneToOne:
         currentStatus:
             targetEntity: Deviab\RepaymentBundle\Entity\LenderCurrentStatus
-            cascade: {}
+            cascade: {persist}
             mappedBy: lender
         wallet:
             targetEntity: Deviab\RepaymentBundle\Entity\LenderWallet
-            cascade: {}
+            cascade: {persist}
             mappedBy: lender
         user:
             type: integer
             nullable: false
             targetEntity: Deviab\LoginBundle\Entity\User
-            cascade: {}
+            cascade: {persist}
             inversedBy: lender 
             column: user_id
     oneToMany:

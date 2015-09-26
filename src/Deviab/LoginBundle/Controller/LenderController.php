@@ -73,4 +73,21 @@ class LenderController extends Controller
 
         return new Response(json_encode(['message' => 'success']), Codes::HTTP_OK);
     }
+
+    public function getLenderAction()
+    {
+        $queryParams = $this->getRequest()->query->all();
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $user = $this->get('security.context')->getToken()->getUser();
+        if (!$user || !$user->getLender()) {
+            return new Response(json_encode(['error' => 'Access Denied']), Codes::HTTP_FORBIDDEN);
+        }
+        $lenderRepo = $em->getRepository('DeviabDatabaseBundle:LenderDetails');
+        $lender = $lenderRepo->findOneById($user->getLender()->getId());
+        if (!$lender) {
+            return new Response(json_encode(['error' => 'Lender Not Found']), Codes::HTTP_NOT_FOUND);
+        }
+
+        return View::create($lender, Codes::HTTP_OK);
+    }
 }

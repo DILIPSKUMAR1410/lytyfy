@@ -36,7 +36,7 @@ class User extends BaseUser
     protected $password;
 
     /**
-     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", mappedBy="user")
+     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", mappedBy="user", cascade={"persist"})
      */
     private $lender;
 

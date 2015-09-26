@@ -73,11 +73,14 @@ class LoginController extends Controller
             return new Response(json_encode(['error' => 'Email Already registered']), Codes::HTTP_BAD_REQUEST);
         }
 
+        $lender = $this->container->get('lender_service')->addLenderDetail(['fname' => $requestParams['username']]);
+
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($email);
         $user->setPlainPassword($password);
         $user->setEnabled(!$confirmationEnabled);
+        $user->setLender($lender);
         $userManager = $this->container->get('fos_user.user_manager');
         $userManager->updateUser($user);
         $form = $this->container->get('fos_user.registration.form');
