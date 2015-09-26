@@ -98,7 +98,7 @@ Deviab\DatabaseBundle\Entity\BorrowerDetails:
                 project_id:
                     referencedColumnName: id
             orphanRemoval: false
-        fieldRepesentative:
+        fieldRepresentative:
             targetEntity: FieldRepresentative
             cascade: {  }
             inversedBy: borrowers

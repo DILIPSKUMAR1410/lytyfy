@@ -132,10 +132,10 @@ class BorrowerDetails
     private $project;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Project", inversedBy="borrowers")
+     * @ORM\ManyToOne(targetEntity="FieldRepresentative", inversedBy="borrowers")
      * @ORM\JoinColumn(name="field_representative_id", referencedColumnName="id")
      */
-    private $fieldRepesentative;
+    private $fieldRepresentative;
 
     public function __construct()
     {
@@ -402,17 +402,17 @@ class BorrowerDetails
     /**
      * @return mixed
      */
-    public function getFieldRepesentative()
+    public function getFieldRepresentative()
     {
-        return $this->fieldRepesentative;
+        return $this->fieldRepresentative;
     }
 
     /**
-     * @param mixed $fieldRepesentative
+     * @param mixed $fieldRepresentative
      */
-    public function setFieldRepesentative($fieldRepesentative)
+    public function setFieldRepresentative($fieldRepresentative)
     {
-        $this->fieldRepesentative = $fieldRepesentative;
+        $this->fieldRepresentative = $fieldRepresentative;
     }
 
     /**
