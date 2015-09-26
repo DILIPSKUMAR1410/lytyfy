@@ -44,7 +44,7 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
-        $this->lender = new LenderDetails();
+        // $this->lender = new LenderDetails();
     }
 
     /**

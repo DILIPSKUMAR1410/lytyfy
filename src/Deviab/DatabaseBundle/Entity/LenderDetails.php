@@ -126,8 +126,8 @@ class LenderDetails
     {
         $this->fromLenderTransactions = new ArrayCollection();
         $this->toLenderTransactions = new ArrayCollection();
-        $this->wallet = new LenderWallet();
-        $this->currentStatus = new LenderCurrentStatus();
+        // $this->wallet = new LenderWallet();
+        // $this->currentStatus = new LenderCurrentStatus();
     }
 
     /**
