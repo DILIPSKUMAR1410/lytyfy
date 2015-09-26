@@ -79,9 +79,9 @@ class LenderController extends Controller
         $queryParams = $this->getRequest()->query->all();
         $em = $this->container->get('doctrine')->getEntityManager();
         $user = $this->get('security.context')->getToken()->getUser();
-        if (!$user || !$user->getLender()) {
-            return new Response(json_encode(['error' => 'Access Denied']), Codes::HTTP_FORBIDDEN);
-        }
+        // if (!$user || (!in_array('ROLE_LENDER', $user->getRoles()))) {
+        //     return new Response(json_encode(['error' => 'Access Denied']), Codes::HTTP_FORBIDDEN);
+        // }
         $lenderRepo = $em->getRepository('DeviabDatabaseBundle:LenderDetails');
         $lender = $lenderRepo->findOneById($user->getLender()->getId());
         if (!$lender) {

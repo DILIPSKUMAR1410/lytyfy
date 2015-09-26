@@ -1,14 +1,14 @@
 # This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
-    database_host: lytyfy-db.c4py8eplysvm.ap-southeast-1.rds.amazonaws.com
+    database_host: 127.0.0.1
     database_port: 3306
     database_name: deviab
-    database_user: mrrobot
-    database_password: vishnubpm
+    database_user: root
+    database_password: null
     mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_host:      smtp.mailgun.org
+    mailer_user:      postmaster@deviab.com
+    mailer_password:  6cfa6ce6c3c1f1175c636033f192fce1
     locale: en
     secret: ThisTokenIsNotSoSecretChangeIt

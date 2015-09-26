@@ -5,9 +5,10 @@ namespace Deviab\LoginBundle\Services;
 use Doctrine\Bundle\DoctrineBundle\Registry as Doctrine;
 use Deviab\DatabaseBundle\Entity\LenderDetails;
 use Deviab\RepaymentBundle\Entity\LenderCurrentStatus;
+use Deviab\BorrowerBundle\Services\BaseService;
+use Deviab\RepaymentBundle\Entity\LenderWallet;
 
-
-class LenderService extends Deviab\BorrowerBundle\Services\BaseService
+class LenderService extends BaseService
 {
     /**
      * @param Doctrine $doctrine
@@ -47,6 +48,9 @@ class LenderService extends Deviab\BorrowerBundle\Services\BaseService
         }
         if (isset($params['facebook_id'])) {
             $lender->setFacebookId($params['facebook_id']);
+        }
+        if (isset($params['user'])) {
+            $lender->setUser($params['user']);
         }
 
         $lenderCurrentStatus = new LenderCurrentStatus();
