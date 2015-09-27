@@ -1,6 +1,6 @@
 .grey-border {
-    margin-bottom: 10px;
-    margin-top: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     border: 1px solid #ccc;
 }
 
@@ -33,4 +33,19 @@
 	border-bottom: 1px solid #ccc;
 	margin-top:20px;
 	margin-bottom: 20px;
+}
+.loading {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    min-width: 50px;
+    height: 18px;
+    display:inline-block;
+    background: url(/bundles/fabric/images/loading_bar.gif);
+    
 }
