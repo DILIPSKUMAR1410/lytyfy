@@ -10,13 +10,13 @@
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div class="grey-border">
             <div>Amount Lent</div>
-            <div>₹{[{profileResponce.to_lender_transactions[0].project.to_project_lender_transactions[0].amount}]}</div>
+            <div>₹ <span class="loading"></span> {[{profileResponce.to_lender_transactions[0].project.to_project_lender_transactions[0].amount}]}</div>
         </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div class="grey-border">
             <div>EMR</div>
-            <div>₹{[{profileResponce.to_lender_transactions[0].project.to_project_lender_transactions[0].lender. current_status. expected_monthly_return}]}</div>
+            <div class="loading-container">₹ <span class="loading"></span> {[{profileResponce.to_lender_transactions[0].project.to_project_lender_transactions[0].lender. current_status. expected_monthly_return}]}</div>
         </div>
     </div>
 </div>
@@ -30,29 +30,29 @@
     <div class="space"></div>
     <div class="col-lg-offset-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
         <div class="grey-border">
-            Total Investment = ₹<span>{[{profileResponce.to_lender_transactions[0].project.to_project_lender_transactions[0].amount}]}</span>
+            Total Investment = ₹<span class="loading"></span><span style="min-width:50px">{[{profileResponce.to_lender_transactions[0].project.to_project_lender_transactions[0].amount}]}</span>
         </div>
         <br>
 
         <div class="grey-border">
-            Amount Withdraw =<span>₹{[{withdraw}]}</span>
+            Amount Withdraw =<span>₹<img class="loading" src="/bundles/fabric/images/loading_bar.gif"></span><span>{[{withdraw}]}</span>
         </div>
     </div>
     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th class="text-center">Total Repement</h3></th>
+                <th class="text-center">Total Repayment</h3></th>
                 <th class="text-center">₹4000</h3></th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>Principle Repement</td>
+                <td>Principle Repayment</td>
                 <td>₹2000</td>
             </tr>
             <tr>
-                <td>Interest Repement</td>
+                <td>Interest Repayment</td>
                 <td>₹300</td>
             </tr>
             </tbody>
