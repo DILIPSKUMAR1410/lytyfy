@@ -1,4 +1,3 @@
-var test;
 app.controller("ProfileController", function ($scope, $http) {
     //$scope.profileResponce = null;
     var res = $http.get('/api/v1/lender');
