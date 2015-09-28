@@ -13,6 +13,7 @@ namespace Deviab\LoginBundle\Controller;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\Security\Core\SecurityContext;
+use JMS\Serializer\SerializationContext;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Util\Codes;
 use Symfony\Component\HttpFoundation\Request;
@@ -88,6 +89,8 @@ class LenderController extends Controller
             return new Response(json_encode(['error' => 'Lender Not Found']), Codes::HTTP_NOT_FOUND);
         }
 
-        return View::create($lender, Codes::HTTP_OK);
+        return View::create($lender, Codes::HTTP_OK)
+        ->setSerializationContext(SerializationContext::create()
+            ->setGroups(array('profile')));
     }
 }
