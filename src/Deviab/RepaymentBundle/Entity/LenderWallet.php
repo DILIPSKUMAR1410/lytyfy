@@ -3,6 +3,7 @@
 namespace Deviab\RepaymentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * LenderWallet
@@ -15,6 +16,7 @@ class LenderWallet
     /**
      * @var integer
      *
+     * @Groups({"profile"})
      * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -24,6 +26,7 @@ class LenderWallet
     /**
      * @var integer
      *
+     * @Groups({"profile"})
      * @ORM\Column(name="credits", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
     private $credits;
@@ -31,7 +34,7 @@ class LenderWallet
     /**
      * @var \Deviab\DatabaseBundle\Entity\LenderDetails
      *
-     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", cascade={"persist"}, inversedBy="credits")
+     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="credits")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="lender_id", referencedColumnName="id", unique=true, nullable=true)
      * })

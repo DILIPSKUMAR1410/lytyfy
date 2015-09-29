@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dk-jarvis
- * Date: 13/09/15
- * Time: 12:53 PM
- */
 
 namespace Deviab\RepaymentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * LenderCurrentStatus
@@ -21,6 +16,7 @@ class LenderCurrentStatus
     /**
      * @var integer
      *
+     * @Groups({"profile"})
      * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -30,24 +26,46 @@ class LenderCurrentStatus
     /**
      * @var \DateTime
      *
+     * @Groups({"profile"})
      * @ORM\Column(name="timestamp", type="datetime", precision=0, scale=0, nullable=false, unique=false)
      */
     private $timestamp;
 
     /**
      * @var integer
+     *
+     * @Groups({"profile"})
+     * @ORM\Column(name="principal_paid",type="integer",nullable=false,)
+     */
+    private $pricipalRepaid;
+
+    /**
+     * @var integer
+     *
+     * @Groups({"profile"})
+     * @ORM\Column(name="interest_paid",type="integer",nullable=false,)
+     */
+    private $interestRepaid;
+    /**
+     * @var integer
+     *
+     * @Groups({"profile"})
      * @ORM\Column(name="pricipal_left",type="integer",nullable=false,)
      */
     private $pricipalLeft;
 
     /**
      * @var integer
+     *
+     * @Groups({"profile"})
      * @ORM\Column(name="tenure_left",type="integer",nullable=false,)
      */
     private $tenureLeft;
 
     /**
      * @var integer
+     *
+     * @Groups({"profile"})
      * @ORM\Column(name="interest_left",type="integer",nullable=false,)
      */
     private $interestLeft;
@@ -55,13 +73,15 @@ class LenderCurrentStatus
     /**
      * @var \Deviab\DatabaseBundle\Entity\LenderDetails
      *
-     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", cascade={"persist"}, inversedBy="currentStatuses")
+     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="currentStatuses")
      * @ORM\JoinColumn(name="lender_id", referencedColumnName="id")
      */
     private $lender;
 
     /**
      * @var integer
+     *
+     * @Groups({"profile"})
      * @ORM\Column(name="expected_monthly_return",type="integer",nullable=false,)
      */
     private $expectedMonthlyReturn;
@@ -118,6 +138,22 @@ class LenderCurrentStatus
     /**
      * @return int
      */
+    public function getPricipalRepaid()
+    {
+        return $this->pricipalRepaid;
+    }
+
+    /**
+     * @param int $pricipalRepaid
+     */
+    public function setPricipalRepaid($pricipalRepaid)
+    {
+        $this->pricipalRepaid = $pricipalRepaid;
+    }
+
+    /**
+     * @return int
+     */
     public function getTenureLeft()
     {
         return $this->tenureLeft;
@@ -137,6 +173,22 @@ class LenderCurrentStatus
     public function getInterestLeft()
     {
         return $this->interestLeft;
+    }
+
+    /**
+     * @param int $interestRepaid
+     */
+    public function setInterestRepaid($interestRepaid)
+    {
+        $this->interestRepaid = $interestRepaid;
+    }
+
+    /**
+     * @return int
+     */
+    public function getInterestRepaid()
+    {
+        return $this->interestRepaid;
     }
 
     /**

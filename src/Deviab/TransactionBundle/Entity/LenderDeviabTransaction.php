@@ -3,6 +3,7 @@
 namespace Deviab\TransactionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * LenderDeviabTransaction
@@ -15,6 +16,7 @@ class LenderDeviabTransaction
     /**
      * @var integer
      *
+     * @Groups({"profile"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,6 +30,7 @@ class LenderDeviabTransaction
     private $lender;
 
     /**
+     * @Groups({"profile"})
      * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\Project", inversedBy="toProjectLenderTransactions")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
@@ -36,6 +39,7 @@ class LenderDeviabTransaction
     /**
      * @var \DateTime
      *
+     * @Groups({"profile"})
      * @ORM\Column(name="timestamp", type="datetime")
      */
     private $timestamp;
@@ -43,6 +47,7 @@ class LenderDeviabTransaction
     /**
      * @var float
      *
+     * @Groups({"profile"})
      * @ORM\Column(name="amount", type="float")
      */
     private $amount;

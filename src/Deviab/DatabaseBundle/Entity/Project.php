@@ -18,6 +18,7 @@ class Project
     /**
      * @var integer
      *
+     * @Groups({"profile"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -40,6 +41,7 @@ class Project
     private $borrowers;
 
     /**
+     * @Groups({"profile"})
      * @Groups({"project_portfolio"})
      * @ORM\Column(name="capital_amount", type="float")
      */
