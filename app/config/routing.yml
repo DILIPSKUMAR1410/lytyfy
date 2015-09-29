@@ -11,16 +11,6 @@ fabric:
     resource: "@FabricBundle/Resources/config/routing.yml"
     prefix:   /
 
-deviab_admin:
-    resource: "@DeviabBorrowerBundle/Resources/config/routing_admin.yml"
-    prefix:    api/v1/{role}
-    type:      rest
-
-deviab_borrower:
-    resource: "@DeviabBorrowerBundle/Resources/config/routing.yml"
-    prefix:    api/v1/borrowers
-    type:      rest
-
 deviab_lender:
     resource: "@DeviabTransactionBundle/Resources/config/routing.yml"
     prefix:    api/v1/investment

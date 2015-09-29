@@ -59,25 +59,67 @@ class BorrowerLoanDetails
     private $amountRaised;
 
     /**
-     * @ORM\Column(name="dmi", type="double", nullable=true)
-     * @Groups({"borrower_portfolio"})
+     * @return int
      */
-    private $dmi;
-
-    /**
-     * @return mixed
-     */
-    public function getDmi()
+    public function getId()
     {
-        return $this->dmi;
+        return $this->id;
     }
 
     /**
-     * @param mixed $dmi
+     * @param int $id
      */
-    public function setDmi($dmi)
+    public function setId($id)
     {
-        $this->dmi = $dmi;
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserStory()
+    {
+        return $this->userStory;
+    }
+
+    /**
+     * @param string $userStory
+     */
+    public function setUserStory($userStory)
+    {
+        $this->userStory = $userStory;
+    }
+
+    /**
+     * @return \Deviab\DatabaseBundle\Entity\BorrowerDetails
+     */
+    public function getBorrower()
+    {
+        return $this->borrower;
+    }
+
+    /**
+     * @param \Deviab\DatabaseBundle\Entity\BorrowerDetails $borrower
+     */
+    public function setBorrower($borrower)
+    {
+        $this->borrower = $borrower;
+    }
+
+    /**
+     * @return \Deviab\DatabaseBundle\Entity\LoanOperationalStrategies
+     */
+    public function getOperationalStrategy()
+    {
+        return $this->operationalStrategy;
+    }
+
+    /**
+     * @param \Deviab\DatabaseBundle\Entity\LoanOperationalStrategies $operationalStrategy
+     */
+    public function setOperationalStrategy($operationalStrategy)
+    {
+        $this->operationalStrategy = $operationalStrategy;
     }
 
     /**
@@ -97,82 +139,4 @@ class BorrowerLoanDetails
     }
 
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get userStory
-     *
-     * @return string
-     */
-    public function getUserStory()
-    {
-        return $this->userStory;
-    }
-
-    /**
-     * Set userStory
-     *
-     * @param string $userStory
-     * @return BorrowerLoanDetails
-     */
-    public function setUserStory($userStory)
-    {
-        $this->userStory = $userStory;
-
-        return $this;
-    }
-
-    /**
-     * Get borrower
-     *
-     * @return BorrowerDetails
-     */
-    public function getBorrower()
-    {
-        return $this->borrower;
-    }
-
-    /**
-     * Set borrower
-     *
-     * @param BorrowerDetails $borrower
-     * @return BorrowerLoanDetails
-     */
-    public function setBorrower(BorrowerDetails $borrower = null)
-    {
-        $this->borrower = $borrower;
-
-        return $this;
-    }
-
-    /**
-     * Get operationalStrategy
-     *
-     * @return LoanOperationalStrategies
-     */
-    public function getOperationalStrategy()
-    {
-        return $this->operationalStrategy;
-    }
-
-    /**
-     * Set operationalStrategy
-     *
-     * @param LoanOperationalStrategies $operationalStrategy
-     * @return BorrowerLoanDetails
-     */
-    public function setOperationalStrategy(LoanOperationalStrategies $operationalStrategy = null)
-    {
-        $this->operationalStrategy = $operationalStrategy;
-
-        return $this;
-    }
 }

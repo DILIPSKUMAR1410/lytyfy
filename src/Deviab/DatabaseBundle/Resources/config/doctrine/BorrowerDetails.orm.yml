@@ -98,16 +98,4 @@ Deviab\DatabaseBundle\Entity\BorrowerDetails:
                 project_id:
                     referencedColumnName: id
             orphanRemoval: false
-        fieldRepresentative:
-            targetEntity: FieldRepresentative
-            cascade: {  }
-            inversedBy: borrowers
-            joinColumns:
-                field_representative_id:
-                    referencedColumnName: id
-    oneToOne:
-        currentStatus:
-            targetEntity: Deviab\RepaymentBundle\Entity\BorrowerCurrentStatus
-            cascade: {  }
-            mappedBy: borrower
     lifecycleCallbacks: {  }

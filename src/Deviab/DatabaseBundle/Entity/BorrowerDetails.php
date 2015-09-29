@@ -110,38 +110,12 @@ class BorrowerDetails
      */
     private $village;
 
-    /**
-     * @ORM\OneToMany(targetEntity="BorrowerDeviabTransaction", mappedBy="borrower")
-     */
-    private $fromBorrowerTransactions;
-
-    /**
-     * @ORM\OneToOne(targetEntity="BorrowerCurrentStatus", mappedBy="borrower")
-     */
-    private $currentStatus;
-
-    /**
-     * @ORM\OneToMany(targetEntity="DeviabBorrowerTransaction", mappedBy="borrower")
-     */
-    private $toBorrowerTransactions;
 
     /**
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="borrowers")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     private $project;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="FieldRepresentative", inversedBy="borrowers")
-     * @ORM\JoinColumn(name="field_representative_id", referencedColumnName="id")
-     */
-    private $fieldRepresentative;
-
-    public function __construct()
-    {
-        $this->fromBorrowerTransactions = new ArrayCollection();
-        $this->toBorrowerTransactions = new ArrayCollection();
-    }
 
     /**
      * @return int
@@ -338,54 +312,6 @@ class BorrowerDetails
     /**
      * @return mixed
      */
-    public function getFromBorrowerTransactions()
-    {
-        return $this->fromBorrowerTransactions;
-    }
-
-    /**
-     * @param mixed $fromBorrowerTransactions
-     */
-    public function setFromBorrowerTransactions($fromBorrowerTransactions)
-    {
-        $this->fromBorrowerTransactions = $fromBorrowerTransactions;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCurrentStatus()
-    {
-        return $this->currentStatus;
-    }
-
-    /**
-     * @param mixed $currentStatus
-     */
-    public function setCurrentStatus($currentStatus)
-    {
-        $this->currentStatus = $currentStatus;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getToBorrowerTransactions()
-    {
-        return $this->toBorrowerTransactions;
-    }
-
-    /**
-     * @param mixed $toBorrowerTransactions
-     */
-    public function setToBorrowerTransactions($toBorrowerTransactions)
-    {
-        $this->toBorrowerTransactions = $toBorrowerTransactions;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getProject()
     {
         return $this->project;
@@ -397,59 +323,6 @@ class BorrowerDetails
     public function setProject($project)
     {
         $this->project = $project;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFieldRepresentative()
-    {
-        return $this->fieldRepresentative;
-    }
-
-    /**
-     * @param mixed $fieldRepresentative
-     */
-    public function setFieldRepresentative($fieldRepresentative)
-    {
-        $this->fieldRepresentative = $fieldRepresentative;
-    }
-
-    /**
-     * @param BorrowerDeviabTransaction $fromBorrowerTransaction
-     * @internal param $BorrowerDeviabTransaction
-     */
-    public function addFromBorrowerTransaction(BorrowerDeviabTransaction $fromBorrowerTransaction)
-    {
-        $this->fromBorrowerTransactions[] = $fromBorrowerTransaction;
-    }
-
-    /**
-     * @param BorrowerDeviabTransaction $fromBorrowerTransactions
-     * @internal param $BorrowerDeviabTransaction
-     */
-    public function removeFromBorrowerTransaction(BorrowerDeviabTransaction $fromBorrowerTransactions)
-    {
-        $this->fromBorrowerTransactions->removeElement($fromBorrowerTransactions);
-    }
-
-
-    /**
-     * @param DeviabBorrowerTransaction $toBorrowerTransaction
-     * @internal param $ToBorrowerTransaction
-     */
-    public function addCurrentStatus(DeviabBorrowerTransaction $toBorrowerTransaction)
-    {
-        $this->toBorrowerTransactions[] = $toBorrowerTransaction;
-    }
-
-    /**
-     * @param DeviabBorrowerTransaction $toBorrowerTransaction
-     * @internal param $ToBorrowerTransaction
-     */
-    public function removeCurrentStatus(DeviabBorrowerTransaction $toBorrowerTransaction)
-    {
-        $this->toBorrowerTransactions->removeElement($toBorrowerTransaction);
     }
 
 

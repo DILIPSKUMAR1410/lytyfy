@@ -1,12 +1,4 @@
 services:
-  borrower_service:
-        class: Deviab\BorrowerBundle\Services\BorrowerService
-        arguments: [@doctrine]
-
-  ops_strategy_service:
-        class: Deviab\BorrowerBundle\Services\OpsStrategyService
-        arguments: [@doctrine]
-
   project_service:
         class: Deviab\BorrowerBundle\Services\ProjectService
         arguments: [@doctrine]

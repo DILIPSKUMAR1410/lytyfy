@@ -28,42 +28,6 @@ class RepaymentService extends BaseService
         $this->doctrine = $doctrine;
     }
 
-    public function borrowerRepayment(BorrowerDeviabTransaction $borrowerDeviabTransaction)
-    {
-        if ($borrowerDeviabTransaction != null) {
-            $borrowerDeviabTransaction->getBorrower()->getProject()->creditCapitalRaised($borrowerDeviabTransaction->getAmount());
-            $borrowerDeviabTransaction->getBorrower()->getCurrentStatus()->decrementTenure();
-            $amountRecieved = $borrowerDeviabTransaction->getAmount();
-            $pl = $borrowerDeviabTransaction->getBorrower()->getCurrentStatus()->getPricipalLeft();
-            $il = $borrowerDeviabTransaction->getBorrower()->getCurrentStatus()->getInterestLeft();
-            if ($amountRecieved <= $il) {
-                $il = $il - $amountRecieved;
-                $borrowerDeviabTransaction->getBorrower()->getCurrentStatus()->setInterestLeft($il);
-            } else {
-                $borrowerDeviabTransaction->getBorrower()->getCurrentStatus()->setInterestLeft(0);
-                $pl = $pl - $amountRecieved + $il;
-                $borrowerDeviabTransaction->getBorrower()->getCurrentStatus()->setPricipalLeft($pl);
-            }
-
-            $EMR = $this->getEMR($borrowerDeviabTransaction->getBorrower()->getCurrentStatus());
-            $borrowerDeviabTransaction->getBorrower()->getCurrentStatus()->setExpectedMonthlyReturn($EMR);
-            $this->em->merge($borrowerDeviabTransaction->getBorrower()->getCurrentStatus());
-            $this->em->persist($borrowerDeviabTransaction);
-            $this->em->flush();
-            return View::create("Repayment received and Borrower Current Status updated", Codes::HTTP_OK);
-        }
-        return View::create("something went wrong dude", Codes::HTTP_BAD_REQUEST);
-    }
-
-    public function getEMR($EntitycurrentStatus)
-    {
-        $pl = $EntitycurrentStatus->getPricipalLeft();
-        $il = $EntitycurrentStatus->getInterestLeft();
-        $tl = $EntitycurrentStatus->getTenureLeft();
-        $EMR = $pl / $tl + ($pl * 2 / 100) + $il;
-        return $EMR;
-    }
-
     public function lenderRepayment($projectId)
     {
 
@@ -103,6 +67,15 @@ class RepaymentService extends BaseService
         $this->em->flush();
         return View::create("Repaid AMR  and Lender Current Status updated", Codes::HTTP_OK);
 
+    }
+
+    public function getEMR($EntitycurrentStatus)
+    {
+        $pl = $EntitycurrentStatus->getPricipalLeft();
+        $il = $EntitycurrentStatus->getInterestLeft();
+        $tl = $EntitycurrentStatus->getTenureLeft();
+        $EMR = $pl / $tl + ($pl * 2 / 100) + $il;
+        return $EMR;
     }
 
 

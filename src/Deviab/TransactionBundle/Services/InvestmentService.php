@@ -87,31 +87,4 @@ class InvestmentService extends BaseService
         return $EMR;
     }
 
-    /**
-     * @param DeviabBorrowerTransaction $deviabBorrowerTransaction
-     * @return View
-     */
-    public function sanctionBorrowerLoan(DeviabBorrowerTransaction $deviabBorrowerTransaction)
-    {
-
-        if ($deviabBorrowerTransaction != null) {
-            $approvedAmount = $deviabBorrowerTransaction->getApprovedAmount();
-            $deviabBorrowerTransaction->getBorrower()->getProject()->debitCapitalRaised($approvedAmount);
-            $deviabBorrowerTransaction->getBorrower()->getCurrentStatus()->setPricipalLeft($approvedAmount);
-            if ($approvedAmount < 1000)
-                $deviabBorrowerTransaction->getBorrower()->getCurrentStatus()->setTenureLeft(2);
-            else
-                $deviabBorrowerTransaction->getBorrower()->getCurrentStatus()->setTenureLeft(3);
-            $il = $approvedAmount * 2 / 100;
-            $deviabBorrowerTransaction->getBorrower()->getCurrentStatus()->setInterestLeft($il);
-            $EMR = $this->getEMR($deviabBorrowerTransaction->getBorrower()->getCurrentStatus());
-            $deviabBorrowerTransaction->getBorrower()->getCurrentStatus()->setExpectedMonthlyReturn($EMR);
-            $this->em->persist($deviabBorrowerTransaction);
-            $this->em->flush();
-            return View::create("Loan sanctioned", Codes::HTTP_OK);
-        }
-        return View::create("something went wrong dude", Codes::HTTP_BAD_REQUEST);
-    }
-
-
 }
