@@ -73,7 +73,7 @@ class LenderCurrentStatus
     /**
      * @var \Deviab\DatabaseBundle\Entity\LenderDetails
      *
-     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="currentStatuses")
+     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="currentStatus")
      * @ORM\JoinColumn(name="lender_id", referencedColumnName="id")
      */
     private $lender;

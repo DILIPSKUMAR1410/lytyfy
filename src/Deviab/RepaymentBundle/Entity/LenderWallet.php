@@ -34,7 +34,7 @@ class LenderWallet
     /**
      * @var \Deviab\DatabaseBundle\Entity\LenderDetails
      *
-     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="credits")
+     * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", inversedBy="wallet")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="lender_id", referencedColumnName="id", unique=true, nullable=true)
      * })
