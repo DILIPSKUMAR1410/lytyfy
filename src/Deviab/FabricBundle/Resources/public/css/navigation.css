@@ -79,6 +79,10 @@ color: rgb(0, 112, 185) !important;
 #nav-profile-link:hover {
 
 }
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+     background: none !important; 
+}
 @media screen and (max-width: 550px) {
 
     .logo {

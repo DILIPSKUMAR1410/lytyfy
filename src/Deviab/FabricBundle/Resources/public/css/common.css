@@ -49,3 +49,10 @@
     background: url(/bundles/fabric/images/loading_bar.gif);
     
 }
+
+.no-margn {
+    margin-right: 5px !important;
+}
+.no-rmargn {
+    margin-right: 0px !important;
+}

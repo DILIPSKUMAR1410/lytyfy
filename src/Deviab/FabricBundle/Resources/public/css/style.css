@@ -3,7 +3,7 @@ body {
     font-size: 15px;
     text-align: justify;
     color: black;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 @font-face {
@@ -201,7 +201,7 @@ a {
 }
 
 #about-energy-heading {
-    font-family: neuropol !important;
+    
 }
 
 .graphics {
@@ -306,6 +306,25 @@ ul {
 #signin-msg-container {
     min-height: 25px;
     color: red;
+}
+#profile {
+    background-color: #f8f8f8 !important; 
+}
+#dash-link {
+    right: 0 !important;
+    left: none !important;
+}
+.dropdown-menu {
+    left: none !important;
+}
+
+#mob-welcome-login {
+    margin-top: 10px;
+}
+
+#mob-profile-link {
+    border: none !important;
+    color: #3B78E7;
 }
 /**********   faqa      ***********/
 .question {
