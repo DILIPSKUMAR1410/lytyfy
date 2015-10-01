@@ -55,8 +55,8 @@ class ProjectService extends BaseService
             return View::create("project not found", Codes::HTTP_BAD_REQUEST);
         $quantum = $project->getCapitalAmount();
         $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
-        $backers=count($lenderRepository->findAll());
-        $response = array('quantum'=>$quantum,'backers'=>$backers);
+        $backers = count($lenderRepository->findAll());
+        $response = array('quantum' => $quantum, 'backers' => $backers);
         return View::create($response, Codes::HTTP_OK);
     }
 
