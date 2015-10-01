@@ -32,9 +32,7 @@ class ProjectController extends Controller
     public function getFeaturedProjectAction($projectId)
     {
         $projectService = $this->container->get('project_service');
-        $projectStatus = $projectService->getProjectStatus($projectId);
-        $context = SerializationContext::create()->setGroups(array('featured_project_portfolio'))
-            ->enableMaxDepthChecks(3);
-        return $projectStatus->setSerializationContext($context);
+        $projectStatus = $projectService->getFeaturedProject($projectId);
+        return $projectStatus;
     }
 }
