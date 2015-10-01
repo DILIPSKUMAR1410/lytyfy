@@ -7,8 +7,8 @@ parameters:
     database_user: mrrobot
     database_password: vishnubpm
     mailer_transport: smtp
-    mailer_host:      smtp.mailgun.org
-    mailer_user:      postmaster@deviab.com
-    mailer_password:  6cfa6ce6c3c1f1175c636033f192fce1
+    mailer_host: smtp.mailgun.org
+    mailer_user: postmaster@deviab.com
+    mailer_password: 6cfa6ce6c3c1f1175c636033f192fce1
     locale: en
     secret: ThisTokenIsNotSoSecretChangeIt

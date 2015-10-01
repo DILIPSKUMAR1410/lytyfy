@@ -24,6 +24,10 @@ class ProjectService extends BaseService
         $this->doctrine = $doctrine;
     }
 
+    /**
+     * @param $projectId
+     * @return View
+     */
     public function getProjectStatus($projectId)
     {
         $projectRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:Project');
@@ -37,6 +41,25 @@ class ProjectService extends BaseService
         $response = array('quantum' => $quantum, 'lenders' => $lenders, 'borrowers' => $borrowers);
         return View::create($response, Codes::HTTP_OK);
     }
+
+
+    /**
+     * @param $projectId
+     * @return View
+     */
+    public function getFeaturedProject($projectId)
+    {
+        $projectRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:Project');
+        $project = $projectRepository->find($projectId);
+        if ($project == null)
+            return View::create("project not found", Codes::HTTP_BAD_REQUEST);
+        $quantum = $project->getCapitalAmount();
+        $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
+        $backers=count($lenderRepository->findAll());
+        $response = array('quantum'=>$quantum,'backers'=>$backers);
+        return View::create($response, Codes::HTTP_OK);
+    }
+
 
 
 }
