@@ -44,8 +44,8 @@
 						<span id="welcome-user">{{ username }}</span>
 						    <span id="nav-profile-span" class="glyphicon glyphicon-cog"></span></button>
 						    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="menu1" id="dash-link">
-						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dashbord</a></li>
-						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Profile</a></li>
+						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#/dashboard">Dashbord</a></li>
+						      <li role="presentation"><a role="menuitem" tabindex="-1" href="#/setting">Setting</a></li>
 						      <li role="presentation" class="divider"></li>
 						      <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">Logout</a></li>
 						    </ul>
@@ -81,10 +81,10 @@
 					<span id="welcome-user">{{ username }}</span>
 					    <span id="nav-profile-span" class="glyphicon glyphicon-cog"></span></button>
 					    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="menu1" id="dash-link">
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dashbord</a></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Profile</a></li>
-					      <li role="presentation" class="divider"></li>
-					      <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">Logout</a></li>
+						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#/dashboard">Dashbord</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#/setting">Setting</a></li>
+						    <li role="presentation" class="divider"></li>
+						    <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">Logout</a></li>
 					    </ul>
 					</div>
 				{% else %}
@@ -256,11 +256,11 @@
 			success: function (result) {
 				$("#signin-msg").html("Successfuly logedin you will be redirect to home page");
 				location.reload();
-				alert('Logged In' + result);
+				console.log('Logged In' + result);
 			},
 			error: function (errorMessage) {
 				$("#signin-msg").html("Wrong username or password!");
-				alert(errorMessage);
+				console.log(errorMessage);
 			},
 		});
 	});
@@ -280,10 +280,10 @@
 			type: 'POST',
 			data: jsonData,
 			success: function (result) {
-				alert('Logged In' + result);
+				console.log('Logged In' + result);
 			},
 			error: function (errorMessage) {
-				alert(errorMessage);
+				console.log(errorMessage);
 			},
 		});
 	});
