@@ -22,8 +22,12 @@ app.config(function ($routeProvider, $interpolateProvider) {
             templateUrl: '/bundles/fabric/js/app/templates/how_it_works.html',
             controller: 'ProjectController'
         }).
-        when('/profile', {
-            templateUrl: '/bundles/fabric/js/app/templates/profile.html',
+        when('/setting', {
+            templateUrl: '/bundles/fabric/js/app/templates/setting.html',
+            controller: 'ProjectController'
+        }).
+        when('/dashboard', {
+            templateUrl: '/bundles/fabric/js/app/templates/dashboard.html',
             controller: 'ProfileController'
         });
 });
