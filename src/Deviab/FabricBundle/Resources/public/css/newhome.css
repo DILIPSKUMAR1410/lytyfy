@@ -50,7 +50,8 @@ a#register-btn:hover {
 }
 
 div#invest-now:hover {
-    background-color: #0070B9;
+    background-color: #149C3C;
+    border: 2px solid #149C3C
 }
 
 /***   Media Scrren CSS      ******/

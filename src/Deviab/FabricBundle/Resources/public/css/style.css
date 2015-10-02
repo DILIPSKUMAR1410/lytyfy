@@ -332,6 +332,10 @@ ul {
     margin-top: 20px;
     font-weight: bold;
 }
+
+#how_it_works_text {
+    line-height: 35px; 
+}
 /**********   faqs      ***********/
 @media screen and (max-width: 750px) {
     #about-energy-desc {
