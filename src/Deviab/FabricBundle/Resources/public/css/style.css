@@ -336,6 +336,10 @@ ul {
 #how_it_works_text {
     line-height: 35px; 
 }
+
+#investment-summary-text {
+    border-bottom: 1px solid #ccc;
+}
 /**********   faqs      ***********/
 @media screen and (max-width: 750px) {
     #about-energy-desc {

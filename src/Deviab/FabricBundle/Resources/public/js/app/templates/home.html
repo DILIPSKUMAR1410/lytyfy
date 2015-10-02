@@ -43,8 +43,10 @@
 </div>
 <div class="tmrgn-50"></div>
 <script>
-    // var h = $(window).height();
-    // $("#home-bc-img").css("height", h-nav_height);
+    var h = $(window).height();
+    var w = $(window).width();
+    if(w < 765 )
+    $("#home-bc-img").css("height", (h-nav_height)/2);
 </script>
 
 
