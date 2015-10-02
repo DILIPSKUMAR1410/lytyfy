@@ -10,26 +10,20 @@
 }
 
 .project-details {
-    background-color: #9c9c9c;
-    color: #fff;
-    height: 55px;
-    text-align: center;
-    margin-top: 25px;
-    padding-top: 15px;
-    border-radius: 35px;
-    width: 218px;
-    border: none;
-}
-
-#learn-more {
     background-color: #0070B9;
     color: #fff;
     height: 55px;
     text-align: center;
-    margin-top: 65px;
+    padding-top: 15px;
     border-radius: 35px;
     width: 218px;
     border: none;
+    position: relative;
+    margin: auto;
+}
+
+#invest-now {
+    background-color: #14B900;
 }
 
 #info-graphics-container {
@@ -55,8 +49,8 @@ a#register-btn:hover {
     text-decoration: none;
 }
 
-div#learn-more:hover {
-    background-color: #9c9c9c;
+div#invest-now:hover {
+    background-color: #0070B9;
 }
 
 /***   Media Scrren CSS      ******/
