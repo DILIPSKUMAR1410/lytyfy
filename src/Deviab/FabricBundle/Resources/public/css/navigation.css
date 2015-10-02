@@ -89,3 +89,8 @@ color: rgb(0, 112, 185) !important;
         font-size: 45px !important;
     }
 }
+@media screen and (min-width: 806px) {
+.collapsing {
+    overflow: visible;
+}
+}
