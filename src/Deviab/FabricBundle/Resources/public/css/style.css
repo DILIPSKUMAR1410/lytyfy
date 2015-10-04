@@ -209,7 +209,7 @@ a {
     background-repeat: no-repeat;
     text-align: center;
     margin: 12px auto 12px;
-    margin-bottom: 55px;
+    margin-bottom: 12px;
 }
 
 #solution-img {
@@ -218,7 +218,6 @@ a {
 
 #consulting-img {
     margin-top: 18px;
-    margin-bottom: 52px;
     background-image: url(../images/infographics/consulting.png);
 }
 
@@ -306,6 +305,7 @@ ul {
 #signin-msg-container {
     min-height: 25px;
     color: red;
+    text-align: center;
 }
 #profile {
     background-color: #f8f8f8 !important; 

@@ -30,7 +30,7 @@
 			top: 0px;
 			width: 100%;
 			height: 100%;
-			z-index: 99999;
+			z-index: 50;
 			background: url(/bundles/fabric/images/ld.gif) center no-repeat #fff;
 		}
 		.se-pre-con-login {
@@ -281,7 +281,8 @@
 			type: 'POST',
 			data: jsonData,
 			success: function (result) {
-				$("#signin-msg").html("Successfuly log in you will be redirect to home page");
+				$("#signin-msg").html("Successfully loged in...Redirecting to home page...");
+				$("#signin-msg").css("color","#0070B9");
 				location.reload();
 				console.log('Logged In' + result);
 			},
