@@ -120,7 +120,8 @@ class LoginController extends Controller
         $response = new Response(json_encode(['success' => 'Loggedin Now']), Codes::HTTP_OK);
         $this->authenticateUser($user, $response);
 
-        return $response;
+        // return $response;
+        return $this->redirectToRoute('fabric_homepage');
     }
 
     /**
