@@ -4,6 +4,7 @@
     border: 1px solid #ccc;
 }
 
+
 .border {
     border-bottom: 1px solid #ccc;
 }
@@ -16,6 +17,9 @@
     height: 25px;
 }
 
+.error {
+    color: red;
+}
 .no-right-padd {
     padding-right: 0px !important;
 }
