@@ -51,102 +51,54 @@
 				<br>
 
 				<div class="form-inline">
-					<select class="form-control" ng-model="citySelected" ng-change="changedCity(citySelected)"
-							data-ng-options="amount as amount.value for amount in amounts">
-						<option value="">Select Amount</option>
-					</select>
 				</div>
 				<form method="post" name="0.1_payuForm" action="https://test.payu.in/_payment.php">
-					<input type="hidden" name="key" value="Bj880P">
+				<form name="userForm" ng-submit="submitForm()">
+					<input type="hidden" name="key" value="vz70Zb" ng-model="user.key">
 					<input type="hidden" name="hash"
 						   value="7d969094298c8286c088338bdfe85723c9bb0c244e668d0c85132d6f5aba6e6f64f3608f7396179bf47ff6c7fc4db4fe5d72fd7afdc39c1bdc0c44dce133d38c">
-					<input type="hidden" name="txnid" value="dilip14101990">
+					<input type="hidden" name="txnid" value="dilip14101990" ng-model="user.txnid">
+					<input id="amount" name="amount" value="500" ng-model="user.amount">
 					<table style="display:none">
 						<tr>
 							<td><b>Mandatory Parameters</b></td>
 						</tr>
 						<tr>
 							<td>Amount:</td>
-							<td><input name="amount" value="500"></td>
+							<td></td>
 							<td>First Name:</td>
-							<td><input name="firstname" value="dilip"></td>
+							<td><input name="firstname" value="dilip" ng-model="user.amount"></td>
 						</tr>
 						<tr>
 							<td>Email:</td>
-							<td><input name="email" value="dilipskumar1410@gmail.com"></td>
+							<td><input name="email" value="dilipskumar1410@gmail.com" ng-model="user.amount"></td>
 							<td>Phone:</td>
-							<td><input name="phone" value="8147140836"></td>
+							<td><input name="phone" value="8147140836" ng-model="user.amount"></td>
 						</tr>
 						<tr>
 							<td>Product Info:</td>
-							<td colspan="3"><input name="productinfo" value="borrower"></input></td>
+							<td colspan="3"><input name="productinfo" value="borrower" ng-model="user.amount"></input></td>
 						</tr>
 						<tr>
 							<td>Success URI:</td>
 							<td colspan="3"><input name="surl" value="development.deviab.com/transaction/post/success"
-												   size="64"></td>
+												   size="64" ng-model="user.amount"></td>
 						</tr>
 						<tr>
 							<td>Failure URI:</td>
 							<td colspan="3"><input name="furl" value="development.deviab.com/transaction/post/failure"
-												   size="64"></td>
+												   size="64" ng-model="user.amount"></td>
 						</tr>
 
 						<tr>
 							<td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" size="64">
 							</td>
 						</tr>
-
-						<tr>
-							<td><b>Optional Parameters</b></td>
-						</tr>
-						<tr>
-							<td>Last Name:</td>
-							<td><input name="lastname"></td>
-							<td>Cancel URI:</td>
-							<td><input name="curl" value=""></td>
-						</tr>
-						<tr>
-							<td>Address1:</td>
-							<td><input name="address1"></td>
-							<td>Address2:</td>
-							<td><input name="address2"></td>
-						</tr>
-						<tr>
-							<td>City:</td>
-							<td><input name="city"></td>
-							<td>State:</td>
-							<td><input name="state"></td>
-						</tr>
-						<tr>
-							<td>Country:</td>
-							<td><input name="country"></td>
-							<td>Zipcode:</td>
-							<td><input name="zipcode"></td>
-						</tr>
-						<tr>
-							<td>UDF1:</td>
-							<td><input name="udf1"></td>
-							<td>UDF2:</td>
-							<td><input name="udf2"></td>
-						</tr>
-						<tr>
-							<td>UDF3:</td>
-							<td><input name="udf3"></td>
-							<td>UDF4:</td>
-							<td><input name="udf4"></td>
-						</tr>
-						<tr>
-							<td>UDF5:</td>
-							<td><input name="udf5"></td>
-							<td>PG:</td>
-							<td><input name="pg"></td>
-						</tr>
 					</table>
 					<tr>
 
 						<h5>
-							<button id="procced-button" type="submit" class="btn btn-primary">Procced</button>
+							<button id="procced-button" type="submit" class="btn btn-primary" disabled>Procced</button>
 						</h5>
 				</form>
 			</div>
@@ -159,49 +111,36 @@
 		<div class="als-viewport">
 			<ul class="als-wrapper">
 				<!-- <li ng-repeat="lender in lenders" class="als-item" id="als-item_0_{[{$index}]}"><img src="/bundles/fabric/images/arancio.png" alt="orange" title="orange" />orange</li> -->
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="apple" title="apple"/>apple
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="apple" title="apple"/>
 				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="banana" title="banana"/>banana
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="banana" title="banana"/>
 				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="blueberry" title="blueberry"/>blueberry
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="blueberry" title="blueberry"/>
 				</li>
 				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="watermelon"
-										  title="watermelon"/>watermelon
+										  title="watermelon"/>
 				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="cherry" title="cherry"/>cherry
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="cherry" title="cherry"/>
 				</li>
 				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="strawberry"
-										  title="strawberry"/>strawberry
+										  title="strawberry"/>
 				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/avocado.png" alt="avocado" title="avocado"/>avocado
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="apple" title="apple"/>
 				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/pera.png" alt="pear" title="pear"/>pear</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/ananas.png" alt="pineapple" title="pineapple"/>pineapple
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="banana" title="banana"/>
 				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/papaya.png" alt="papaya" title="papaya"/>papaya
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="blueberry" title="blueberry"/>
 				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/lampone.png" alt="raspberry" title="raspberry"/>raspberry
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="watermelon"
+										  title="watermelon"/>
 				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/mela.png" alt="apple" title="apple"/>apple</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/banana.png" alt="banana" title="banana"/>banana
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="cherry" title="cherry"/>
 				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/mirtillo.png" alt="blueberry" title="blueberry"/>blueberry
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="strawberry"
+										  title="strawberry"/>
 				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/anguria.png" alt="watermelon" title="watermelon"/>watermelon
-				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/ciliegia.png" alt="cherry" title="cherry"/>cherry
-				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/fragola.png" alt="strawberry" title="strawberry"/>strawberry
-				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/avocado.png" alt="avocado" title="avocado"/>avocado
-				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/pera.png" alt="pear" title="pear"/>pear</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/ananas.png" alt="pineapple" title="pineapple"/>pineapple
-				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/papaya.png" alt="papaya" title="papaya"/>papaya
-				</li>
-				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/lampone.png" alt="raspberry" title="raspberry"/>raspberry
-				</li>
+
+				
 			</ul>
 		</div>
 		<span class="als-next"><img src="/bundles/fabric/images/right_arrow.png" alt="next" title="next"/></span>
@@ -213,33 +152,35 @@
 
 		<div class="als-viewport">
 			<ul class="als-wrapper">
-				<li class="als-item"><img class="img-responsive img-circle" ng-src="/bundles/fabric/images/profile.jpeg"
-										  alt="loding....">orange
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="apple" title="apple"/>
 				</li>
-				<li class="als-item"><img class="img-responsive img-circle" ng-src="/bundles/fabric/images/profile.jpeg"
-										  alt="apple" title="apple"/>apple
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="banana" title="banana"/>
 				</li>
-				<li class="als-item"><img class="img-responsive img-circle" ng-src="/bundles/fabric/images/profile.jpeg"
-										  alt="banana" title="banana"/>banana
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="blueberry" title="blueberry"/>
 				</li>
-				<li class="als-item"><img class="img-responsive img-circle" ng-src="/bundles/fabric/images/profile.jpeg"
-										  alt="blueberry" title="blueberry"/>blueberry
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="watermelon"
+										  title="watermelon"/>
 				</li>
-				<li class="als-item"><img src="/bundles/fabric/images/anguria.png" alt="watermelon" title="watermelon"/>watermelon
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="cherry" title="cherry"/>
 				</li>
-				<li class="als-item"><img src="/bundles/fabric/images/ciliegia.png" alt="cherry" title="cherry"/>cherry
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="strawberry"
+										  title="strawberry"/>
 				</li>
-				<li class="als-item"><img src="/bundles/fabric/images/fragola.png" alt="strawberry" title="strawberry"/>strawberry
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="apple" title="apple"/>
 				</li>
-				<li class="als-item"><img src="/bundles/fabric/images/avocado.png" alt="avocado" title="avocado"/>avocado
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="banana" title="banana"/>
 				</li>
-				<li class="als-item"><img src="/bundles/fabric/images/pera.png" alt="pear" title="pear"/>pear</li>
-				<li class="als-item"><img src="/bundles/fabric/images/ananas.png" alt="pineapple" title="pineapple"/>pineapple
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="blueberry" title="blueberry"/>
 				</li>
-				<li class="als-item"><img src="/bundles/fabric/images/papaya.png" alt="papaya" title="papaya"/>papaya
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="watermelon"
+										  title="watermelon"/>
 				</li>
-				<li class="als-item"><img src="/bundles/fabric/images/lampone.png" alt="raspberry" title="raspberry"/>raspberry
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="cherry" title="cherry"/>
 				</li>
+				<li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" alt="strawberry"
+										  title="strawberry"/>
+				</li>
+
 			</ul>
 		</div>
 		<span class="als-next"><img src="/bundles/fabric/images/right_arrow.png" alt="next" title="next"/></span>
