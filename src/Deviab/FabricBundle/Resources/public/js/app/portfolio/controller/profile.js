@@ -9,3 +9,15 @@ app.controller("ProfileController", function ($scope, $http) {
         console.log("failure message: " + JSON.stringify({data: data}));
     });
 });
+
+app.controller("HomeController", function($scope, $http) {
+    $scope.indexResponce = null;
+    var res = $http.get('/api/v1/projects/featured-project/1.json');
+    res.success(function (data, status, headers, config) {
+        $scope.indexResponce = data;
+        $(".loading").hide();
+    });
+    res.error(function(data, status, headers, config) {
+      console.log( "failure message: " + JSON.stringify({data: data}));
+    });
+});
