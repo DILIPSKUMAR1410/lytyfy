@@ -4,27 +4,19 @@ app.config(function ($routeProvider, $interpolateProvider) {
     $routeProvider.
         when('/', {
             templateUrl: '/bundles/fabric/js/app/templates/home.html',
-            controller: 'ProjectController'
         }).
         when('/project', {
             templateUrl: '/bundles/fabric/js/app/templates/project.html',
             controller: 'ProjectController'
         }).
-        when('/payu', {
-            templateUrl: '/bundles/fabric/js/app/templates/payu.html',
-            controller: 'ProjectController'
-        }).
         when('/faqs', {
-            templateUrl: '/bundles/fabric/js/app/templates/faqs.html',
-            controller: 'ProjectController'
+            templateUrl: '/bundles/fabric/js/app/templates/faqs.html'
         }).
         when('/how_it_works', {
-            templateUrl: '/bundles/fabric/js/app/templates/how_it_works.html',
-            controller: 'ProjectController'
+            templateUrl: '/bundles/fabric/js/app/templates/how_it_works.html'
         }).
         when('/setting', {
-            templateUrl: '/bundles/fabric/js/app/templates/setting.html',
-            controller: 'ProjectController'
+            templateUrl: '/bundles/fabric/js/app/templates/setting.html'
         }).
         when('/dashboard', {
             templateUrl: '/bundles/fabric/js/app/templates/dashboard.html',
