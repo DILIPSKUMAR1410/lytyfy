@@ -1,8 +1,8 @@
 
 
 #project-expl {
-    overflow-y : scroll;
-    max-height: 300px; 
+    overflow-y: scroll;
+    max-height: 300px;
     line-height: 32px;
     color: #777;
 }
