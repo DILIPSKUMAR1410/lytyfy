@@ -176,11 +176,11 @@ class LenderCurrentStatus
     }
 
     /**
-     * @param int $interestRepaid
+     * @param int $interestLeft
      */
-    public function setInterestRepaid($interestRepaid)
+    public function setInterestLeft($interestLeft)
     {
-        $this->interestRepaid = $interestRepaid;
+        $this->interestLeft = $interestLeft;
     }
 
     /**
@@ -192,11 +192,11 @@ class LenderCurrentStatus
     }
 
     /**
-     * @param int $interestLeft
+     * @param int $interestRepaid
      */
-    public function setInterestLeft($interestLeft)
+    public function setInterestRepaid($interestRepaid)
     {
-        $this->interestLeft = $interestLeft;
+        $this->interestRepaid = $interestRepaid;
     }
 
     /**

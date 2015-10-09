@@ -1,9 +1,9 @@
 
-
 #project-expl {
-    overflow-y : scroll;
-    max-height: 300px; 
+    overflow-y: scroll;
+    max-height: 300px;
 }
+
 #borrower_img {
     max-width: 100%;
     width: auto;
@@ -179,6 +179,7 @@
         margin: 0px;
         padding: 0px;
     }
+
     #demo2 .als-item {
         height: 100px;
         width: 100px;

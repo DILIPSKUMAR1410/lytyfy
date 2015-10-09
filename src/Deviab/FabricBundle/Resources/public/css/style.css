@@ -200,7 +200,7 @@ a {
 }
 
 #about-energy-heading {
-    
+
 }
 
 .graphics {
@@ -239,9 +239,10 @@ a {
     color: #777;
     margin-top: 30px;
 }
+
 .home-project-details-text {
     font-size: 20px;
-    color:#ccc;
+    color: #ccc;
     text-align: center;
 }
 
@@ -306,17 +307,21 @@ ul {
     min-height: 25px;
     text-align: center;
 }
+
 #signup-msg-container {
     min-height: 25px;
     text-align: center;
 }
+
 #profile {
-    background-color: #f8f8f8 !important; 
+    background-color: #f8f8f8 !important;
 }
+
 #dash-link {
     right: 0 !important;
     left: none !important;
 }
+
 .dropdown-menu {
     left: none !important;
 }
@@ -329,6 +334,7 @@ ul {
     border: none !important;
     color: #3B78E7;
 }
+
 /**********   faqa      ***********/
 .question {
     color: #0070b9;
@@ -337,12 +343,13 @@ ul {
 }
 
 #how_it_works_text {
-    line-height: 35px; 
+    line-height: 35px;
 }
 
 #investment-summary-text {
     border-bottom: 1px solid #ccc;
 }
+
 /**********   faqs      ***********/
 @media screen and (max-width: 750px) {
     #about-energy-desc {

@@ -19,6 +19,7 @@
 #login-btn {
     vertical-align: bottom;
 }
+
 #sub {
     font-style: italic;
     color: #0070B9;
@@ -26,15 +27,18 @@
     letter-spacing: normal;
     text-align: right;
 }
+
 .navbar-default .navbar-nav > li > a {
     color: #909090;
     padding-top: 10px;
     padding-bottom: 15px;
     font-weight: bold;
 }
+
 .nav {
     margin-top: 26px;
 }
+
 .navbar-default {
     background-color: #F8F8F8 !important;
     border-bottom: 3px solid #F8F8F8 !important;
@@ -42,6 +46,7 @@
       -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;*/
 }
+
 .navbar-default .navbar-nav > li > a:hover {
     color: #0070B9 !important;
 }
@@ -54,7 +59,6 @@
     margin-right: 62px;
 
 }
-
 
 /*.nav>li>a:focus, .nav>li>a:hover {
 text-decoration: none;
@@ -81,16 +85,18 @@ color: rgb(0, 112, 185) !important;
 }
 
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-     background: none !important; 
+    background: none !important;
 }
+
 @media screen and (max-width: 550px) {
 
     .logo {
         font-size: 45px !important;
     }
 }
+
 @media screen and (min-width: 806px) {
-.collapsing {
-    overflow: visible;
-}
+    .collapsing {
+        overflow: visible;
+    }
 }

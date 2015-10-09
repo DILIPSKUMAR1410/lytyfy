@@ -4,7 +4,6 @@
     border: 1px solid #ccc;
 }
 
-
 .border {
     border-bottom: 1px solid #ccc;
 }
@@ -20,6 +19,7 @@
 .error {
     color: red;
 }
+
 .no-right-padd {
     padding-right: 0px !important;
 }
@@ -34,10 +34,11 @@
 }
 
 .border-margin {
-	border-bottom: 1px solid #ccc;
-	margin-top:20px;
-	margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
+
 .loading {
     position: relative;
     top: 1px;
@@ -49,20 +50,23 @@
     -webkit-font-smoothing: antialiased;
     min-width: 50px;
     height: 18px;
-    display:inline-block;
+    display: inline-block;
     background: url(/bundles/fabric/images/loading_bar.gif);
-    
+
 }
 
 .no-margn {
     margin-right: 5px !important;
 }
+
 .no-rmargn {
     margin-right: 0px !important;
 }
-.tmrgn-50{
+
+.tmrgn-50 {
     margin-top: 50px;
 }
+
 .tmrgn-25 {
     margin-top: 25px;
 }
