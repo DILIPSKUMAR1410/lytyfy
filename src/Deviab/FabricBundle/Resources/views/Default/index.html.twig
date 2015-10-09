@@ -42,9 +42,10 @@
 			height: 100%;
 			z-index: 9999;
 			background: url(/bundles/fabric/images/ld.gif) center no-repeat #fff;
-			opacity: 0.5;
+			opacity: 0.8;
 		}
     </style>
+    
 
 </head>
 <body ng-app="myApp">
@@ -160,7 +161,7 @@
 						</form>
 						<div id="signup-msg-container" class="error"><span id="signup-msg"></span></div>
 						<div class="modal-footer">
-							<a id="signin-link" class="pull-right">Already have account</a>
+							<a id="signin-link" class="pull-right">Already have account?</a>
 						</div>
 					</div>
 				</div>
@@ -188,7 +189,7 @@
 						</form>
 						<div id="signin-msg-container" class="error"><span id="signin-msg"></span></div>
 						<div class="modal-footer">
-							<button id="signup-link" class="btn btn-primary pull-left">Sign up</button>
+							<a id="signup-link" class="go-to-link pull-left">Go for Sign up</a>
 							<a id="forgot-password-link" class="pull-right">Forgot Password</a>
 						</div>
 					</div>
@@ -208,7 +209,7 @@
 							<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 						</form>
 						<div class="modal-footer">
-							<button id="forgot-password-signin-link" class="btn btn-primary">Login</button>
+							<a><span id="forgot-password-signin-link" class="go-to-link">Go for Login</span></a>
 						</div>
 					</div>
 				</div>
@@ -302,7 +303,7 @@
 				console.log('Logged In' + result);
 			},
 			error: function (errorMessage) {
-				$("#signin-msg").html("Wrong username or password!");
+				$("#signin-msg").html("Wrong email or password!");
 				console.log(errorMessage);
 				$(".se-pre-con-login").fadeOut("slow");
 			},
@@ -317,32 +318,32 @@
 		var errorMessage;
 
 		if(name == "") {
-			errorMessage = "Name Required";
+			errorMessage = "Name Required.";
 			$("#signup-msg").html(errorMessage);
 			return;
 		}
 		if(email == "") {
-			errorMessage = "Email Required";
+			errorMessage = "Email Required.";
 			$("#signup-msg").html(errorMessage);
 			return;
 		}
 		if(password == "") {
-			errorMessage = "Password Required";
+			errorMessage = "Password Required.";
 			$("#signup-msg").html(errorMessage);
 			return;
 		}
 		if(confirmPassword == "") {
-			errorMessage = "Confirn Password Required";
+			errorMessage = "Confirn Password Required.";
 			$("#signup-msg").html(errorMessage);
 			return;
 		}
 		if(confirmPassword != password) {
-			errorMessage = "Confirm Password should be same as password";
+			errorMessage = "Confirm Password should be same as password.";
 			$("#signup-msg").html(errorMessage);
 			return;
 		}
 
-
+		$(".se-pre-con-login").show();
 		var result = {};
 		$.each($('#signup-form').serializeArray(), function (index, element) {
 			result[element.name] = element.value;
@@ -359,8 +360,24 @@
 			data: jsonData,
 			success: function (result) {
 				console.log('Logged In' + result);
+				$("#signup-msg").html("Successfuly Sign-up wait...");
+				setTimeout(
+				  function() 
+				  {
+				  	$("#signin-msg").html("Please Login now...");
+				  	$("#signup-msg").html("");
+				  	$("#signup-name").val("");
+				  	$("#signup-email").val("");
+				  	$("#signup-password").val("");
+				  	$("#signup-confirm-password").val("");
+				   	$("#signin-link").trigger("click"); 
+				   	$(".se-pre-con-login").hide();
+				  }, 2000);
+				
 			},
 			error: function (errorMessage) {
+				$(".se-pre-con-login").hide();
+				$("#signup-msg").html("This Email is already Registered.");
 				console.log(errorMessage);
 			},
 		});
