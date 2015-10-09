@@ -1,6 +1,6 @@
 <div class="space"></div>
 <div class="container">
-	<div class="col-lg-6 col-sm-12 col-md-6 col-xs-12">
+	<div id="how_it_works-bc-img" class="col-lg-6 col-sm-12 col-md-6 col-xs-12">
 		<img class="menu-type img-responsive" ng-src="/bundles/fabric/images/how_it_works2.jpg">
 	</div>
 	<div id="how_it_works_text" class="col-lg-6 col-sm-12 col-md-6 col-xs-12 tmrgn-50">
@@ -12,6 +12,11 @@
 	</div>
 </div>
 <div class="space"></div>
+<script type="text/javascript">
+	$('#how_it_works-bc-img').load(function(){
+        alert("yes");
+    });
+</script>
 <style>
 	#nav-how-it-works-link {
 		color: #0070B9;

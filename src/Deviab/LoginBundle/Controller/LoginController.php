@@ -148,10 +148,10 @@ class LoginController extends Controller
      */
     public function sendResetEmailAction()
     {
-        $username = $this->container->get('request')->request->get('email');
+        $email = $this->container->get('request')->request->get('email');
 
         /** @var $user UserInterface */
-        $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
+        $user = $this->container->get('fos_user.user_manager')->findUserByEmail($email);
 
         if (null === $user) {
             return new Response(json_encode(['error' => 'Email not Registered']), Codes::HTTP_BAD_REQUEST);
@@ -171,7 +171,7 @@ class LoginController extends Controller
         $this->container->get('fos_user.mailer')->sendResettingEmailMessage($user);
         $user->setPasswordRequestedAt(new \DateTime());
         $this->container->get('fos_user.user_manager')->updateUser($user);
-
+        return new Response(json_encode(['success' => 'Check Email Now']), Codes::HTTP_OK);
         // return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_check_email'));
     }
 
@@ -202,26 +202,28 @@ class LoginController extends Controller
         $user = $this->container->get('fos_user.user_manager')->findUserByConfirmationToken($token);
 
         if (null === $user) {
-            throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $token));
+            return new Response(json_encode(['error' => 'Invalid Token']), Codes::HTTP_BAD_REQUEST);
         }
 
-        if (!$user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_request'));
-        }
+        // if (!$user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
+        //     return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_request'));
+        // }
 
         $form = $this->container->get('fos_user.resetting.form');
         $formHandler = $this->container->get('fos_user.resetting.form.handler');
         $process = $formHandler->process($user);
 
         if ($process) {
-            $this->setFlash('fos_user_success', 'resetting.flash.success');
-            $response = new RedirectResponse($this->getRedirectionUrl($user));
+            // $this->setFlash('fos_user_success', 'resetting.flash.success');
+            // $response = new RedirectResponse($this->getRedirectionUrl($user));
+            $response = new Response(json_encode(['success' => 'Logged In Now']), Codes::HTTP_OK);
             $this->authenticateUser($user, $response);
 
-            return $response;
+            // return $response;
+            return $this->redirectToRoute('fabric_homepage');
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.' . $this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.twig', array(
             'token' => $token,
             'form' => $form->createView(),
         ));

@@ -1,4 +1,4 @@
-<div id="" class="img-responsive page-height no-padd">
+<div id="home-bc-img" class="img-responsive page-height no-padd">
     <img id="home-bc-img" src="/bundles/fabric/images/lytyfy12.png" class="img-responsive">
     <!-- </div>
     <div id="banner">
@@ -45,10 +45,14 @@
 </div>
 <div class="tmrgn-50"></div>
 <script>
+$( "#home-bc-img" ).load(function() {
+  // Handler for .load() called.
+});
     var h = $(window).height();
     var w = $(window).width();
     if(w < 765 )
     $("#home-bc-img").css("height", (h-nav_height)/2);
+    
 </script>
 <style>
     #nav-home-link {
