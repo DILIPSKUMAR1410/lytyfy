@@ -5,9 +5,9 @@
         <img id="bc-img-banner" src="/bundles/fabric/images/index/banner.jpg" class="img-responsive">
     </div> -->
 </div>
-<div id="home-project-details" class="container-fluid tmrgn-25">
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center tmrgn-25"><div class="project-details"><span> 42 Investors</span></div></div>
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center tmrgn-25"><div class="project-details"><span> Amount Raised : ₹75,000</span></div></div>
+<div id="home-project-details" class="container-fluid tmrgn-25" ng-controller="HomeController">
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center tmrgn-25"><div class="project-details"><span> <span class="loading"></span>{[{indexResponce.backers}]} Investors</span></div></div>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center tmrgn-25"><div class="project-details"><span> Amount Raised : ₹<span class="loading"></span> {[{indexResponce.quantum}]}</span></div></div>
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center tmrgn-25"><div class="project-details"><span>28 Days To Go</span></div></div>
     <a id="register-btn" href="/#/project">
         <div class=" col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center tmrgn-25"><div id="invest-now" class="project-details"><span>Invest Now</span></div></div>
