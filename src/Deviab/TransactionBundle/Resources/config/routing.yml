@@ -12,3 +12,9 @@ get_transaction_form_data:
         _method: GET
         lenderId: "\d+"
 
+payu_success_webhook:
+    pattern:  /webhook/success
+    defaults: { _controller: DeviabTransactionBundle:Investment:payuSuccessWebhook}
+    requirements:
+        _method: GET
+

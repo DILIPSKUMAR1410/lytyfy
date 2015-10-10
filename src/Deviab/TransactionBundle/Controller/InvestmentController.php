@@ -22,8 +22,11 @@ class InvestmentController extends Controller
         return $investmentDetails;
     }
 
-    public function renderPayu()
+    public function payuSuccessWebhookAction(LenderDeviabTransaction $lenderDeviabTransaction)
     {
-
+        $investmentService = $this->container->get('investment_service');
+        $response = $investmentService->capturePayUTransaction($lenderDeviabTransaction);
+        return $response;
     }
+
 }
