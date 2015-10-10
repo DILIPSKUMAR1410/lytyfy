@@ -21,4 +21,9 @@ class InvestmentController extends Controller
         $investmentDetails = $investmentService->getLenderInvestment($lenderId);
         return $investmentDetails;
     }
+
+    public function renderPayu()
+    {
+
+    }
 }

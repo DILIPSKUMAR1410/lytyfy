@@ -13,7 +13,7 @@ fabric:
 
 deviab_lender:
     resource: "@DeviabTransactionBundle/Resources/config/routing.yml"
-    prefix:    api/v1/investment
+    prefix:    api/v1/lenders
     type:      rest
 
 deviab_project:

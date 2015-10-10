@@ -1,6 +1,14 @@
 get_lender_investment:
-    pattern:  lenders/{lenderId}
+    pattern:  /{lenderId}
     defaults: { _controller: DeviabTransactionBundle:Investment:getLenderInvestment}
     requirements:
         _method: GET
         lenderId: "\d+"
+
+get_transaction_form_data:
+    pattern:  /{lenderId}/fd
+    defaults: { _controller: DeviabTransactionBundle:Transaction:transaction}
+    requirements:
+        _method: GET
+        lenderId: "\d+"
+
