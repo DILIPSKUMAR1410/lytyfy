@@ -73,64 +73,61 @@
                         {[{raised}]}%
                     </div>
                 </div>
-                <br>
-
-                <div class="form-inline">
-                </div>
-                <form method="post" name="0.1_payuForm" action="https://test.payu.in/_payment.php">
-                    <form name="userForm" ng-submit="submitForm()">
-                        <input type="hidden" name="key" value="vz70Zb" ng-model="user.key">
-                        <input type="hidden" name="hash"
-                               value="7d969094298c8286c088338bdfe85723c9bb0c244e668d0c85132d6f5aba6e6f64f3608f7396179bf47ff6c7fc4db4fe5d72fd7afdc39c1bdc0c44dce133d38c">
-                        <input type="hidden" name="txnid" value="dilip14101990" ng-model="user.txnid">
-                        <input id="amount" name="amount" value="500" ng-model="user.amount">
-                        <table style="display:none">
-                            <tr>
-                                <td><b>Mandatory Parameters</b></td>
-                            </tr>
-                            <tr>
-                                <td>Amount:</td>
-                                <td></td>
-                                <td>First Name:</td>
-                                <td><input name="firstname" value="dilip" ng-model="user.amount"></td>
-                            </tr>
-                            <tr>
-                                <td>Email:</td>
-                                <td><input name="email" value="dilipskumar1410@gmail.com" ng-model="user.amount"></td>
-                                <td>Phone:</td>
-                                <td><input name="phone" value="8147140836" ng-model="user.amount"></td>
-                            </tr>
-                            <tr>
-                                <td>Product Info:</td>
-                                <td colspan="3"><input name="productinfo" value="borrower"
-                                                       ng-model="user.amount"></input></td>
-                            </tr>
-                            <tr>
-                                <td>Success URI:</td>
-                                <td colspan="3"><input name="surl"
-                                                       value="development.deviab.com/transaction/post/success"
-                                                       size="64" ng-model="user.amount"></td>
-                            </tr>
-                            <tr>
-                                <td>Failure URI:</td>
-                                <td colspan="3"><input name="furl"
-                                                       value="development.deviab.com/transaction/post/failure"
-                                                       size="64" ng-model="user.amount"></td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa"
-                                                       size="64">
-                                </td>
-                            </tr>
-                        </table>
+                <br>               	
+                <form method="post" name="0.1_payuForm" action="https://secure.payu.in/_payment.php">
+                    <input id="form-key" type="hidden" name="key" value="vz70Zb" ng-model="user.key">
+                    <input id="form-hash" type="hidden" name="hash"
+                           value="a3fe4baed706cd0b7a0ad4c99b53c856ba9ddca06196dbd4da42d683e557c6d8c9460c07d17eeddce2a4f3337cf240c37345be62348daacc7c3d08dc7b866c3c">
+                    <input id="form-txn-id" type="hidden" name="txnid" value="4561a0e441b820">
+                    <input id="form-amount" name="amount" value="500" >
+                    <table style="display:none">
                         <tr>
+                            <td><b>Mandatory Parameters</b></td>
+                        </tr>
+                        <tr>
+                            <td>First Name:</td>
+                            <td><input id="form-name" name="firstname" value=""></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><input id="form-email" name="email" value="nitin+2@deviab.com"></td>
+                            <td>Phone:</td>
+                            <td><input id="form-phone" name="phone" value="8147140836"></td>
+                        </tr>
+                        <tr>
+                            <td>Product Info:</td>
+                            <td colspan="3"><input id="form-productinfo" name="productinfo"
+                                               value="DhamdhaPilot"    ></input></td>
+                        </tr>
+                        <tr>
+                            <td>Success URI:</td>
+                            <td colspan="3"><input id="form-surl" name="surl"
+                                                   value="development.deviab.com/transaction/post/success"
+                                                   size="64" ></td>
+                        </tr>
+                        <tr>
+                            <td>Failure URI:</td>
+                            <td colspan="3"><input id="form-furl" name="furl"
+                                                   value="development.deviab.com/transaction/post/failure"
+                                                   size="64"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><input id="form-service-provider" type="hidden" name="service_provider" value="service_provider"
+                                                   size="64">
+                            </td>
+                        </tr>
+	                    <tr>
 
-                            <h5>
-                                <button id="procced-button" type="submit" class="btn btn-primary" disabled>Procced
-                                </button>
-                            </h5>
-                    </form>
+	                        <h5>
+	                            <button id="frm-procced-button" type="submit" class="btn btn-primary" value="" style="display:none">Procced
+	                            </button>
+	                        </h5>
+	                    </tr>
+	                </table>
+                </form>
+                	<button id="procced-button" class="btn btn-primary" >Procced
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -219,5 +216,34 @@
         orientation: "horizontal",
         circular: "no",
         autoscroll: "no"
+    });
+
+    $('#procced-button').click(function () {
+    	// var amount = $(")
+		var res = $.get('/api/v1/lenders/4/fd?amount=500');
+		res.success(function(data, status, headers, config) {
+			console.log(data);
+			fillFormValue(data);
+		});
+		res.error(function(data, status, headers, config) {
+			console.log( "failure message: " + JSON.stringify({data: data}));
+		});
+
+		function fillFormValue(data) {
+			// $('#form-name').val(data.firstname);
+			// $('#form-surl').val(data.surl);
+			// $('#form-email').val(data.email);
+			// $('#form-hash').val(data.hash);
+			// $('#form-key').val(data.key);
+			// $('#form-phone').val(data.phone);
+			// $('#form-productinfo').val(data.productinfo);
+			// $('#form-service-provider').val(data.service_provider);
+			// $('#form-furl').val(data.furl);
+			// $('#form-txnid').val(data.txnid);
+			// alert("ok");
+			$("#frm-procced-button").click();
+		}
+
+    	
     });
 </script>
