@@ -14,7 +14,7 @@ get_transaction_form_data:
 
 payu_success_webhook:
     pattern:  /webhook/success
-    defaults: { _controller: DeviabTransactionBundle:Investment:payuSuccessWebhook}
+    defaults: { _controller: DeviabTransactionBundle:Transaction:payuSuccessWebhook}
     requirements:
         _method: GET
 

@@ -9,6 +9,7 @@
 namespace Deviab\TransactionBundle\Controller;
 
 use Deviab\LoginBundle\Entity\User;
+use Deviab\TransactionBundle\Entity\LenderDeviabTransaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Util\Codes;
@@ -26,7 +27,7 @@ class TransactionController extends Controller
             $email = $user->getEmail();
             $firstname = $lender->getFname();
             $phone = $lender->getPrimaryMobileNumber();
-            $txnid = uniqid($lender->getId());
+            $txnid = uniqid($user->getEmail());
             $data = "vz70Zb|" . $txnid . "|" . $amount . "|DhamdhaPilot|" . $firstname . "|" . $email . "|||||||||||k1wOOh0b";
             $hash = hash('sha512', $data);
             $url = "https://secure.payu.in/_payment";
@@ -52,5 +53,13 @@ class TransactionController extends Controller
 
         }
 
+    }
+
+
+    public function payuSuccessWebhookAction(LenderDeviabTransaction $lenderDeviabTransaction)
+    {
+        $investmentService = $this->container->get('investment_service');
+        $response = $investmentService->capturePayUTransaction($lenderDeviabTransaction);
+        return $response;
     }
 }

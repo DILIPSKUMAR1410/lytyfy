@@ -58,11 +58,6 @@ class InvestmentService extends BaseService
      */
     public function capturePayUTransaction(LenderDeviabTransaction $lenderDeviabTransaction)
     {
-        $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
-        $lender = $lenderRepository->find($lenderDeviabTransaction->getLender()->getId());
-        if ($lender == null) {
-            $lenderDeviabTransaction->getLender()->getCurrentStatus()->setTenureLeft(8);
-        }
         if ($lenderDeviabTransaction != null) {
             $lenderDeviabTransaction->getProject()->creditCapitalRaised($lenderDeviabTransaction->getAmount());
             $lenderDeviabTransaction->getLender()->getCurrentStatus()->creditPrincipalLeft($lenderDeviabTransaction->getAmount());
@@ -70,6 +65,8 @@ class InvestmentService extends BaseService
             $lenderDeviabTransaction->getLender()->getCurrentStatus()->creditInterrestLeft($il);
             $EMR = $this->getEMR($lenderDeviabTransaction->getLender()->getCurrentStatus());
             $lenderDeviabTransaction->getLender()->getCurrentStatus()->setExpectedMonthlyReturn($EMR);
+            $this->em->persist($lenderDeviabTransaction->getProject());
+            $this->em->persist($lenderDeviabTransaction->getLender()->getCurrentStatus());
             $this->em->persist($lenderDeviabTransaction);
             $this->em->flush();
             return View::create("Transaction captured", Codes::HTTP_OK);
