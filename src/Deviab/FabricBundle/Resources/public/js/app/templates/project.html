@@ -219,8 +219,10 @@
     });
 
     $('#procced-button').click(function () {
-    	// var amount = $(")
-		var res = $.get('/api/v1/lenders/4/fd?amount=500');
+        $('#procced-button').prop('disabled', true);
+        $(".se-pre-con-login").show();
+    	var amount = $("#form-amount").val();
+		var res = $.get('/api/v1/lenders/4/fd?amount='+amount);
 		res.success(function(data, status, headers, config) {
 			console.log(data);
 			fillFormValue(data);
@@ -230,17 +232,16 @@
 		});
 
 		function fillFormValue(data) {
-			// $('#form-name').val(data.firstname);
-			// $('#form-surl').val(data.surl);
-			// $('#form-email').val(data.email);
-			// $('#form-hash').val(data.hash);
-			// $('#form-key').val(data.key);
-			// $('#form-phone').val(data.phone);
-			// $('#form-productinfo').val(data.productinfo);
-			// $('#form-service-provider').val(data.service_provider);
-			// $('#form-furl').val(data.furl);
-			// $('#form-txnid').val(data.txnid);
-			// alert("ok");
+			$('#form-name').val(data.firstname);
+			$('#form-surl').val(data.surl);
+			$('#form-email').val(data.email);
+			$('#form-hash').val(data.hash);
+			$('#form-key').val(data.key);
+			$('#form-phone').val(data.phone);
+			$('#form-productinfo').val(data.productinfo);
+			$('#form-service-provider').val(data.service_provider);
+			$('#form-furl').val(data.furl);
+			$('#form-txn-id').val(data.txnid);
 			$("#frm-procced-button").click();
 		}
 
