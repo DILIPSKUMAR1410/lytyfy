@@ -45,10 +45,19 @@ class TransactionController extends Controller
                 'hash' => $hash,
                 'service_provider' => "payu_paisa"
             );
-            if ($firstname && $email && $phone && $amount && $hash)
+            if (!$amount) {
+                $err = 'Amount Required'
+            } else if (!$firstname) {
+                $err = 'FirstName Required'
+            } else if (!$email) {
+                $err = 'Email Required'
+            } else if (!$phone) {
+                $err = 'Phone Required'
+            } else {
                 return View::create($fields, Codes::HTTP_OK);
-            else
-                return View::create("insufficient data", Codes::HTTP_OK);
+            }
+
+            return View::create(json_encode['error' => $err, Codes::HTTP_BAD_REQUEST);
 
 
         }
