@@ -65,8 +65,8 @@ class InvestmentService extends BaseService
             $lenderDeviabTransaction->getLender()->getCurrentStatus()->creditInterrestLeft($il);
             $EMR = $this->getEMR($lenderDeviabTransaction->getLender()->getCurrentStatus());
             $lenderDeviabTransaction->getLender()->getCurrentStatus()->setExpectedMonthlyReturn($EMR);
-            $this->em->persist($lenderDeviabTransaction->getProject());
-            $this->em->persist($lenderDeviabTransaction->getLender()->getCurrentStatus());
+            $this->em->merge($lenderDeviabTransaction->getProject());
+            $this->em->merge($lenderDeviabTransaction->getLender()->getCurrentStatus());
             $this->em->persist($lenderDeviabTransaction);
             $this->em->flush();
             return View::create("Transaction captured", Codes::HTTP_OK);
