@@ -13,6 +13,7 @@ use Deviab\TransactionBundle\Entity\LenderDeviabTransaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Util\Codes;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class TransactionController extends Controller
@@ -28,8 +29,12 @@ class TransactionController extends Controller
             $firstname = $lender->getFname();
             $phone = $lender->getPrimaryMobileNumber();
             $txnid = uniqid($user->getEmail());
-            $data = "vz70Zb|" . $txnid . "|" . $amount . "|DhamdhaPilot|" . $firstname . "|" . $email . "|||||||||||k1wOOh0b";
+            $lenderId = $lender->getId();
+            $projectId = 1;
+            $data = "vz70Zb" . "|" . $txnid . "|" . $amount . "|" . "DhamdhaPilot" . "|" . $firstname . "|" . $email . "|" . $lenderId . "|" . $projectId . "|||||||||" . "k1wOOh0b";
             $hash = hash('sha512', $data);
+            $host = $this->get('router')->getContext()->getHost();
+
             $url = "https://secure.payu.in/_payment";
             $fields = array(
                 'key' => "vz70Zb",
@@ -39,9 +44,11 @@ class TransactionController extends Controller
                 'productinfo' => "DhamdhaPilot",
                 'txnid' => $txnid,
                 'amount' => $amount,
-                'surl' => "/transaction/post/succes",
-                'furl' => "/transaction/post/failure ",
-                'curl' => "/transaction/post/cancel",
+                'udf1' => $lenderId,
+                'udf2' => $projectId,
+                'surl' => $host . "/transaction/post/succes",
+                'furl' => $host . "/transaction/post/failure ",
+                'curl' => $host . "/transaction/post/cancel",
                 'hash' => $hash,
                 'service_provider' => "payu_paisa"
             );
@@ -65,10 +72,10 @@ class TransactionController extends Controller
     }
 
 
-    public function payuSuccessWebhookAction(LenderDeviabTransaction $lenderDeviabTransaction)
+    public function payuSuccessWebhookAction(Request $request)
     {
         $investmentService = $this->container->get('investment_service');
-        $response = $investmentService->capturePayUTransaction($lenderDeviabTransaction);
+        $response = $investmentService->capturePayUTransaction($request);
         return $response;
     }
 }
