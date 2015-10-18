@@ -78,5 +78,17 @@ class RepaymentService extends BaseService
         return $EMR;
     }
 
+    /**
+     * @param $lenderId
+     * @return View
+     * @internal param DeviabLenderTransaction $deviabLenderTransaction
+     */
+    public function getWalletTransactions($lenderId)
+    {
+        $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
+        $lender = $lenderRepository->find($lenderId);
+        $getWallet = $lender->getFromLenderTransactions;
+        return View::create($getWallet, Codes::HTTP_OK);
+    }
 
 }

@@ -21,4 +21,20 @@ class InvestmentController extends Controller
         $investmentDetails = $investmentService->getLenderInvestment($lenderId);
         return $investmentDetails;
     }
+
+    public function getDeviabTransactionDetailsAction($lenderId)
+    {
+        $investmentService = $this->container->get('investment_service');
+        $investmentDetails = $investmentService->getDeviabTransactionDetails($lenderId);
+        return $investmentDetails;
+    }
+
+    public function getLenderTransactionDetailsAction($lenderId)
+    {
+        $investmentService = $this->container->get('investment_service');
+        $investmentDetails = $investmentService->getLenderTransactionDetails($lenderId);
+        return $investmentDetails;
+    }
+
+
 }

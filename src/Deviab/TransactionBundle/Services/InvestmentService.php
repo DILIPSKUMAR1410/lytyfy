@@ -87,4 +87,56 @@ class InvestmentService extends BaseService
         return $EMR;
     }
 
+    /**
+     * @param $lenderId
+     * @return View
+     */
+    public function getDeviabTransactionDetails($lenderId)
+    {
+
+        $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
+        $lender = $lenderRepository->find($lenderId);
+
+
+        if ($lender != null) {
+            $dlt = $lender->getToLenderTransactions();
+            $ldt = $lender->getFromLenderTransactions();
+
+            $response = array('dlt' => $dlt, 'ldt' => $ldt);
+            return View::create($response, Codes::HTTP_OK);
+        }
+
+
+        return View::create("Transaction not found", Codes::HTTP_BAD_REQUEST);
+
+
+    }
+
+    /**
+     * @param $lenderId
+     */
+    public function getLenderTransactionDetails($lenderId)
+    {
+
+        $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
+        $lender = $lenderRepository->find($lenderId);
+        if ($lender == null) {
+            return View::create("Transaction not found", Codes::HTTP_BAD_REQUEST);
+        }
+        $query = $this->em->createQuery('select t.amount,t.timestamp from DeviabTransactionBundle:LenderDeviabTransaction t where t.lender = :lender')->setParameter
+        ('lender', $lender);
+        $result = $query->getResult();
+
+
+        return View::create($result, Codes::HTTP_OK);
+
+    }
+
+
+
+
+
+
+
+
 }
