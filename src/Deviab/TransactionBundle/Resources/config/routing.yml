@@ -1,5 +1,5 @@
 get_lender_investment:
-    pattern:  /{lenderId}
+    pattern:  lenders/{lenderId}
     defaults: { _controller: DeviabTransactionBundle:Investment:getLenderInvestment}
     requirements:
         _method: GET
@@ -17,4 +17,14 @@ payu_success_webhook:
     defaults: { _controller: DeviabTransactionBundle:Transaction:payuSuccessWebhook}
     requirements:
         _method: GET
+
+
+get_wallet:
+    pattern:  /{lenderId}/wallet
+    defaults: { _controller: DeviabTransactionBundle:Investment:getWallet}
+    requirements:
+        _method: GET
+        lenderId: "\d+"
+
+
 

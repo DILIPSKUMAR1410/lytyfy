@@ -39,7 +39,7 @@ class LenderDeviabTransaction
     /**
      * @var \DateTime
      *
-     * @Groups({"profile"})
+     * @Groups({"profile","transactionPage"})
      * @ORM\Column(name="timestamp", type="datetime")
      */
     private $timestamp;
@@ -47,7 +47,7 @@ class LenderDeviabTransaction
     /**
      * @var float
      *
-     * @Groups({"profile"})
+     * @Groups({"profile","transactionPage"})
      * @ORM\Column(name="amount", type="float")
      */
     private $amount;
@@ -62,13 +62,14 @@ class LenderDeviabTransaction
     /**
      * @var string
      *
+     * @Groups({"transactionPage"})
      * @ORM\Column(name="merchant_transaction_id", type="string")
      */
     private $merchantTransactionId;
     
     /**
      * @var string
-     *
+     * @Groups({"transactionPage"})
      * @ORM\Column(name="status", type="string")
      */
     private $status;
@@ -102,6 +103,7 @@ class LenderDeviabTransaction
     private $customerName;
     
     /**
+     * this field is for lenderId
      * @var string
      *
      * @ORM\Column(name="udf_1", type="string")
@@ -116,6 +118,7 @@ class LenderDeviabTransaction
     private $udf2;
     
     /**
+     * this field is for projectId
      * @var string
      *
      * @ORM\Column(name="udf_3", type="string")
@@ -139,6 +142,7 @@ class LenderDeviabTransaction
     /**
      * @var string
      *
+     * @Groups({"transactionPage"})
      * @ORM\Column(name="product_info", type="string")
      */
     private $productInfo;

@@ -14,7 +14,6 @@ use Doctrine\Bundle\DoctrineBundle\Registry as Doctrine;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Util\Codes;
 use Deviab\BorrowerBundle\Services\BaseService;
-use Symfony\Component\HttpFoundation\Request;
 
 class InvestmentService extends BaseService
 {
@@ -57,18 +56,27 @@ class InvestmentService extends BaseService
      * @param LenderDeviabTransaction $lenderDeviabTransaction
      * @return View
      */
-    public function capturePayUTransaction(Request $request)
+    public function capturePayUTransaction(LenderDeviabTransaction $lenderDeviabTransaction)
     {
-        if ($request != null) {
-            $params = $request->request->all();
+        if ($lenderDeviabTransaction != null) {
+
+            $lenderId = $lenderDeviabTransaction->getUdf1();
+            $projectId = $lenderDeviabTransaction->getUdf2();
+            $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
+            $lender = $lenderRepository->find($lenderId);
+            $projectRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:project');
+            $project = $projectRepository->find($projectId);
+            $lenderDeviabTransaction->setLender($lender);
+            $lenderDeviabTransaction->setProject($project);
+
             $lenderDeviabTransaction->getProject()->creditCapitalRaised($lenderDeviabTransaction->getAmount());
             $lenderDeviabTransaction->getLender()->getCurrentStatus()->creditPrincipalLeft($lenderDeviabTransaction->getAmount());
             $il = $lenderDeviabTransaction->getAmount() * 0.6 / 100;
             $lenderDeviabTransaction->getLender()->getCurrentStatus()->creditInterrestLeft($il);
             $EMR = $this->getEMR($lenderDeviabTransaction->getLender()->getCurrentStatus());
             $lenderDeviabTransaction->getLender()->getCurrentStatus()->setExpectedMonthlyReturn($EMR);
-            $this->em->persist($lenderDeviabTransaction->getProject());
-            $this->em->persist($lenderDeviabTransaction->getLender()->getCurrentStatus());
+            $this->em->merge($lenderDeviabTransaction->getProject());
+            $this->em->merge($lenderDeviabTransaction->getLender()->getCurrentStatus());
             $this->em->persist($lenderDeviabTransaction);
             $this->em->flush();
             return View::create("Transaction captured", Codes::HTTP_OK);
@@ -84,5 +92,39 @@ class InvestmentService extends BaseService
         $EMR = $pl / $tl + ($pl * 2 / 100) + $il;
         return $EMR;
     }
+
+    /**
+     * @param $lenderId
+     * @return View
+     */
+    public function getWalletSummary($lenderId)
+    {
+
+        $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
+        $lender = $lenderRepository->find($lenderId);
+
+
+        if ($lender != null) {
+            $dlt = $lender->getToLenderTransactions();
+            $ldt = $lender->getFromLenderTransactions();
+
+            $response = array('dlt' => $dlt, 'ldt' => $ldt);
+            return View::create($response, Codes::HTTP_OK);
+        }
+
+
+        return View::create("Transaction not found", Codes::HTTP_BAD_REQUEST);
+
+
+    }
+
+
+
+
+
+
+
+
+
 
 }

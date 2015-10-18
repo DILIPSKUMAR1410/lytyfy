@@ -21,5 +21,4 @@ class RepaymentController extends Controller
         $response = $repaymentService->lenderRepayment($projectId);
         return $response;
     }
-
 }

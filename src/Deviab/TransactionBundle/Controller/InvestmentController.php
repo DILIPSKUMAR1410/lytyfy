@@ -23,4 +23,15 @@ class InvestmentController extends Controller
     }
 
 
+    public function getWalletAction($lenderId)
+    {
+        $transactionService = $this->container->get('investment_service');
+        $transactionDetails = $transactionService->getWalletSummary($lenderId);
+        $context = SerializationContext::create()->setGroups(array('transactionPage'));
+        return $transactionDetails->setSerializationContext($context);
+    }
+
+
+
+
 }

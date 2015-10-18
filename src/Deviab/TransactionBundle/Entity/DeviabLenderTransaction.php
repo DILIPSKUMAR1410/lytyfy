@@ -39,7 +39,7 @@ class DeviabLenderTransaction
     /**
      * @var \DateTime
      *
-     * @Groups({"profile"})
+     * @Groups({"profile","transactionPage"})
      * @ORM\Column(name="timestamp", type="datetime")
      */
     private $timestamp;
@@ -47,7 +47,7 @@ class DeviabLenderTransaction
     /**
      * @var float
      *
-     * @Groups({"profile"})
+     * @Groups({"profile","transactionPage"})
      * @ORM\Column(name="amount", type="float")
      */
     private $amount;

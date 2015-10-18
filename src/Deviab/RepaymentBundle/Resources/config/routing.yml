@@ -4,3 +4,10 @@ repay_lenders:
     requirements:
         _method: GET
         projectId: "\d+"
+
+get_lender_transactions:
+    pattern:  lenders/{lenderId}/wallet
+    defaults: { _controller: DeviabRepaymentBundle:Repayment:getWalletTransactions}
+    requirements:
+        _method: GET
+        lenderId: "\d+"
