@@ -1,11 +1,10 @@
-#project-details {
-    border: 1px solid #ccc;
-    padding-top: 25px;
-}
+
 
 #project-expl {
-    overflow-y : scroll;
-    max-height: 300px; 
+    overflow-y: scroll;
+    max-height: 300px;
+    line-height: 32px;
+    color: #777;
 }
 #borrower_img {
     max-width: 100%;

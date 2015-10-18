@@ -1,35 +1,77 @@
-<br>
-<div id="light-a-life" class="container">Light a life. Together</div>
-<div class="container">
-    <center>
-        <div class="container">
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                <div id="">
-                    <img class="menu-type img-responsive" src="/bundles/fabric/images/newbihar.png" alt="loding....">
-                </div>
-            </div>
-            <div id="project-details-container" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <div class="project-details"><span> 42 Backers</span></div>
-                <div class="project-details"><span> Quantum : 75000</span></div>
-                <div class="project-details"><span>28 Days Left</span></div>
-                <a id="register-btn" href="/#/project">
-                    <div id="learn-more" class="project-details"><span>Learn More</span></div>
-                </a>
-            </div>
+<div id="home-bc-img" class="img-responsive page-height no-padd">
+    <img id="home-bc-img" src="/bundles/fabric/images/lytyfy12.png" class="img-responsive">
+    <!-- </div>
+    <div id="banner">
+        <img id="bc-img-banner" src="/bundles/fabric/images/index/banner.jpg" class="img-responsive">
+    </div> -->
+</div>
+<div id="home-project-details" class="container-fluid tmrgn-25" ng-controller="HomeController">
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center tmrgn-25">
+        <div class="project-details"><span> <span class="loading"></span>{[{indexResponce.backers}]} Investors</span>
         </div>
-    </center>
-    <div class="space"></div>
-    <div class="border">
     </div>
-    <div id="info-graphics-container" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="col-lg-4">
-            <img class="menu-type img-responsive" src="/bundles/fabric/images/info1.jpg" alt="loding...."/>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center tmrgn-25">
+        <div class="project-details"><span> Amount Raised : ₹<span
+                class="loading"></span> {[{indexResponce.quantum}]}</span></div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center tmrgn-25">
+        <div class="project-details"><span>28 Days To Go</span></div>
+    </div>
+    <a id="register-btn" href="/#/project">
+        <div class=" col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center tmrgn-25">
+            <div id="invest-now" class="project-details"><span>Invest Now</span></div>
         </div>
-        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-            <img class="menu-type img-responsive" src="/bundles/fabric/images/info3.jpg" alt="loding...."/>
+    </a>
+</div>
+<div id="about-container" class="container-fluid">
+    <div id="about-energy-desc">
+        1.4 billion people in the world have no access to power and 400 million of them live in rural India. Lytyfy aims
+        to eradicate energy inequity in India and our mission is to provide reliable and affordable energy services to
+        low income rural households. We promote clean energy access in rural India by synergizing community, technology
+        and finance.
+    </div>
+    <div class="container border tmrgn-25"></div>
+</div>
+<div id="solutions-outer-container" class="container tmrgn-50">
+    <div id="solutions-container" class="row">
+        <div class=" container col-lg-4 col-md-4 col-sm-4">
+            <div id="solution-img" class="graphics"></div>
+            <div id="solution-desc">
+                Lytyfy helps in providing quality solar energy solutions to low income rural families at their
+                doorsteps.
+            </div>
+            <div class="border-margin visible-xs"></div>
         </div>
-        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-            <img class="menu-type img-responsive" src="/bundles/fabric/images/info2.jpg" alt="loding...."/>
+        <div class=" container col-lg-4 col-md-4 col-sm-4">
+            <div id="csr-img" class="graphics"></div>
+            <div id="consulting-desc">
+                The major stumbling block in alleviating energy poverty is lack of access to finance and with Lytyfy we
+                are determined to change that.
+            </div>
+            <div class="border-margin visible-xs"></div>
+        </div>
+        <div class="container col-lg-4 col-md-4 col-sm-4">
+            <div id="consulting-img" class="graphics"></div>
+            <div id="csr-desc" class="sl-box1">
+                We support the creation of self sustaining markets and factor in customer's ability to pay while
+                designing energy and credit solutions for them.
+            </div>
         </div>
     </div>
 </div>
+<div class="tmrgn-50"></div>
+<script>
+    $("#home-bc-img").load(function () {
+        // Handler for .load() called.
+    });
+    var h = $(window).height();
+    var w = $(window).width();
+    if (w < 765)
+        $("#home-bc-img").css("height", (h - nav_height) / 2);
+
+</script>
+<style>
+    #nav-home-link {
+        color: #0070B9;
+    }
+</style>

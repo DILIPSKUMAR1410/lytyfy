@@ -5,17 +5,26 @@ get_lender_investment:
         _method: GET
         lenderId: "\d+"
 
-get_deviab_transaction:
-    pattern:  deviabtransaction/{lenderId}
-    defaults: { _controller: DeviabTransactionBundle:Investment:getDeviabTransactionDetails}
+get_transaction_form_data:
+    pattern:  /{lenderId}/fd
+    defaults: { _controller: DeviabTransactionBundle:Transaction:transaction}
     requirements:
         _method: GET
         lenderId: "\d+"
 
-get_lender_transaction:
-    pattern:  lenderstransaction/{lenderId}
-    defaults: { _controller: DeviabTransactionBundle:Investment:getLenderTransactionDetails}
+payu_success_webhook:
+    pattern:  /webhook/success
+    defaults: { _controller: DeviabTransactionBundle:Transaction:payuSuccessWebhook}
+    requirements:
+        _method: GET
+
+
+get_wallet:
+    pattern:  /{lenderId}/wallet
+    defaults: { _controller: DeviabTransactionBundle:Investment:getWallet}
     requirements:
         _method: GET
         lenderId: "\d+"
+
+
 

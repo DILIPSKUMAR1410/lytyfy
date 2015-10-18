@@ -20,7 +20,8 @@ class LenderService extends BaseService
         $this->doctrine = $doctrine;
     }
 
-    public function addLenderDetail($params = []) {
+    public function addLenderDetail($params = [])
+    {
         $lender = new LenderDetails();
         if (isset($params['fname'])) {
             $lender->setFname($params['fname']);

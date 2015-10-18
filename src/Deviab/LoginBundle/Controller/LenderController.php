@@ -90,7 +90,7 @@ class LenderController extends Controller
         }
 
         return View::create($lender, Codes::HTTP_OK)
-        ->setSerializationContext(SerializationContext::create()
-            ->setGroups(array('profile')));
+            ->setSerializationContext(SerializationContext::create()
+                ->setGroups(array('profile')));
     }
 }

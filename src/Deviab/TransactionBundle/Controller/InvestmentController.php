@@ -22,19 +22,16 @@ class InvestmentController extends Controller
         return $investmentDetails;
     }
 
-    public function getDeviabTransactionDetailsAction($lenderId)
+
+    public function getWalletAction($lenderId)
     {
-        $investmentService = $this->container->get('investment_service');
-        $investmentDetails = $investmentService->getDeviabTransactionDetails($lenderId);
-        return $investmentDetails;
+        $transactionService = $this->container->get('investment_service');
+        $transactionDetails = $transactionService->getWalletSummary($lenderId);
+        $context = SerializationContext::create()->setGroups(array('transactionPage'));
+        return $transactionDetails->setSerializationContext($context);
     }
 
-    public function getLenderTransactionDetailsAction($lenderId)
-    {
-        $investmentService = $this->container->get('investment_service');
-        $investmentDetails = $investmentService->getLenderTransactionDetails($lenderId);
-        return $investmentDetails;
-    }
+
 
 
 }
