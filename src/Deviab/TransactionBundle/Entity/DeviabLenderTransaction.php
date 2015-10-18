@@ -16,7 +16,7 @@ class DeviabLenderTransaction
     /**
      * @var integer
      *
-     * @Groups({"profile",wallet_summary})
+     * @Groups({"profile"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")

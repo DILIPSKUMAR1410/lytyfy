@@ -16,7 +16,7 @@ class LenderDeviabTransaction
     /**
      * @var integer
      *
-     * @Groups({"profile","walletSummary"})
+     * @Groups({"profile"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
