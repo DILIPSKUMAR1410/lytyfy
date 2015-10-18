@@ -21,14 +21,4 @@ class RepaymentController extends Controller
         $response = $repaymentService->lenderRepayment($projectId);
         return $response;
     }
-
-    public function getWalletTransactionsAction($lenderId)
-    {
-        $repaymentService = $this->container->get('repayment_service');
-        $response = $repaymentService->getWalletTransactions($lenderId);
-        $context = SerializationContext::create()->setGroups(array('transactionPage'));
-        return $response->setSerializationContext($context);
-        return $response;
-    }
-
 }
