@@ -68,7 +68,6 @@ class InvestmentService extends BaseService
             $project = $projectRepository->find($projectId);
             $lenderDeviabTransaction->setLender($lender);
             $lenderDeviabTransaction->setProject($project);
-
             $lenderDeviabTransaction->getProject()->creditCapitalRaised($lenderDeviabTransaction->getAmount());
             $lenderDeviabTransaction->getLender()->getCurrentStatus()->creditPrincipalLeft($lenderDeviabTransaction->getAmount());
             $il = $lenderDeviabTransaction->getAmount() * 0.6 / 100;
@@ -99,32 +98,18 @@ class InvestmentService extends BaseService
      */
     public function getWalletSummary($lenderId)
     {
-
         $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
         $lender = $lenderRepository->find($lenderId);
-
-
         if ($lender != null) {
             $dlt = $lender->getToLenderTransactions();
             $ldt = $lender->getFromLenderTransactions();
-
             $response = array('dlt' => $dlt, 'ldt' => $ldt);
             return View::create($response, Codes::HTTP_OK);
         }
-
-
         return View::create("Transaction not found", Codes::HTTP_BAD_REQUEST);
 
 
     }
-
-
-
-
-
-
-
-
 
 
 }

@@ -28,7 +28,7 @@ class ProjectService extends BaseService
      * @param $projectId
      * @return View
      */
-    public function getFeaturedProject($projectId)
+    public function getProjectStatus($projectId)
     {
         $projectRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:Project');
         $project = $projectRepository->find($projectId);
@@ -36,16 +36,18 @@ class ProjectService extends BaseService
             return View::create("project not found", Codes::HTTP_BAD_REQUEST);
         $quantum = $project->getCapitalAmount();
         $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
-        $backers = count($lenderRepository->findAll());
-        $response = array('quantum' => $quantum, 'backers' => $backers);
+        $lenders = $lenderRepository->findAll();
+        $borrowers = $project->getBorrowers();
+        $response = array('quantum' => $quantum, 'lenders' => $lenders, 'borrowers' => $borrowers);
         return View::create($response, Codes::HTTP_OK);
     }
+
 
     /**
      * @param $projectId
      * @return View
      */
-    public function getWallet($projectId)
+    public function getFeaturedProject($projectId)
     {
         $projectRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:Project');
         $project = $projectRepository->find($projectId);
