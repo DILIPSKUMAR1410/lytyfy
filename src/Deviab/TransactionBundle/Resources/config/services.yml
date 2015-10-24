@@ -2,3 +2,6 @@ services:
   investment_service:
         class: Deviab\TransactionBundle\Services\InvestmentService
         arguments: [@doctrine]
+
+  utility_service:
+        class: Deviab\TransactionBundle\Services\UtilityService
