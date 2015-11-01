@@ -227,7 +227,7 @@
             $("#amount-errmsg").html("Please Enter 500 or more than 500 Amount.").show().fadeOut(4000);
             return;
         }
-        $('#procced-button').prop('disabled', true);
+        // $('#procced-button').prop('disabled', true);
         $(".se-pre-con-login").show();
 		var res = $.get('/api/v1/lenders/4/fd?amount='+amount);
 		res.success(function(data, status, headers, config) {
@@ -235,7 +235,9 @@
 			fillFormValue(data);
 		});
 		res.error(function(data, status, headers, config) {
-            alert("failure message: " + JSON.stringify({data: data}));
+            //alert("failure message: " + JSON.stringify({data: data}));
+            $(".se-pre-con-login").hide();
+           $("#login-btn").trigger("click");
 			console.log( "failure message: " + JSON.stringify({data: data}));
 		});
 
@@ -251,9 +253,7 @@
 			$('#form-furl').val(data.furl);
 			$('#form-txn-id').val(data.txnid);
 			$("#frm-procced-button").click();
-		}
-
-    	
+		}    	
     });
     $(document).ready(function () {
         $("#form-amount").keypress(function (e) {
