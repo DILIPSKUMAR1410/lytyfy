@@ -9,6 +9,7 @@
 namespace Deviab\TransactionBundle\Controller;
 
 use Deviab\LoginBundle\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Deviab\TransactionBundle\Entity\LenderDeviabTransaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\View\View;
@@ -72,7 +73,7 @@ class TransactionController extends Controller
     }
 
 
-    public function payuSuccessWebhookAction(Request $request)
+    public function payuSuccessWebhookAction( Request $request )
     {
         $investmentService = $this->container->get('investment_service');
         $response = $investmentService->capturePayUTransaction($request);

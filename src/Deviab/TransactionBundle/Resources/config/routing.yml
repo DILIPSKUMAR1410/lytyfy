@@ -16,7 +16,7 @@ payu_success_webhook:
     pattern:  /webhook/success
     defaults: { _controller: DeviabTransactionBundle:Transaction:payuSuccessWebhook}
     requirements:
-        _method: GET
+        _method: POST
 
 
 get_wallet:

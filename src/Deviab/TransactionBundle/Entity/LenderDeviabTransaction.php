@@ -70,14 +70,14 @@ class LenderDeviabTransaction
     /**
      * @var string
      * @Groups({"transactionPage"})
-     * @ORM\Column(name="status", type="string")
+     * @ORM\Column(name="status", type="string",nullable=true)
      */
     private $status;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="payment_mode", type="string")
+     * @ORM\Column(name="payment_mode", type="string",nullable=true)
      */
     private $paymentMode;
     
@@ -106,14 +106,14 @@ class LenderDeviabTransaction
      * this field is for lenderId
      * @var string
      *
-     * @ORM\Column(name="udf_1", type="string")
+     * @ORM\Column(name="udf_1", type="string",nullable=true)
      */
     private $udf1;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="udf_2", type="string")
+     * @ORM\Column(name="udf_2", type="string",nullable=true)
      */
     private $udf2;
     
@@ -121,21 +121,21 @@ class LenderDeviabTransaction
      * this field is for projectId
      * @var string
      *
-     * @ORM\Column(name="udf_3", type="string")
+     * @ORM\Column(name="udf_3", type="string",nullable=true,nullable=true)
      */
     private $udf3;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="udf_4", type="string")
+     * @ORM\Column(name="udf_4", type="string",nullable=true)
      */
     private $udf4;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="udf_5", type="string")
+     * @ORM\Column(name="udf_5", type="string",nullable=true)
      */
     private $udf5;
     
@@ -143,42 +143,42 @@ class LenderDeviabTransaction
      * @var string
      *
      * @Groups({"transactionPage"})
-     * @ORM\Column(name="product_info", type="string")
+     * @ORM\Column(name="product_info", type="string",nullable=true)
      */
     private $productInfo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="additional_charges", type="string")
+     * @ORM\Column(name="additional_charges", type="string",nullable=true)
      */
     private $additionalCharges;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="split_info", type="string")
+     * @ORM\Column(name="split_info", type="string",nullable=true)
      */
     private $splitInfo;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="error_message", type="string")
+     * @ORM\Column(name="error_message", type="string",nullable=true)
      */
     private $errorMessage;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="notification_id", type="string")
+     * @ORM\Column(name="notification_id", type="string",nullable=true)
      */
     private $notificationId;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="hash", type="string")
+     * @ORM\Column(name="hash", type="string",nullable=true)
      */
     private $hash;
 
