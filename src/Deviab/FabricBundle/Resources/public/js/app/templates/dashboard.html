@@ -40,22 +40,21 @@
             Amount Withdrawn = ₹<span class="loading"></span><span style="min-width:50px">{[{profileResponce.amountWithdrawn}]}</span>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
         <table class="table table-bordered">
             <thead>
             <tr>
                 <th class="text-center">Total Repayment</th>
-                <th class="text-center">₹<span style="min-width:50px">{[{profileResponce.principalRepayment + profileResponce.interestRepayment}]}</span></th>
+                <th class="text-center" style="min-width:100px">₹<span class="loading"></span>{[{profileResponce.principalRepayment + profileResponce.interestRepayment}]}</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>Principal Repayment</td>
-                <td>₹<span style="min-width:50px">{[{profileResponce.principalRepayment}]}</span></td>
-            </tr>
+                <td style="min-width:100px">₹<span class="loading"></span>{[{profileResponce.principalRepayment}]}</td>
             <tr>
                 <td>Interest Repayment</td>
-                <td>₹<span style="min-width:50px">{[{profileResponce.interestRepayment}]}</span></td>
+                <td style="min-width:100px">₹<span class="loading"></span>{[{profileResponce.interestRepayment}]}</td>
             </tr>
             </tbody>
         </table>
