@@ -4,23 +4,22 @@
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div class="grey-border">
             <div>Available Credit</div>
-            <div>₹500</div>
+            <div>₹<span class="loading"></span>{[{profileResponce.lenderWalletBalance}]}</div>
         </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div class="grey-border">
             <div>Amount Lent</div>
             <div>₹ <span class="loading"></span>
-                {[{profileResponce.to_lender_transactions[0].project.to_project_lender_transactions[0].amount}]}
+                {[{profileResponce.totalInvestment}]}
             </div>
         </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div class="grey-border">
             <div>EMR</div>
-            <div class="loading-container">₹ <span class="loading"></span>
-                {[{profileResponce.to_lender_transactions[0].project.to_project_lender_transactions[0].lender.
-                current_status. expected_monthly_return}]}
+            <div class="loading-container">₹<span class="loading"></span>
+                {[{profileResponce.expectedMonthlyReturn}]}
             </div>
         </div>
     </div>
@@ -33,12 +32,12 @@
     <div class="space"></div>
     <div class="col-lg-offset-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
         <div class="grey-border">
-            Total Investment = ₹<span class="loading"></span><span style="min-width:50px">{[{profileResponce.to_lender_transactions[0].project.to_project_lender_transactions[0].amount}]}</span>
+            Total Investment = ₹<span class="loading"></span><span style="min-width:50px">{[{profileResponce.totalReturns}]}</span>
         </div>
         <br>
 
         <div class="grey-border">
-            Amount Withdrawn =<span>₹<img class="loading" src="/bundles/fabric/images/loading_bar.gif"></span><span>{[{withdraw}]}</span>
+            Amount Withdrawn =<span>₹0</span>
         </div>
     </div>
     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
@@ -46,17 +45,17 @@
             <thead>
             <tr>
                 <th class="text-center">Total Repayment</th>
-                <th class="text-center">₹4000</th>
+                <th class="text-center">₹<span style="min-width:50px">{[{profileResponce.totalRepayment}]}</span></th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>Principal Repayment</td>
-                <td>₹2000</td>
+                <td>₹<span style="min-width:50px">{[{profileResponce.principalRepayment}]}</span></td>
             </tr>
             <tr>
                 <td>Interest Repayment</td>
-                <td>₹300</td>
+                <td>₹<span style="min-width:50px">{[{profileResponce.interestRepayment}]}</span></td>
             </tr>
             </tbody>
         </table>

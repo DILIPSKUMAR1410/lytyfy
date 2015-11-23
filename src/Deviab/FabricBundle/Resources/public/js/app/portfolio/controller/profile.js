@@ -1,6 +1,6 @@
 app.controller("ProfileController", function ($scope, $http) {
     //$scope.profileResponce = null;
-    var res = $http.get('/api/v1/lender');
+    var res = $http.get('/api/v1/lenders/lenders/4');
     res.success(function (data, status, headers, config) {
         $scope.profileResponce = data;
         $(".loading").hide();
@@ -21,3 +21,4 @@ app.controller("HomeController", function ($scope, $http) {
         console.log("failure message: " + JSON.stringify({data: data}));
     });
 });
+
