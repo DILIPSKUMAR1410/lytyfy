@@ -7,7 +7,6 @@ app.config(function ($routeProvider, $interpolateProvider) {
         }).
         when('/project', {
             templateUrl: '/bundles/fabric/js/app/templates/project.html',
-            controller: 'ProjectController'
         }).
         when('/faqs', {
             templateUrl: '/bundles/fabric/js/app/templates/faqs.html'
@@ -20,6 +19,5 @@ app.config(function ($routeProvider, $interpolateProvider) {
         }).
         when('/dashboard', {
             templateUrl: '/bundles/fabric/js/app/templates/dashboard.html',
-            controller: 'ProfileController'
         });
 });
