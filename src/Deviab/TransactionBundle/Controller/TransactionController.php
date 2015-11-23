@@ -29,7 +29,7 @@ class TransactionController extends Controller
             $email = $user->getEmail();
             $firstname = $lender->getFname();
             $phone = $lender->getPrimaryMobileNumber();
-            $txnid = uniqid($user->getEmail());
+            $txnid = uniqid($user->getEmail() + $amount);
             $lenderId = $lender->getId();
             $projectId = 1;
             $data = "vz70Zb" . "|" . $txnid . "|" . $amount . "|" . "DhamdhaPilot" . "|" . $firstname . "|" . $email . "|" . $lenderId . "|" . $projectId . "|||||||||" . "k1wOOh0b";
@@ -47,7 +47,7 @@ class TransactionController extends Controller
                 'amount' => $amount,
                 'udf1' => $lenderId,
                 'udf2' => $projectId,
-                'surl' => $host . "/transaction/post/succes",
+                'surl' => $host . "/transaction/post/success",
                 'furl' => $host . "/transaction/post/failure ",
                 'curl' => $host . "/transaction/post/cancel",
                 'hash' => $hash,

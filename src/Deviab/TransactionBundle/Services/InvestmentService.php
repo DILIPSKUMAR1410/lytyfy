@@ -37,7 +37,9 @@ class InvestmentService extends BaseService
             $lenderWalletBalance = $lender->getWallet()->getCredits();
             $lenderInvestments = $lender->getFromLenderTransactions();
             $lenderReturns = $lender->getToLenderTransactions();
-
+            $principalRepayment = 4500;
+            $interestRepayment = 2500;
+            $amountWithdrawn = 1300;
             $totalInvestment = 0;
             foreach ($lenderInvestments as $transaction) {
                 $totalInvestment = $totalInvestment + $transaction->getAmount();
@@ -46,7 +48,7 @@ class InvestmentService extends BaseService
             foreach ($lenderReturns as $return) {
                 $totalReturns = $totalReturns + $return->getAmount();
             }
-            $response = array('lenderWalletBalance' => $lenderWalletBalance, 'totalInvestment' => $totalInvestment, 'totalReturns' => $totalReturns, 'expectedMonthlyReturn' => $expectedMonthlyReturn);
+            $response = array('lenderWalletBalance' => $lenderWalletBalance, 'totalInvestment' => $totalInvestment, 'totalReturns' => $totalReturns, 'expectedMonthlyReturn' => $expectedMonthlyReturn, 'principalRepayment' => $principalRepayment, 'interestRepayment' => $interestRepayment, 'amountWithdrawn' => $amountWithdrawn);
             return View::create($response, Codes::HTTP_OK);
         }
         return View::create("lender not found", Codes::HTTP_BAD_REQUEST);
