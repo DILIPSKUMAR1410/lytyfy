@@ -32,12 +32,12 @@
     <div class="space"></div>
     <div class="col-lg-offset-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
         <div class="grey-border">
-            Total Investment = ₹<span class="loading"></span><span style="min-width:50px">{[{profileResponce.totalReturns}]}</span>
+            Total Investment = ₹<span class="loading"></span><span style="min-width:50px">{[{profileResponce.totalInvestment}]}</span>
         </div>
         <br>
 
         <div class="grey-border">
-            Amount Withdrawn =<span>₹0</span>
+            Amount Withdrawn = ₹<span class="loading"></span><span style="min-width:50px">{[{profileResponce.amountWithdrawn}]}</span>
         </div>
     </div>
     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
@@ -45,7 +45,7 @@
             <thead>
             <tr>
                 <th class="text-center">Total Repayment</th>
-                <th class="text-center">₹<span style="min-width:50px">{[{profileResponce.totalRepayment}]}</span></th>
+                <th class="text-center">₹<span style="min-width:50px">{[{profileResponce.principalRepayment + profileResponce.interestRepayment}]}</span></th>
             </tr>
             </thead>
             <tbody>
