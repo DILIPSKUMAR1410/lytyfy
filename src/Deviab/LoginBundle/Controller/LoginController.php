@@ -55,51 +55,51 @@ class LoginController extends Controller
         return new Response(json_encode(['email' => $email]), Codes::HTTP_OK);
     }
 
-    public function signupAction()
-    {
-        $requestParams = $this->getRequest()->request->all();
-        $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
-        if (count(array_intersect(array_keys($requestParams), ['email', 'password'])) < 2) {
-            return new Response(json_encode(['error' => 'Email & Password are mandatory']), Codes::HTTP_BAD_REQUEST);
-        }
-        $username = $requestParams['username'];
-        $email = $requestParams['email'];
-        $password = $requestParams['password'];
-
-        $em = $this->container->get('doctrine')->getEntityManager();
-        $factory = $this->container->get('security.encoder_factory');
-        $user = $em->getRepository('DeviabLoginBundle:User')->findOneBy(['email' => $email]);
-        if ($user) {
-            return new Response(json_encode(['error' => 'Email Already registered']), Codes::HTTP_BAD_REQUEST);
-        }
-
-        $user = new User();
-        $user->setUsername($username);
-        $user->setEmail($email);
-        $user->setPlainPassword($password);
-        $user->setEnabled(!$confirmationEnabled);
-        $user->addRole('ROLE_LENDER');
-        $userManager = $this->container->get('fos_user.user_manager');
-        $userManager->updateUser($user);
-        $lender = $this->container->get('lender_service')->addLenderDetail([
-            'fname' => $requestParams['username'],
-            'user' => $user
-        ]);
-        $form = $this->container->get('fos_user.registration.form');
-        $formHandler = $this->container->get('fos_user.registration.form.handler');
-
-        $formHandler->jaiHo($user, true);
-        if ($confirmationEnabled) {
-            $this->container->get('session')->set('fos_user_send_confirmation_email/email', $user->getEmail());
-            return new Response(json_encode(['success' => 'Confirmation Email Sent']), Codes::HTTP_OK);
-        }
-        return new Response(json_encode(['success' => 'Login Now']), Codes::HTTP_OK);
-    }
+//    public function signupAction()
+//    {
+//        $requestParams = $this->getRequest()->request->all();
+//        $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
+//        if (count(array_intersect(array_keys($requestParams), ['email', 'password'])) < 2) {
+//            return new Response(json_encode(['error' => 'Email & Password are mandatory']), Codes::HTTP_BAD_REQUEST);
+//        }
+//        $username = $requestParams['username'];
+//        $email = $requestParams['email'];
+//        $password = $requestParams['password'];
+//
+//        $em = $this->container->get('doctrine')->getEntityManager();
+//        $factory = $this->container->get('security.encoder_factory');
+//        $user = $em->getRepository('DeviabLoginBundle:User')->findOneBy(['email' => $email]);
+//        if ($user) {
+//            return new Response(json_encode(['error' => 'Email Already registered']), Codes::HTTP_BAD_REQUEST);
+//        }
+//
+//        $user = new User();
+//        $user->setUsername($username);
+//        $user->setEmail($email);
+//        $user->setPlainPassword($password);
+//        $user->setEnabled(!$confirmationEnabled);
+//        $user->addRole('ROLE_LENDER');
+//        $userManager = $this->container->get('fos_user.user_manager');
+//        $userManager->updateUser($user);
+//        $lender = $this->container->get('lender_service')->addLenderDetail([
+//            'fname' => $requestParams['username'],
+//            'user' => $user
+//        ]);
+//        $form = $this->container->get('fos_user.registration.form');
+//        $formHandler = $this->container->get('fos_user.registration.form.handler');
+//
+//        $formHandler->jaiHo($user, true);
+//        if ($confirmationEnabled) {
+//            $this->container->get('session')->set('fos_user_send_confirmation_email/email', $user->getEmail());
+//            return new Response(json_encode(['success' => 'Confirmation Email Sent']), Codes::HTTP_OK);
+//        }
+//        return new Response(json_encode(['success' => 'Login Now']), Codes::HTTP_OK);
+//    }
 
     public function inviteAction()
     {
-        
-        return new Response(json_encode(['success' => 'Invite will be sent to your email']), Codes::HTTP_BAD_REQUEST);
+
+        return new Response(json_encode(['success' => 'Invite will be sent to your email']), Codes::HTTP_OK);
     }
     public function logoutAction()
     {
