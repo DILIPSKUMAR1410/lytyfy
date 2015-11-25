@@ -96,6 +96,11 @@ class LoginController extends Controller
         return new Response(json_encode(['success' => 'Login Now']), Codes::HTTP_OK);
     }
 
+    public function inviteAction()
+    {
+        
+        return new Response(json_encode(['success' => 'Invite will be sent to your email']), Codes::HTTP_BAD_REQUEST);
+    }
     public function logoutAction()
     {
 
