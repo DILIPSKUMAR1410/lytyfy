@@ -326,97 +326,109 @@
 			},
 		});
 	});
-	$('#signup-btn').click(function () {
-		$("#signup-msg").html('');
-		var name = $("#signup-name").val();
-		var email = $("#signup-email").val();
-		var password = $("#signup-password").val();
-		var confirmPassword = $("#signup-confirm-password").val();
-		var errorMessage;
+	// $('#signup-btn').click(function () {
+	// 	$("#signup-msg").html('');
+	// 	var name = $("#signup-name").val();
+	// 	var email = $("#signup-email").val();
+	// 	var password = $("#signup-password").val();
+	// 	var confirmPassword = $("#signup-confirm-password").val();
+	// 	var errorMessage;
 
-		if (name == "") {
-			errorMessage = "Name Required.";
-			$("#signup-msg").html(errorMessage);
-			return;
-		}
-		if (email == "") {
-			errorMessage = "Email Required.";
-			$("#signup-msg").html(errorMessage);
-			return;
-		}
-		if (password == "") {
-			errorMessage = "Password Required.";
-			$("#signup-msg").html(errorMessage);
-			return;
-		}
-		if (confirmPassword == "") {
-			errorMessage = "Confirn Password Required.";
-			$("#signup-msg").html(errorMessage);
-			return;
-		}
-		if (confirmPassword != password) {
-			errorMessage = "Confirm Password should be same as password.";
-			$("#signup-msg").html(errorMessage);
-			return;
-		}
+	// 	if (name == "") {
+	// 		errorMessage = "Name Required.";
+	// 		$("#signup-msg").html(errorMessage);
+	// 		return;
+	// 	}
+	// 	if (email == "") {
+	// 		errorMessage = "Email Required.";
+	// 		$("#signup-msg").html(errorMessage);
+	// 		return;
+	// 	}
+	// 	if (password == "") {
+	// 		errorMessage = "Password Required.";
+	// 		$("#signup-msg").html(errorMessage);
+	// 		return;
+	// 	}
+	// 	if (confirmPassword == "") {
+	// 		errorMessage = "Confirn Password Required.";
+	// 		$("#signup-msg").html(errorMessage);
+	// 		return;
+	// 	}
+	// 	if (confirmPassword != password) {
+	// 		errorMessage = "Confirm Password should be same as password.";
+	// 		$("#signup-msg").html(errorMessage);
+	// 		return;
+	// 	}
 
-		$(".se-pre-con-login").show();
-		var result = {};
-		$.each($('#signup-form').serializeArray(), function (index, element) {
-			result[element.name] = element.value;
-		});
-		jsonData = {
-			username: result['signup-name'],
-			email: result['signup-email'],
-			password: result['signup-password']
-		};
-		console.log(jsonData);
-		$.ajax({
-			url: "/signup",
-			type: 'POST',
-			data: jsonData,
-			success: function (result) {
-				console.log('Logged In' + result);
-				$("#signup-msg").html("Successfuly Sign-up wait...");
-				setTimeout(
-						function () {
-							$("#signin-msg").html("Please Login now...");
-							$("#signup-msg").html("");
-							$("#signup-name").val("");
-							$("#signup-email").val("");
-							$("#signup-password").val("");
-							$("#signup-confirm-password").val("");
-							$("#signin-link").trigger("click");
-							$(".se-pre-con-login").hide();
-						}, 2000);
-
-			},
-			error: function (errorMessage) {
-				$(".se-pre-con-login").hide();
-				$("#signup-msg").html("This Email is already Registered.");
-				console.log(errorMessage);
-			},
-		});
-	});
-	// $('#signin-btn').click(function () {
-	// 	var data = $('#signin-form').serializeArray();
+	// 	$(".se-pre-con-login").show();
+	// 	var result = {};
+	// 	$.each($('#signup-form').serializeArray(), function (index, element) {
+	// 		result[element.name] = element.value;
+	// 	});
 	// 	jsonData = {
-	// 		'email' : data.signin-email,
-	// 		'password' : data.signin-password
+	// 		username: result['signup-name'],
+	// 		email: result['signup-email'],
+	// 		password: result['signup-password']
 	// 	};
+	// 	console.log(jsonData);
 	// 	$.ajax({
-	// 		url: "/login",
+	// 		url: "/signup",
 	// 		type: 'POST',
-	// 		contentType: 'application/json',
 	// 		data: jsonData,
-	// 		success: function(result){
-	//        		alert('Logged In'+result);
-	//    		},
-	//    		error: function(errorMessage){
-	//        		alert(errorMessage);
-	//    		},
-	//    	});
+	// 		success: function (result) {
+	// 			console.log('Logged In' + result);
+	// 			$("#signup-msg").html("Successfuly Sign-up wait...");
+	// 			setTimeout(
+	// 					function () {
+	// 						$("#signin-msg").html("Please Login now...");
+	// 						$("#signup-msg").html("");
+	// 						$("#signup-name").val("");
+	// 						$("#signup-email").val("");
+	// 						$("#signup-password").val("");
+	// 						$("#signup-confirm-password").val("");
+	// 						$("#signin-link").trigger("click");
+	// 						$(".se-pre-con-login").hide();
+	// 					}, 2000);
+
+	// 		},
+	// 		error: function (errorMessage) {
+	// 			$(".se-pre-con-login").hide();
+	// 			$("#signup-msg").html("This Email is already Registered.");
+	// 			console.log(errorMessage);
+	// 		},
+	// 	});
 	// });
+	$('#signup-btn').click(function () {
+
+		var emailValue = $("#signup-email").val();
+		if(emailValue == '') {
+			$("#signup-msg").html("Email required!");
+			return false;
+		}
+		$(".se-pre-con-login").show();
+		jsonData = {
+			"email":emailValue
+		}
+		
+		$.ajax({
+			url: "/invite",
+			type: 'POST',
+			// contentType: 'application/json',
+			data: jsonData,
+			success: function(result){
+				console.log(result);
+				$("#signup-msg").html(result.success);
+				$("#signup-msg").css("color", "#0070B9");
+				$("#signup-email").val("");
+				$(".se-pre-con-login").hide();
+	   		},
+	   		error: function(errorMessage){
+	   			$(".se-pre-con-login").hide();
+	   			$("#signup-msg").html("Sorry, Please try again!");
+	       		console.log(errorMessage);
+	   		},
+	   	});
+	});
 	$("#signup-name").click(function () {
 		$("#signup-msg").html("");
 	});

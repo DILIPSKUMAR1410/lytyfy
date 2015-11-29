@@ -22,6 +22,7 @@ use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Deviab\LoginBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Model\UserInterface;
 
@@ -98,8 +99,12 @@ class LoginController extends Controller
 
     public function inviteAction()
     {
-
-        return new Response(json_encode(['success' => 'Invite will be sent to your email']), Codes::HTTP_OK);
+        $requestParams = $this->getRequest()->request->all();
+        if (isset($requestParams['email'])) {
+            return new JsonResponse(['success' => 'Invite will be sent to your email ' . $requestParams['email']], Codes::HTTP_OK);
+        } else {
+            return new Response(json_encode(['error' => 'Email Mandatory']), Codes::HTTP_BAD_REQUEST);
+        }
     }
     public function logoutAction()
     {
