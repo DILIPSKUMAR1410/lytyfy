@@ -47,9 +47,9 @@ class TransactionController extends Controller
                 'amount' => $amount,
                 'udf1' => $lenderId,
                 'udf2' => $projectId,
-                'surl' => $host . "/transaction/post/success",
-                'furl' => $host . "/transaction/post/failure ",
-                'curl' => $host . "/transaction/post/cancel",
+                'surl' => "http://try.lytyfy.org",
+                'furl' => "http://try.lytyfy.org",
+                'curl' => "http://try.lytyfy.org",
                 'hash' => $hash,
                 'service_provider' => "payu_paisa"
             );

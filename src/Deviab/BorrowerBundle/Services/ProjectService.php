@@ -65,10 +65,11 @@ class ProjectService extends BaseService
     public function capturePayUTransaction( Request $request )
     {
         if ($request != null) {
-
-            $lenderId = $request->get("udf1");
-            $projectId = $request->get("udf2");
-            $amount = $request->get("amount");
+            $request = $request->getContent();
+            $request = json_decode($request, true);
+            $lenderId = $request['udf1'];
+            $projectId = $request["udf2"];
+            $amount = $request["amount"];
             $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
             $lender = $lenderRepository->find($lenderId);
             $projectRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:project');
@@ -77,12 +78,12 @@ class ProjectService extends BaseService
             $lenderDeviabTransaction->setLender($lender);
             $lenderDeviabTransaction->setProject($project);
             $lenderDeviabTransaction->setAmount($amount);
-            $lenderDeviabTransaction->setTimestamp(new \DateTime($request->get("timestamp")));
-            $lenderDeviabTransaction->setCustomerEmail($request->get("customerEmail"));
-            $lenderDeviabTransaction->setCustomerName($request->get("customerName"));
-            $lenderDeviabTransaction->setMerchantTransactionId($request->get("merchantTransactionId"));
-            $lenderDeviabTransaction->setPaymentId($request->get("paymentId"));
-            $lenderDeviabTransaction->setCustomerPhone($request->get("customerPhone"));
+            $lenderDeviabTransaction->setTimestamp(new \DateTime());
+            $lenderDeviabTransaction->setCustomerEmail($request["customerEmail"]);
+            $lenderDeviabTransaction->setCustomerName($request["customerName"]);
+            $lenderDeviabTransaction->setMerchantTransactionId($request["merchantTransactionId"]);
+            $lenderDeviabTransaction->setPaymentId($request["paymentId"]);
+            $lenderDeviabTransaction->setCustomerPhone($request["customerPhone"]);
             $project->creditCapitalAmount($amount);
             $lender->getCurrentStatus()->creditPrincipalLeft($amount);
             $il = $amount * 0.6 / 100;
