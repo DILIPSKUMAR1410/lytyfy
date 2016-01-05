@@ -35,4 +35,11 @@ class ProjectController extends Controller
         $projectStatus = $projectService->getFeaturedProject($projectId);
         return $projectStatus;
     }
+
+    public function payuSuccessWebhookAction( Request $request )
+    {
+        $investmentService = $this->container->get('project_service');
+        $response = $investmentService->capturePayUTransaction($request);
+        return $response;
+    }
 }
