@@ -11,3 +11,9 @@ get_featured_project:
     requirements:
        _method: GET
        projectId: "\d+"
+
+payu_success_webhook:
+    pattern:  /webhook/success
+    defaults: { _controller: DeviabTransactionBundle:Transaction:payuSuccessWebhook}
+    requirements:
+        _method: POST
