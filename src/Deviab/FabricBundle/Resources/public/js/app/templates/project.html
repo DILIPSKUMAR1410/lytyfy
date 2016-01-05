@@ -74,11 +74,12 @@
                     </div>
                 </div>            	
                 <form method="post" name="0.1_payuForm" action="https://secure.payu.in/_payment.php">
-                    <input id="form-key" type="hidden" name="key" value="vz70Zb" ng-model="user.key">
-                    <input id="form-hash" type="hidden" name="hash"
-                           value="a3fe4baed706cd0b7a0ad4c99b53c856ba9ddca06196dbd4da42d683e557c6d8c9460c07d17eeddce2a4f3337cf240c37345be62348daacc7c3d08dc7b866c3c">
-                    <input id="form-txn-id" type="hidden" name="txnid" value="4561a0e441b820">
-                    <input id="form-amount" class="form-control" name="amount" value="500" >
+                    <input id="form-key" type="hidden" name="key" ng-model="user.key">
+                    <input id="form-hash" type="hidden" name="hash">
+                    <input id="form-udf1" type="hidden" name="udf1">
+                    <input id="form-udf2" type="hidden" name="udf2">
+                    <input id="form-txnid" type="hidden" name="txnid">
+                    <input id="form-amount" class="form-control" name="amount">
                     <div id="amount-errmsg-container" class="error space-30">
                         <span id="amount-errmsg"></span>
                     </div>
@@ -88,47 +89,49 @@
                         </tr>
                         <tr>
                             <td>First Name:</td>
-                            <td><input id="form-name" name="firstname" value=""></td>
+                            <td><input id="form-name" name="firstname"></td>
                         </tr>
                         <tr>
                             <td>Email:</td>
-                            <td><input id="form-email" name="email" value="nitin+2@deviab.com"></td>
+                            <td><input id="form-email" name="email"></td>
                             <td>Phone:</td>
-                            <td><input id="form-phone" name="phone" value="8147140836"></td>
+                            <td><input id="form-phone" name="phone"></td>
                         </tr>
                         <tr>
                             <td>Product Info:</td>
-                            <td colspan="3"><input id="form-productinfo" name="productinfo"
-                                               value="DhamdhaPilot"    ></input></td>
+                            <td colspan="3"><input id="form-productinfo" name="productinfo"></td>
                         </tr>
                         <tr>
                             <td>Success URI:</td>
                             <td colspan="3"><input id="form-surl" name="surl"
-                                                   value="development.deviab.com/transaction/post/success"
                                                    size="64" ></td>
                         </tr>
                         <tr>
                             <td>Failure URI:</td>
                             <td colspan="3"><input id="form-furl" name="furl"
-                                                   value="development.deviab.com/transaction/post/failure"
                                                    size="64"></td>
                         </tr>
                         <tr>
-                            <td colspan="3"><input id="form-service-provider" type="hidden" name="service_provider" value="service_provider"
+                            <td>Cancel URI:</td>
+                            <td colspan="3"><input id="form-curl" name="curl"
+                                                   size="64"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><input id="form-service-provider" type="hidden" name="service_provider"
                                                    size="64">
                             </td>
                         </tr>
 	                    <tr>
 
 	                        <h5>
-                                <button id="frm-procced-button" type="submit" class="btn btn-primary" value=""
+                                <button id="frm-proceed-button" type="submit" class="btn btn-primary" value=""
                                         style="display:none">Proceed
 	                            </button>
 	                        </h5>
 	                    </tr>
 	                </table>
                 </form>
-                <button id="procced-button" class="btn btn-primary form-control">Proceed
+                <button id="proceed-button" class="btn btn-primary form-control">Proceed
                     </button>
                     <div class="space-25"></div>
                 </div>
@@ -222,13 +225,13 @@
         autoscroll: "no"
     });
 
-    $('#procced-button').click(function () {
+    $('#proceed-button').click(function () {
         var amount = $("#form-amount").val();
         if(amount < 500) {
             $("#amount-errmsg").html("Please Enter 500 or more than 500 Amount.").show().fadeOut(4000);
             return;
         }
-        // $('#procced-button').prop('disabled', true);
+        // $('#proceed-button').prop('disabled', true);
         $(".se-pre-con-login").show();
 		var res = $.get('/api/v1/lenders/4/fd?amount='+amount);
 		res.success(function(data, status, headers, config) {
@@ -243,6 +246,7 @@
 		});
 
 		function fillFormValue(data) {
+            console.log(data);
 			$('#form-name').val(data.firstname);
 			$('#form-surl').val(data.surl);
 			$('#form-email').val(data.email);
@@ -252,8 +256,11 @@
 			$('#form-productinfo').val(data.productinfo);
 			$('#form-service-provider').val(data.service_provider);
 			$('#form-furl').val(data.furl);
-			$('#form-txn-id').val(data.txnid);
-			$("#frm-procced-button").click();
+            $('#form-curl').val(data.curl);
+            $('#form-udf1').val(data.udf1);
+            $('#form-udf2').val(data.udf2);
+            $('#form-txnid').val(data.txnid);
+            $("#frm-proceed-button").click();
 		}    	
     });
     $(document).ready(function () {
