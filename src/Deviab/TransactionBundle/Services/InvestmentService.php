@@ -39,9 +39,9 @@ class InvestmentService extends BaseService
             $lenderWalletBalance = $lender->getWallet()->getCredits();
             $lenderInvestments = $lender->getFromLenderTransactions();
             $lenderReturns = $lender->getToLenderTransactions();
-            $principalRepayment = 4500;
-            $interestRepayment = 2500;
-            $amountWithdrawn = 1300;
+            $principalRepayment = $lender->getCurrentStatus()->getPricipalRepaid();
+            $interestRepayment = $lender->getCurrentStatus()->getInterestRepaid();
+            $amountWithdrawn = 0;
             $totalInvestment = 0;
             foreach ($lenderInvestments as $transaction) {
                 $totalInvestment = $totalInvestment + $transaction->getAmount();
@@ -112,7 +112,7 @@ class InvestmentService extends BaseService
         if ($lender != null) {
             $dlt = $lender->getToLenderTransactions();
             $ldt = $lender->getFromLenderTransactions();
-            $response = array('dlt' => $dlt, 'ldt' => $ldt);
+            $response = array('credits' => $dlt, 'debits' => $ldt);
             return View::create($response, Codes::HTTP_OK);
         }
         return View::create("Transaction not found", Codes::HTTP_BAD_REQUEST);

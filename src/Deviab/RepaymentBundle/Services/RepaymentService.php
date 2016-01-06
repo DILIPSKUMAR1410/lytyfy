@@ -28,16 +28,15 @@ class RepaymentService extends BaseService
         $this->doctrine = $doctrine;
     }
 
-    public function lenderRepayment($projectId)
+    public function lenderRepayment( $TMR )
     {
 
         $projectRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:Project');
-        $project = $projectRepository->find($projectId);
+        $project = $projectRepository->find(1);
         if ($project == null)
             return View::create("project not found", Codes::HTTP_BAD_REQUEST);
         $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
         $lenders = $lenderRepository->findAll();
-        $TMR = $project->getCapitalAmount();
         $totalEMR = 0;
         foreach ($lenders as $lender) {
             $totalEMR += $lender->getCurrentStatus()->getExpectedMonthlyReturn();
@@ -45,8 +44,6 @@ class RepaymentService extends BaseService
         foreach ($lenders as $lender) {
             $EMR = $lender->getCurrentStatus()->getExpectedMonthlyReturn();
             $AMR = $EMR * $TMR / $totalEMR;
-            $project->debitCapitalRaised($AMR);
-            $this->em->merge($project);
             $lender->getWallet()->credit($AMR);
             $this->em->merge($lender->getWallet());
             $pl = $lender->getCurrentStatus()->getPricipalLeft();
@@ -54,10 +51,12 @@ class RepaymentService extends BaseService
             if ($AMR <= $il) {
                 $il = $il - $AMR;
                 $lender->getCurrentStatus()->setInterestLeft($il);
+                $lender->getCurrentStatus()->decrementTenure();
             } else {
                 $lender->getCurrentStatus()->setInterestLeft(0);
                 $pl = $pl - $AMR + $il;
                 $lender->getCurrentStatus()->setPricipalLeft($pl);
+                $lender->getCurrentStatus()->decrementTenure();
             }
             $EMR = $this->getEMR($lender->getCurrentStatus());
             $lender->getCurrentStatus()->setExpectedMonthlyReturn($EMR);
@@ -74,7 +73,7 @@ class RepaymentService extends BaseService
         $pl = $EntitycurrentStatus->getPricipalLeft();
         $il = $EntitycurrentStatus->getInterestLeft();
         $tl = $EntitycurrentStatus->getTenureLeft();
-        $EMR = $pl / $tl + ($pl * 2 / 100) + $il;
+        $EMR = $pl / $tl + $il;
         return $EMR;
     }
 

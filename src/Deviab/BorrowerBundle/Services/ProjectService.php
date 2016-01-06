@@ -104,7 +104,7 @@ class ProjectService extends BaseService
         $pl = $EntitycurrentStatus->getPricipalLeft();
         $il = $EntitycurrentStatus->getInterestLeft();
         $tl = $EntitycurrentStatus->getTenureLeft();
-        $EMR = $pl / $tl + ($pl * 2 / 100) + $il;
+        $EMR = $pl / $tl + $il;
         return $EMR;
     }
 
