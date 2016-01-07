@@ -57,6 +57,7 @@ class InvestmentService extends BaseService
                 $transactions[$dlt->getTimestamp()->format('U')] = array('type' => "debit", 'amount' => $dlt->getAmount(), 'txnid' => $dlt->getTxnid());
             foreach ($ldts as $ldt)
                 $transactions[$ldt->getTimestamp()->format('U')] = array('type' => "credit", 'amount' => $ldt->getAmount(), 'txnid' => $ldt->getMerchantTransactionId());
+            ksort($transactions);
             $response = array('lenderWalletBalance' => $lenderWalletBalance, 'totalInvestment' => $totalInvestment, 'totalReturns' => $totalReturns, 'expectedMonthlyReturn' => $expectedMonthlyReturn, 'principalRepayment' => $principalRepayment, 'interestRepayment' => $interestRepayment, 'amountWithdrawn' => $amountWithdrawn, 'transactions' => $transactions);
             return View::create($response, Codes::HTTP_OK);
         }
