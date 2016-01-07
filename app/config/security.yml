@@ -33,3 +33,4 @@ security:
         - { path: ^/logout, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/api/v1/lender, role: ROLE_LENDER}
+        - { path: ^/api/v1/repayment/withdrawal-request, role: ROLE_LENDER}

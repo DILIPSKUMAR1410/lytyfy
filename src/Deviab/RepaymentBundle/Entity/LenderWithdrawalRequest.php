@@ -44,7 +44,38 @@ class LenderWithdrawalRequest
      *
      * @ORM\Column(name="requested_at", type="datetime")
      */
-    private $requested_at;
+    private $requestedAt;
+
+    /**
+     * @var string
+     * @ORM\Column(name="account_number", type="string", length=250, nullable=true)
+    */
+    private $accountNumber;
+
+    /**
+     * @var string
+     * @ORM\Column(name="ifsc_code", type="string", length=250, nullable=true)
+    */
+    private $ifscCode;
+
+    /**
+     * @var string
+     * @ORM\Column(name="account_name", type="string", length=250, nullable=true)
+    */
+    private $accountName;
+
+    /**
+     * @var string
+     * @ORM\Column(name="bank_name", type="string", length=250, nullable=true)
+    */
+    private $bankName;
+
+    /**
+     * @var string
+     * @ORM\Column(name="status", type="string", length=250, nullable=true)
+    */
+    private $status;
+
 
 
     /**
@@ -114,5 +145,106 @@ class LenderWithdrawalRequest
     {
         $this->requestedAt = $requestedAt;
     }
+
+    /**
+     * Get ifscCode
+     *
+     * @return string
+     */
+    public function getIfscCode()
+    {
+        return $this->ifscCode;
+    }
+
+    /**
+     * Set ifscCode
+     *
+     * @param string $ifscCode
+     */
+    public function setIfscCode($ifscCode)
+    {
+        $this->ifscCode = $ifscCode;
+    }
+
+    /**
+     * Get accountNumber
+     *
+     * @return string
+     */
+    public function getAccountNumber()
+    {
+        return $this->accountNumber;
+    }
+
+    /**
+     * Set accountNumber
+     *
+     * @param string $accountNumber
+     */
+    public function setAccountNumber($accountNumber)
+    {
+        $this->accountNumber = $accountNumber;
+    }
+
+    /**
+     * Get accountName
+     *
+     * @return string
+     */
+    public function getAccountName()
+    {
+        return $this->accountName;
+    }
+
+    /**
+     * Set accountName
+     *
+     * @param string $accountName
+     */
+    public function setAccountName($accountName)
+    {
+        $this->accountName = $accountName;
+    }
+
+    /**
+     * Get bankName
+     *
+     * @return string
+     */
+    public function getBankName()
+    {
+        return $this->bankName;
+    }
+
+    /**
+     * Set bankName
+     *
+     * @param string $bankName
+     */
+    public function setBankName($bankName)
+    {
+        $this->bankName = $bankName;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
 
 }
