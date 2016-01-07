@@ -127,10 +127,16 @@ class LenderDetails
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity="LenderWithdrawalRequest", mappedBy="lender")
+     */
+    private $withdrawalRequests;
+
     public function __construct()
     {
         $this->fromLenderTransactions = new ArrayCollection();
         $this->toLenderTransactions = new ArrayCollection();
+        $this->withdrawalRequests = new ArrayCollection();
         // $this->wallet = new LenderWallet();
         // $this->currentStatus = new LenderCurrentStatus();
     }
@@ -398,6 +404,14 @@ class LenderDetails
     public function getToLenderTransactions()
     {
         return $this->toLenderTransactions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWithdrawalRequests()
+    {
+        return $this->withdrawalRequests;
     }
 
     /**
