@@ -1,18 +1,24 @@
-<div class="space"></div>
+<style>
+    .modal-title {
+        color: #999;
+        font-size: 14px;
+        text-align: center;
+    }
+    .modal-footer {
+        color: #bbb;
+        font-size: 11px;
+        text-align: left;
+    }
+    #withdraw-form {
+        color: #999;
+    }
+</style>
 <div class="space"></div>
 <div class="container text-center" ng-controller="ProfileController as pf">
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <div class="col-lg-offset-1 col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div class="grey-border">
             <div>Available Credit</div>
             <div>₹<span class="loading"></span>{[{profileResponce.lenderWalletBalance}]}</div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <div class="grey-border">
-            <div>Amount Lent</div>
-            <div>₹ <span class="loading"></span>
-                {[{profileResponce.totalInvestment}]}
-            </div>
         </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -22,6 +28,13 @@
                 {[{profileResponce.expectedMonthlyReturn}]}
             </div>
         </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+         <a id="register-btn" data-toggle="modal" data-target="#withdraw-modal">
+            <div class=" col-lg-12 col-md-3 col-sm-12 col-xs-12 text-center">
+                <div id="withdraw-now" class=""><span>Withdraw</span></div>
+            </div>
+        </a>
     </div>
 
     <div class="space container-fluid"></div>
@@ -52,6 +65,7 @@
                 <tr>
                     <td>Principal Repayment</td>
                     <td style="min-width:100px">₹<span class="loading"></span>{[{profileResponce.principalRepayment}]}</td>
+                </tr>
                 <tr>
                     <td>Interest Repayment</td>
                     <td style="min-width:100px">₹<span class="loading"></span>{[{profileResponce.interestRepayment}]}</td>
@@ -60,7 +74,101 @@
             </table>
         </div>
     </div>
+    <div class="container border tmrgn-25"></div>
+    <div class="container">
+            <h3 class="text-center"><span id="transaction-details-text">Transaction Details</span></h3>
+            <div class="col-md-offset-2 col-md-8 col-xs-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center">Transaction</th>
+                            <th style="text-align:center">Time</th>
+                            <th style="text-align:center">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="debit in profileResponce.debits">
+                            <td>{[{debit.timestamp}]}</td>
+                            <td>{[{debit.merchant_transaction_id}]}</td>
+                            <td>{[{debit.amount}]}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="withdraw-modal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">
+                Withdraw funds to your bank account in India.
+            </h4>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <form id='withdraw-form' role="form">
+                <div class="form-group">
+                    <label for="signin-email" class="pull-left">Account Holder's Name</label>
+                    <input type="text" class="form-control" id="ac-holder-name" name="ac-holder-name"
+                           placeholder="Enter name" required>
+                </div>
+                <div class="form-group">
+                    <label for="ac-number" class="pull-left">Account Number</label>
+                    <input type="text" class="form-control" id="ac-number" name="ac-number"
+                           placeholder="Enter A/C Number" required>
+                </div>
+                <div class="form-group">
+                    <label for="bank-name" class="pull-left">Bank Name:</label>
+                    <input type="text" class="form-control" id="bank-name" name="bank-name"
+                           placeholder="Enter Bank Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="bank-name" class="pull-left">IFSC Code</label>
+                    <input type="text" class="form-control" id="ifsc-code" name="ifsc-code"
+                           placeholder="Enter IFSC code" required>
+                </div>
+                <button id="submit-withdraw-btn" class="btn btn-lg btn-primary btn-block">Submit</button><br/>
+            </form>
+        </div>
+        <div class="modal-footer">
+            It will take 3-5 working days to process your request.
+          <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
 <script type="text/javascript">
     $("#nav-dashboard-link").css("color", "#0070B9");
+    $("#submit-withdraw-btn").click(function() {
+        var jsonData = {
+                            "ac_holder_name" : $("#ac-holder-name").val(),
+                            "ac_number" : $("#ac-number").val(),
+                            "bank_name" : $("#bank-name").val(),
+                            "ifsc_code" : $("#ifsc-code").val()
+                        }
+        console.log(jsonData);
+        // $.ajax({
+        //         url: "/login",
+        //         type: 'POST',
+        //         data: jsonData,
+        //         success: function (result) {
+        //             $("#signin-msg").html("Successfully logged in... Redirecting to page...");
+        //             $("#signin-msg").css("color", "#0070B9");
+        //             location.reload();
+        //             console.log('Logged In' + result);
+        //         },
+        //         error: function (errorMessage) {
+        //             $("#signin-msg").html("Wrong email or password!");
+        //             console.log(errorMessage);
+        //             $(".se-pre-con-login").fadeOut("slow");
+        //         },
+        //     });
+    });
 </script>

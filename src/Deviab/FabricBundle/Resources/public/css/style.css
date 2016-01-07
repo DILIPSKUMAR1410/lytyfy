@@ -350,6 +350,26 @@ ul {
     border-bottom: 1px solid #ccc;
 }
 
+#transaction-details-text {
+    border-bottom: 1px solid #ccc;
+}
+
+#withdraw-now {
+    background-color: #ccc;
+    color: #fff;
+    height: 55px;
+    text-align: center;
+    padding-top: 17px;
+    border-radius: 35px;
+    width: 218px;
+    border: none;
+    position: relative;
+    margin: auto;
+}
+#withdraw-now:active {
+    border:5px solid #bbb;
+    background: #bbb;
+}
 /**********   faqs      ***********/
 @media screen and (max-width: 750px) {
     #about-energy-desc {
