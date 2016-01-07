@@ -34,7 +34,7 @@ class InvestmentController extends Controller
             $email = $user->getEmail();
             $firstname = $lender->getFname();
             $phone = $lender->getPrimaryMobileNumber();
-            $txnid = uniqid($user->getEmail() + $amount);
+            $txnid = uniqid($user->getEmail() + $amount + new \DateTime());
             $lenderId = $lender->getId();
             $projectId = 1;
             $data = "vz70Zb" . "|" . $txnid . "|" . $amount . "|" . "DhamdhaPilot" . "|" . $firstname . "|" . $email . "|" . $lenderId . "|" . $projectId . "|||||||||" . "k1wOOh0b";

@@ -41,6 +41,8 @@ class RepaymentService extends BaseService
         foreach ($lenders as $lender) {
             $totalEMR += $lender->getCurrentStatus()->getExpectedMonthlyReturn();
         }
+        if (!$totalEMR)
+            return View::create("project ended", Codes::HTTP_BAD_REQUEST);
         foreach ($lenders as $lender) {
             $EMR = $lender->getCurrentStatus()->getExpectedMonthlyReturn();
             $AMR = $EMR * $TMR / $totalEMR;
@@ -61,7 +63,7 @@ class RepaymentService extends BaseService
                 $lender->getCurrentStatus()->creditPricipalRepaid($AMR - $il);
                 $lender->getCurrentStatus()->decrementTenure();
             }
-            if ($lender->getCurrentStatus()->getTenureLeft()) {
+            if ($lender->getCurrentStatus()->getTenureLeft() < 1) {
                 $EMR = $this->getEMR($lender->getCurrentStatus());
                 $lender->getCurrentStatus()->setExpectedMonthlyReturn($EMR);
             } else {
@@ -69,6 +71,13 @@ class RepaymentService extends BaseService
             }
             $this->em->merge($lender->getCurrentStatus());
             $this->em->merge($lender);
+
+            $deviabLenderTransaction = new DeviabLenderTransaction();
+            $deviabLenderTransaction->setAmount($AMR);
+            $deviabLenderTransaction->setLender($lender);
+            $deviabLenderTransaction->setProject($project);
+            $deviabLenderTransaction->setTimestamp(new \DateTime());
+            $this->em->persist($deviabLenderTransaction);
         }
         $this->em->flush();
         return View::create("Repaid AMR  and Lender Current Status updated", Codes::HTTP_OK);
