@@ -10,12 +10,13 @@ namespace Deviab\TransactionBundle\Controller;
 
 use JMS\Serializer\SerializationContext;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Deviab\LoginBundle\Entity\User;
+use FOS\RestBundle\View\View;
+use FOS\RestBundle\Util\Codes;
 
 class InvestmentController extends Controller
 {
-    public function getLenderInvestmentAction($lenderId)
+    public function getLenderInvestmentAction( $lenderId )
     {
         $investmentService = $this->container->get('investment_service');
         $investmentDetails = $investmentService->getLenderInvestment($lenderId);
@@ -23,7 +24,7 @@ class InvestmentController extends Controller
     }
 
 
-    public function getWalletAction($lenderId)
+    public function getWalletAction( $lenderId )
     {
         $transactionService = $this->container->get('investment_service');
         $transactionDetails = $transactionService->getWalletSummary($lenderId);
@@ -31,7 +32,58 @@ class InvestmentController extends Controller
         return $transactionDetails->setSerializationContext($context);
     }
 
+    public function transactionAction()
+    {
+        $token = $this->get('security.context')->getToken();
+        $user = $token->getUser();
+        $amount = $this->getRequest()->query->get('amount');
+        if ($user instanceof User) {
+            $lender = $user->getLender();
+            $email = $user->getEmail();
+            $firstname = $lender->getFname();
+            $phone = $lender->getPrimaryMobileNumber();
+            $txnid = uniqid($user->getEmail() + $amount);
+            $lenderId = $lender->getId();
+            $projectId = 1;
+            $data = "vz70Zb" . "|" . $txnid . "|" . $amount . "|" . "DhamdhaPilot" . "|" . $firstname . "|" . $email . "|" . $lenderId . "|" . $projectId . "|||||||||" . "k1wOOh0b";
+            $hash = hash('sha512', $data);
+            $host = $this->get('router')->getContext()->getHost();
 
+            $url = "https://secure.payu.in/_payment";
+            $fields = array(
+                'key' => "vz70Zb",
+                'firstname' => $firstname,
+                'email' => $email,
+                'phone' => $phone,
+                'productinfo' => "DhamdhaPilot",
+                'txnid' => $txnid,
+                'amount' => $amount,
+                'udf1' => $lenderId,
+                'udf2' => $projectId,
+                'surl' => "http://try.lytyfy.org",
+                'furl' => "http://try.lytyfy.org",
+                'curl' => "http://try.lytyfy.org",
+                'hash' => $hash,
+                'service_provider' => "payu_paisa"
+            );
+            if (!$amount) {
+                $err = 'Amount Required';
+            } else if (!$firstname) {
+                $err = 'FirstName Required';
+            } else if (!$email) {
+                $err = 'Email Required';
+            } else if (!$phone) {
+                $err = 'Phone Required';
+            } else {
+                return View::create($fields, Codes::HTTP_OK);
+            }
+
+            return View::create(array('error' => $err), Codes::HTTP_BAD_REQUEST);
+
+
+        }
+
+    }
 
 
 }

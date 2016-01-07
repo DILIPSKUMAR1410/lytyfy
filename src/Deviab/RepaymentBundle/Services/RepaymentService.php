@@ -21,7 +21,7 @@ class RepaymentService extends BaseService
     /**
      * @param Doctrine $doctrine
      */
-    public function __construct(Doctrine $doctrine)
+    public function __construct( Doctrine $doctrine )
     {
         parent::__construct($doctrine);
 
@@ -49,17 +49,24 @@ class RepaymentService extends BaseService
             $pl = $lender->getCurrentStatus()->getPricipalLeft();
             $il = $lender->getCurrentStatus()->getInterestLeft();
             if ($AMR <= $il) {
-                $il = $il - $AMR;
+                $il = $il - $AMR + $pl * 0.6 / 100;
                 $lender->getCurrentStatus()->setInterestLeft($il);
                 $lender->getCurrentStatus()->decrementTenure();
+                $lender->getCurrentStatus()->creditInterestRepaid($AMR);
             } else {
-                $lender->getCurrentStatus()->setInterestLeft(0);
                 $pl = $pl - $AMR + $il;
+                $lender->getCurrentStatus()->setInterestLeft($pl * 0.6 / 100);
                 $lender->getCurrentStatus()->setPricipalLeft($pl);
+                $lender->getCurrentStatus()->creditInterestRepaid($il);
+                $lender->getCurrentStatus()->creditPricipalRepaid($AMR - $il);
                 $lender->getCurrentStatus()->decrementTenure();
             }
-            $EMR = $this->getEMR($lender->getCurrentStatus());
-            $lender->getCurrentStatus()->setExpectedMonthlyReturn($EMR);
+            if ($lender->getCurrentStatus()->getTenureLeft()) {
+                $EMR = $this->getEMR($lender->getCurrentStatus());
+                $lender->getCurrentStatus()->setExpectedMonthlyReturn($EMR);
+            } else {
+                $lender->getCurrentStatus()->setExpectedMonthlyReturn(0);
+            }
             $this->em->merge($lender->getCurrentStatus());
             $this->em->merge($lender);
         }
@@ -68,7 +75,7 @@ class RepaymentService extends BaseService
 
     }
 
-    public function getEMR($EntitycurrentStatus)
+    public function getEMR( $EntitycurrentStatus )
     {
         $pl = $EntitycurrentStatus->getPricipalLeft();
         $il = $EntitycurrentStatus->getInterestLeft();

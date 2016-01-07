@@ -251,6 +251,26 @@ class LenderCurrentStatus
         $this->interestLeft -= $amount;
     }
 
+    public function creditPricipalRepaid($amount)
+    {
+        $this->pricipalRepaid += $amount;
+    }
+
+    public function debitPricipalRepaid($amount)
+    {
+        $this->pricipalRepaid -= $amount;
+    }
+
+    public function creditInterestRepaid($amount)
+    {
+        $this->interestRepaid += $amount;
+    }
+
+    public function debitInterestRepaid($amount)
+    {
+        $this->interestRepaid -= $amount;
+    }
+
     public function decrementTenure()
     {
         $this->tenureLeft -= 1;

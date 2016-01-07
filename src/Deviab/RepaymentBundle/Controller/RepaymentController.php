@@ -15,10 +15,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class RepaymentController extends Controller
 {
-    public function repayLenderAction($projectId)
+    public function repayLenderAction($amount)
     {
         $repaymentService = $this->container->get('repayment_service');
-        $response = $repaymentService->lenderRepayment($projectId);
+        $response = $repaymentService->lenderRepayment($amount);
         return $response;
     }
 }
