@@ -52,6 +52,14 @@ class DeviabLenderTransaction
      */
     private $amount;
 
+    /**
+     * @var string
+     *
+     * @Groups({"profile","transactionPage"})
+     * @ORM\Column(name="txnid", type="string")
+     */
+    private $txnid;
+
 
     /**
      * Get id
@@ -79,7 +87,7 @@ class DeviabLenderTransaction
      * @param \DateTime $timestamp
      * @return DeviabLenderTransaction
      */
-    public function setTimestamp($timestamp)
+    public function setTimestamp( $timestamp )
     {
         $this->timestamp = $timestamp;
 
@@ -102,7 +110,7 @@ class DeviabLenderTransaction
      * @param float $amount
      * @return DeviabLenderTransaction
      */
-    public function setAmount($amount)
+    public function setAmount( $amount )
     {
         $this->amount = $amount;
 
@@ -120,7 +128,7 @@ class DeviabLenderTransaction
     /**
      * @param mixed $project
      */
-    public function setProject($project)
+    public function setProject( $project )
     {
         $this->project = $project;
     }
@@ -136,9 +144,26 @@ class DeviabLenderTransaction
     /**
      * @param mixed $lender
      */
-    public function setLender($lender)
+    public function setLender( $lender )
     {
         $this->lender = $lender;
     }
+
+    /**
+     * @return string
+     */
+    public function getTxnid()
+    {
+        return $this->txnid;
+    }
+
+    /**
+     * @param string $txnid
+     */
+    public function setTxnid( $txnid )
+    {
+        $this->txnid = $txnid;
+    }
+
 
 }

@@ -8,8 +8,6 @@
 
 namespace Deviab\RepaymentBundle\Services;
 
-use Deviab\TransactionBundle\Entity\BorrowerDeviabTransaction;
-use Deviab\TransactionBundle\Entity\DeviabBorrowerTransaction;
 use Deviab\TransactionBundle\Entity\DeviabLenderTransaction;
 use Doctrine\Bundle\DoctrineBundle\Registry as Doctrine;
 use FOS\RestBundle\View\View;
@@ -69,15 +67,16 @@ class RepaymentService extends BaseService
             } else {
                 $lender->getCurrentStatus()->setExpectedMonthlyReturn(0);
             }
-            $this->em->merge($lender->getCurrentStatus());
-            $this->em->merge($lender);
-
             $deviabLenderTransaction = new DeviabLenderTransaction();
             $deviabLenderTransaction->setAmount($AMR);
             $deviabLenderTransaction->setLender($lender);
             $deviabLenderTransaction->setProject($project);
             $deviabLenderTransaction->setTimestamp(new \DateTime());
+            $deviabLenderTransaction->setTxnid(uniqid($lender->getFname() + $AMR + date("Y-m-d H:i:s")));
             $this->em->persist($deviabLenderTransaction);
+            $this->em->merge($lender->getCurrentStatus());
+            $this->em->merge($lender);
+
         }
         $this->em->flush();
         return View::create("Repaid AMR  and Lender Current Status updated", Codes::HTTP_OK);
