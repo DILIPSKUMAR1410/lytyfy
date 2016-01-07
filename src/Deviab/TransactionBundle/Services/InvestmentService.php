@@ -50,9 +50,14 @@ class InvestmentService extends BaseService
             foreach ($lenderReturns as $return) {
                 $totalReturns = $totalReturns + $return->getAmount();
             }
-            $dlt = $lender->getToLenderTransactions();
-            $ldt = $lender->getFromLenderTransactions();
-            $response = array('lenderWalletBalance' => $lenderWalletBalance, 'totalInvestment' => $totalInvestment, 'totalReturns' => $totalReturns, 'expectedMonthlyReturn' => $expectedMonthlyReturn, 'principalRepayment' => $principalRepayment, 'interestRepayment' => $interestRepayment, 'amountWithdrawn' => $amountWithdrawn, 'credits' => $dlt, 'debits' => $ldt);
+            $dlts = $lender->getToLenderTransactions();
+            $ldts = $lender->getFromLenderTransactions();
+            $transactions = [];
+            foreach ($dlts as $dlt)
+                $transactions[$dlt->getTimestamp()->format('U')] = array('type' => "debit", 'amount' => $dlt->getAmount(), 'txnid' => $dlt->getTxnid());
+            foreach ($ldts as $ldt)
+                $transactions[$ldt->getTimestamp()->format('U')] = array('type' => "credit", 'amount' => $ldt->getAmount(), 'txnid' => $ldt->getMerchantTransactionId());
+            $response = array('lenderWalletBalance' => $lenderWalletBalance, 'totalInvestment' => $totalInvestment, 'totalReturns' => $totalReturns, 'expectedMonthlyReturn' => $expectedMonthlyReturn, 'principalRepayment' => $principalRepayment, 'interestRepayment' => $interestRepayment, 'amountWithdrawn' => $amountWithdrawn, 'transactions' => $transactions);
             return View::create($response, Codes::HTTP_OK);
         }
         return View::create("lender not found", Codes::HTTP_BAD_REQUEST);
