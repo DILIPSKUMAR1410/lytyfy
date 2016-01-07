@@ -38,7 +38,7 @@ class BorrowerDetails
 
     /**
      * @var string
-     * @Groups({"borrower_portfolio","project_portfolio"})
+     * @Groups({"borrower_portfolio"})
      * @ORM\Column(name="lname", type="string", length=45, nullable=false)
      */
     private $lname;
@@ -59,21 +59,21 @@ class BorrowerDetails
 
     /**
      * @var string
-     * @Groups({"borrower_portfolio","project_portfolio"})
+     * @Groups({"borrower_portfolio"})
      * @ORM\Column(name="gender", type="string", length=10, nullable=false)
      */
     private $gender;
 
     /**
      * @var \DateTime
-     * @Groups({"borrower_portfolio","project_portfolio"})
+     * @Groups({"borrower_portfolio"})
      * @ORM\Column(name="dob", type="date", nullable=false)
      */
     private $dob;
 
     /**
      * @var string
-     * @Groups({"borrower_portfolio","project_portfolio"})
+     * @Groups({"borrower_portfolio"})
      * @ORM\Column(name="highest_education", type="string", length=45, nullable=true)
      */
     private $highestEducation;
@@ -87,20 +87,20 @@ class BorrowerDetails
 
     /**
      * @var string
-     * @Groups({"borrower_portfolio","project_portfolio"})
+     * @Groups({"borrower_portfolio"})
      * @ORM\Column(name="occupation", type="string", length=45, nullable=true)
      */
     private $occupation;
 
     /**
      * @var float
-     * @Groups({"borrower_portfolio","project_portfolio"})
+     * @Groups({"borrower_portfolio"})
      * @ORM\Column(name="annual_income", type="float", precision=10, scale=0, nullable=false)
      */
     private $annualIncome;
 
     /**
-     * @Groups({"borrower_portfolio","project_portfolio"})
+     * @Groups({"borrower_portfolio"})
      * @MaxDepth(5)
      * @var MasterVillages
      * @ORM\ManyToOne(targetEntity="Deviab\DatabaseBundle\Entity\MasterVillages")

@@ -39,8 +39,10 @@ class ProjectService extends BaseService
         $quantum = $project->getCapitalAmount();
         $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
         $lenders = $lenderRepository->findAll();
-        $borrowers = $project->getBorrowers();
-        $response = array('quantum' => $quantum, 'lenders' => $lenders, 'borrowers' => $borrowers);
+        $names = [];
+        foreach ($lenders as $lender)
+            array_push($names, $lender->getFname());
+        $response = array('quantum' => $quantum, 'lenders' => $names);
         return View::create($response, Codes::HTTP_OK);
     }
 
