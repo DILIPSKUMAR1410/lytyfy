@@ -87,7 +87,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="debit in profileResponce.debits">
+                        <tr ng-repeat="debit in profileResponce.transactions">
                             <td>{[{debit.timestamp}]}</td>
                             <td>{[{debit.merchant_transaction_id}]}</td>
                             <td>{[{debit.amount}]}</td>
@@ -115,7 +115,7 @@
                 <div class="form-group">
                     <label for="signin-email" class="pull-left">Account Holder's Name</label>
                     <input type="text" class="form-control" id="ac-holder-name" name="ac-holder-name"
-                           placeholder="Enter name" required>
+                           placeholder="Enter Name" required>
                 </div>
                 <div class="form-group">
                     <label for="ac-number" class="pull-left">Account Number</label>
@@ -130,13 +130,13 @@
                 <div class="form-group">
                     <label for="bank-name" class="pull-left">IFSC Code</label>
                     <input type="text" class="form-control" id="ifsc-code" name="ifsc-code"
-                           placeholder="Enter IFSC code" required>
+                           placeholder="Enter IFSC Code" required>
                 </div>
                 <button id="submit-withdraw-btn" class="btn btn-lg btn-primary btn-block">Submit</button><br/>
             </form>
         </div>
         <div class="modal-footer">
-            It will take 3-5 working days to process your request.
+            Usually it takes 3 working days to process your request.
           <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -147,13 +147,36 @@
 <script type="text/javascript">
     $("#nav-dashboard-link").css("color", "#0070B9");
     $("#submit-withdraw-btn").click(function() {
+        var ac_holder_name = $("#ac-holder-name").val();
+        var ac_number = $("#ac-number").val();
+        var bank_name = $("#bank-name").val();
+        var ifsc_code = $("#ifsc-code").val();
+
+        
         var jsonData = {
-                            "ac_holder_name" : $("#ac-holder-name").val(),
-                            "ac_number" : $("#ac-number").val(),
-                            "bank_name" : $("#bank-name").val(),
-                            "ifsc_code" : $("#ifsc-code").val()
+                            "ac_holder_name" : ac_holder_name,
+                            "ac_number" : ac_number,
+                            "bank_name" : bank_name,
+                            "ifsc_code" : ifsc_code
                         }
         console.log(jsonData);
+        $("#ac-number").keypress(function (e) {
+            if (e.which < 48 || e.which > 57) {
+                return false;
+            }
+        });
+
+        $('#withdraw-form input:text').each(function() {
+            var id = $(this).attr('id');
+            if($("#"+id).val() == "") {
+                $("#"+id).focus();
+                return false;
+            }
+        });
+        if(ac_holder_name =="" && ac_number =="" &&  bank_name == "" && ifsc_code == "") {
+            return false;
+        }
+        
         // $.ajax({
         //         url: "/login",
         //         type: 'POST',
