@@ -54,52 +54,18 @@ class InvestmentService extends BaseService
             $ldts = $lender->getFromLenderTransactions();
             $transactions = [];
             foreach ($dlts as $dlt)
-                $transactions[$dlt->getTimestamp()->format('U')] = array('type' => "debit", 'amount' => $dlt->getAmount(), 'txnid' => $dlt->getTxnid());
+                array_push($transactions, array('timestamp' => $dlt->getTimestamp()->format('U'), 'type' => "debit", 'amount' => $dlt->getAmount(), 'txnid' => $dlt->getTxnid()));
             foreach ($ldts as $ldt)
-                $transactions[$ldt->getTimestamp()->format('U')] = array('type' => "credit", 'amount' => $ldt->getAmount(), 'txnid' => $ldt->getMerchantTransactionId());
-            ksort($transactions);
+                array_push($transactions, array('timestamp' => $ldt->getTimestamp()->format('U'), 'type' => "debit", 'amount' => $ldt->getAmount(), 'txnid' => $ldt->getMerchantTransactionId()));
+            $timestamp = array();
+            foreach ($transactions as $key => $row) {
+                $timestamp[$key] = $row['timestamp'];
+            }
+            array_multisort($timestamp, SORT_ASC, $transactions);
             $response = array('lenderWalletBalance' => $lenderWalletBalance, 'totalInvestment' => $totalInvestment, 'totalReturns' => $totalReturns, 'expectedMonthlyReturn' => $expectedMonthlyReturn, 'principalRepayment' => $principalRepayment, 'interestRepayment' => $interestRepayment, 'amountWithdrawn' => $amountWithdrawn, 'transactions' => $transactions);
             return View::create($response, Codes::HTTP_OK);
         }
         return View::create("lender not found", Codes::HTTP_BAD_REQUEST);
-    }
-
-    public function walletWithdrawl( User $user )
-    {
-        $lender = $user->getlender();
-        $transaction = new DeviabLenderTransaction();
-        $transaction->setLender($lender);
-
-        $dateTime = date("Y-m-d H:i:s");
-        $transaction->setTimestamp($dateTime);
-        $txnid = uniqid($user->getEmail());
-        $lenderId = $lender->getId();
-        $balance = $lender->getWallet()->getCredits();
-        $status = "under process";
-        $remarks = "credited in your account";
-        if ($balance >= 2000) {
-            $rsm = new ResultSetMapping();
-
-            $query = $this->em->createNativeQuery('INSERT INTO deviab_lender_transactions SET lender_id = ? ,transactionId = ?,project_id = ?,status = ?,remarks = ?', $rsm);
-            $query->setParameter(1, $lenderId);
-            $query->setParameter(2, $txnid);
-            $query->setParameter(3, $balance);
-            $query->setParameter(4, 1);
-            $query->setParameter(5, $status);
-            $query->setParameter(6, $remarks);
-            $query->setParameter(7, $dateTime);
-
-            $result = $query->_doExecute();
-            $update_query = $this->em->createNativeQuery('UPDATE lender_wallet SET credits = ? where lender_id = ?', $rsm);
-            $update_query->setParameter(1, 0);
-            $update_query->setParameter(2, $lenderId);
-
-            $update_result = $update_query->_doExecute();
-
-            return View::create("ok", Codes::HTTP_OK);
-        } else {
-            return View::create("you don't have enough money in your wallet", Codes::HTTP_BAD_REQUEST);
-        }
     }
 
 }

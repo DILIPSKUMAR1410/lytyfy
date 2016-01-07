@@ -69,13 +69,7 @@ class InvestmentController extends Controller
             } else {
                 return View::create($fields, Codes::HTTP_OK);
             }
-
             return View::create(array('error' => $err), Codes::HTTP_BAD_REQUEST);
-
-
         }
-
     }
-
-
 }
