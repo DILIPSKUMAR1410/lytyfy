@@ -19,7 +19,7 @@ class ProjectService extends BaseService
     /**
      * @param Doctrine $doctrine
      */
-    public function __construct(Doctrine $doctrine)
+    public function __construct( Doctrine $doctrine )
     {
         parent::__construct($doctrine);
 
@@ -30,7 +30,7 @@ class ProjectService extends BaseService
      * @param $projectId
      * @return View
      */
-    public function getProjectStatus($projectId)
+    public function getProjectStatus( $projectId )
     {
         $projectRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:Project');
         $project = $projectRepository->find($projectId);
@@ -51,7 +51,7 @@ class ProjectService extends BaseService
      * @param $projectId
      * @return View
      */
-    public function getFeaturedProject($projectId)
+    public function getFeaturedProject( $projectId )
     {
         $projectRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:Project');
         $project = $projectRepository->find($projectId);

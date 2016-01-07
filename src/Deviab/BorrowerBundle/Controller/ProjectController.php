@@ -16,20 +16,18 @@ use JMS\Serializer\SerializationContext;
 
 class ProjectController extends Controller
 {
-    public function getProjectAction($projectId)
+    public function getProjectAction( $projectId )
     {
         $projectService = $this->container->get('project_service');
         $projectStatus = $projectService->getProjectStatus($projectId);
-        $context = SerializationContext::create()->setGroups(array('project_portfolio'))
-            ->enableMaxDepthChecks(3);
-        return $projectStatus->setSerializationContext($context);
+        return $projectStatus;
     }
 
     /**
      * @param $projectId
      * @return mixed
      */
-    public function getFeaturedProjectAction($projectId)
+    public function getFeaturedProjectAction( $projectId )
     {
         $projectService = $this->container->get('project_service');
         $projectStatus = $projectService->getFeaturedProject($projectId);
