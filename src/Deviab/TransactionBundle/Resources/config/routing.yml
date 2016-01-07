@@ -12,12 +12,6 @@ form_data_for_payu:
         _method: GET
         lenderId: "\d+"
 
-wallet_summery:
-    pattern:  /{lenderId}/wallet
-    defaults: { _controller: DeviabTransactionBundle:Investment:getWallet}
-    requirements:
-        _method: GET
-        lenderId: "\d+"
 
 
 

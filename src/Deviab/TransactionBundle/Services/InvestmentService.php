@@ -50,29 +50,12 @@ class InvestmentService extends BaseService
             foreach ($lenderReturns as $return) {
                 $totalReturns = $totalReturns + $return->getAmount();
             }
-            $response = array('lenderWalletBalance' => $lenderWalletBalance, 'totalInvestment' => $totalInvestment, 'totalReturns' => $totalReturns, 'expectedMonthlyReturn' => $expectedMonthlyReturn, 'principalRepayment' => $principalRepayment, 'interestRepayment' => $interestRepayment, 'amountWithdrawn' => $amountWithdrawn);
+            $dlt = $lender->getToLenderTransactions();
+            $ldt = $lender->getFromLenderTransactions();
+            $response = array('lenderWalletBalance' => $lenderWalletBalance, 'totalInvestment' => $totalInvestment, 'totalReturns' => $totalReturns, 'expectedMonthlyReturn' => $expectedMonthlyReturn, 'principalRepayment' => $principalRepayment, 'interestRepayment' => $interestRepayment, 'amountWithdrawn' => $amountWithdrawn, 'credits' => $dlt, 'debits' => $ldt);
             return View::create($response, Codes::HTTP_OK);
         }
         return View::create("lender not found", Codes::HTTP_BAD_REQUEST);
-    }
-
-    /**
-     * @param $lenderId
-     * @return View
-     */
-    public function getWalletSummary( $lenderId )
-    {
-        $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
-        $lender = $lenderRepository->find($lenderId);
-        if ($lender != null) {
-            $dlt = $lender->getToLenderTransactions();
-            $ldt = $lender->getFromLenderTransactions();
-            $response = array('credits' => $dlt, 'debits' => $ldt);
-            return View::create($response, Codes::HTTP_OK);
-        }
-        return View::create("Transaction not found", Codes::HTTP_BAD_REQUEST);
-
-
     }
 
     public function walletWithdrawl( User $user )

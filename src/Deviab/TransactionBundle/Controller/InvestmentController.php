@@ -20,16 +20,8 @@ class InvestmentController extends Controller
     {
         $investmentService = $this->container->get('investment_service');
         $investmentDetails = $investmentService->getLenderInvestment($lenderId);
-        return $investmentDetails;
-    }
-
-
-    public function getWalletAction( $lenderId )
-    {
-        $transactionService = $this->container->get('investment_service');
-        $transactionDetails = $transactionService->getWalletSummary($lenderId);
         $context = SerializationContext::create()->setGroups(array('transactionPage'));
-        return $transactionDetails->setSerializationContext($context);
+        return $investmentDetails->setSerializationContext($context);
     }
 
     public function transactionAction()
