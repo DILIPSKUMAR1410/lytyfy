@@ -317,11 +317,17 @@
 				$("#signin-msg").html("Successfully logged in... Redirecting to page...");
 				$("#signin-msg").css("color", "#0070B9");
 				location.reload();
-				console.log('Logged In' + result);
+				console.log(result);
 			},
 			error: function (errorMessage) {
 				$("#signin-msg").html("Wrong email or password!");
-				console.log(errorMessage);
+				if (typeof(errorMessage['error']) === 'undefined') {
+					alert('Please Try Again...');
+				} else {
+					errorMessage = errorMessage['error'];
+					errorMessage = errorMessage.replace(/\w\S*/g, function(errorMessage){return errorMessage.charAt(0).toUpperCase() + errorMessage.substr(1).toLowerCase();})
+					alert(errorMessage);
+				}
 				$(".se-pre-con-login").fadeOut("slow");
 			},
 		});

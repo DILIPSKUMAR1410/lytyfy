@@ -84,13 +84,15 @@
                             <th style="text-align:center">Transaction</th>
                             <th style="text-align:center">Time</th>
                             <th style="text-align:center">Amount</th>
+                            <th style="text-align:center">Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="debit in profileResponce.transactions">
-                            <td>{[{debit.timestamp}]}</td>
-                            <td>{[{debit.merchant_transaction_id}]}</td>
+                            <td>{[{debit.txnid}]}</td>
+                            <td>{[{debit.timestamp}]}</td> 
                             <td>{[{debit.amount}]}</td>
+                            <td>{[{debit.type}]}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -137,7 +139,7 @@
         </div>
         <div class="modal-footer">
             Usually it takes 3 working days to process your request.
-          <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+          <button id="withdraw-close-btn" type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -146,6 +148,11 @@
 
 <script type="text/javascript">
     $("#nav-dashboard-link").css("color", "#0070B9");
+    $("#ac-number").keypress(function (e) {
+            if (e.which < 48 || e.which > 57) {
+                return false;
+            }
+        });
     $("#submit-withdraw-btn").click(function() {
         var ac_holder_name = $("#ac-holder-name").val();
         var ac_number = $("#ac-number").val();
@@ -154,17 +161,13 @@
 
         
         var jsonData = {
-                            "ac_holder_name" : ac_holder_name,
-                            "ac_number" : ac_number,
-                            "bank_name" : bank_name,
-                            "ifsc_code" : ifsc_code
+                            "account_number" : ac_holder_name,
+                            "ifsc_code" : ifsc_code,
+                            "account_name" : ac_number ,
+                            "bank_name" : bank_name
                         }
         console.log(jsonData);
-        $("#ac-number").keypress(function (e) {
-            if (e.which < 48 || e.which > 57) {
-                return false;
-            }
-        });
+        
 
         $('#withdraw-form input:text').each(function() {
             var id = $(this).attr('id');
@@ -173,25 +176,45 @@
                 return false;
             }
         });
-        if(ac_holder_name =="" && ac_number =="" &&  bank_name == "" && ifsc_code == "") {
+        if(ac_holder_name =="" || ac_number =="" ||  bank_name == "" || ifsc_code == "") {
             return false;
         }
-        
-        // $.ajax({
-        //         url: "/login",
-        //         type: 'POST',
-        //         data: jsonData,
-        //         success: function (result) {
-        //             $("#signin-msg").html("Successfully logged in... Redirecting to page...");
-        //             $("#signin-msg").css("color", "#0070B9");
-        //             location.reload();
-        //             console.log('Logged In' + result);
-        //         },
-        //         error: function (errorMessage) {
-        //             $("#signin-msg").html("Wrong email or password!");
-        //             console.log(errorMessage);
-        //             $(".se-pre-con-login").fadeOut("slow");
-        //         },
-        //     });
+        $(".se-pre-con-login").show();
+        $.ajax({
+                url: "/api/v1/repayment/withdrawal-request",
+                type: 'POST',
+                data: jsonData,
+                success: function (result) {
+                    alert(result['success']);
+                    $(".se-pre-con-login").fadeOut("slow");
+                    $('#withdraw-close-btn').click();
+                },
+                error: function (errorMessage) {
+                    $(".se-pre-con-login").fadeOut("slow");
+                    alert(result['error'] + "Please Try again");
+                },
+            });
     });
+function getDateFromMilisec(milisec) {
+    var d = new Date(milisec);
+    var year = d.getFullYear(),
+        month = d.getMonth()+1,
+        date = d.getDate(),
+        h = d.getHours(),
+        m = d.getMinutes(),
+        s = d.getSeconds();
+        return(date + '-' + month + '-' + year)
+    // return(year+':'+ month +':'+date+':'+ h +':'+ m +':'+ s);
+}
+function getTimeFromMilisec(milisec) {
+    var d = new Date(milisec);
+    var year = d.getFullYear(),
+        month = d.getMonth()+1,
+        date = d.getDate(),
+        h = d.getHours(),
+        m = d.getMinutes(),
+        s = d.getSeconds();
+        return(h +':'+ m +':'+ s);
+    // return(year+':'+ month +':'+date+':'+ h +':'+ m +':'+ s);
+}
 </script>

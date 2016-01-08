@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Deviab\RepaymentBundle\Entity\LenderWithdrawalRequest;
+use FOS\RestBundle\Util\Codes;
 
 class RepaymentController extends Controller
 {
@@ -56,7 +57,7 @@ class RepaymentController extends Controller
         }
         $lenderWithdrawalRequestRepo = $em->getRepository('DeviabRepaymentBundle:LenderWithdrawalRequest');
         if ($lenderWithdrawalRequestRepo->findOneBy(['lender'=> $lender, 'status'=>'processing'])) {
-            return new Response(json_encode(['error' => 'there\'s already one withdrawal request in process']), Codes::HTTP_BAD_REQUEST);
+            return new Response(json_encode(['success' => 'there\'s already one withdrawal request in process']), Codes::HTTP_OK);
         }
 
         $lenderWithdrawalRequest = new LenderWithdrawalRequest();
@@ -73,6 +74,6 @@ class RepaymentController extends Controller
         $em->persist($lenderWithdrawalRequest);
         $em->flush();
 
-        return new Response(json_encode(['success' => True]), Codes::HTTP_OK);
+        return new Response(json_encode(['success' => 'Request in Process']), Codes::HTTP_OK);
     }
 }
