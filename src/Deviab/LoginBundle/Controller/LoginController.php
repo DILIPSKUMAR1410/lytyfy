@@ -100,12 +100,39 @@ class LoginController extends Controller
     public function inviteAction()
     {
         $requestParams = $this->getRequest()->request->all();
-        if (isset($requestParams['email'])) {
-            return new JsonResponse(['success' => 'Invite will be sent to your email ' . $requestParams['email']], Codes::HTTP_OK);
-        } else {
-            return new Response(json_encode(['error' => 'Email Mandatory']), Codes::HTTP_BAD_REQUEST);
+        $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
+        if (count(array_intersect(array_keys($requestParams), ['email'])) < 1) {
+           return new Response(json_encode(['error' => 'Email is mandatory']), Codes::HTTP_BAD_REQUEST);
         }
+        $username = $email = $requestParams['email'];
+        $password = 'DEVIAB@123';
+
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $factory = $this->container->get('security.encoder_factory');
+        $user = $em->getRepository('DeviabLoginBundle:User')->findOneBy(['email' => $email]);
+        if ($user) {
+           return new Response(json_encode(['error' => 'Email Already registered']), Codes::HTTP_BAD_REQUEST);
+        }
+
+        $user = new User();
+        $user->setUsername($username);
+        $user->setEmail($email);
+        $user->setPlainPassword($password);
+        $user->setEnabled(!$confirmationEnabled);
+        $user->addRole('ROLE_LENDER');
+        $userManager = $this->container->get('fos_user.user_manager');
+        $userManager->updateUser($user);
+        $lender = $this->container->get('lender_service')->addLenderDetail([
+           'fname' => $username,
+           'user' => $user
+        ]);
+        $form = $this->container->get('fos_user.registration.form');
+        $formHandler = $this->container->get('fos_user.registration.form.handler');
+
+        $formHandler->jaiHo($user, true);
+        return new JsonResponse(['success' => 'Invite will be sent to your email ' . $requestParams['email']], Codes::HTTP_OK);
     }
+
     public function logoutAction()
     {
 
