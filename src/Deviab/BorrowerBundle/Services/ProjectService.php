@@ -19,11 +19,12 @@ class ProjectService extends BaseService
     /**
      * @param Doctrine $doctrine
      */
-    public function __construct( Doctrine $doctrine )
+    public function __construct( Doctrine $doctrine, $mailer )
     {
         parent::__construct($doctrine);
 
         $this->doctrine = $doctrine;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -96,6 +97,8 @@ class ProjectService extends BaseService
             $this->em->merge($lender->getCurrentStatus());
             $this->em->persist($lenderDeviabTransaction);
             $this->em->flush();
+
+            // $this->mailer->sendEmailMessage('Nitin', 'nitin@deviab.com', 'Sao Rocks', 'saoraghavendra@gmail.com', 'Jai Mata Di', 'Hi Hello Whatsup!');
             return View::create("Transaction captured", Codes::HTTP_OK);
         }
         return View::create("something went wrong dude", Codes::HTTP_BAD_REQUEST);

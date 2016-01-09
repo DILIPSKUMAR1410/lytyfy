@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Deviab\RepaymentBundle\DeviabRepaymentBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Deviab\LoginBundle\DeviabLoginBundle(),
+            new Deviab\PlatformBundle\DeviabPlatformBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
