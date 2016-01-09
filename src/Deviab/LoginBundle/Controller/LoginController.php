@@ -126,10 +126,10 @@ class LoginController extends Controller
            'fname' => $username,
            'user' => $user
         ]);
-        $form = $this->container->get('fos_user.registration.form');
-        $formHandler = $this->container->get('fos_user.registration.form.handler');
+        // $form = $this->container->get('fos_user.registration.form');
+        // $formHandler = $this->container->get('fos_user.registration.form.handler');
 
-        $formHandler->jaiHo($user, true);
+        // $formHandler->jaiHo($user, true);
         return new JsonResponse(['success' => 'Invite will be sent to your email ' . $requestParams['email']], Codes::HTTP_OK);
     }
 
