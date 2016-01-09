@@ -72,12 +72,16 @@ class ProjectService extends BaseService
             $lenderId = $request['udf1'];
             $projectId = $request["udf2"];
             $amount = $request["amount"];
+            $status = $request["status"];
             $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
             $lender = $lenderRepository->find($lenderId);
             $projectRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:project');
             $project = $projectRepository->find($projectId);
             $lenderDeviabTransaction = new LenderDeviabTransaction();
             $lenderDeviabTransaction->setLender($lender);
+            $lenderDeviabTransaction->setStatus($status);
+            if ($status = "failed") ;
+            $lenderDeviabTransaction->setErrorMessage($request["error_message"]);
             $lenderDeviabTransaction->setProject($project);
             $lenderDeviabTransaction->setAmount($amount);
             $lenderDeviabTransaction->setTimestamp(new \DateTime());
