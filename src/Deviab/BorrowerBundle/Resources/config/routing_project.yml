@@ -17,3 +17,9 @@ payu_success_webhook:
     defaults: { _controller: DeviabBorrowerBundle:Project:payuSuccessWebhook}
     requirements:
         _method: POST
+
+payu_failure_webhook:
+    pattern:  /webhook/failure
+    defaults: { _controller: DeviabBorrowerBundle:Project:payuSuccessWebhook}
+    requirements:
+        _method: POST
