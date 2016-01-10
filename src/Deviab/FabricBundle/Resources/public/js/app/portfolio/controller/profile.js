@@ -1,6 +1,6 @@
 app.controller("ProfileController", function ($scope, $http) {
     //$scope.profileResponce = null;
-    var res = $http.get('/api/v1/lenders/4');
+    var res = $http.get('/api/v1/lenders/'+$('#profile-id').val());
     res.success(function (data, status, headers, config) {
         $scope.profileResponce = data;
         $(".loading").hide();

@@ -111,7 +111,7 @@ class LoginController extends Controller
         $factory = $this->container->get('security.encoder_factory');
         $user = $em->getRepository('DeviabLoginBundle:User')->findOneBy(['email' => $email]);
         if ($user) {
-            return new Response(json_encode(['error' => 'Email Already registered']), Codes::HTTP_BAD_REQUEST);
+            return new JsonResponse(['success' => 'Email Already registered'], Codes::HTTP_OK);
         }
 
         $user = new User();

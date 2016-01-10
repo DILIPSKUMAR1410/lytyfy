@@ -546,8 +546,9 @@
 	   		},
 	   		error: function(errorMessage){
 	   			$(".se-pre-con-login").hide();
-	   			$("#signup-msg").html("Sorry, Please try again!");
+	   			$("#signup-msg").html(errorMessage.error);
 	       		console.log(errorMessage);
+	       		console.log(errorMessage.error);
 	   		},
 	   	});
 	});
@@ -572,7 +573,9 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function () {
+		{% if username is defined %}
 		getProfile();
+		{% endif %}
 		$("#profile-modal").on("click", "#prifile-edit-btn", function(){
 	    $('input.profile-input').each(function() {
 	        var id = $(this).attr('id');
