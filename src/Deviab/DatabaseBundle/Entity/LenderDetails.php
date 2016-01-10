@@ -31,35 +31,31 @@ class LenderDetails
 
     /**
      * @var string
-     * @Groups({"profile","project_portfolio"})
+     * @Groups({"profile"})
      * @ORM\Column(name="fname", type="string", length=45, nullable=false)
      */
     private $fname;
 
     /**
      * @var string
-     * @Groups({"profile"})
      * @ORM\Column(name="lname", type="string", length=45, nullable=false)
      */
     private $lname;
 
     /**
      * @var string
-     * @Groups({"profile"})
      * @ORM\Column(name="address", type="string", length=45, nullable=true)
      */
     private $address;
 
     /**
      * @var string
-     * @Groups({"profile"})
      * @ORM\Column(name="gender", type="string", length=10, nullable=false)
      */
     private $gender;
 
     /**
      * @var \DateTime
-     * @Groups({"profile"})
      * @ORM\Column(name="dob", type="date", nullable=true)
      */
     private $dob;
@@ -74,45 +70,38 @@ class LenderDetails
 
     /**
      * @var string
-     * @Groups({"profile"})
      * @ORM\Column(name="profile_pic", type="string", length=255, nullable=false)
      */
     private $profilePic;
 
     /**
      * @var string
-     * @Groups({ "profile"})
      * @ORM\Column(name="google_id", type="string", length=45, nullable=true)
      */
     private $googleId;
 
     /**
      * @var string
-     * @Groups({"profile"})
      * @ORM\Column(name="facebook_id", type="string", length=45, nullable=true)
      */
     private $facebookId;
 
     /**
-     * @Groups({"profile"})
      * @ORM\OneToMany(targetEntity="DeviabLenderTransaction", mappedBy="lender")
      */
     private $toLenderTransactions;
 
     /**
-     * @Groups({"profile"})
      * @ORM\OneToMany(targetEntity="LenderDeviabTransaction", mappedBy="lender")
      */
     private $fromLenderTransactions;
 
     /**
-     * @Groups({"profile"})
      * @ORM\OneToOne(targetEntity="LenderCurrentStatus", mappedBy="lender")
      */
     private $currentStatus;
 
     /**
-     * @Groups({"profile"})
      * @ORM\OneToOne(targetEntity="LenderWallet", mappedBy="lender")
      */
     private $wallet;

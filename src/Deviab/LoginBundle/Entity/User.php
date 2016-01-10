@@ -6,7 +6,8 @@ use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Deviab\DatabaseBundle\Entity\LenderDetails;
-
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\MaxDepth;
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
@@ -26,6 +27,7 @@ class User extends BaseUser
     // protected $username;
 
     /**
+     * @Groups({"profile"})
      * @Assert\NotBlank(groups={"Registration", "Profile"})
      */
     protected $email;
@@ -36,6 +38,7 @@ class User extends BaseUser
     protected $password;
 
     /**
+     * @Groups({"profile"})
      * @ORM\OneToOne(targetEntity="Deviab\DatabaseBundle\Entity\LenderDetails", mappedBy="user", cascade={"persist"})
      */
     private $lender;
