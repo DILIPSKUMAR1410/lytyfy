@@ -14,7 +14,9 @@
     border: 0;
     /*margin:5px 0px;*/
 }
-
+#project-details-table-container {
+    margin-top: 130px;
+}
 #arrow {
     margin-top: 35px;
 

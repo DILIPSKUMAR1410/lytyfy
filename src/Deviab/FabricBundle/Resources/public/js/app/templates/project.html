@@ -10,10 +10,7 @@
         background: #fff;
         
         /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
+        display: block;
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         -webkit-justify-content: center;
@@ -67,7 +64,7 @@
         height: 160px !important;
         margin-right: 133px !important;
     }
-    .swiper-wraper {
+    .swiper-wrapper {
         margin-left: 62px !important;
         margin-top: 65px !important;
     }
@@ -76,18 +73,12 @@
 <div class="container" ng-controller="ProjectController as pc">
     <div id="project-details" class="row border-radius">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+            <div id="project-details-table-container" class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <table class="table table-curved">
                         <thead id="borrower_img">
                             <tr>
-                            <th colspan="3">
-                                <img class="menu-type img-responsive" ng-src="/bundles/fabric/images/portfolio.jpg"
-                             alt="loding...." src="/bundles/fabric/images/portfolio.jpg">
-                             </th>
-                            </tr>
-                            <tr>
-                                <th colspan="3"><h3 class="text-center">Loan details</h3></th>
+                                <th colspan="3"><h3 class="text-center">Loan Details</h3></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -104,12 +95,14 @@
                 </div>
             </div>
             <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                <h3 class="text-center"> Bihar Solar Project </h3>
+                <h3 class="text-center">Lytyfy Bihar </h3>
 
                 <div class="border"></div>
                 <div id="project-expl">
                     <div class="space-25"></div>
-                    &nbsp &nbsp Energy is a prerequisite for all human endeavours. It is the absence of a reliable source of energy that makes us appreciate the importance of the presence of energy in various forms which we have started to take for granted in our modern lives. But yet, millions of people in our country lead a life in the absence of a reliable source of energy. A Life without light which is unimaginable for many of us is a constant reality of for millions of people. The story of Dhamdaha is something similar to the rest of the hinterlands of our country. Dhamdaha is located on the eastern side of Purnea town in the northeastern part of Bihar. Despite its proximity to the district headquarters, many villages in the block are yet to enjoy the privilege of reliable and affordable electricity. This has not deterred the spirits of the villagers and they continue to work hard, innovate and succeed in life. Youngsters in these villages continue to mesmerize their elders by the ever increasing use of technology in their day to day lives. Technology in the form of mobiles, microfinance, core banking solutions have started to impact the lives of these people. One such technology that can solve their problems of energy is the Solar technology. Rural people living in these areas are enthusiastic about the utilisation of solar based energy. Many have already tried using solar homelighting systems and are extremely happy about the democratization of electricity as they feel that they can use it as per their needs. Youngsters get quality time of 4 hours after sunset to read under bright LED lights and others utilise the system for mobile charging, cooking, increase their productivity by keeping their shops open even after sunset. It is an economical deal for them in the long run as it easily beats other forms of fuel that they use. The promotion of clean and green technology in the rural areas will help make the planet a better place for future generations. Rural people find it difficult to pay for the system at one go and hence require assistance in the form of an Energy Loan which they shall repay in monthly instalments. The challenge is huge, scope is immense, willingness of the rural consumer is there! Come! Be part of the change. The villagers are willing to adopt the solar technology as they realise that it is highly beneficial for them. The only hurdle in their way is the availability of credit. As a first step, 50 interested rural customers have come forward to adopt the technology and they seek your assistance in changing their lives for better. You can have a look at their profiles below.
+                    &nbsp &nbsp Energy is a prerequisite for all human endeavours. It is the absence of energy that makes us appreciate its  importance in various forms which we take for granted in our modern lives. But yet, millions of people in our country lead a life in the absence of a reliable source of energy. A Life without light which is unimaginable for many of us is a constant reality for millions of people. The story of Dhamdaha is something similar to the rest of the hinterlands of our country. Dhamdaha is located on the eastern side of Purnea town in the northeastern part of Bihar. Despite its proximity to the district headquarters, many villages in the block are yet to enjoy the privilege of reliable and affordable electricity. This has not deterred the spirits of the villagers and they continue to work hard, innovate and succeed in life. Youngsters in these villages continue to mesmerize their elders by the ever increasing use of technology in their day to day lives. Technology in the form of mobile phones, microfinance, core banking solutions have started to impact the lives of these people. One such technology that can solve their problems of energy is the Solar technology. Rural people living in these areas are enthusiastic about the utilisation of solar based energy. Many have already tried using solar home lighting systems and are extremely happy about the democratization of electricity as they feel that they can use it as per their needs. Youngsters get quality time of 4 hours after sunset to read under bright LED lights and others utilise the system for mobile charging, cooking, increase their productivity by keeping their shops open even after sunset. It is an economical deal for them in the long run as it easily beats other forms of fuel that they use. The promotion of clean and green technology in the rural areas will help make the planet a better place for future generations. Rural people find it difficult to pay for the system at one go and hence require assistance in the form of an Energy Loan which they shall repay in monthly instalments. The challenge is huge, scope is immense, willingness of the rural consumer is there! Come! Be part of the change. The villagers are willing to adopt the solar technology as they realise that it is highly beneficial for them. The only hurdle in their way is the availability of credit. As a first step, 50 interested rural customers have come forward to adopt the technology and they seek your assistance in changing their lives for better. You can have a look at their profiles below. 
+
+
                 </div>
             </div>
         </div>
@@ -187,6 +180,7 @@
             </div>
         </div>
     </div>
+    <div class="border space"></div>
     <div class="row als-container" id="demo1">
         <span class="als-prev"><img src="/bundles/fabric/images/left_arrow.png" alt="prev" title="previous"/></span>
 
@@ -214,9 +208,11 @@
         </div>
         <span id="next-arrow" class="als-next"><img src="/bundles/fabric/images/right_arrow.png" alt="next" title="next"/></span>
     </div>
+    <h3 class="text-center">Borrowers</h3>
+    <div class="border"></div>
     <div class="swiper-container container-fluid">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" ng-repeat="lender in projectResponce.lenders"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" width="140" height="140"><figcaption><br>{[{lender.name}]}</figcaption></div>
+            <div class="swiper-slide" ng-repeat="lender in projectResponce.lenders"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/web_assets/profile.jpg" width="140" height="140"><figcaption><br>{[{lender.name}]}</figcaption></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
@@ -224,7 +220,10 @@
         <div class="swiper-button-next"><img src="/bundles/fabric/images/right_arrow.png" alt="prev" title="previous"/></div>
         <div class="swiper-button-prev"><img src="/bundles/fabric/images/left_arrow.png" alt="prev" title="previous"/></div>
     </div>
-    <div class="container-fluid space text-center">Borrower</div>
+    <h3 class="text-center">Lenders</h3>
+    <div class="border"></div>
+    <div class="space"></div>
+
 
 </div>
 <div>
@@ -268,10 +267,10 @@
 
     $('#proceed-button').click(function () {
         var amount = $("#form-amount").val();
-        if(amount < 500) {
-            $("#amount-errmsg").html("Please Enter 500 or more than 500 Amount.").show().fadeOut(4000);
-            return;
-        }
+        // if(amount < 500) {
+        //     $("#amount-errmsg").html("Please Enter 500 or more than 500 Amount.").show().fadeOut(4000);
+        //     return;
+        // }
         // $('#proceed-button').prop('disabled', true);
         $(".se-pre-con-login").show();
 		var res = $.get('/api/v1/lenders/4/fd?amount='+amount);

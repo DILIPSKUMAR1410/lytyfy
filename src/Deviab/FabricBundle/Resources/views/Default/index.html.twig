@@ -14,7 +14,6 @@
 	<script src="/bundles/fabric/js/ng-route.js"></script>
 	<script src="/bundles/fabric/js/jquery-2.1.1.min.js"></script>
 	<script src="/bundles/fabric/js/jquery.als-1.7.min.js"></script>
-	<script src="/bundles/fabric/js/sha512.js"></script>
 	<script src="/bundles/fabric/js/app/portfolio/module/portfolio.js"></script>
 	<script src="/bundles/fabric/js/app/portfolio/controller/portfolio.js"></script>
 	<script src="/bundles/fabric/js/app/portfolio/controller/project.js"></script>
@@ -101,7 +100,7 @@
 								</li>
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="" data-target="#profile-model" data-toggle="modal">Profile</a>
 								</li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="" data-target="#change-password-model" data-toggle="modal">Change Passsword</a>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="" data-target="#change-password-modal" data-toggle="modal">Change Password</a>
 								</li>
 								<li role="presentation" class="divider"></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">Logout</a></li>
@@ -148,7 +147,8 @@
 						<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="menu1" id="dash-link">
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="#/dashboard">Dashbord</a>
 							</li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href=""data-target="#profile-model" data-toggle="modal">Setting</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href=""data-target="#profile-model" data-toggle="modal">Profile</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="" data-target="#change-password-modal" data-toggle="modal">Change Password</a>
 							<li role="presentation" class="divider"></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">Logout</a></li>
 						</ul>
@@ -274,7 +274,7 @@
 		</ul>
 	</div>
 	<div id="footer-text">
-		<div id="email">info@deviab.com</div>
+		<div id="email">support@deviab.com</div>
 		<div id="copy-right">Copyright &copy Deviab Research and Implementation Pvt Ltd 2015</div>
 	</div>
 </div>
@@ -284,7 +284,7 @@
         <div class="modal-dialog" style="width:35%">
             <div id="profile-modal" style="background:#fff">
 					<div class="modal-header">
-						<button type="button" class="profile-close" data-dismiss="modal">&times;</button>
+						<button type="button" id="profile-close" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="text-center modal-title">Profile</h4>
 					</div>
 					<div class="container-fluid">
@@ -325,9 +325,9 @@
     </div>
 </div>
 <div class="container dialog-container">
-    <div class="modal fade" id="profile-model" role="dialog">
+    <div class="modal fade" id="change-password-modal" role="dialog">
         <div class="modal-dialog" style="width:35%">
-            <div id="profile-modal" style="background:#fff">
+            <div id="change-password-container" style="background:#fff">
 					<div class="modal-header">
 						<button id="change-pass-close" type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="text-center modal-title">Update Password</h4>
@@ -337,23 +337,23 @@
 							<div class="form-group">
 								<label for="priofile-email">Old Password:</label>
 								<input type="text" class="form-control change-password-input" id="old-pass" 
-									   placeholder="Enter Old Password"  required disabled/>
+									   placeholder="Enter Old Password"  required />
 							</div>
 							<div class="form-group">
 								<label for="priofile-password">New Password:</label>
 								<input type="text" class="form-control change-password-input" id="new-pass" name="priofile-password"
-									   placeholder="Enter Pasword"  required disabled/>
+									   placeholder="Enter Pasword"  required/>
 							</div>
 							<div class="form-group">
 								<label for="priofile-password">Confirm Password:</label>
 								<input type="text" class="form-control change-password-input" id="confirm-pass" 
-									   placeholder="Confirm Password"  required disabled/>
+									   placeholder="Confirm Password"  required/>
 							</div>
 							<!-- <div class="checkbox">
 								<label><input type="checkbox"> Remember me</label>
 							</div> -->
-							<div id="profile-update-btn-container" class="text-center">
-							<button id="profile-update-btn" class="btn btn-lg btn-primary" disabled>Done</button>
+							<div id="password-update-btn-container" class="text-center">
+							<button id="password-update-btn" class="btn btn-lg btn-primary">Done</button>
 							</div>
 							<div class="space"></div>
 					</form>
@@ -439,7 +439,6 @@
 					alert('Please Try Again...');
 				} else {
 					errorMessage = errorMessage['error'];
-					errorMessage = errorMessage.replace(/\w\S*/g, function(errorMessage){return errorMessage.charAt(0).toUpperCase() + errorMessage.substr(1).toLowerCase();})
 					alert(errorMessage);
 				}
 				$(".se-pre-con-login").fadeOut("slow");
@@ -583,58 +582,56 @@
 
 	});
 	$('#profile-update-btn').click(function(){
-    console.log('profile-update-btn clicked');
+	    var data = {
+	        "fname" :$('#profile-name').val(),
+	        "email" : $('#profile-email').val(),
+	        "primary_mobile_number" :$('#profile-phone').val(),
 
-    var data = {
-        "fname" :$('#profile-name').val(),
-        "email" : $('#profile-email').val(),
-        "primary_mobile_number" :$('#profile-phone').val(),
+	    }
+	    $.ajax({
+	        url: '/api/v1/lenders/'+$('#profile-id').val(),
+	        data: data,
+	        cache: false,
+	        contentType: 'application/x-www-form-urlencoded',
+	        type: 'PATCH',
+	        success: function(data){
+	           alert("Updated successfully");
+	           $('#priofile-update-btn').prop('disabled',true);
+	           $('#profile-name').prop('disabled',true);
+	           $('#profile-email').prop('disabled',true);
+	           $('#profile-phone').prop('disabled',true);
+	           $('#profile-close').click();       
+	        },
+	        error: function(error) {
+	           alert("Error! Please Try Again");
+	        }
+	    });
+	});
+    $('#password-update-btn').click(function(){
+	    var data = {
+	        "old_password" :$('#old-pass').val(),
+	        "new_password" : $('#new-pass').val()
+	    }
+	    $.ajax({
+	        url: '/api/v1/lenders/'+$('#profile-id').val(),
+	        data: data,
+	        cache: false,
+	        contentType: 'application/x-www-form-urlencoded',
+	        type: 'PATCH',
+	        success: function(data){
+	        	console.log(data);
+	        	if(data.success == true) {
+	        	   alert("Updated successfully");
+	       		} else if(data.success == false) {
+	       			alert("Invalid Old password!!");
+	       		}
 
-    }
-    $.ajax({
-        url: '/api/v1/lenders/'+$('#profile-id').val(),
-        data: data,
-        cache: false,
-        contentType: 'application/x-www-form-urlencoded',
-        type: 'PATCH',
-        success: function(data){
-           alert("Updated successfully");
-           $('#priofile-update-btn').prop('disabled',true);
-           $('#profile-name').prop('disabled',true);
-           $('#profile-email').prop('disabled',true);
-           $('#profile-phone').prop('disabled',true);
-           $('#profile-closs').click();       
-        },
-        error: function(error) {
-           alert("Error! Please Try Again");
-        }
-    });
-    $('#profile-update-btn').click(function(){
-    console.log('profile-update-btn clicked');
-
-    var data = {
-        "old_password" :$('#old-pass').val(),
-        "new_password" : $('#new-pass').val
-    }
-    $.ajax({
-        url: '/api/v1/lenders/'+$('#profile-id').val(),
-        data: data,
-        cache: false,
-        contentType: 'application/x-www-form-urlencoded',
-        type: 'PATCH',
-        success: function(data){
-        	if(data.success == true) {
-        	   alert("Updated successfully");
-       		} else if(data.success == false) {
-       			alert("Invalid Old password!!");
-       		}
-
-           $('#change-pass-close').click();       
-        },
-        error: function(error) {
-           alert("Error! Please Try Again");
-        }
-    });
+	           $('#change-pass-close').click();       
+	        },
+	        error: function(error) {
+	           alert("Error! Please Try Again");
+	        }
+	    });
 });
 </script>
 <script src="http://www.idangero.us/swiper/dist/js/swiper.min.js"></script>
