@@ -88,6 +88,7 @@
 .als-wrapper {
     position: relative;
     list-style: none;
+    height: 140px !important;
 }
 
 .als-item {
@@ -96,6 +97,7 @@
     text-align: center;
     cursor: pointer;
     float: left;
+    height: 140px !important;
 }
 
 .als-prev, .als-next {
@@ -113,10 +115,10 @@
 }
 
 #demo1 .als-item {
-    margin: 0px 5px;
+    margin: 0px 133px 0px 0px;
     padding: 4px 0px;
-    height: 120px;
-    width: 180px;
+    height: 140px;
+    width: 140px;
     text-align: center;
     border-radius: 50%;
 }
@@ -128,15 +130,15 @@
 }
 
 #demo1 .als-prev, #demo1 .als-next {
-    top: 40px;
+    top: 65px;
 }
 
 #demo1 .als-prev {
-    left: 10%;
+    
 }
 
 #demo1 .als-next {
-    right: 10%;
+    
 }
 
 /*************************************
