@@ -54,24 +54,26 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th class="text-center">Total Repayment</th>
-                    <th class="text-center" style="min-width:100px">₹<span class="loading"></span>{[{profileResponce.principalRepayment + profileResponce.interestRepayment}]}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Principal Repayment</td>
-                    <td style="min-width:100px">₹<span class="loading"></span>{[{profileResponce.principalRepayment}]}</td>
-                </tr>
-                <tr>
-                    <td>Interest Repayment</td>
-                    <td style="min-width:100px">₹<span class="loading"></span>{[{profileResponce.interestRepayment}]}</td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Total Repayment</th>
+                        <th class="text-center" style="min-width:100px">₹<span class="loading"></span>{[{profileResponce.principalRepayment + profileResponce.interestRepayment}]}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Principal Repayment</td>
+                        <td style="min-width:100px">₹<span class="loading"></span>{[{profileResponce.principalRepayment}]}</td>
+                    </tr>
+                    <tr>
+                        <td>Interest Repayment</td>
+                        <td style="min-width:100px">₹<span class="loading"></span>{[{profileResponce.interestRepayment}]}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="container border tmrgn-25"></div>
@@ -141,8 +143,10 @@
             Usually it takes 3 working days to process your request.
           <button id="withdraw-close-btn" type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
         </div>
+        <div id="withdraw-msg-container" class="error h-25 text-center" ><span id="withdraw-pass-msg"></span></div>
       </div>
     </div>
+</div>
 </div>
 
 
@@ -185,13 +189,14 @@
                 type: 'POST',
                 data: jsonData,
                 success: function (result) {
-                    alert(result['success']);
+                    $('#withdraw-pass-msg').html(result['success']).show().fadeOut(4000);
                     $(".se-pre-con-login").fadeOut("slow");
                     $('#withdraw-close-btn').click();
                 },
                 error: function (errorMessage) {
+                    console.log(errorMessage);
+                    $('#withdraw-pass-msg').html(errorMessage.responseJSON.error).show().fadeOut(4000);
                     $(".se-pre-con-login").fadeOut("slow");
-                    alert(result['error'] + "Please Try again");
                 },
             });
     });

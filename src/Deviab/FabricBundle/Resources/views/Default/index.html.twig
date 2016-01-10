@@ -279,88 +279,90 @@
 	</div>
 </div>
 <div>
-<div class="container dialog-container">
-    <div class="modal fade" id="profile-model" role="dialog">
-        <div class="modal-dialog" style="width:35%">
-            <div id="profile-modal" style="background:#fff">
-					<div class="modal-header">
-						<button type="button" id="profile-close" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="text-center modal-title">Profile</h4>
+<div class="modal fade" id="profile-modal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      	<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" id="profile-close" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="text-center modal-title">Profile</h4>
+			</div>
+			<div class="container-fluid">
+				<form id='signin-form' role="form">
+					<div class="form-group" style="display:none">
+						<label for="profile-id">id:</label>
+						<input type="text" class="form-control profile-input" id="profile-id" name="profile-id"
+							   placeholder="Enter id"  required disabled/>
 					</div>
-					<div class="container-fluid">
-						<form id='signin-form' role="form">
-							<div class="form-group" style="display:none">
-								<label for="profile-id">id:</label>
-								<input type="text" class="form-control profile-input" id="profile-id" name="profile-id"
-									   placeholder="Enter id"  required disabled/>
-							</div>
-							<div class="form-group">
-								<label for="priofile-email">Email:</label>
-								<input type="email" class="form-control profile-input" id="profile-email" name="priofile-email"
-									   placeholder="Enter email"  required disabled/>
-							</div>
-							<div class="form-group">
-								<label for="priofile-password">Name:</label>
-								<input type="text" class="form-control profile-input" id="profile-name" name="priofile-password"
-									   placeholder="Enter Name"  required disabled/>
-							</div>
-							<div class="form-group">
-								<label for="priofile-password">Mobile:</label>
-								<input type="text" class="form-control profile-input" id="profile-phone" name="priofile-password"
-									   placeholder="Enter Mobile Number"  required disabled/>
-							</div>
-							<!-- <div class="checkbox">
-								<label><input type="checkbox"> Remember me</label>
-							</div> -->
-							<div id="profile-update-btn-container" class="text-center">
-							<button id="prifile-edit-btn" class="btn btn-lg btn-primary">Edit</button>
-							<button id="profile-update-btn" class="btn btn-lg btn-primary" disabled>Done</button>
-							</div>
-							<div class="space"></div>
-					</form>
-					<div id="edit- profile-msg-container" class="error"><span id="profile-update-msg"></span></div>
-				</div>
+					<div class="form-group">
+						<label for="priofile-email">Email:</label>
+						<input type="email" class="form-control profile-input" id="profile-email" name="priofile-email"
+							   placeholder="Enter email"  required disabled/>
+					</div>
+					<div class="form-group">
+						<label for="priofile-password">Name:</label>
+						<input type="text" class="form-control profile-input" id="profile-name" name="priofile-password"
+							   placeholder="Enter Name"  required disabled/>
+					</div>
+					<div class="form-group">
+						<label for="priofile-password">Mobile:</label>
+						<input type="text" class="form-control profile-input" id="profile-phone" name="priofile-password"
+							   placeholder="Enter Mobile Number"  required disabled/>
+					</div>
+					<!-- <div class="checkbox">
+						<label><input type="checkbox"> Remember me</label>
+					</div> -->
+					<div id="profile-update-btn-container" class="text-center">
+					<button id="prifile-edit-btn" class="btn btn-lg btn-primary">Edit</button>
+					<button id="profile-update-btn" class="btn btn-lg btn-primary" disabled>Done</button>
+					</div>
+					<div class="space"></div>
+				</form>
+				<div id="edit- profile-msg-container" class="error"><span id="profile-update-msg"></span></div>
 			</div>
         </div>
     </div>
 </div>
-<div class="container dialog-container">
-    <div class="modal fade" id="change-password-modal" role="dialog">
-        <div class="modal-dialog" style="width:35%">
-            <div id="change-password-container" style="background:#fff">
-            		<div class="space-25"></div>
-					<div class="modal-header">
-						<button id="change-pass-close" type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="text-center modal-title">Update Password</h4>
-					</div>
-					<div class="container-fluid">
-						<form id='change-password-form' role="form">
-							<div class="form-group">
-								<label for="update-pass-email">Old Password:</label>
-								<input type="password" class="form-control change-password-input" id="old-pass" 
-									   placeholder="Enter Old Password"  required />
-							</div>
-							<div class="form-group">
-								<label for="update-pass-password">New Password:</label>
-								<input type="password" class="form-control change-password-input" id="new-pass" name="priofile-password"
-									   placeholder="Enter Password"  required/>
-							</div>
-							<div class="form-group">
-								<label for="update-pass-password">Confirm Password:</label>
-								<input type="password" class="form-control change-password-input" id="confirm-pass" 
-									   placeholder="Confirm Password"  required/>
-							</div>
-							<!-- <div class="checkbox">
-								<label><input type="checkbox"> Remember me</label>
-							</div> -->
-							<div id="password-update-btn-container" class="text-center">
-							<button id="password-update-btn" class="btn btn-lg btn-primary">Done</button>
-							</div>
-							<div class="space-25"></div>
-					</form>
-					<div id="edit-pass-msg-container" class="error h-25 text-center" ><span id="change-pass-msg"></span></div>
+
+
+
+
+<div class="modal fade" id="change-password-modal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+		<div class="space-25"></div>
+		<div class="modal-header">
+			<button id="change-pass-close" type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="text-center modal-title">Update Password</h4>
+		</div>
+		<div class="container-fluid">
+			<form id='change-password-form' role="form">
+				<div class="form-group">
+					<label for="update-pass-email">Old Password:</label>
+					<input type="password" class="form-control change-password-input" id="old-pass" 
+						   placeholder="Enter Old Password"  required />
 				</div>
-			</div>
+				<div class="form-group">
+					<label for="update-pass-password">New Password:</label>
+					<input type="password" class="form-control change-password-input" id="new-pass" name="priofile-password"
+						   placeholder="Enter Password"  required/>
+				</div>
+				<div class="form-group">
+					<label for="update-pass-password">Confirm Password:</label>
+					<input type="password" class="form-control change-password-input" id="confirm-pass" 
+						   placeholder="Confirm Password"  required/>
+				</div>
+				<!-- <div class="checkbox">
+					<label><input type="checkbox"> Remember me</label>
+				</div> -->
+				<div id="password-update-btn-container" class="text-center">
+				<button id="password-update-btn" class="btn btn-lg btn-primary">Done</button>
+				</div>
+				<div class="space-25"></div>
+		</form>
+		<div id="edit-pass-msg-container" class="error h-25 text-center" ><span id="change-pass-msg"></span></div>
+	</div>
         </div>
     </div>
 </div>
@@ -440,7 +442,6 @@
 					alert('Please Try Again...');
 				} else {
 					errorMessage = errorMessage['error'];
-					alert(errorMessage);
 				}
 				$(".se-pre-con-login").fadeOut("slow");
 			},
