@@ -70,6 +70,7 @@ class LenderController extends Controller
         }
 
         $passwordChange = false;
+
         if (isset($requestParams['old_password']) && isset($requestParams['new_password'])) {
             $oldPassword = $requestParams['old_password'];
             $newPassword = $requestParams['new_password'];
@@ -80,7 +81,7 @@ class LenderController extends Controller
                 $passwordChanged = false;
             } else {
                 $passwordChanged = true;
-                $user->setPlainPassword($newPassword);
+                $user->setPassword($encoder->encodePassword($newPassword, $user->getSalt()));
                 $em->persist($user);
             }
         }
