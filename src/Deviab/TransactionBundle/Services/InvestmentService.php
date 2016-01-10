@@ -44,8 +44,8 @@ class InvestmentService extends BaseService
             $amountWithdrawn = 0;
             $totalInvestment = 0;
             foreach ($lenderInvestments as $transaction) {
-                if($transaction->getStatus()=="success")
-                $totalInvestment = $totalInvestment + $transaction->getAmount();
+                if ($transaction->getStatus() == "success" || $transaction->getStatus() == "Release Payment")
+                    $totalInvestment = $totalInvestment + $transaction->getAmount();
             }
             $totalReturns = 0;
             foreach ($lenderReturns as $return) {
