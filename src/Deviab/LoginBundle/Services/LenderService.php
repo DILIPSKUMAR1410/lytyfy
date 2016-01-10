@@ -13,14 +13,14 @@ class LenderService extends BaseService
     /**
      * @param Doctrine $doctrine
      */
-    public function __construct(Doctrine $doctrine)
+    public function __construct( Doctrine $doctrine )
     {
         parent::__construct($doctrine);
 
         $this->doctrine = $doctrine;
     }
 
-    public function addLenderDetail($params = [])
+    public function addLenderDetail( $params = [] )
     {
         $lender = new LenderDetails();
         if (isset($params['fname'])) {
@@ -56,10 +56,18 @@ class LenderService extends BaseService
 
         $lenderCurrentStatus = new LenderCurrentStatus();
         $lenderCurrentStatus->setLender($lender);
-
+        $lenderCurrentStatus->setTenureLeft(8);
+        $lenderCurrentStatus->setTimestamp(new \DateTime());
+        $lenderCurrentStatus->setPricipalRepaid(0);
+        $lenderCurrentStatus->setInterestRepaid(0);
+        $lenderCurrentStatus->setPricipalLeft(0);
+        $lenderCurrentStatus->setInterestLeft(0);
+        $lenderCurrentStatus->setExpectedMonthlyReturn(0);
         $lenderWallet = new LenderWallet();
         $lenderWallet->setLender($lender);
-
+        $lenderWallet->setCredits(0);
+        $this->em->persist($lenderCurrentStatus);
+        $this->em->persist($lenderWallet);
         $this->em->persist($lender);
         $this->em->flush();
 

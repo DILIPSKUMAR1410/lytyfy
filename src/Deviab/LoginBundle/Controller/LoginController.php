@@ -102,7 +102,7 @@ class LoginController extends Controller
         $requestParams = $this->getRequest()->request->all();
         $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
         if (count(array_intersect(array_keys($requestParams), ['email'])) < 1) {
-           return new Response(json_encode(['error' => 'Email is mandatory']), Codes::HTTP_BAD_REQUEST);
+            return new Response(json_encode(['error' => 'Email is mandatory']), Codes::HTTP_BAD_REQUEST);
         }
         $username = $email = $requestParams['email'];
         $password = 'DEVIAB@123';
@@ -111,7 +111,7 @@ class LoginController extends Controller
         $factory = $this->container->get('security.encoder_factory');
         $user = $em->getRepository('DeviabLoginBundle:User')->findOneBy(['email' => $email]);
         if ($user) {
-           return new Response(json_encode(['error' => 'Email Already registered']), Codes::HTTP_BAD_REQUEST);
+            return new Response(json_encode(['error' => 'Email Already registered']), Codes::HTTP_BAD_REQUEST);
         }
 
         $user = new User();
@@ -123,7 +123,8 @@ class LoginController extends Controller
         $userManager = $this->container->get('fos_user.user_manager');
         $userManager->updateUser($user);
         $lender = $this->container->get('lender_service')->addLenderDetail([
-           'user' => $user
+            'user' => $user,
+            'fname' => "Fill in your name",
         ]);
         // $form = $this->container->get('fos_user.registration.form');
         // $formHandler = $this->container->get('fos_user.registration.form.handler');
@@ -140,7 +141,7 @@ class LoginController extends Controller
     /**
      * Receive the confirmation token from user email provider, login the user
      */
-    public function confirmAction($token)
+    public function confirmAction( $token )
     {
         $user = $this->container->get('fos_user.user_manager')->findUserByConfirmationToken($token);
 
@@ -166,7 +167,7 @@ class LoginController extends Controller
      * @param \FOS\UserBundle\Model\UserInterface $user
      * @param \Symfony\Component\HttpFoundation\Response $response
      */
-    protected function authenticateUser(UserInterface $user, Response $response)
+    protected function authenticateUser( UserInterface $user, Response $response )
     {
         try {
             $this->container->get('fos_user.security.login_manager')->loginUser(
@@ -220,7 +221,7 @@ class LoginController extends Controller
      *
      * @return string
      */
-    protected function getObfuscatedEmail(UserInterface $user)
+    protected function getObfuscatedEmail( UserInterface $user )
     {
         $email = $user->getEmail();
         if (false !== $pos = strpos($email, '@')) {
@@ -233,7 +234,7 @@ class LoginController extends Controller
     /**
      * Reset user password
      */
-    public function resetAction($token)
+    public function resetAction( $token )
     {
         $user = $this->container->get('fos_user.user_manager')->findUserByConfirmationToken($token);
 
