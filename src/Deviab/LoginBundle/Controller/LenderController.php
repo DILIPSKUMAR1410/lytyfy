@@ -69,10 +69,29 @@ class LenderController extends Controller
             $lender->setFacebookId($requestParams['facebook_id']);
         }
 
+        $passwordChange = false;
+        if (isset($requestParams['old_password']) && isset($requestParams['new_password'])) {
+            $oldPassword = $requestParams['old_password'];
+            $newPassword = $requestParams['new_password'];
+            $passwordChange = true;
+            $factory = $this->container->get('security.encoder_factory');
+            $encoder = $factory->getEncoder($user);
+            if (!$encoder->isPasswordValid($user->getPassword(), $oldPassword, $user->getSalt())) {
+                $passwordChanged = false;
+            } else {
+                $passwordChanged = true;
+                $user->setPlainPassword($newPassword);
+                $em->persist($user);
+            }
+        }
+
         $em->persist($lender);
         $em->flush();
 
-        return new Response(json_encode(['message' => 'success']), Codes::HTTP_OK);
+        if ($passwordChange && !$passwordChanged) {
+            return new Response(json_encode(['success' => false, 'msg' => 'Wrong Old Password']), Codes::HTTP_OK);
+        }
+        return new Response(json_encode(['success' => true, 'msg' => 'All is Well']), Codes::HTTP_OK);
     }
 
     public function getLenderAction()
