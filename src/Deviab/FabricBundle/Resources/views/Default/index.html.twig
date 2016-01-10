@@ -98,7 +98,7 @@
 							<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="menu1" id="dash-link">
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="#/dashboard">Dashbord</a>
 								</li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="" data-target="#profile-model" data-toggle="modal">Profile</a>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="" data-target="#profile-modal" data-toggle="modal">Profile</a>
 								</li>
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="" data-target="#change-password-modal" data-toggle="modal">Change Password</a>
 								</li>
@@ -147,7 +147,7 @@
 						<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="menu1" id="dash-link">
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="#/dashboard">Dashbord</a>
 							</li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href=""data-target="#profile-model" data-toggle="modal">Profile</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href=""data-target="#profile-modal" data-toggle="modal">Profile</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="" data-target="#change-password-modal" data-toggle="modal">Change Password</a>
 							<li role="presentation" class="divider"></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">Logout</a></li>
@@ -270,7 +270,7 @@
 						   target="_blank"><img src="/bundles/fabric/images/index/fb.png"></a></li>
 			<li id="tw"><a href="https://twitter.com/@deviab_energy" target="_blank"><img
 							src="/bundles/fabric/images/index/tw.png"></a></li>
-			<li id="in"><a href="https://www.linkedin.com/company/lytyfy"><img src="/bundles/fabric/images/index/in.png"></a></li>
+			<li id="in"><a href="https://www.linkedin.com/company/lytyfy" target="_blank"><img src="/bundles/fabric/images/index/in.png"></a></li>
 		</ul>
 	</div>
 	<div id="footer-text">
@@ -546,8 +546,9 @@
 	   		},
 	   		error: function(errorMessage){
 	   			$(".se-pre-con-login").hide();
-	   			$("#signup-msg").html("Sorry, Please try again!");
+	   			$("#signup-msg").html(errorMessage.error);
 	       		console.log(errorMessage);
+	       		console.log(errorMessage.error);
 	   		},
 	   	});
 	});
@@ -572,7 +573,9 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function () {
+		{% if username is defined %}
 		getProfile();
+		{% endif %}
 		$("#profile-modal").on("click", "#prifile-edit-btn", function(){
 	    $('input.profile-input').each(function() {
 	        var id = $(this).attr('id');
