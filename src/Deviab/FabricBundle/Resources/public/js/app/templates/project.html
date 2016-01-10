@@ -37,6 +37,40 @@
         margin: 0 10px;
         font-size: 13px;
     }
+    #demo1 .als-viewport {
+        width:87% !important;
+        height: 170px!important;
+        margin-right: 51px !important;
+    }
+    .als-container span {
+        width:3%;
+
+    }
+    #next-arrow {
+        right:0;
+    }
+    .swiper-button-next,.swiper-button-prev {
+        background: none !important;
+    }
+    .swiper-button-prev {
+        left:0 !important;
+    }
+    .swiper-slide img {
+        width:140px !important;
+        height: 140px !important;
+    }
+    .als-wrapper {
+        height: 165px !important;
+    }
+    .swiper-slide {
+        width: 140px !important;
+        height: 160px !important;
+        margin-right: 133px !important;
+    }
+    .swiper-wraper {
+        margin-left: 62px !important;
+        margin-top: 65px !important;
+    }
     </style>
 <div class="space"></div>
 <div class="container" ng-controller="ProjectController as pc">
@@ -156,58 +190,45 @@
     <div class="row als-container" id="demo1">
         <span class="als-prev"><img src="/bundles/fabric/images/left_arrow.png" alt="prev" title="previous"/></span>
 
-        <div class="als-viewport">
+        <div class="als-viewport" >
             <ul class="als-wrapper">
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
-                <li class="als-item"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg"/>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/AfzalMansuri.jpg"/><span>Afzal Mansuri</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/BarkuHasda.jpg"/><span>Barku Hasda</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/BrajeshKumar.jpg"/><span>Brajesh Kumar</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/DeepakKumar.jpg"/><span>Deepak Kumar</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/JaiKrishanSharma.jpg"/><span>Jaikrishan Sharma</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/KamleshwariPrasadSah.jpg"/><span>Kamleshwari Sah</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/KumodKumar.jpg"/><span>Kumod Kumar</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/MaryMurmu.jpg"/><span>Mary Murmu</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/MeenaHasda.jpg"/><span>Meena Hasda</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/NarendarKumar.jpg"/><span>Narendar Kumar</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/NeelamDevi.jpg"/><span>Neelam Devi</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/NeerajKumar.jpg"/><span>Neeraj Kumar</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/PraveenKumarMishra.jpg"/><span>Praveen Mishra</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/RanjanDevi.jpg"/><span>Ranjan Devi</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/ShawendraKumarMandal.jpg"/><span>Shawendra Mandal</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/SiyacharanSharma.jpg"/><span>Siyacharan Sharma</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/TalaTuddu.jpg"/><span>Tala Tuddu</span>
+                <li class="als-item"><img class="img-circle img-responsive" src="https://s3-ap-southeast-1.amazonaws.com/lytyfy/images/borrowers/UmaDevi.jpg"/><span>Uma Devi</span>
             </ul>
         </div>
-        <span class="als-next"><img src="/bundles/fabric/images/right_arrow.png" alt="next" title="next"/></span>
+        <span id="next-arrow" class="als-next"><img src="/bundles/fabric/images/right_arrow.png" alt="next" title="next"/></span>
     </div>
-    <div class="container-fluid space"></div>
     <div class="swiper-container container-fluid">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="width:200px"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
-            <div class="swiper-slide"><img src="/bundles/fabric/images/profile.jpeg"></div>
+            <div class="swiper-slide" ng-repeat="lender in projectResponce.lenders"><img class="img-circle img-responsive" src="/bundles/fabric/images/profile.jpeg" width="140" height="140"><figcaption><br>{[{lender.name}]}</figcaption></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
         <!-- Add Arrows -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"><img src="/bundles/fabric/images/right_arrow.png" alt="prev" title="previous"/></div>
+        <div class="swiper-button-prev"><img src="/bundles/fabric/images/left_arrow.png" alt="prev" title="previous"/></div>
     </div>
     <div class="container-fluid space text-center">Borrower</div>
 
 </div>
+<div>
+   
     <!-- Swiper JS -->
 
 
@@ -219,7 +240,7 @@
         pagination: '.swiper-pagination',
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
-        slidesPerView: 3,
+        slidesPerView: 4,
         centeredSlides: false,
         paginationClickable: true,
         spaceBetween: 0,
@@ -228,7 +249,7 @@
 
 <script>
     var h = $(window).width();
-    var visible_count = 3;
+    var visible_count = 4;
     var scrolling_count = 2;
     if (h < 600) {
         visible_count = 2;
