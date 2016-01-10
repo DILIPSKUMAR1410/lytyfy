@@ -38,16 +38,15 @@ class ProjectService extends BaseService
         if ($project == null)
             return View::create("project not found", Codes::HTTP_BAD_REQUEST);
         $quantum = $project->getCapitalAmount();
-        $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
         $query = $this->em->createQueryBuilder();
-        $fields = array('ldt');
+        $fields = array('IDENTITY(ldt.lender)');
         $query
             ->select($fields)
             ->from('DeviabTransactionBundle:LenderDeviabTransaction', 'ldt')
             ->where('ldt.status = :x')
             ->setParameter('x', 'release payment');
         $ldts = $query->getQuery()->getResult();
-
+        return $ldts;
         $names = [];
         foreach ($ldts as $ldt) {
             $dic['name'] = $ldt->getLender()->getFname();
@@ -70,9 +69,15 @@ class ProjectService extends BaseService
         if ($project == null)
             return View::create("project not found", Codes::HTTP_BAD_REQUEST);
         $quantum = $project->getCapitalAmount();
-        $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
-        $backers = count($lenderRepository->findAll());
-        $response = array('quantum' => $quantum, 'backers' => $backers);
+        $query = $this->em->createQueryBuilder();
+        $fields = array('IDENTITY(ldt.lender)');
+        $query
+            ->select($fields)
+            ->from('DeviabTransactionBundle:LenderDeviabTransaction', 'ldt')
+            ->where('ldt.status = :x')
+            ->setParameter('x', 'release payment')->distinct();
+        $ldts = $query->getQuery()->getResult();
+        $response = array('quantum' => $quantum, 'backers' => count($ldts));
         return View::create($response, Codes::HTTP_OK);
     }
 
