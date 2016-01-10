@@ -11,13 +11,20 @@
 .space {
     height: 50px;
 }
-
+ 
+ .h-25 {
+    min-height: 25px;
+ }
 .space-30 {
     height: 30px;
 }
 
 .space-25 {
     height: 25px;
+}
+
+.space-10 {
+    height: 10px;
 }
 
 .error {
