@@ -39,11 +39,19 @@ class ProjectService extends BaseService
             return View::create("project not found", Codes::HTTP_BAD_REQUEST);
         $quantum = $project->getCapitalAmount();
         $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
-        $lenders = $lenderRepository->findAll();
+        $query = $this->em->createQueryBuilder();
+        $fields = array('ldt');
+        $query
+            ->select($fields)
+            ->from('DeviabTransactionBundle:LenderDeviabTransaction', 'ldt')
+            ->where('ldt.status = :x')
+            ->setParameter('x', 'release payment');
+        $ldts = $query->getQuery()->getResult();
+
         $names = [];
-        foreach ($lenders as $lender) {
-            $dic['name'] = $lender->getFname();
-            $dic['url'] = $lender->getProfilePic();
+        foreach ($ldts as $ldt) {
+            $dic['name'] = $ldt->getLender()->getFname();
+            $dic['url'] = $ldt->getLender()->getProfilePic();
             array_push($names, $dic);
         }
         $response = array('quantum' => $quantum, 'lenders' => $names);
@@ -71,9 +79,9 @@ class ProjectService extends BaseService
     public function capturePayUTransaction( Request $request )
     {
         if ($request != null) {
-            $secret=$request->headers->get('secret');
-            if($secret!="Ppeu7e;}]B)xgWq[*E4@$??B3~t.&G")
-            return View::create("hackers not allowed", Codes::HTTP_BAD_REQUEST);
+            $secret = $request->headers->get('secret');
+            if ($secret != "Ppeu7e;}]B)xgWq[*E4@$??B3~t.&G")
+                return View::create("hackers not allowed", Codes::HTTP_BAD_REQUEST);
             $request = $request->getContent();
             $request = json_decode($request, true);
             $lenderId = $request['udf1'];
