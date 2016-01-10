@@ -328,6 +328,7 @@
     <div class="modal fade" id="change-password-modal" role="dialog">
         <div class="modal-dialog" style="width:35%">
             <div id="change-password-container" style="background:#fff">
+            		<div class="space-25"></div>
 					<div class="modal-header">
 						<button id="change-pass-close" type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="text-center modal-title">Update Password</h4>
@@ -335,18 +336,18 @@
 					<div class="container-fluid">
 						<form id='change-password-form' role="form">
 							<div class="form-group">
-								<label for="priofile-email">Old Password:</label>
-								<input type="text" class="form-control change-password-input" id="old-pass" 
+								<label for="update-pass-email">Old Password:</label>
+								<input type="password" class="form-control change-password-input" id="old-pass" 
 									   placeholder="Enter Old Password"  required />
 							</div>
 							<div class="form-group">
-								<label for="priofile-password">New Password:</label>
-								<input type="text" class="form-control change-password-input" id="new-pass" name="priofile-password"
-									   placeholder="Enter Pasword"  required/>
+								<label for="update-pass-password">New Password:</label>
+								<input type="password" class="form-control change-password-input" id="new-pass" name="priofile-password"
+									   placeholder="Enter Password"  required/>
 							</div>
 							<div class="form-group">
-								<label for="priofile-password">Confirm Password:</label>
-								<input type="text" class="form-control change-password-input" id="confirm-pass" 
+								<label for="update-pass-password">Confirm Password:</label>
+								<input type="password" class="form-control change-password-input" id="confirm-pass" 
 									   placeholder="Confirm Password"  required/>
 							</div>
 							<!-- <div class="checkbox">
@@ -355,9 +356,9 @@
 							<div id="password-update-btn-container" class="text-center">
 							<button id="password-update-btn" class="btn btn-lg btn-primary">Done</button>
 							</div>
-							<div class="space"></div>
+							<div class="space-25"></div>
 					</form>
-					<div id="edit- profile-msg-container" class="error"><span id="profile-update-msg"></span></div>
+					<div id="edit-pass-msg-container" class="error h-25 text-center" ><span id="change-pass-msg"></span></div>
 				</div>
 			</div>
         </div>
@@ -588,6 +589,7 @@
 	        "primary_mobile_number" :$('#profile-phone').val(),
 
 	    }
+	    $(".se-pre-con-login").show();
 	    $.ajax({
 	        url: '/api/v1/lenders/'+$('#profile-id').val(),
 	        data: data,
@@ -596,6 +598,7 @@
 	        type: 'PATCH',
 	        success: function(data){
 	           alert("Updated successfully");
+	           $(".se-pre-con-login").fadeOut("slow");
 	           $('#priofile-update-btn').prop('disabled',true);
 	           $('#profile-name').prop('disabled',true);
 	           $('#profile-email').prop('disabled',true);
@@ -604,14 +607,37 @@
 	        },
 	        error: function(error) {
 	           alert("Error! Please Try Again");
+	           $(".se-pre-con-login").fadeOut("slow");
 	        }
 	    });
 	});
     $('#password-update-btn').click(function(){
+    	$('#priofile-update-btn').prop('disabled',true);
+    	var flag = false;
+    	var old_pass = $('#old-pass').val();
+    	var new_pass = $('#new-pass').val();
+    	var confirm_pass = $('#confirm-pass').val();
+    	$('input:password.change-password-input').each(function (){
+    		var id = $(this).attr('id');
+    		if($('#'+id).val() == ""){
+ 				$("#change-pass-msg").html("Please fill all input values!!").show().fadeOut(4000);
+    			$('#'+id).focus();
+    			flag =true;
+    			return false;
+    		}
+    	});
+    	if(flag) {
+    		return false;
+    	}
+    	if(new_pass != confirm_pass) {
+    		$("#change-pass-msg").html("Passwords should be Same!!").show().fadeOut(4000);
+    		return false;
+    	}
 	    var data = {
 	        "old_password" :$('#old-pass').val(),
 	        "new_password" : $('#new-pass').val()
 	    }
+	    $(".se-pre-con-login").show();
 	    $.ajax({
 	        url: '/api/v1/lenders/'+$('#profile-id').val(),
 	        data: data,
@@ -622,14 +648,16 @@
 	        	console.log(data);
 	        	if(data.success == true) {
 	        	   alert("Updated successfully");
+	        	   $('#change-pass-close').click();   
 	       		} else if(data.success == false) {
 	       			alert("Invalid Old password!!");
 	       		}
-
-	           $('#change-pass-close').click();       
+	       		$(".se-pre-con-login").fadeOut("slow");
+	               
 	        },
 	        error: function(error) {
 	           alert("Error! Please Try Again");
+	           $(".se-pre-con-login").fadeOut("slow");
 	        }
 	    });
 });
