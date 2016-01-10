@@ -123,7 +123,6 @@ class LoginController extends Controller
         $userManager = $this->container->get('fos_user.user_manager');
         $userManager->updateUser($user);
         $lender = $this->container->get('lender_service')->addLenderDetail([
-           'fname' => $username,
            'user' => $user
         ]);
         // $form = $this->container->get('fos_user.registration.form');
