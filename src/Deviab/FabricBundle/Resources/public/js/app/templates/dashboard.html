@@ -80,24 +80,26 @@
     <div class="container">
             <h3 class="text-center"><span id="transaction-details-text">Transaction Details</span></h3>
             <div class="col-md-offset-2 col-md-8 col-xs-12">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th style="text-align:center">Transaction</th>
-                            <th style="text-align:center">Time</th>
-                            <th style="text-align:center">Amount</th>
-                            <th style="text-align:center">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="debit in profileResponce.transactions">
-                            <td>{[{debit.txnid}]}</td>
-                            <td>{[{debit.timestamp}]}</td> 
-                            <td>{[{debit.amount}]}</td>
-                            <td>{[{debit.type}]}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center">Transaction</th>
+                                <th style="text-align:center">Time</th>
+                                <th style="text-align:center">Amount</th>
+                                <th style="text-align:center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="debit in profileResponce.transactions">
+                                <td>{[{debit.txnid}]}</td>
+                                <td>{[{debit.timestamp}]}</td> 
+                                <td>{[{debit.amount}]}</td>
+                                <td>{[{debit.type}]}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 </div>
