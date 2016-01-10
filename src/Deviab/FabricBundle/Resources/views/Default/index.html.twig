@@ -438,11 +438,12 @@
 			},
 			error: function (errorMessage) {
 				$("#signin-msg").html("Wrong email or password!");
-				if (typeof(errorMessage['error']) === 'undefined') {
-					alert('Please Try Again...');
-				} else {
-					errorMessage = errorMessage['error'];
-				}
+				// if (typeof(errorMessage['error']) === 'undefined') {
+				// 	alert('Please Try Again...');
+				// } else {
+				// 	errorMessage = errorMessage['error'];
+				// }
+				console.log(errorMessage);
 				$(".se-pre-con-login").fadeOut("slow");
 			},
 		});
