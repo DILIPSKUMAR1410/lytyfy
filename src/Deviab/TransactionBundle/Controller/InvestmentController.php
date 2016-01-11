@@ -52,15 +52,15 @@ class InvestmentController extends Controller
                 'amount' => $amount,
                 'udf1' => $lenderId,
                 'udf2' => $projectId,
-                'surl' => "http://try.lytyfy.org",
-                'furl' => "http://try.lytyfy.org",
-                'curl' => "http://try.lytyfy.org",
+                'surl' => "http://try.lytyfy.org/#/dashboard",
+                'furl' => "http://try.lytyfy.org/#/dashboard",
+                'curl' => "http://try.lytyfy.org/#/dashboard",
                 'hash' => $hash,
                 'service_provider' => "payu_paisa"
             );
             if (!$amount) {
                 $err = 'Amount Required';
-            } else if (!$firstname) {
+            } else if (!$firstname || $firstname == "Fill in your name") {
                 $err = 'FirstName Required';
             } else if (!$email) {
                 $err = 'Email Required';
