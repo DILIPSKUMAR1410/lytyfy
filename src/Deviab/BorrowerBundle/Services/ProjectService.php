@@ -39,18 +39,25 @@ class ProjectService extends BaseService
             return View::create("project not found", Codes::HTTP_BAD_REQUEST);
         $quantum = $project->getCapitalAmount();
         $query = $this->em->createQueryBuilder();
-        $fields = array('IDENTITY(ldt.lender)');
+        $fields = array('(ldt.lender)');
         $query
             ->select($fields)
             ->from('DeviabTransactionBundle:LenderDeviabTransaction', 'ldt')
             ->where('ldt.status = :x')
-            ->setParameter('x', 'release payment');
-        $ldts = $query->getQuery()->getResult();
-        return $ldts;
+            ->orWhere('ldt.status = :y')
+            ->setParameter('y', 'success')
+            ->setParameter('x', 'release payment')->distinct();
+        $lenders = $query->getQuery()->getArrayResult();
+        $lenderIds = [];
+        foreach ($lenders as $lender) {
+            array_push($lenderIds, $lender['1']);
+        }
+        $lenderRepository = $this->doctrine->getRepository('DeviabDatabaseBundle:LenderDetails');
+        $lenders = $lenderRepository->findById($lenderIds);;
         $names = [];
-        foreach ($ldts as $ldt) {
-            $dic['name'] = $ldt->getLender()->getFname();
-            $dic['url'] = $ldt->getLender()->getProfilePic();
+        foreach ($lenders as $lender) {
+            $dic['name'] = $lender->getFname();
+            $dic['url'] = $lender->getProfilePic();
             array_push($names, $dic);
         }
         $response = array('quantum' => $quantum, 'lenders' => $names);
@@ -75,6 +82,8 @@ class ProjectService extends BaseService
             ->select($fields)
             ->from('DeviabTransactionBundle:LenderDeviabTransaction', 'ldt')
             ->where('ldt.status = :x')
+            ->orWhere('ldt.status = :y')
+            ->setParameter('y', 'success')
             ->setParameter('x', 'release payment')->distinct();
         $ldts = $query->getQuery()->getResult();
         $response = array('quantum' => $quantum, 'backers' => count($ldts));
