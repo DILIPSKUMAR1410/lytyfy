@@ -109,7 +109,7 @@ class ProjectService extends BaseService
             $lenderDeviabTransaction = new LenderDeviabTransaction();
             $lenderDeviabTransaction->setLender($lender);
             $lenderDeviabTransaction->setStatus($status);
-            if ($status = "failed") ;
+            if ($status == "failed")
             $lenderDeviabTransaction->setErrorMessage($request["error_message"]);
             $lenderDeviabTransaction->setProject($project);
             $lenderDeviabTransaction->setAmount($amount);
