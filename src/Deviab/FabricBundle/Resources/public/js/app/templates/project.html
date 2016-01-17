@@ -272,6 +272,23 @@
         //     return;
         // }
         // $('#proceed-button').prop('disabled', true);
+
+        if (!($('#user-id').length > 0)) {        
+            $("#login-btn").trigger("click");
+            $("#signin-msg").html("Please Login first...!");
+            return false;
+        }
+
+        var name = $('#profile-name').val();
+        var email = $('#profile-email').val();
+        var phone = $('#profile-phone').val();
+
+        if(name == "" || email == "" || phone == "") {
+            $("#profile-li").click();
+            $('#profile-update-msg').html("Please complete your profile...!").fadeOut(5000);
+            return false;
+        }
+
         $(".se-pre-con-login").show();
 		var res = $.get('/api/v1/lenders/4/fd?amount='+amount);
 		res.success(function(data, status, headers, config) {

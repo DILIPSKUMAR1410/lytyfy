@@ -147,7 +147,7 @@
 						<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="menu1" id="dash-link">
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="#/dashboard">Dashbord</a>
 							</li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href=""data-target="#profile-modal" data-toggle="modal">Profile</a></li>
+							<li id="profile-li" role="presentation" data-target="#profile-modal" data-toggle="modal"><a role="menuitem" tabindex="-1" href="">Profile</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="" data-target="#change-password-modal" data-toggle="modal">Change Password</a>
 							<li role="presentation" class="divider"></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">Logout</a></li>
@@ -203,7 +203,7 @@
 							</div> -->
 							<div class="text-center">
 							<button id="signup-btn" class="btn btn-lg btn-primary" style="padding: 5px 16px;
-    font-size: 14px;">Request</button></div>
+    							font-size: 14px;">Request</button></div>
 						</form>
 						<div id="signup-msg-container" class="error"><span id="signup-msg"></span></div>
 						<div class="modal-footer">
@@ -264,6 +264,9 @@
 	</div>
 </div>
 <div id="footer" class="container-fluid">
+	{% if username is defined %}
+	<input id="user-id" type="hidden" value="{{user_id}}">
+	{% endif %}
 	<div id="social-icons-container">
 		<ul id="social-icon-container">
 			<li id="fb"><a href="https://www.facebook.com/pages/Deviab/1675668492652876?__mref=message_bubble"
@@ -289,24 +292,24 @@
 			</div>
 			<div class="container-fluid">
 				<form id='signin-form' role="form">
-					<div class="form-group" style="display:none">
+					<!-- <div class="form-group" style="display:none">
 						<label for="profile-id">id:</label>
 						<input type="text" class="form-control profile-input" id="profile-id" name="profile-id"
 							   placeholder="Enter id"  required disabled/>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label for="priofile-email">Email:</label>
 						<input type="email" class="form-control profile-input" id="profile-email" name="priofile-email"
 							   placeholder="Enter email"  required disabled/>
 					</div>
 					<div class="form-group">
-						<label for="priofile-password">Name:</label>
+						<label for="priofile-name">Name:</label>
 						<input type="text" class="form-control profile-input" id="profile-name" name="priofile-password"
 							   placeholder="Enter Name"  required disabled/>
 					</div>
 					<div class="form-group">
-						<label for="priofile-password">Mobile:</label>
-						<input type="text" class="form-control profile-input" id="profile-phone" name="priofile-password"
+						<label for="priofile-phone">Mobile:</label>
+						<input type="number" class="form-control profile-input" id="profile-phone" name="priofile-password"
 							   placeholder="Enter Mobile Number"  required disabled/>
 					</div>
 					<!-- <div class="checkbox">
@@ -316,9 +319,9 @@
 					<button id="prifile-edit-btn" class="btn btn-lg btn-primary">Edit</button>
 					<button id="profile-update-btn" class="btn btn-lg btn-primary" disabled>Done</button>
 					</div>
-					<div class="space"></div>
+					<div class="space-25"></div>
 				</form>
-				<div id="edit- profile-msg-container" class="error"><span id="profile-update-msg"></span></div>
+				<div id="edit-profile-msg-container" class="error text-center h-25"><span id="profile-update-msg"></span></div>
 			</div>
         </div>
     </div>
@@ -588,15 +591,31 @@
 
 	});
 	$('#profile-update-btn').click(function(){
+		var profile_name = $('#profile-name').val();
+		var profile_email = $('#profile-email').val();
+		var profile_phone = $('#profile-phone').val();
+
+		if(profile_name == "" || profile_email == "" || profile_phone == "") {
+			$('input.profile-input').each(function() {
+		        var id = $(this).attr('id');
+		        if($('#'+id).val() == "") {
+			        $('#'+id).focus();
+			        return false;
+			    }
+		    });
+            $('#profile-update-msg').html("Please complete your profile...!").fadeOut(5000);
+            
+        }
+
 	    var data = {
-	        "fname" :$('#profile-name').val(),
-	        "email" : $('#profile-email').val(),
-	        "primary_mobile_number" :$('#profile-phone').val(),
+	        "fname" : profile_name,
+	        "email" : profile_email,
+	        "primary_mobile_number" : profile_phone
 
 	    }
 	    $(".se-pre-con-login").show();
 	    $.ajax({
-	        url: '/api/v1/lenders/'+$('#profile-id').val(),
+	        url: '/api/v1/lenders/'+$('#user-id').val(),
 	        data: data,
 	        cache: false,
 	        contentType: 'application/x-www-form-urlencoded',
@@ -604,7 +623,7 @@
 	        success: function(data){
 	           alert("Updated successfully");
 	           $(".se-pre-con-login").fadeOut("slow");
-	           $('#priofile-update-btn').prop('disabled',true);
+	           $('#profile-update-btn').prop('disabled',true);
 	           $('#profile-name').prop('disabled',true);
 	           $('#profile-email').prop('disabled',true);
 	           $('#profile-phone').prop('disabled',true);
