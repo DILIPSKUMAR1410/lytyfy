@@ -14,7 +14,8 @@ class DefaultController extends Controller
         if ($user instanceof User) {
             $username = $user->getUsername();
             $email = $user->getEmail();
-            return $this->render('FabricBundle:Default:index.html.twig', array('username' => $username));
+            $userId = $user->getId();
+            return $this->render('FabricBundle:Default:index.html.twig', array('username' => $username, 'user_id' => $userId));
         }
         return $this->render('FabricBundle:Default:index.html.twig');
     }
